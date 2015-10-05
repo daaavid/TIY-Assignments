@@ -23,3 +23,12 @@ for num in multiples
 print(totalSum)
 
 //Question 2
+let threeDigitNum = 100...999
+var firstNum = 0, secondNum = 0
+var palindrome = firstNum * secondNum
+
+let palinStr = String(palindrome)
+let characters = Array(palinStr.characters)
+{
+    print(palinStr)
+}
