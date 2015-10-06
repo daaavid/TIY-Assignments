@@ -15,36 +15,48 @@ for num in multiples
 print(totalSum)
 
 //Question 2
-//let threeDigitNum = 100...999
-//var firstNum = 0, secondNum = 0
-////var palindrome = firstNum * secondNum
-//var palindrome = 100
-//let palinStr = String(palindrome)
-//let characters = Array(palinStr.characters)
-//var revArray = [""]
-//for ch in characters.reverse()
-//{
-//    var subchar = ch
-//    print(ch)
-////    revArray.append(ch)
-//}
+var palin1 = 100
+var palin2 = 100
+let palinProd = palin1 * palin2
+var revArray: Array<Character> = []
 
-// ^ this code sucks
-var num = 90009
-var hello = String(num), helloChar = Array(hello.characters)
-//if hello == helloChar.reverse()
-//{
-//    
-//}
 
-var palin1 = 999, palin2 = palin1, palinProd = 0
-
-while palin1 > 0
-{
-    while palin2 > 0
+    let palinProdStr = String(palinProd)
+    let characters = Array(palinProdStr.characters)
+    for ch in characters.reverse()
     {
-        
+        revArray.append(ch)
     }
-    palinProd = palin1 * palin2
-    palin2--
+
+
+print(String(revArray))
+let revCompar = "00001"
+
+if String(revArray) == revCompar
+{
+    print("is equal")
 }
+
+//var num = 90009
+//var hello = String(num), helloChar = Array(hello.characters)
+////if hello == helloChar.reverse()
+////{
+////    
+////}
+//
+//let palindrome = 100
+//let palinStr = String(palindrome)
+//let palinStrArr = palinStr.characters.reverse()
+//print(palinStrArr)
+//
+//var palin1 = 999, palin2 = palin1, palinProd = 0
+//
+//while palin1 > 0
+//{
+//    while palin2 > 0
+//    {
+//        
+//    }
+//    palinProd = palin1 * palin2
+//    palin2--
+//}
