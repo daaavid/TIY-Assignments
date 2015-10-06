@@ -30,4 +30,21 @@ print(totalSum)
 //}
 
 // ^ this code sucks
+var num = 90009
+var hello = String(num), helloChar = Array(hello.characters)
+//if hello == helloChar.reverse()
+//{
+//    
+//}
 
+var palin1 = 999, palin2 = palin1, palinProd = 0
+
+while palin1 > 0
+{
+    while palin2 > 0
+    {
+        
+    }
+    palinProd = palin1 * palin2
+    palin2--
+}
