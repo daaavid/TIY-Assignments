@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B27CE0F1BC59A07009EA7EA /* images in Resources */ = {isa = PBXBuildFile; fileRef = 1B27CE0E1BC59A07009EA7EA /* images */; settings = {ASSET_TAGS = (); }; };
 		1BCE3BAA1BC57C3A00A16B94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCE3BA91BC57C3A00A16B94 /* AppDelegate.swift */; };
 		1BCE3BAC1BC57C3A00A16B94 /* MissionBriefingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCE3BAB1BC57C3A00A16B94 /* MissionBriefingViewController.swift */; };
 		1BCE3BAF1BC57C3A00A16B94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BCE3BAD1BC57C3A00A16B94 /* Main.storyboard */; };
@@ -16,7 +15,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1B27CE0E1BC59A07009EA7EA /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		1BCE3BA61BC57C3A00A16B94 /* MissionBriefing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MissionBriefing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BCE3BA91BC57C3A00A16B94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BCE3BAB1BC57C3A00A16B94 /* MissionBriefingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionBriefingViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +54,6 @@
 		1BCE3BA81BC57C3A00A16B94 /* MissionBriefing */ = {
 			isa = PBXGroup;
 			children = (
-				1B27CE0E1BC59A07009EA7EA /* images */,
 				1BCE3BA91BC57C3A00A16B94 /* AppDelegate.swift */,
 				1BCE3BAB1BC57C3A00A16B94 /* MissionBriefingViewController.swift */,
 				1BCE3BAD1BC57C3A00A16B94 /* Main.storyboard */,
@@ -125,7 +122,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B27CE0F1BC59A07009EA7EA /* images in Resources */,
 				1BCE3BB41BC57C3A00A16B94 /* LaunchScreen.storyboard in Resources */,
 				1BCE3BB11BC57C3A00A16B94 /* Assets.xcassets in Resources */,
 				1BCE3BAF1BC57C3A00A16B94 /* Main.storyboard in Resources */,

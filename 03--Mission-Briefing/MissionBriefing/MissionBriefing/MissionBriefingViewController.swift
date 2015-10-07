@@ -11,16 +11,18 @@ import UIKit
 class MissionBriefingViewController: UIViewController, UITextFieldDelegate
 {
     // Place IBOutlet properties below
-    @IBOutlet var firstTextField: UITextField!
-    @IBOutlet var secondTextField: UITextField!
+    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var passTextField: UITextField!
     @IBOutlet var messageLabel: UILabel!
-    @IBOutlet var textView: UITextField!
+    @IBOutlet var textView: UITextView!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        nameTextField.text = ""
+        passTextField.text = ""
         messageLabel.text = ""
         textView.text = ""
         
@@ -39,19 +41,47 @@ class MissionBriefingViewController: UIViewController, UITextFieldDelegate
     
     // MARK: - Action Handlers
     
-    @IBAction func authenticateAgent(sender: UIButton)
+    @IBAction func goTapped(sender: UIButton)
+    {
+        authenticateAgent()
+    }
+    
+    func authenticateAgent() -> Bool
     {
         // This will cause the keyboard to dismiss when the authenticate button is tapped
-        if <#name text field property identifier goes here#>.isFirstResponder
+        var rc = false
+        let correctPass = "password"
+        
+//        let name2 = nameTextField.text
+//        let pass2 = passTextField.text
+        
+        if nameTextField.isFirstResponder()
         {
-            <#name text field property identifier goes here#>.resignFirstResponder
+            nameTextField.resignFirstResponder()
         }
+        
+//        if passTextField.isFirstResponder()
+//        {
+//            passTextField.resignFirstResponder()
+//        }
         
         //
         // 4. Check whether there is text in BOTH the name and password textfields
         //
-        if <#?#>
+        
+        if let name = nameTextField.text
         {
+            if let pass = passTextField.text
+            {
+                if pass == correctPass
+                {
+                    rc = true
+                    let lastName = name.characters.split(" ").map {String($0)}
+                    messageLabel.text = "Good evening, Agent \(lastName[1])"
+                    view.backgroundColor = UIColor(red: 0.585, green: 0.780, blue: 0.188, alpha: 1.0)
+                    textView.text = "This mission will be an arduous one, fraught with peril. You will cover much strange and unfamiliar territory. Should you choose to accept this mission, Agent \(lastName[1]), you will certainly be disavowed, but you will be doing your country a great service. This message will self destruct in 5 seconds."
+                }
+            }
             //
             // 5. The greeting label needs to be populated with the the string "Good evening, Agent #", where # is the last name of
             //    the agent logging in. The agent's full name is listed in the text field, but you need to pull out just the last
@@ -86,14 +116,12 @@ class MissionBriefingViewController: UIViewController, UITextFieldDelegate
             //    Once you have the color object, you should be able to set the view's background color to this object.
             //
             
-            
-            
-            
-            
-            
+        
         }
         else
         {
+//           view.backgroundColor = UIColor(red: 0.780, green: 0.188, blue: 0.188, alpha: 1.0)
+//           view.backgroundColor = UIColor.redColor()
             //
             // 8. The view's background color needs to switch to red to indicate a failed login by the agent.
             //
@@ -110,6 +138,9 @@ class MissionBriefingViewController: UIViewController, UITextFieldDelegate
             
             
         }
+        
+        return rc
+        
     }
-}
 
+}

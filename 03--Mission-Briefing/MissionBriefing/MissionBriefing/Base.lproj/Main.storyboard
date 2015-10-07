@@ -27,12 +27,15 @@
                                 <rect key="frame" x="60" y="92" width="480" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m26-HU-q1q">
                                 <rect key="frame" x="256" y="130" width="88" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Authenticate"/>
+                                <connections>
+                                    <action selector="goTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Fz-s7-8tS"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMa-uy-xkM">
                                 <rect key="frame" x="279" y="162" width="42" height="20.5"/>
@@ -41,14 +44,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="TIYLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="gIC-AE-xNx">
-                                <rect key="frame" x="180" y="472" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="TIYLogo" translatesAutoresizingMaskIntoConstraints="NO" id="gIC-AE-xNx">
+                                <rect key="frame" x="180" y="440" width="240" height="140"/>
                                 <animations/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="480" placeholderIntrinsicHeight="250" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Ca-H7-jpe">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="480" placeholderIntrinsicHeight="250" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Ca-H7-jpe">
                                 <rect key="frame" x="60" y="190" width="480" height="250"/>
                                 <animations/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -57,45 +59,28 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2Ca-H7-jpe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1By-Ae-jMz"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2Ca-H7-jpe" secondAttribute="bottom" constant="80" id="7nV-CJ-Ygq"/>
                             <constraint firstItem="2Ca-H7-jpe" firstAttribute="top" secondItem="tPs-ZS-gkv" secondAttribute="bottom" constant="120" id="7wI-NF-O7p"/>
                             <constraint firstItem="Mmp-VR-SIO" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="8HR-Gt-haz"/>
                             <constraint firstItem="gIC-AE-xNx" firstAttribute="top" secondItem="2Ca-H7-jpe" secondAttribute="bottom" id="AZi-PV-Bj8"/>
                             <constraint firstItem="Mmp-VR-SIO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Czh-3B-zKX"/>
                             <constraint firstItem="gIC-AE-xNx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dh2-fc-5wP"/>
-                            <constraint firstItem="gIC-AE-xNx" firstAttribute="top" secondItem="2Ca-H7-jpe" secondAttribute="bottom" constant="-40" id="EUX-v9-EJS"/>
-                            <constraint firstItem="2Ca-H7-jpe" firstAttribute="top" secondItem="bMa-uy-xkM" secondAttribute="bottom" constant="7" id="G7u-vn-8Dl"/>
                             <constraint firstItem="tPs-ZS-gkv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LId-ya-voS"/>
                             <constraint firstItem="Mmp-VR-SIO" firstAttribute="top" secondItem="tPs-ZS-gkv" secondAttribute="bottom" constant="20" id="PE2-H0-dEL"/>
-                            <constraint firstItem="gIC-AE-xNx" firstAttribute="top" secondItem="2Ca-H7-jpe" secondAttribute="bottom" constant="27" id="Scr-He-OGx"/>
                             <constraint firstItem="bMa-uy-xkM" firstAttribute="top" secondItem="tPs-ZS-gkv" secondAttribute="bottom" constant="92" id="Uqy-12-jfC"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2Ca-H7-jpe" secondAttribute="bottom" constant="155" id="W0w-LP-BWA"/>
                             <constraint firstItem="tPs-ZS-gkv" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="ZRc-Mr-kgu"/>
                             <constraint firstItem="2Ca-H7-jpe" firstAttribute="width" secondItem="Mmp-VR-SIO" secondAttribute="width" id="apK-6Y-ovt"/>
-                            <constraint firstItem="2Ca-H7-jpe" firstAttribute="top" secondItem="bMa-uy-xkM" secondAttribute="bottom" constant="7" id="b3k-Uk-2yc"/>
                             <constraint firstItem="bMa-uy-xkM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cJ6-Si-jKY"/>
                             <constraint firstItem="m26-HU-q1q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hWI-rd-2Bg"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gIC-AE-xNx" secondAttribute="bottom" id="raG-Jg-mkS"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gIC-AE-xNx" secondAttribute="bottom" constant="20" id="raG-Jg-mkS"/>
                             <constraint firstItem="tPs-ZS-gkv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="xae-Yo-81v"/>
                             <constraint firstItem="m26-HU-q1q" firstAttribute="top" secondItem="tPs-ZS-gkv" secondAttribute="bottom" constant="60" id="xfE-XU-kgb"/>
-                            <constraint firstItem="gIC-AE-xNx" firstAttribute="top" secondItem="2Ca-H7-jpe" secondAttribute="bottom" constant="30" id="xkQ-Sg-8WO"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="G7u-vn-8Dl"/>
-                                <exclude reference="b3k-Uk-2yc"/>
-                                <exclude reference="EUX-v9-EJS"/>
-                                <exclude reference="Scr-He-OGx"/>
-                                <exclude reference="xkQ-Sg-8WO"/>
-                                <exclude reference="7nV-CJ-Ygq"/>
-                                <exclude reference="W0w-LP-BWA"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
-                        <outlet property="firstTextField" destination="tPs-ZS-gkv" id="eML-eS-f85"/>
-                        <outlet property="messageLabel" destination="bMa-uy-xkM" id="I3S-bC-WqZ"/>
-                        <outlet property="secondTextField" destination="Mmp-VR-SIO" id="LsC-yC-nEa"/>
+                        <outlet property="messageLabel" destination="bMa-uy-xkM" id="xC4-EY-fpj"/>
+                        <outlet property="nameTextField" destination="tPs-ZS-gkv" id="eEm-Yt-Iis"/>
+                        <outlet property="passTextField" destination="Mmp-VR-SIO" id="65d-zg-VMu"/>
+                        <outlet property="textView" destination="2Ca-H7-jpe" id="Fui-fL-7ec"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -104,6 +89,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="TIYLogo.png" width="240" height="212"/>
+        <image name="TIYLogo" width="240" height="212"/>
     </resources>
 </document>
