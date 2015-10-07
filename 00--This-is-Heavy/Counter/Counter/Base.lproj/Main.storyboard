@@ -38,7 +38,7 @@
                                     <action selector="stepperValueChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="pIe-bJ-xbx"/>
                                 </connections>
                             </stepper>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TIYLogo" translatesAutoresizingMaskIntoConstraints="NO" id="sEk-OI-nh1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="TIYLogo" translatesAutoresizingMaskIntoConstraints="NO" id="sEk-OI-nh1">
                                 <rect key="frame" x="180" y="306" width="240" height="212"/>
                                 <animations/>
                             </imageView>
