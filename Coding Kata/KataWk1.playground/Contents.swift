@@ -15,48 +15,40 @@ for num in multiples
 print(totalSum)
 
 //Question 2
-var palin1 = 100
-var palin2 = 100
-let palinProd = palin1 * palin2
-var revArray: Array<Character> = []
-
-
-    let palinProdStr = String(palinProd)
-    let characters = Array(palinProdStr.characters)
-    for ch in characters.reverse()
-    {
-        revArray.append(ch)
-    }
-
-
-print(String(revArray))
-let revCompar = "00001"
-
-if String(revArray) == revCompar
-{
-    print("is equal")
-}
-
-//var num = 90009
-//var hello = String(num), helloChar = Array(hello.characters)
-////if hello == helloChar.reverse()
-////{
-////    
-////}
+//var palin1 = 99
+//var palin2 = 91
+//let palinProd = palin1 * palin2
 //
-//let palindrome = 100
-//let palinStr = String(palindrome)
-//let palinStrArr = palinStr.characters.reverse()
-//print(palinStrArr)
-//
-//var palin1 = 999, palin2 = palin1, palinProd = 0
-//
-//while palin1 > 0
+//func checkPalin(palinProd: Int) -> Int
 //{
-//    while palin2 > 0
+//    var revArray: Array<Character> = []
+//    let palinProdStr = String(palinProd)
+//    let characters = Array(palinProdStr.characters)
+//    for ch in characters.reverse()
 //    {
-//        
+//        revArray.append(ch)
 //    }
-//    palinProd = palin1 * palin2
-//    palin2--
+//    return(revArray)
 //}
+//String(revArray)
+//
+//if String(revArray) == String(palinProd)
+//{
+//    print("is equal")
+//}
+//else
+//{
+//    print("not equal")
+//}
+
+class PalinCheck
+{
+    
+    
+    init()
+    {
+        
+    }
+    
+    func
+}
