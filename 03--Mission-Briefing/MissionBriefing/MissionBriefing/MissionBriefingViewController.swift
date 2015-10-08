@@ -41,7 +41,7 @@ class MissionBriefingViewController: UIViewController, UITextFieldDelegate
     
     // MARK: - Action Handlers
     
-    @IBAction func goTapped(sender: UIButton)
+    @IBAction func authTapped(sender: UIButton)
     {
         authenticateAgent()
     }
@@ -68,7 +68,7 @@ class MissionBriefingViewController: UIViewController, UITextFieldDelegate
         //
         // 4. Check whether there is text in BOTH the name and password textfields
         //
-        
+
         if let name = nameTextField.text
         {
             if let pass = passTextField.text
@@ -82,46 +82,12 @@ class MissionBriefingViewController: UIViewController, UITextFieldDelegate
                     textView.text = "This mission will be an arduous one, fraught with peril. You will cover much strange and unfamiliar territory. Should you choose to accept this mission, Agent \(lastName[1]), you will certainly be disavowed, but you will be doing your country a great service. This message will self destruct in 5 seconds."
                 }
             }
-            //
-            // 5. The greeting label needs to be populated with the the string "Good evening, Agent #", where # is the last name of
-            //    the agent logging in. The agent's full name is listed in the text field, but you need to pull out just the last
-            //    name. Open the Apple Documentation and go to the page for NSString. There is a section in the left called "Dividing
-            //    Strings". You should be able to find a method that allows you to break up a string using a delimiter. In our case,
-            //    the delimiter would be a space character.
-            //
-            
-            
-            
-            
-            
-            
-            //
-            // 6. The mission briefing textview needs to be populated with the briefing from HQ, but it must also include the last
-            //    name of the agent that logged in. Perhaps you could use the text in the textfield to get the agent's last name.
-            //    How would you inject that last name into the paragraph of the mission briefing?
-            //    Set the textview text property to the paragraph in "MissionBriefing.txt"
-            //
-            
-            
-            
-            
-            
-            //
-            // 7. The view's background color needs to switch to green to indicate a successful login by the agent.
-            //
-            //    The color's RGB value is Red: 0.585, Green: 0.78, Blue: 0.188 with an alpha of 1. There is a class method on the
-            //    UIColor class that returns a color object with custom defined RGBA values. Open the documentation and look for a
-            //    method on UIColor that can take red, green, blue and alpha values as arguments.
-            //
-            //    Once you have the color object, you should be able to set the view's background color to this object.
-            //
-            
-        
         }
         else
         {
-//           view.backgroundColor = UIColor(red: 0.780, green: 0.188, blue: 0.188, alpha: 1.0)
-//           view.backgroundColor = UIColor.redColor()
+            
+            view.backgroundColor = UIColor(red: 0.780, green: 0.188, blue: 0.188, alpha: 1.0)
+            view.backgroundColor = UIColor.redColor()
             //
             // 8. The view's background color needs to switch to red to indicate a failed login by the agent.
             //

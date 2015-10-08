@@ -21,7 +21,7 @@
                                 <rect key="frame" x="60" y="40" width="480" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mmp-VR-SIO">
                                 <rect key="frame" x="60" y="92" width="480" height="30"/>
@@ -34,7 +34,7 @@
                                 <animations/>
                                 <state key="normal" title="Authenticate"/>
                                 <connections>
-                                    <action selector="goTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Fz-s7-8tS"/>
+                                    <action selector="authTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BwF-kP-Fp8"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMa-uy-xkM">
@@ -48,7 +48,7 @@
                                 <rect key="frame" x="180" y="440" width="240" height="140"/>
                                 <animations/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="480" placeholderIntrinsicHeight="250" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Ca-H7-jpe">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="480" placeholderIntrinsicHeight="250" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ca-H7-jpe">
                                 <rect key="frame" x="60" y="190" width="480" height="250"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
