@@ -46,14 +46,12 @@ class MissionBriefingViewController: UIViewController, UITextFieldDelegate
         authenticateAgent()
     }
     
-    func authenticateAgent() -> Bool
+    func authenticateAgent()// -> Bool
     {
         // This will cause the keyboard to dismiss when the authenticate button is tapped
-        var rc = false
+//        var rc = false
         let correctPass = "password"
-        
-//        let name2 = nameTextField.text
-//        let pass2 = passTextField.text
+        let pass = passTextField.text
         
         if nameTextField.isFirstResponder()
         {
@@ -68,14 +66,27 @@ class MissionBriefingViewController: UIViewController, UITextFieldDelegate
         //
         // 4. Check whether there is text in BOTH the name and password textfields
         //
-
+//        let name = nameTextField.text
+        if nameTextField.text!.isEmpty || passTextField.text!.isEmpty || pass != correctPass
+        {
+//            view.backgroundColor = UIColor(red: 0.780, green: 0.188, blue: 0.188, alpha: 1.0)
+//            messageLabel.text = "You didn't enter anything!"
+            incorrectOrEmptyPass()
+        }
+        
+//        if pass != correctPass
+//        {
+//            view.backgroundColor = UIColor(red: 0.780, green: 0.188, blue: 0.188, alpha: 1.0)
+//            messageLabel.text = "Incorrect!"
+//        }
+        
         if let name = nameTextField.text
         {
             if let pass = passTextField.text
             {
                 if pass == correctPass
                 {
-                    rc = true
+//                    rc = true
                     let lastName = name.characters.split(" ").map {String($0)}
                     messageLabel.text = "Good evening, Agent \(lastName[1])"
                     view.backgroundColor = UIColor(red: 0.585, green: 0.780, blue: 0.188, alpha: 1.0)
@@ -83,30 +94,13 @@ class MissionBriefingViewController: UIViewController, UITextFieldDelegate
                 }
             }
         }
-        else
-        {
-            
-            view.backgroundColor = UIColor(red: 0.780, green: 0.188, blue: 0.188, alpha: 1.0)
-            view.backgroundColor = UIColor.redColor()
-            //
-            // 8. The view's background color needs to switch to red to indicate a failed login by the agent.
-            //
-            //    The color's RGB value is Red: 0.78, Green: 0.188, Blue: 0.188 with an alpha of 1. There is a class method on the
-            //    UIColor class that returns a color object with custom defined RGBA values. Open the documentation and look for a
-            //    method on UIColor that can take red, green, blue and alpha values as arguments.
-            //
-            //    Once you have the color object, you should be able to set the view's background color to this object.
-            //
-            
-            
-            
-            
-            
-            
-        }
         
-        return rc
-        
+//        return rc
+    }
+    func incorrectOrEmptyPass()
+    {
+        view.backgroundColor = UIColor(red: 0.780, green: 0.188, blue: 0.188, alpha: 1.0)
+        messageLabel.text = "Incorrect!"
     }
 
 }
