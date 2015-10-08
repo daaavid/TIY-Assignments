@@ -17,43 +17,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tPs-ZS-gkv">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tPs-ZS-gkv">
                                 <rect key="frame" x="60" y="40" width="480" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mmp-VR-SIO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mmp-VR-SIO">
                                 <rect key="frame" x="60" y="92" width="480" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m26-HU-q1q">
-                                <rect key="frame" x="256" y="130" width="88" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m26-HU-q1q">
+                                <rect key="frame" x="256" y="132" width="88" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Authenticate"/>
                                 <connections>
                                     <action selector="authTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BwF-kP-Fp8"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMa-uy-xkM">
-                                <rect key="frame" x="279" y="162" width="42" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMa-uy-xkM">
+                                <rect key="frame" x="279" y="164" width="42" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="TIYLogo" translatesAutoresizingMaskIntoConstraints="NO" id="gIC-AE-xNx">
-                                <rect key="frame" x="180" y="440" width="240" height="140"/>
-                                <animations/>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="480" placeholderIntrinsicHeight="250" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ca-H7-jpe">
-                                <rect key="frame" x="60" y="190" width="480" height="250"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" placeholderIntrinsicWidth="480" placeholderIntrinsicHeight="250" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ca-H7-jpe">
+                                <rect key="frame" x="60" y="192" width="480" height="250"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="infinite" image="TIYLogo" translatesAutoresizingMaskIntoConstraints="NO" id="gIC-AE-xNx">
+                                <rect key="frame" x="180" y="440" width="240" height="140"/>
+                                <animations/>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -71,10 +71,17 @@
                             <constraint firstItem="2Ca-H7-jpe" firstAttribute="width" secondItem="Mmp-VR-SIO" secondAttribute="width" id="apK-6Y-ovt"/>
                             <constraint firstItem="bMa-uy-xkM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cJ6-Si-jKY"/>
                             <constraint firstItem="m26-HU-q1q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hWI-rd-2Bg"/>
+                            <constraint firstItem="gIC-AE-xNx" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="lug-K6-OJo"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gIC-AE-xNx" secondAttribute="bottom" constant="20" id="raG-Jg-mkS"/>
+                            <constraint firstItem="Mmp-VR-SIO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="72" id="tka-3W-XXi"/>
                             <constraint firstItem="tPs-ZS-gkv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="xae-Yo-81v"/>
                             <constraint firstItem="m26-HU-q1q" firstAttribute="top" secondItem="tPs-ZS-gkv" secondAttribute="bottom" constant="60" id="xfE-XU-kgb"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="lug-K6-OJo"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="messageLabel" destination="bMa-uy-xkM" id="xC4-EY-fpj"/>

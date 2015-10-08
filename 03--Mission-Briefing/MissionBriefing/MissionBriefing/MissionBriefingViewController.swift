@@ -10,7 +10,6 @@ import UIKit
 
 class MissionBriefingViewController: UIViewController, UITextFieldDelegate
 {
-    // Place IBOutlet properties below
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var passTextField: UITextField!
     @IBOutlet var messageLabel: UILabel!
@@ -19,24 +18,16 @@ class MissionBriefingViewController: UIViewController, UITextFieldDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         nameTextField.text = ""
         passTextField.text = ""
         messageLabel.text = ""
         textView.text = ""
-        
-        //
-        // 3. The three UI elements need to be emptied on launch
-        //    Hint: there is a string literal that represents empty
-        //
-        
     }
     
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Action Handlers
@@ -48,8 +39,6 @@ class MissionBriefingViewController: UIViewController, UITextFieldDelegate
     
     func authenticateAgent()// -> Bool
     {
-        // This will cause the keyboard to dismiss when the authenticate button is tapped
-//        var rc = false
         let correctPass = "password"
         let pass = passTextField.text
         
@@ -57,36 +46,18 @@ class MissionBriefingViewController: UIViewController, UITextFieldDelegate
         {
             nameTextField.resignFirstResponder()
         }
-        
-//        if passTextField.isFirstResponder()
-//        {
-//            passTextField.resignFirstResponder()
-//        }
-        
-        //
-        // 4. Check whether there is text in BOTH the name and password textfields
-        //
-//        let name = nameTextField.text
+
         if nameTextField.text!.isEmpty || passTextField.text!.isEmpty || pass != correctPass
         {
-//            view.backgroundColor = UIColor(red: 0.780, green: 0.188, blue: 0.188, alpha: 1.0)
-//            messageLabel.text = "You didn't enter anything!"
             incorrectOrEmptyPass()
         }
-        
-//        if pass != correctPass
-//        {
-//            view.backgroundColor = UIColor(red: 0.780, green: 0.188, blue: 0.188, alpha: 1.0)
-//            messageLabel.text = "Incorrect!"
-//        }
-        
+
         if let name = nameTextField.text
         {
             if let pass = passTextField.text
             {
                 if pass == correctPass
                 {
-//                    rc = true
                     let lastName = name.characters.split(" ").map {String($0)}
                     messageLabel.text = "Good evening, Agent \(lastName[1])"
                     view.backgroundColor = UIColor(red: 0.585, green: 0.780, blue: 0.188, alpha: 1.0)
@@ -94,9 +65,8 @@ class MissionBriefingViewController: UIViewController, UITextFieldDelegate
                 }
             }
         }
-        
-//        return rc
     }
+    
     func incorrectOrEmptyPass()
     {
         view.backgroundColor = UIColor(red: 0.780, green: 0.188, blue: 0.188, alpha: 1.0)
