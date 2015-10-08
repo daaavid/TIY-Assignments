@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TimeCircuitsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

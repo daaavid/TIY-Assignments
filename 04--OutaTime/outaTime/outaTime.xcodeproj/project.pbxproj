@@ -12,6 +12,7 @@
 		1B57DC521BC6DCF200BF6CB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B57DC501BC6DCF200BF6CB2 /* Main.storyboard */; };
 		1B57DC541BC6DCF200BF6CB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B57DC531BC6DCF200BF6CB2 /* Assets.xcassets */; };
 		1B57DC571BC6DCF200BF6CB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B57DC551BC6DCF200BF6CB2 /* LaunchScreen.storyboard */; };
+		1B8F6BA01BC6E5FA00FF5B79 /* digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B8F6B9F1BC6E5FA00FF5B79 /* digital-7.ttf */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		1B57DC531BC6DCF200BF6CB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B57DC561BC6DCF200BF6CB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B57DC581BC6DCF200BF6CB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B8F6B9F1BC6E5FA00FF5B79 /* digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		1B57DC4B1BC6DCF200BF6CB2 /* outaTime */ = {
 			isa = PBXGroup;
 			children = (
+				1B8F6B9F1BC6E5FA00FF5B79 /* digital-7.ttf */,
 				1B57DC4C1BC6DCF200BF6CB2 /* AppDelegate.swift */,
 				1B57DC4E1BC6DCF200BF6CB2 /* TimeCircuitsViewController.swift */,
 				1B57DC501BC6DCF200BF6CB2 /* Main.storyboard */,
@@ -125,6 +128,7 @@
 				1B57DC571BC6DCF200BF6CB2 /* LaunchScreen.storyboard in Resources */,
 				1B57DC541BC6DCF200BF6CB2 /* Assets.xcassets in Resources */,
 				1B57DC521BC6DCF200BF6CB2 /* Main.storyboard in Resources */,
+				1B8F6BA01BC6E5FA00FF5B79 /* digital-7.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +288,7 @@
 				1B57DC5D1BC6DCF200BF6CB2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
