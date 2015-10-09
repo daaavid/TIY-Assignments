@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nxC-Xw-HBB">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="digital-7.ttf">
@@ -15,7 +16,7 @@
         <!--Time Circuits View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TimeCircuitsViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TimeCircuitsViewController" customModule="outaTime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -24,13 +25,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESTINATION TIME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYe-77-nnh">
-                                <rect key="frame" x="224" y="72" width="151.5" height="20.5"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JAN 01 2000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWj-WD-gFa">
                                 <rect key="frame" x="210" y="100" width="180" height="36.5"/>
                                 <animations/>
@@ -39,49 +33,49 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRESENT TIME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbF-Nt-3vi">
-                                <rect key="frame" x="242" y="163" width="117" height="20.5"/>
+                                <rect key="frame" x="242" y="162" width="117" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OCT 8, 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NyX-mJ-XpJ">
-                                <rect key="frame" x="217" y="191" width="166" height="36.5"/>
+                                <rect key="frame" x="217" y="190" width="166" height="36.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Digital-7" family="Digital-7" pointSize="40"/>
                                 <color key="textColor" red="0.7931034482758621" green="0.78620689655172415" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST TIME DEPARTED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Goq-Z9-xWt">
-                                <rect key="frame" x="213" y="253" width="174" height="20.5"/>
+                                <rect key="frame" x="213" y="252" width="174" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--- -- ----" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAt-S2-s8o">
-                                <rect key="frame" x="217" y="282" width="166" height="36.5"/>
+                                <rect key="frame" x="217" y="281" width="166" height="36.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Digital-7" family="Digital-7" pointSize="40"/>
                                 <color key="textColor" red="0.92413793103448261" green="0.49803921568627452" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPEED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtP-nH-GJ3">
-                                <rect key="frame" x="274" y="376" width="52.5" height="20.5"/>
+                                <rect key="frame" x="274" y="375" width="52.5" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 MPH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyH-2I-wdA">
-                                <rect key="frame" x="257" y="404" width="87" height="36.5"/>
+                                <rect key="frame" x="257" y="403" width="87" height="36.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Digital-7" family="Digital-7" pointSize="40"/>
                                 <color key="textColor" red="0.73103448280000005" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6Z-QS-WwJ">
-                                <rect key="frame" x="245.5" y="531" width="110" height="33"/>
+                                <rect key="frame" x="245" y="530" width="110" height="33"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="TRAVEL BACK">
@@ -89,16 +83,23 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAP-4j-SVK">
-                                <rect key="frame" x="207" y="490" width="187" height="33"/>
+                                <rect key="frame" x="207" y="489" width="187" height="33"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="SET DESTINATION TIME">
                                     <color key="titleColor" red="0.0" green="0.58620689655172409" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="g5l-Xc-sRA" kind="show" id="u1S-TZ-XCE"/>
+                                    <segue destination="g5l-Xc-sRA" kind="show" identifier="ShowDatePickerSegue" id="u1S-TZ-XCE"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESTINATION TIME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYe-77-nnh">
+                                <rect key="frame" x="225" y="72" width="151.5" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -134,15 +135,21 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="YeS-Fd-EFj"/>
+                    <connections>
+                        <outlet property="destTime" destination="hWj-WD-gFa" id="ml0-te-kCR"/>
+                        <outlet property="lastTimeDep" destination="QAt-S2-s8o" id="4xT-29-bRx"/>
+                        <outlet property="presTime" destination="NyX-mJ-XpJ" id="FHW-eI-XS7"/>
+                        <outlet property="speed" destination="CyH-2I-wdA" id="mcr-LA-HAV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1175" y="316"/>
         </scene>
-        <!--View Controller-->
+        <!--Date Picker View Controller-->
         <scene sceneID="ORR-eQ-4r3">
             <objects>
-                <viewController id="g5l-Xc-sRA" sceneMemberID="viewController">
+                <viewController id="g5l-Xc-sRA" userLabel="Date Picker View Controller" customClass="DatePickerViewController" customModule="outaTime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aKI-kn-KhF"/>
                         <viewControllerLayoutGuide type="bottom" id="0vY-ga-1td"/>
@@ -150,9 +157,27 @@
                     <view key="view" contentMode="scaleToFill" id="mlA-Lv-tCY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Oet-gs-gVD">
+                                <rect key="frame" x="0.0" y="192" width="600" height="216"/>
+                                <animations/>
+                                <date key="date" timeIntervalSinceReferenceDate="466028109.33423001">
+                                    <!--2015-10-08 20:15:09 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Oet-gs-gVD" firstAttribute="centerX" secondItem="mlA-Lv-tCY" secondAttribute="centerX" id="aN8-Zt-R20"/>
+                            <constraint firstItem="Oet-gs-gVD" firstAttribute="leading" secondItem="mlA-Lv-tCY" secondAttribute="leadingMargin" constant="-20" id="dDc-xL-LdM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Oet-gs-gVD" secondAttribute="trailing" constant="-20" id="ez4-ZZ-xaJ"/>
+                            <constraint firstItem="Oet-gs-gVD" firstAttribute="top" secondItem="aKI-kn-KhF" secondAttribute="bottom" constant="128" id="gdX-zF-Vfb"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="picker" destination="Oet-gs-gVD" id="Loi-E4-Iln"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JCj-Wc-S6E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
