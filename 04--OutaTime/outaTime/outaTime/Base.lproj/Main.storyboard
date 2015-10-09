@@ -81,6 +81,9 @@
                                 <state key="normal" title="TRAVEL BACK">
                                     <color key="titleColor" red="0.0" green="0.58620689660000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="travBackTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NjW-it-cds"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAP-4j-SVK">
                                 <rect key="frame" x="207" y="489" width="187" height="33"/>
@@ -139,12 +142,13 @@
                         <outlet property="destTime" destination="hWj-WD-gFa" id="ml0-te-kCR"/>
                         <outlet property="lastTimeDep" destination="QAt-S2-s8o" id="4xT-29-bRx"/>
                         <outlet property="presTime" destination="NyX-mJ-XpJ" id="FHW-eI-XS7"/>
-                        <outlet property="speed" destination="CyH-2I-wdA" id="mcr-LA-HAV"/>
+                        <outlet property="speedLabel" destination="CyH-2I-wdA" id="GDs-NH-aCk"/>
+                        <outlet property="travBack" destination="O6Z-QS-WwJ" id="b4M-zR-2oZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1175" y="316"/>
+            <point key="canvasLocation" x="1178" y="318"/>
         </scene>
         <!--Date Picker View Controller-->
         <scene sceneID="ORR-eQ-4r3">
@@ -161,6 +165,7 @@
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Oet-gs-gVD">
                                 <rect key="frame" x="0.0" y="192" width="600" height="216"/>
                                 <animations/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <date key="date" timeIntervalSinceReferenceDate="466028109.33423001">
                                     <!--2015-10-08 20:15:09 +0000-->
                                 </date>
@@ -176,7 +181,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="picker" destination="Oet-gs-gVD" id="Loi-E4-Iln"/>
+                        <outlet property="picker" destination="Oet-gs-gVD" id="NIn-r1-vhU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JCj-Wc-S6E" userLabel="First Responder" sceneMemberID="firstResponder"/>
