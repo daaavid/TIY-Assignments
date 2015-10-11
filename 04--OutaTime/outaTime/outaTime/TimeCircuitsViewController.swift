@@ -58,6 +58,7 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate
     func dateWasChosen(destDate: NSDate)
     {
         destTime.text = formatTime(destDate)
+        errorLabel.text = ""
         //take the date from the date picker, format it, then assign it as the text in desTime
     }
         
@@ -91,28 +92,22 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate
         }
         else
         {
-            errorLabel.text = ""
+            errorLabel.text = "ACCELERATING"
+            presTimeBak = presTime.text!
+            //storing the value of the current presTime so I can put it in lastTimeDep
             
             if accelerate == nil
             {
-//                timer(0.1)
-                accelerate = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "updateSpeed", userInfo: nil, repeats: true)
-
-                travBack.setTitle("ACCELERATING", forState: UIControlState.Normal)
-            }
-            else
-            {
-              abort()
-//              stopSpeed()
-            
+                timer(0.1)
+                travBack.setTitle("", forState: UIControlState.Normal)
             }
         }
     }
     
-//    func timer(tickInterval: Double)
-//    {
-//        accelerate = NSTimer.scheduledTimerWithTimeInterval(tickInterval, target: self, selector: "updateUI", userInfo: nil, repeats: true)
-//    }
+    func timer(tickInterval: Double)
+    {
+        accelerate = NSTimer.scheduledTimerWithTimeInterval(tickInterval, target: self, selector: "updateSpeed", userInfo: nil, repeats: true)
+    }
     
     func stopSpeed()
     {
@@ -123,18 +118,18 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate
         
 //        lastTimeDep.text = formatTime(NSDate())
         baseSpeed = 0
-        lastTimeDep.text = destTime.text
+        lastTimeDep.text = presTimeBak
         speedLabel.text = ("\(baseSpeed) MPH")
     }
     
-    func abort()
-    {
-        accelerate?.invalidate()
-        accelerate = nil
-        
-//        timer(0.05)
-        accelerate = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "aborted", userInfo: nil, repeats: true)
-    }
+//    func abort()
+//    {
+//        accelerate?.invalidate()
+//        accelerate = nil
+//        
+////        timer(0.05)
+//        accelerate = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "aborted", userInfo: nil, repeats: true)
+//    }
     
 //    func aborted()
 //    {
@@ -158,11 +153,11 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate
         
         if currentSpeed == 88
         {
-            view.backgroundColor = UIColor.blackColor()
 //            baseSpeed = 0
             stopSpeed()
-            presTimeBak = presTime.text!
+//            presTimeBak = presTime.text!
             presTime.text = destTime.text
+            errorLabel.text = "ARRIVED"
         }
         
         speedLabel.text = ("\(baseSpeed) MPH")
