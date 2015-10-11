@@ -1,6 +1,7 @@
 import UIKit
 
 //Question 1
+
 let multiples = 1..<1000
 var totalSum = 0
 for num in multiples
@@ -10,7 +11,7 @@ for num in multiples
         totalSum += num
     }
 }
-print(totalSum)
+print("The answer is \(totalSum)")
 
 //Question 2
 
