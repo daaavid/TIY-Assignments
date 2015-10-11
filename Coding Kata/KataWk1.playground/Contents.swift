@@ -15,12 +15,11 @@ print("The answer is \(totalSum)")
 
 //Question 2
 
-func checkPalin(palinProd: Int) -> Bool
+func checkPalin(checkThis: Int) -> Bool
 {
     var isPalin = false
-    let charArrayReversed = Array(String(palinProd).characters.reverse())
 
-    if String(charArrayReversed) == String(palinProd)
+    if String(String(checkThis).characters.reverse()) == String(checkThis)
     {
        isPalin = true
     }
@@ -28,26 +27,35 @@ func checkPalin(palinProd: Int) -> Bool
     return isPalin
 }
 
-var palinProd = 0
-var lgCurrPalin = 0
-
-for var palinMul1 = 999; palinMul1 >= 100; palinMul1--
+func findPalin()
 {
-    for var palinMul2 = 999; palinMul2 >= 100; palinMul2--
+    var palinProd = 0
+    var lgCurrPalin = 0
+    
+    for var palinMul1 = 999; palinMul1 >= 100; palinMul1--
     {
-        palinProd = palinMul1 * palinMul2
-        
-            if checkPalin(palinProd) == true
-            {
-                if palinProd > lgCurrPalin
+        for var palinMul2 = 999; palinMul2 >= 100; palinMul2--
+        {
+            palinProd = palinMul1 * palinMul2
+            
+                if checkPalin(palinProd) == true
                 {
-                    lgCurrPalin = palinProd
+                    if palinProd > lgCurrPalin
+                    {
+                        lgCurrPalin = palinProd
+                    }
+                    else
+                    {
+                        break
+                    }
                 }
-                else
-                {
-                    break
-                }
-            }
+        }
     }
+    print("The answer is \(lgCurrPalin)")
 }
-print("The answer is \(lgCurrPalin)")
+
+checkPalin(909)
+
+//findPalin()
+
+
