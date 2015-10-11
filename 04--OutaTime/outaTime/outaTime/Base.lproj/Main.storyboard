@@ -152,6 +152,7 @@
                         <outlet property="errorLabel" destination="E1G-Pk-X5L" id="nWn-6T-zS3"/>
                         <outlet property="lastTimeDep" destination="QAt-S2-s8o" id="4xT-29-bRx"/>
                         <outlet property="presTime" destination="NyX-mJ-XpJ" id="FHW-eI-XS7"/>
+                        <outlet property="setDestTime" destination="UAP-4j-SVK" id="AlA-6i-vTf"/>
                         <outlet property="speedLabel" destination="CyH-2I-wdA" id="GDs-NH-aCk"/>
                         <outlet property="travBack" destination="O6Z-QS-WwJ" id="b4M-zR-2oZ"/>
                     </connections>

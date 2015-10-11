@@ -21,9 +21,12 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate
     @IBOutlet var speedLabel: UILabel!
     @IBOutlet var travBack: UIButton!
     @IBOutlet var errorLabel: UILabel!
+    @IBOutlet var setDestTime: UIButton!
     
     var baseSpeed = 0 //setting base speed to 0
+    var currentSpeed = 0
     var accelerate: NSTimer? //setting timer up
+    var decelerate: NSTimer?
     var presTimeBak = ""
     
     override func viewDidLoad()
@@ -82,6 +85,7 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate
     
     func travelBackPressed()
     {
+        
         if destTime.text == "NOT SET"
         {
             errorLabel.text = "ERROR: SET DESTINATION TIME"
@@ -92,51 +96,138 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate
         }
         else
         {
-            view.backgroundColor = UIColor.darkGrayColor()
+            view.backgroundColor = UIColor.blackColor()
             errorLabel.text = "ACCELERATING"
             presTimeBak = presTime.text!
             //storing the value of the current presTime so I can put it in lastTimeDep
             
             if accelerate == nil
             {
-                timer(0.1)
+                accelTimer(0.15)
                 travBack.setTitle("", forState: UIControlState.Normal)
+                setDestTime.setTitle("", forState: UIControlState.Normal)
             }
         }
     }
     
-    func timer(tickInterval: Double)
-    {
-        accelerate = NSTimer.scheduledTimerWithTimeInterval(tickInterval, target: self, selector: "updateSpeed", userInfo: nil, repeats: true)
-    }
-    
-    func stopSpeed()
+    func destroyTimer()
     {
         accelerate?.invalidate()
         accelerate = nil
         
+        decelerate?.invalidate()
+        decelerate = nil
+    }
+    
+    func accelTimer(tickInterval: Double)
+    {
+        accelerate = NSTimer.scheduledTimerWithTimeInterval(tickInterval, target: self, selector: "updateSpeed", userInfo: nil, repeats: true)
+    }
+    
+    func decelTimer(tickInterval: Double)
+    {
+        decelerate = NSTimer.scheduledTimerWithTimeInterval(tickInterval, target: self, selector: "updateBrake", userInfo: nil, repeats: true)
+    }
+    
+    func stopSpeed()
+    {
+        destroyTimer()
+        
         travBack.setTitle("TRAVEL BACK", forState: UIControlState.Normal)
+        setDestTime.setTitle("SET DESTINATION TIME", forState: UIControlState.Normal)
         
         baseSpeed = 0
         lastTimeDep.text = presTimeBak
         speedLabel.text = ("\(baseSpeed) MPH")
+        errorLabel.text = "ARRIVED"
+    }
+    
+    func accelerateSpeed(currentSpeed: Int)
+    {
+        if currentSpeed == 7
+        {
+            destroyTimer()
+            accelTimer(0.09)
+        }
+        if currentSpeed == 20
+        {
+            destroyTimer()
+            accelTimer(0.1)
+        }
+        else if currentSpeed == 30
+        {
+            destroyTimer()
+            accelTimer(0.12)
+        }
+        else if currentSpeed == 50
+        {
+            destroyTimer()
+            accelTimer(0.15)
+        }
+        else if currentSpeed == 60
+        {
+            destroyTimer()
+            accelTimer(0.18)
+        }
+        else if currentSpeed == 70
+        {
+            destroyTimer()
+            accelTimer(0.22)
+        }
+        else if currentSpeed == 80
+        {
+            destroyTimer()
+            accelTimer(0.28)
+        }
     }
     
     func updateSpeed()
     {
-        let currentSpeed = baseSpeed + 1
+        currentSpeed = baseSpeed + 1
         baseSpeed = currentSpeed
         
+        accelerateSpeed(currentSpeed)
+        
+        if currentSpeed < 88
+        {
+            speedLabel.text = ("\(baseSpeed) MPH")
+        }
+            
         if currentSpeed == 88
         {
-            stopSpeed()
+            speedLabel.text = "88 MPH"
             
-            presTime.text = destTime.text
-            errorLabel.text = "ARRIVED"
+            errorLabel.text = "SPEED REACHED"
             view.backgroundColor = UIColor.blackColor()
         }
         
+        if currentSpeed == 92
+        {
+            errorLabel.text = "TRAVELING"
+        }
+        
+        if currentSpeed == 100
+        {
+            presTime.text = destTime.text
+            currentSpeed = 88
+            destroyTimer()
+            decelTimer(0.005)
+            errorLabel.text = "DECELERATING"
+        }
+        
+    }
+
+    func updateBrake()
+    {
         speedLabel.text = ("\(baseSpeed) MPH")
+        baseSpeed = currentSpeed
+        currentSpeed = baseSpeed - 1
+        
+        if currentSpeed == 0
+        {
+            view.backgroundColor = UIColor.darkGrayColor()
+            stopSpeed()
+        }
     }
     
 // :^)
