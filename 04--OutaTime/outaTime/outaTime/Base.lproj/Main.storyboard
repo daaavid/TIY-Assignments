@@ -25,8 +25,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JAN 01 2000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWj-WD-gFa">
-                                <rect key="frame" x="210" y="100" width="180" height="36.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOT SET" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWj-WD-gFa">
+                                <rect key="frame" x="239" y="100" width="123" height="36.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Digital-7" family="Digital-7" pointSize="40"/>
                                 <color key="textColor" red="0.73103448275862071" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -103,6 +103,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1G-Pk-X5L">
+                                <rect key="frame" x="300.5" y="565" width="0.0" height="0.0"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.92413793099999997" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -111,6 +118,7 @@
                             <constraint firstItem="vbF-Nt-3vi" firstAttribute="top" secondItem="jYe-77-nnh" secondAttribute="bottom" constant="70" id="8W0-dw-udo"/>
                             <constraint firstItem="jYe-77-nnh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="At8-OJ-g20"/>
                             <constraint firstItem="Goq-Z9-xWt" firstAttribute="leading" secondItem="LtP-nH-GJ3" secondAttribute="trailing" constant="-154.5" id="D9c-kb-bCB"/>
+                            <constraint firstItem="E1G-Pk-X5L" firstAttribute="top" secondItem="O6Z-QS-WwJ" secondAttribute="bottom" constant="2" id="LB6-s6-iQS"/>
                             <constraint firstItem="CyH-2I-wdA" firstAttribute="centerX" secondItem="LtP-nH-GJ3" secondAttribute="centerX" id="Mmv-di-nkm"/>
                             <constraint firstItem="NyX-mJ-XpJ" firstAttribute="centerX" secondItem="vbF-Nt-3vi" secondAttribute="centerX" id="OYb-IW-aJL"/>
                             <constraint firstItem="QAt-S2-s8o" firstAttribute="centerX" secondItem="Goq-Z9-xWt" secondAttribute="centerX" id="VUo-sE-c3w"/>
@@ -129,6 +137,7 @@
                             <constraint firstItem="LtP-nH-GJ3" firstAttribute="leading" secondItem="Goq-Z9-xWt" secondAttribute="trailing" constant="-71.5" id="vWj-GR-kfx"/>
                             <constraint firstItem="UAP-4j-SVK" firstAttribute="top" secondItem="CyH-2I-wdA" secondAttribute="bottom" constant="50" id="vok-KF-n5n"/>
                             <constraint firstItem="LtP-nH-GJ3" firstAttribute="centerX" secondItem="Goq-Z9-xWt" secondAttribute="centerX" id="xBp-0e-Wsm"/>
+                            <constraint firstItem="E1G-Pk-X5L" firstAttribute="centerX" secondItem="O6Z-QS-WwJ" secondAttribute="centerX" id="xf6-J6-EF8"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -140,6 +149,7 @@
                     <navigationItem key="navigationItem" id="YeS-Fd-EFj"/>
                     <connections>
                         <outlet property="destTime" destination="hWj-WD-gFa" id="ml0-te-kCR"/>
+                        <outlet property="errorLabel" destination="E1G-Pk-X5L" id="nWn-6T-zS3"/>
                         <outlet property="lastTimeDep" destination="QAt-S2-s8o" id="4xT-29-bRx"/>
                         <outlet property="presTime" destination="NyX-mJ-XpJ" id="FHW-eI-XS7"/>
                         <outlet property="speedLabel" destination="CyH-2I-wdA" id="GDs-NH-aCk"/>

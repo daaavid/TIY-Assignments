@@ -31,7 +31,6 @@ class DatePickerViewController: UIViewController
         delegate?.dateWasChosen(picker.date)
     }
 
-    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()

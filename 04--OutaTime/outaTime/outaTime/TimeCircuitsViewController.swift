@@ -20,18 +20,20 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate
     @IBOutlet var lastTimeDep: UILabel!
     @IBOutlet var speedLabel: UILabel!
     @IBOutlet var travBack: UIButton!
+    @IBOutlet var errorLabel: UILabel!
     
-    var currentSpeed = 0
-    var accelerate: NSTimer?
-    var destTimeDashes = "--- -- ----"
+    var baseSpeed = 0 //setting base speed to 0
+    var accelerate: NSTimer? //setting timer up
+    var presTimeBak = ""
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //findPresTime()
         presTime.text = formatTime(NSDate())
-        destTime.text = destTimeDashes
+        destTime.text = "NOT SET"
+        presTimeBak = presTime.text!
+        //take the current date, format it, then assign it as the text in presTime
     }
     
     override func didReceiveMemoryWarning()
@@ -44,12 +46,10 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate
     {
         if segue.identifier == "ShowDatePickerSegue"
         {
-            //storing string that connects to balloon
-            let datePickerVC = segue.destinationViewController as! DatePickerViewController //view controller that this segue points at. in this case, the datepickerviewcontroller
-            
+            let datePickerVC = segue.destinationViewController as! DatePickerViewController
             datePickerVC.delegate = self
-            //self is referring to the timecircuitcontroller object
-            //at the top, we declared that we were the datepickerviewcontroller delegate
+
+            
         }
     }
     
@@ -57,8 +57,8 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate
     
     func dateWasChosen(destDate: NSDate)
     {
-//        destTime.text = "\(destDate)"
         destTime.text = formatTime(destDate)
+        //take the date from the date picker, format it, then assign it as the text in desTime
     }
         
 //MARK: - THE ACTION HANDLERS
@@ -66,57 +66,107 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate
     
     @IBAction func travBackTapped(sender: UIButton)
     {
-        startSpeed()
+        travelBackPressed()
     }
 
 //MARK: - private
-//  func findPresTime()
+
     func formatTime(timeToFormat: NSDate) -> String
     {
         let formatter = NSDateFormatter()
         formatter.dateFormat = NSDateFormatter.dateFormatFromTemplate("MMM dd YYYY", options: 0, locale: NSLocale(localeIdentifier: "en-US"))
-//        presTime.text = formatter.stringFromDate(NSDate()).uppercaseString
         let formattedTime = formatter.stringFromDate(timeToFormat).uppercaseString
         return String(formattedTime)
     }
     
-    func startSpeed()
+    func travelBackPressed()
     {
-        if accelerate == nil
+        if destTime.text == "NOT SET"
         {
-            accelerate = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "updateSpeed", userInfo: nil, repeats: true)
-            travBack.setTitle("SPEED NOT REACHED", forState: UIControlState.Normal)
+            errorLabel.text = "ERROR: SET DESTINATION TIME"
+        }
+        else if destTime.text == presTime.text
+        {
+            errorLabel.text = "ERROR: DESTINATION SAME AS PRESENT"
         }
         else
         {
-            stopSpeed()
+            errorLabel.text = ""
+            
+            if accelerate == nil
+            {
+//                timer(0.1)
+                accelerate = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "updateSpeed", userInfo: nil, repeats: true)
+
+                travBack.setTitle("ACCELERATING", forState: UIControlState.Normal)
+            }
+            else
+            {
+              abort()
+//              stopSpeed()
+            
+            }
         }
     }
+    
+//    func timer(tickInterval: Double)
+//    {
+//        accelerate = NSTimer.scheduledTimerWithTimeInterval(tickInterval, target: self, selector: "updateUI", userInfo: nil, repeats: true)
+//    }
     
     func stopSpeed()
     {
         accelerate?.invalidate()
         accelerate = nil
         
-        travBack.setTitle("TRAVELING BACK (TO THE FUTURE)", forState: UIControlState.Normal)
+        travBack.setTitle("TRAVEL BACK", forState: UIControlState.Normal)
         
-        lastTimeDep.text = formatTime(NSDate())
-        speedLabel.text = "0 MPH"
-
+//        lastTimeDep.text = formatTime(NSDate())
+        baseSpeed = 0
+        lastTimeDep.text = destTime.text
+        speedLabel.text = ("\(baseSpeed) MPH")
     }
     
+    func abort()
+    {
+        accelerate?.invalidate()
+        accelerate = nil
+        
+//        timer(0.05)
+        accelerate = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "aborted", userInfo: nil, repeats: true)
+    }
+    
+//    func aborted()
+//    {
+//        let currentSpeed = baseSpeed - 1
+//        baseSpeed = currentSpeed
+//        
+//        if currentSpeed == 0
+//        {
+//            view.backgroundColor = UIColor.blackColor()
+//            stopSpeed()
+//            presTime.text = destTime.text
+//            baseSpeed = 0
+//        }
+//
+//    }
+
     func updateSpeed()
     {
-//        let newSpeed = Int(speedLabel.text!)! + 1
-        let newSpeed = currentSpeed + 1
-        currentSpeed = newSpeed
-        speedLabel.text = ("\(currentSpeed) MPH")
-        if newSpeed == 88
+        let currentSpeed = baseSpeed + 1
+        baseSpeed = currentSpeed
+        
+        if currentSpeed == 88
         {
             view.backgroundColor = UIColor.blackColor()
+//            baseSpeed = 0
             stopSpeed()
+            presTimeBak = presTime.text!
             presTime.text = destTime.text
         }
+        
+        speedLabel.text = ("\(baseSpeed) MPH")
     }
+    
 }
 
