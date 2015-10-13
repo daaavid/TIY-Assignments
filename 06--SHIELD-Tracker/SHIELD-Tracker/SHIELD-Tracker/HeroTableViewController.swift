@@ -11,7 +11,6 @@ import UIKit
 class HeroTableViewController: UITableViewController
 {
     var heroes = Array<Hero>()
-    
 //    var delegate = HeroTableDelegate?()
     
     var name: String = ""
@@ -22,6 +21,7 @@ class HeroTableViewController: UITableViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "S.H.I.E.L.D. Hero Tracker"
+        
         loadHeroList()
 
         // Uncomment the following line to preserve selection between presentations
@@ -54,8 +54,10 @@ class HeroTableViewController: UITableViewController
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("HeroCell", forIndexPath: indexPath)
 
+
         let aHero = heroes[indexPath.row]
         
+//        cell.textLabel?.text = aHero.name
         cell.textLabel?.text = aHero.name
         cell.detailTextLabel?.text = aHero.homeworld
         
@@ -76,8 +78,11 @@ class HeroTableViewController: UITableViewController
                 
                 heroes.append(aHero)
             }
+//            self.heroes.sort { $0["name"] > $1["name"] }
+//            let nameDiscriptor = NSSortDescriptor(key: "name", ascending: true, selector: Selector("caseInsensitiveCompare:"))
+//            let sorted = (heroes as NSArray).sortedArrayUsingDescriptors([nameDiscriptor])
+            heroes.sortInPlace{$0.name < $1.name}
             
- //           heroes.sort()
         }
         catch let error as NSError
         {
@@ -88,9 +93,9 @@ class HeroTableViewController: UITableViewController
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         let aHero = heroes[indexPath.row]
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("HeroDetailViewController") as! HeroDetailViewController
-        vc.hero = aHero
-        presentViewController(vc, animated: true, completion: nil)
+        let NVCfromTemplate = storyboard?.instantiateViewControllerWithIdentifier("HeroDetailViewController") as! HeroDetailViewController
+        NVCfromTemplate.hero = aHero
+        presentViewController(NVCfromTemplate, animated: true, completion: nil)
         
     }
     
