@@ -43,5 +43,10 @@
     "name": "Captain America",
     "homeworld": "Earth",
     "powers": "Peak physical condition; wields vibranium-steel alloy shield; expert tactician and field commander"
+  },
+  {
+    "name": "David Johnson",
+    "homeworld": "Earth-616",
+    "powers": "All the powers of a David, with none of the weaknesses of a Johnson. Can explode own head at will."
   }
 ]

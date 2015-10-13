@@ -98,12 +98,6 @@ class HeroTableViewController: UITableViewController
         presentViewController(NVCfromTemplate, animated: true, completion: nil)
         
     }
-    
-//    func showNextController() {
-//        let destination = SecondController(nibName: "SecondController", bundle: NSBundle.mainBundle())
-//        destination.myInformation = self.myInformation
-//        self.showViewController(destination, sender: self)
-//    }
 
     /*
     // Override to support conditional editing of the table view.
