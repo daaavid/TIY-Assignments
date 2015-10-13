@@ -2,51 +2,62 @@
   {
     "name": "Thor",
     "homeworld": "Asgard",
-    "powers": "Superhuman strength, endurance, and longevity; abilities via Mjolnir: dimensional transportation; electric manipulation; flight; weather manipulation"
+    "powers": "Superhuman strength, endurance, and longevity; abilities via Mjolnir: dimensional transportation; electric manipulation; flight; weather manipulation",
+    "portrait": "thor"
   },
   {
     "name": "Iron Man",
     "homeworld": "Earth",
-    "powers": "Genius-level intellect; highly proficient scientist, engineer, and businessperson; via powered armored suit: superhuman strength and durability; supersonic flight at Mach 3; energy repulsors; missiles; regenerative life support (sometimes powered by solar power)"
+    "powers": "Genius-level intellect; highly proficient scientist, engineer, and businessperson; via powered armored suit: superhuman strength and durability; supersonic flight at Mach 3; energy repulsors; missiles; regenerative life support (sometimes powered by solar power)",
+    "portrait": "ironman"
+  
   },
   {
     "name": "Groot",
     "homeworld": "Planet X",
-    "powers": "Ability to absorb wood to feed, rebuild self, enhance his strength and control trees; regeneration; resistance to fire"
+    "powers": "Ability to absorb wood to feed, rebuild self, enhance his strength and control trees; regeneration; resistance to fire",
+    "portrait": "groot"
   },
   {
     "name": "Rocket Racoon",
     "homeworld": "Halfworld",
-    "powers": "Genius-level intellect; master tactician and field commander; expert marksman and sniper; accomplished starship aviator; normal-physical attributes of an Earth raccoon"
+    "powers": "Genius-level intellect; master tactician and field commander; expert marksman and sniper; accomplished starship aviator; normal-physical attributes of an Earth raccoon",
+    "portrait": "rocketraccoon"
   },
   {
     "name": "Drax the Destroyer",
     "homeworld": "Earth",
-    "powers": "Superhuman strength; stamina and resistance to injury; highly skilled in use of knives"
+    "powers": "Superhuman strength; stamina and resistance to injury; highly skilled in use of knives",
+    "portrait": "drax"
   },
   {
     "name": "Star-Lord",
     "homeworld": "Earth",
-    "powers": "Master strategist and problem solver; skilled marksman and fencer; use of element gun; via suit: superhuman strength and durability; flight; ability to travel through space"
+    "powers": "Master strategist and problem solver; skilled marksman and fencer; use of element gun; via suit: superhuman strength and durability; flight; ability to travel through space",
+    "portrait": "starlord"
   },
   {
     "name": "Gamora",
     "homeworld": "Zen-Whoberi",
-    "powers": "Highly skilled assassin and gymnast; skilled martial artist; superhuman strength, speed, agility and durability; accelerated healing factor"
+    "powers": "Highly skilled assassin and gymnast; skilled martial artist; superhuman strength, speed, agility and durability; accelerated healing factor",
+    "portrait": "gamora"
   },
   {
     "name": "Hulk",
     "homeworld": "Earth",
-    "powers": "Bruce Banner: Genius-level intellect; Hulk: immense superhuman strength, stamina, durability, endurance, longevity, regenerative healing factor"
+    "powers": "Bruce Banner: Genius-level intellect; Hulk: immense superhuman strength, stamina, durability, endurance, longevity, regenerative healing factor",
+    "portrait": "hulk"
   },
   {
     "name": "Captain America",
     "homeworld": "Earth",
-    "powers": "Peak physical condition; wields vibranium-steel alloy shield; expert tactician and field commander"
+    "powers": "Peak physical condition; wields vibranium-steel alloy shield; expert tactician and field commander",
+    "portrait": "cap"
   },
   {
     "name": "David Johnson",
     "homeworld": "Earth-616",
-    "powers": "All the powers of a David, with none of the weaknesses of a Johnson. Can explode own head at will."
+    "powers": "All the powers of a David, with none of the weaknesses of a Johnson. Can explode own head at will.",
+    "portrait": "david"
   }
 ]

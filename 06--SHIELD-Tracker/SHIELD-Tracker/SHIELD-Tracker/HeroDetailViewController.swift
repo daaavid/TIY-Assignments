@@ -19,6 +19,7 @@ class HeroDetailViewController: UIViewController//, HeroTableDelegate
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var homeworldLabel: UILabel!
     @IBOutlet var powerLabel: UILabel!
+    @IBOutlet var heroPortrait: UIImageView!
     
     var hero = Hero?()
     
@@ -37,6 +38,8 @@ class HeroDetailViewController: UIViewController//, HeroTableDelegate
         nameLabel.text = hero!.name
         homeworldLabel.text = hero!.homeworld
         powerLabel.text = hero!.powers
+//        heroPortrait.image = UIImage(named: "cap")
+        heroPortrait.image = UIImage(named: hero!.portrait)
     }
 
 

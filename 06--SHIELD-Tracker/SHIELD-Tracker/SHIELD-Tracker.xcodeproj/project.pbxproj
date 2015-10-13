@@ -15,6 +15,16 @@
 		632367061BCC223E00E02528 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632367051BCC223E00E02528 /* Hero.swift */; settings = {ASSET_TAGS = (); }; };
 		632367081BCC227C00E02528 /* HeroDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632367071BCC227C00E02528 /* HeroDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		6323670A1BCC2AD000E02528 /* heroes.json in Resources */ = {isa = PBXBuildFile; fileRef = 632367091BCC2AD000E02528 /* heroes.json */; settings = {ASSET_TAGS = (); }; };
+		63B412D51BCCAD0500C07E7A /* cap.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B412CC1BCCAD0500C07E7A /* cap.png */; settings = {ASSET_TAGS = (); }; };
+		63B412D61BCCAD0500C07E7A /* drax.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63B412CD1BCCAD0500C07E7A /* drax.jpg */; settings = {ASSET_TAGS = (); }; };
+		63B412D71BCCAD0500C07E7A /* gamora.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B412CE1BCCAD0500C07E7A /* gamora.png */; settings = {ASSET_TAGS = (); }; };
+		63B412D81BCCAD0500C07E7A /* groot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63B412CF1BCCAD0500C07E7A /* groot.jpg */; settings = {ASSET_TAGS = (); }; };
+		63B412D91BCCAD0500C07E7A /* hulk.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B412D01BCCAD0500C07E7A /* hulk.png */; settings = {ASSET_TAGS = (); }; };
+		63B412DA1BCCAD0500C07E7A /* ironman.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63B412D11BCCAD0500C07E7A /* ironman.jpg */; settings = {ASSET_TAGS = (); }; };
+		63B412DB1BCCAD0500C07E7A /* rocketraccoon.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B412D21BCCAD0500C07E7A /* rocketraccoon.png */; settings = {ASSET_TAGS = (); }; };
+		63B412DC1BCCAD0500C07E7A /* starlord.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B412D31BCCAD0500C07E7A /* starlord.png */; settings = {ASSET_TAGS = (); }; };
+		63B412DD1BCCAD0500C07E7A /* thor.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B412D41BCCAD0500C07E7A /* thor.png */; settings = {ASSET_TAGS = (); }; };
+		63B412DF1BCCB3D900C07E7A /* david.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B412DE1BCCB3D900C07E7A /* david.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +38,16 @@
 		632367051BCC223E00E02528 /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		632367071BCC227C00E02528 /* HeroDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDetailViewController.swift; sourceTree = "<group>"; };
 		632367091BCC2AD000E02528 /* heroes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heroes.json; sourceTree = "<group>"; };
+		63B412CC1BCCAD0500C07E7A /* cap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cap.png; path = "SHIELD-Tracker/hero-portraits/cap.png"; sourceTree = SOURCE_ROOT; };
+		63B412CD1BCCAD0500C07E7A /* drax.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drax.jpg; sourceTree = "<group>"; };
+		63B412CE1BCCAD0500C07E7A /* gamora.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamora.png; sourceTree = "<group>"; };
+		63B412CF1BCCAD0500C07E7A /* groot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = groot.jpg; sourceTree = "<group>"; };
+		63B412D01BCCAD0500C07E7A /* hulk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hulk.png; sourceTree = "<group>"; };
+		63B412D11BCCAD0500C07E7A /* ironman.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ironman.jpg; sourceTree = "<group>"; };
+		63B412D21BCCAD0500C07E7A /* rocketraccoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rocketraccoon.png; sourceTree = "<group>"; };
+		63B412D31BCCAD0500C07E7A /* starlord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starlord.png; sourceTree = "<group>"; };
+		63B412D41BCCAD0500C07E7A /* thor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thor.png; sourceTree = "<group>"; };
+		63B412DE1BCCB3D900C07E7A /* david.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = david.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +89,26 @@
 				632366FA1BCC1FD500E02528 /* LaunchScreen.storyboard */,
 				632366F11BCC1FD500E02528 /* AppDelegate.swift */,
 				632366FD1BCC1FD500E02528 /* Info.plist */,
+				63B412CB1BCCAD0500C07E7A /* hero-portraits */,
 			);
 			path = "SHIELD-Tracker";
+			sourceTree = "<group>";
+		};
+		63B412CB1BCCAD0500C07E7A /* hero-portraits */ = {
+			isa = PBXGroup;
+			children = (
+				63B412DE1BCCB3D900C07E7A /* david.png */,
+				63B412CC1BCCAD0500C07E7A /* cap.png */,
+				63B412CD1BCCAD0500C07E7A /* drax.jpg */,
+				63B412CE1BCCAD0500C07E7A /* gamora.png */,
+				63B412CF1BCCAD0500C07E7A /* groot.jpg */,
+				63B412D01BCCAD0500C07E7A /* hulk.png */,
+				63B412D11BCCAD0500C07E7A /* ironman.jpg */,
+				63B412D21BCCAD0500C07E7A /* rocketraccoon.png */,
+				63B412D31BCCAD0500C07E7A /* starlord.png */,
+				63B412D41BCCAD0500C07E7A /* thor.png */,
+			);
+			path = "hero-portraits";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,8 +171,18 @@
 			files = (
 				632366FC1BCC1FD500E02528 /* LaunchScreen.storyboard in Resources */,
 				6323670A1BCC2AD000E02528 /* heroes.json in Resources */,
+				63B412DC1BCCAD0500C07E7A /* starlord.png in Resources */,
+				63B412DA1BCCAD0500C07E7A /* ironman.jpg in Resources */,
+				63B412D91BCCAD0500C07E7A /* hulk.png in Resources */,
+				63B412D71BCCAD0500C07E7A /* gamora.png in Resources */,
+				63B412DF1BCCB3D900C07E7A /* david.png in Resources */,
+				63B412D81BCCAD0500C07E7A /* groot.jpg in Resources */,
 				632366F91BCC1FD500E02528 /* Assets.xcassets in Resources */,
+				63B412DD1BCCAD0500C07E7A /* thor.png in Resources */,
 				632366F71BCC1FD500E02528 /* Main.storyboard in Resources */,
+				63B412D61BCCAD0500C07E7A /* drax.jpg in Resources */,
+				63B412D51BCCAD0500C07E7A /* cap.png in Resources */,
+				63B412DB1BCCAD0500C07E7A /* rocketraccoon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
