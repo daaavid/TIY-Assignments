@@ -12,6 +12,7 @@
 		638FF1711BCD6C8A00DE4177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 638FF1701BCD6C8A00DE4177 /* Assets.xcassets */; };
 		638FF1741BCD6C8A00DE4177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638FF1721BCD6C8A00DE4177 /* LaunchScreen.storyboard */; };
 		638FF17C1BCD6F5C00DE4177 /* LotteryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FF17B1BCD6F5C00DE4177 /* LotteryTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		638FF17E1BCD8D7700DE4177 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FF17D1BCD8D7700DE4177 /* Ticket.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		638FF1731BCD6C8A00DE4177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		638FF1751BCD6C8A00DE4177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		638FF17B1BCD6F5C00DE4177 /* LotteryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryTableViewController.swift; sourceTree = "<group>"; };
+		638FF17D1BCD8D7700DE4177 /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				638FF1691BCD6C8A00DE4177 /* AppDelegate.swift */,
 				638FF17B1BCD6F5C00DE4177 /* LotteryTableViewController.swift */,
+				638FF17D1BCD8D7700DE4177 /* Ticket.swift */,
 				638FF16D1BCD6C8A00DE4177 /* Main.storyboard */,
 				638FF1701BCD6C8A00DE4177 /* Assets.xcassets */,
 				638FF1721BCD6C8A00DE4177 /* LaunchScreen.storyboard */,
@@ -136,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				638FF17C1BCD6F5C00DE4177 /* LotteryTableViewController.swift in Sources */,
+				638FF17E1BCD8D7700DE4177 /* Ticket.swift in Sources */,
 				638FF16A1BCD6C8A00DE4177 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

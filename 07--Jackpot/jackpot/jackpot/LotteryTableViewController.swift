@@ -11,13 +11,36 @@ import UIKit
 class LotteryTableViewController: UITableViewController
 {
 
-    var lottoNumbers = Array<Int>()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        lottoNumbers.append(15)
+//    var lottoNumbersArray = Array<Int>()
+//    var lottoNumber = 0
+//    var lottoNumbersArrArr = Array<Array<Int>>()
+//    var lottoNumbersArrArrArr = Array<Array<Array<Int>>>()
+    var tickets = Array<Ticket>()
 
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        tickets.append(Ticket())
+
+//        var index = 10
+//        while index > 0
+//        {
+//            for var x = 6; x > 0; x--
+//            {
+//                lottoNumbersArray.append(Int(arc4random() % 53))
+//            }
+//            
+//            lottoNumbersArrArr.append(lottoNumbersArray)
+//            lottoNumbersArray = []
+//            index--
+//        }
+    
+        //while index < 10
+//        for var i = 10; i > 0; i--
+//        {
+        
+//        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -40,27 +63,59 @@ class LotteryTableViewController: UITableViewController
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+//        return lottoNumbersArrArr.count
+        return tickets.count
     }
 
     @IBAction func addButton(sender: UIBarButtonItem)
     {
-        addButtonPressed()
+//        createLottoNumbers()
+        tickets.append(Ticket())
+        self.tableView.reloadData()
     }
     
-    func addButtonPressed()
+    func createLottoNumbers()//indexNum: Int) -> String
+    {
+//        self.tableView.reloadData()
+        
+//        for var x = 6; x > 0; x--
+//        {
+//            lottoNumbersArray.append(Int(arc4random() % 53))
+//        }
+//
+//        lottoNumbersArrArr.insert((lottoNumbersArray), atIndex: indexNum)
+//        lottoNumbersArray = []
+//        let ticketString = String(lottoNumbersArrArr)
+//        lottoNumbersArrArr = []
+//        
+//        return ticketString
+//        self.tableView.reloadData()
+    }
+
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier("LottoCell", forIndexPath: indexPath)
+        
+        cell.textLabel?.text = tickets[indexPath.row].ticket
+//        cell.textLabel?.text = String(lottoNumbersArrArr[/*indexPath.row */0])
+//        cell.textLabel?.text = createLottoNumbers(indexPath.row)
+        
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+//        let aNumber = lottoNumbersArray[indexPath.row]
+//        createLottoNumbers(aNumber)
+
+    }
+    
+    func reloadSections()
     {
         
     }
 
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("LottoCell", forIndexPath: indexPath)
-
-        cell.textLabel?.text = String(lottoNumbers[0])
-
-        return cell
-    }
 
 
     /*
