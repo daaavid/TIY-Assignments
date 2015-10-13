@@ -13,7 +13,7 @@ import UIKit
     func dateWasChosen(destDate: NSDate)
 }
 
-class TimeCircuitsViewController: UIViewController, DatePickerDelegate
+class TimeCircuitsViewController: UIViewController, DatePickerDelegate //we agree to fulfill any conditions in the function that are non-optional. must implement datewaschosen func
 {
     @IBOutlet var destTime: UILabel!
     @IBOutlet var presTime: UILabel!
@@ -46,12 +46,15 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
+        //runs any time we segue out of timecircuits
+        //take datepickerviewcontroller
         if segue.identifier == "ShowDatePickerSegue"
         {
             let datePickerVC = segue.destinationViewController as! DatePickerViewController
+            //data type will be uiviewcontroller. there is no data type delegate in uiviewcontroller. "i know that this is an instance of my datepickerviewcontroller" "cast"
             datePickerVC.delegate = self
-
-            
+            //self referring to the class that we're in. we're setting this class as the value for delegate
+            //does self conform to protocol? Yes, because we've signed up for it and fulfilled the conract by using the function dateWasChosen
         }
     }
     
@@ -80,7 +83,7 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate
         let formatter = NSDateFormatter()
         formatter.dateFormat = NSDateFormatter.dateFormatFromTemplate("MMM dd YYYY", options: 0, locale: NSLocale(localeIdentifier: "en-US"))
         let formattedTime = formatter.stringFromDate(timeToFormat).uppercaseString
-        return String(formattedTime)
+        return formattedTime
     }
     
     func travelBackPressed()
@@ -110,6 +113,8 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate
         }
     }
     
+//MARK: - timer stuff
+    
     func destroyTimer()
     {
         accelerate?.invalidate()
@@ -129,6 +134,9 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate
         decelerate = NSTimer.scheduledTimerWithTimeInterval(tickInterval, target: self, selector: "updateBrake", userInfo: nil, repeats: true)
     }
     
+//MARK: - SPEED
+    //with keanu reeves
+    
     func stopSpeed()
     {
         destroyTimer()
@@ -142,6 +150,7 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate
         errorLabel.text = "ARRIVED"
     }
     
+//sloppy
     func accelerateSpeed(currentSpeed: Int)
     {
         if currentSpeed == 7
@@ -217,6 +226,9 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate
         
     }
 
+//MARK:- brake
+    //(but stay above 60 mph)
+    
     func updateBrake()
     {
         speedLabel.text = ("\(baseSpeed) MPH")

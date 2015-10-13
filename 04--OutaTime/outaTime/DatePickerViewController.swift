@@ -14,6 +14,7 @@ class DatePickerViewController: UIViewController
     @IBOutlet weak var picker: UIDatePicker!
     
     var delegate: DatePickerDelegate?
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -24,6 +25,8 @@ class DatePickerViewController: UIViewController
     {
         super.viewWillDisappear(animated)
         delegate?.dateWasChosen(picker.date)
+        //if delegate /has/ a function, call dateWasChosen. if not, don't bother
+        //as the view disappears, we pull the date from the picker and jump to dateWasChosen
     }
 
     override func didReceiveMemoryWarning()
