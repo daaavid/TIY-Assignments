@@ -1,5 +1,3 @@
-//: Playground - noun: a place where people can play
-
 import UIKit
 
 //Question 1
@@ -15,40 +13,40 @@ for num in multiples
 print(totalSum)
 
 //Question 2
-//var palin1 = 99
-//var palin2 = 91
-//let palinProd = palin1 * palin2
-//
-//func checkPalin(palinProd: Int) -> Int
-//{
-//    var revArray: Array<Character> = []
-//    let palinProdStr = String(palinProd)
-//    let characters = Array(palinProdStr.characters)
-//    for ch in characters.reverse()
-//    {
-//        revArray.append(ch)
-//    }
-//    return(revArray)
-//}
-//String(revArray)
-//
-//if String(revArray) == String(palinProd)
-//{
-//    print("is equal")
-//}
-//else
-//{
-//    print("not equal")
-//}
 
-class PalinCheck
+func checkPalin(palinProd: Int) -> Bool
 {
-    
-    
-    init()
+    var isPalin = false
+    let charArrayReversed = Array(String(palinProd).characters.reverse())
+
+    if String(charArrayReversed) == String(palinProd)
     {
-        
+       isPalin = true
     }
     
-    func
+    return isPalin
 }
+
+var palinProd = 0
+var lgCurrPalin = 0
+
+for var palinMul1 = 999; palinMul1 >= 100; palinMul1--
+{
+    for var palinMul2 = 999; palinMul2 >= 100; palinMul2--
+    {
+        palinProd = palinMul1 * palinMul2
+        
+            if checkPalin(palinProd) == true
+            {
+                if palinProd > lgCurrPalin
+                {
+                    lgCurrPalin = palinProd
+                }
+                else
+                {
+                    break
+                }
+            }
+    }
+}
+print("The answer is \(lgCurrPalin)")
