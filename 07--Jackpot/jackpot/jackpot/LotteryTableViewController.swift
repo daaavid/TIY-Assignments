@@ -8,13 +8,18 @@
 
 import UIKit
 
+@objc protocol PickerDelegate
+{
+//    func numberWasChosen(winningTicketNum: Array<Int>)
+    func numberWasChosen(number: Int)
+}
+
 class LotteryTableViewController: UITableViewController
 {
 
-//    var lottoNumbersArray = Array<Int>()
-//    var lottoNumbersArrArr = Array<Array<Int>>()
+    var lottoNumArrArr = Array<Array<Ticket>>()
     
-    var tickets = Array<Ticket>()
+    var ticketArray = Array<Ticket>()
     //making a variable array that can be filled with tickets
     
     override func viewDidLoad()
@@ -64,17 +69,22 @@ class LotteryTableViewController: UITableViewController
     {
         // #warning Incomplete implementation, return the number of rows
 //        return lottoNumbersArrArr.count
-        return tickets.count
+        return ticketArray.count
         //we want as many rows as there are elements in the tickets array
     }
 
     @IBAction func addButton(sender: UIBarButtonItem)
     {
 //        createLottoNumbers()
-        tickets.append(Ticket())
+        ticketArray.append(Ticket())
         //add a new Ticket object to the tickets array
         self.tableView.reloadData()
         //reload the view so we can see the new ticket after it's set in the next function
+    }
+    
+    func numberWasChosen(number: Int)//(winningTicketNum: Array<Int>)
+    {
+        
     }
     
 //    func createLottoNumbers()//indexNum: Int) -> String
@@ -99,8 +109,10 @@ class LotteryTableViewController: UITableViewController
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("LottoCell", forIndexPath: indexPath)
+
+        cell.textLabel?.text = ticketArray[indexPath.row].ticket
         
-        cell.textLabel?.text = tickets[indexPath.row].ticket
+//        cell.textLabel?.text = ticketArray[indexPath.row].ticket
         //set the cell text to be equal to a ticket from the tickets array at the index path of the row
         
 //        cell.textLabel?.text = String(lottoNumbersArrArr[/*indexPath.row */0])

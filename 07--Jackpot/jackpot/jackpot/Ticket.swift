@@ -12,8 +12,7 @@ import Foundation
 class Ticket
 {
     var ticket = ""
-    var lottoArray = Array<Int>()
-    var dupNumber = 0
+    var ticketArray = Array<Int>()
     
     init()
     {
@@ -22,19 +21,42 @@ class Ticket
 //            let number = Int(arc4random() % 53)
 //            if self.checkDuplicate(number) == false
 //            {
-//                lottoArray.append(number)
+//                ticketArray.append(number)
 //                dupNumber = number
 //                x--
 //                
 //            }
 //        }
 //        
-//        ticket = String(lottoArray)
-//        lottoArray = []
+//        ticket = String(ticketArray)
+//        ticketArray = []
         
-        ticket = String(makeTicket())
-        lottoArray = []
+        ticket = formatTicket(makeTicket())
+        ticketArray = makeTicket()
     }
+    
+    func makeTicket() -> Array<Int>
+    {
+        var willLoop = true
+        while willLoop == true
+        {
+            ticketArray = []
+            
+            for var x = 6; x > 0; x--
+            {
+                let number = Int(1 + arc4random() % 52)
+                ticketArray.append(number)
+                
+            }
+            
+            if checkDuplicate(ticketArray) == true
+            {
+                willLoop = false
+                return ticketArray
+            }
+        }
+    }
+    
 
     func checkDuplicate(arrayToTest: Array<Int>) -> Bool
     {
@@ -49,26 +71,14 @@ class Ticket
         }
     }
 
-    func makeTicket() -> Array<Int>
+    func formatTicket(ticketArray: Array<Int>) -> String
     {
-        var willLoop = true
-        while willLoop == true
+        var ticketAsString = ""
+        for number in ticketArray
         {
-            lottoArray = []
-            
-            for var x = 6; x > 0; x--
-            {
-                let number = Int(1 + arc4random() % 52)
-                lottoArray.append(number)
-                
-            }
-            
-            if checkDuplicate(lottoArray) == true
-            {
-                willLoop = false
-                return lottoArray
-            }
+            ticketAsString = ticketAsString + "\(number)" + " "
         }
+        return ticketAsString
     }
 
     
