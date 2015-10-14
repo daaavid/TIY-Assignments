@@ -17,10 +17,15 @@ import UIKit
 class LotteryTableViewController: UITableViewController
 {
 
-    var lottoNumArrArr = Array<Array<Ticket>>()
+//    var lottoNumArrArr = Array<Array<Ticket>>()
     
-    var ticketArray = Array<Ticket>()
+    var ticketClassArray = Array<Ticket>()
+    
+    var ticketClass = Ticket?()
+    
+    var validate = Validator?()
     //making a variable array that can be filled with tickets
+    //contains
     
     override func viewDidLoad()
     {
@@ -69,14 +74,14 @@ class LotteryTableViewController: UITableViewController
     {
         // #warning Incomplete implementation, return the number of rows
 //        return lottoNumbersArrArr.count
-        return ticketArray.count
+        return ticketClassArray.count
         //we want as many rows as there are elements in the tickets array
     }
 
     @IBAction func addButton(sender: UIBarButtonItem)
     {
 //        createLottoNumbers()
-        ticketArray.append(Ticket())
+        ticketClassArray.append(ticketClass!.makeTicket())
         //add a new Ticket object to the tickets array
         self.tableView.reloadData()
         //reload the view so we can see the new ticket after it's set in the next function
@@ -110,7 +115,13 @@ class LotteryTableViewController: UITableViewController
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("LottoCell", forIndexPath: indexPath)
 
-        cell.textLabel?.text = ticketArray[indexPath.row].ticket
+        let newTicket = ticketClassArray[indexPath.row]
+        cell.textLabel?.text = newTicket.ticketString
+        cell.detailTextLabel?.text = String(validate!.validateTicket(newTicket))
+//        cell.detailTextLabel?.text = String(validate!.validateTicket(ticketClassArray))
+
+        
+        
         
 //        cell.textLabel?.text = ticketArray[indexPath.row].ticket
         //set the cell text to be equal to a ticket from the tickets array at the index path of the row

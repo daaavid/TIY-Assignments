@@ -11,7 +11,7 @@ import Foundation
 
 class Ticket
 {
-    var ticket = ""
+    var ticketString = ""
     var ticketArray = Array<Int>()
     
     init()
@@ -31,8 +31,8 @@ class Ticket
 //        ticket = String(ticketArray)
 //        ticketArray = []
         
-        ticket = formatTicket(makeTicket())
         ticketArray = makeTicket()
+        ticketString = formatTicket(ticketArray)
     }
     
     func makeTicket() -> Array<Int>
@@ -52,6 +52,7 @@ class Ticket
             if checkDuplicate(ticketArray) == true
             {
                 willLoop = false
+//                return ticketArray
                 return ticketArray
             }
         }
