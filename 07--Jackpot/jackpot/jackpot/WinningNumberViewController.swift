@@ -31,6 +31,7 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
         super.viewWillDisappear(animated)
         createPickerArray()
         delegate?.numberWasChosen(53-picker.selectedRowInComponent(0))
+//        delegate?.numberWasChosen(
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
@@ -41,17 +42,13 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int //must return Int
     {
-        //how many rows
-        //        return 10 //creates 10 rows, starting from 0
-        //        return cities.count //creates 2 rows, counting from cities array
+    
         return 53
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? //must return String
     {
-        //        return "\(cities[row])"
-        //        return "\(cities[1])"
-        //        return "\(row + 1)"
+
         return "\(53 - row)"
     }
     

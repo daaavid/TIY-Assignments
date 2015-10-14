@@ -13,26 +13,15 @@ class Ticket
 {
     var ticketString = ""
     var ticketArray = Array<Int>()
+    var winningTicket = Array<Int>()
+
     
     init()
     {
-//        for var x = 6; x > 0;
-//        {
-//            let number = Int(arc4random() % 53)
-//            if self.checkDuplicate(number) == false
-//            {
-//                ticketArray.append(number)
-//                dupNumber = number
-//                x--
-//                
-//            }
-//        }
-//        
-//        ticket = String(ticketArray)
-//        ticketArray = []
-        
         ticketArray = makeTicket()
         ticketString = formatTicket(ticketArray)
+        winningTicket = [1, 2, 3, 4, 5, 6,]
+        checkWinningTicket()
     }
     
     func makeTicket() -> Array<Int>
@@ -49,17 +38,16 @@ class Ticket
                 
             }
             
-            if checkDuplicate(ticketArray) == true
+            if checkDuplicateNumbers(ticketArray) == true
             {
                 willLoop = false
-//                return ticketArray
                 return ticketArray
             }
         }
     }
     
 
-    func checkDuplicate(arrayToTest: Array<Int>) -> Bool
+    func checkDuplicateNumbers(arrayToTest: Array<Int>) -> Bool
     {
         let arrayFromSet = Set<Int>(arrayToTest)
         if arrayToTest.count == arrayFromSet.count
@@ -82,5 +70,18 @@ class Ticket
         return ticketAsString
     }
 
+    func checkWinningTicket() -> Int
+    {
+        let winningNumber = [1, 2, 3, 4, 5, 6]
+        var hits = 0
+        for x in winningNumber
+        {
+            if ticketArray.contains(x)
+            {
+                hits += 1
+            }
+        }
+        return hits
+    }
     
 }

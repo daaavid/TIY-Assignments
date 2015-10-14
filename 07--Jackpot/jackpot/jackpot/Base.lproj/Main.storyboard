@@ -17,33 +17,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DXy-v5-rsb">
-                                <rect key="frame" x="0.0" y="192" width="600" height="216"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cY-8B-ISi">
+                                <rect key="frame" x="0.0" y="64" width="600" height="216"/>
                                 <animations/>
                                 <connections>
-                                    <outlet property="dataSource" destination="y5V-DL-p3a" id="aw8-vi-onv"/>
-                                    <outlet property="delegate" destination="y5V-DL-p3a" id="uCh-FY-I4y"/>
+                                    <outlet property="dataSource" destination="y5V-DL-p3a" id="ZrF-7D-MNh"/>
+                                    <outlet property="delegate" destination="y5V-DL-p3a" id="IBW-oh-Gxw"/>
                                 </connections>
                             </pickerView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DXy-v5-rsb" firstAttribute="centerX" secondItem="dgW-o4-RQL" secondAttribute="centerX" id="BWB-E4-fha"/>
-                            <constraint firstItem="DXy-v5-rsb" firstAttribute="centerY" secondItem="dgW-o4-RQL" secondAttribute="centerY" id="FOA-xH-ZHq"/>
-                            <constraint firstItem="DXy-v5-rsb" firstAttribute="leading" secondItem="dgW-o4-RQL" secondAttribute="leadingMargin" constant="-20" id="Kda-rB-ed8"/>
-                            <constraint firstItem="DXy-v5-rsb" firstAttribute="top" secondItem="QqF-bm-5DU" secondAttribute="bottom" constant="128" id="Q1F-qo-0qj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DXy-v5-rsb" secondAttribute="trailing" constant="-20" id="Ycv-kn-aHZ"/>
+                            <constraint firstItem="6cY-8B-ISi" firstAttribute="centerY" secondItem="dgW-o4-RQL" secondAttribute="centerY" id="0PZ-my-VYt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6cY-8B-ISi" secondAttribute="trailing" constant="-20" id="4qL-2N-Qq4"/>
+                            <constraint firstItem="6cY-8B-ISi" firstAttribute="leading" secondItem="dgW-o4-RQL" secondAttribute="leadingMargin" constant="-20" id="CXk-Qe-k2X"/>
+                            <constraint firstItem="6cY-8B-ISi" firstAttribute="top" secondItem="QqF-bm-5DU" secondAttribute="bottom" id="IkF-1T-dbt"/>
+                            <constraint firstItem="ZqQ-8X-guo" firstAttribute="top" secondItem="6cY-8B-ISi" secondAttribute="bottom" constant="320" id="ORT-od-dKn"/>
+                            <constraint firstItem="6cY-8B-ISi" firstAttribute="centerX" secondItem="dgW-o4-RQL" secondAttribute="centerX" id="OTp-KT-Zfi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6cY-8B-ISi" secondAttribute="trailing" constant="-20" id="TJ7-VJ-jqx"/>
+                            <constraint firstItem="6cY-8B-ISi" firstAttribute="centerX" secondItem="dgW-o4-RQL" secondAttribute="centerX" id="WzX-QB-J9P"/>
+                            <constraint firstItem="6cY-8B-ISi" firstAttribute="centerY" secondItem="dgW-o4-RQL" secondAttribute="centerY" id="a82-Po-oGE"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0PZ-my-VYt"/>
+                                <exclude reference="TJ7-VJ-jqx"/>
+                                <exclude reference="WzX-QB-J9P"/>
+                                <exclude reference="a82-Po-oGE"/>
+                                <exclude reference="ORT-od-dKn"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="picker" destination="DXy-v5-rsb" id="1Mh-N0-Zeh"/>
+                        <outlet property="picker" destination="6cY-8B-ISi" id="IJx-UV-eXe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Jz-ab-QTI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="744" y="585"/>
+            <point key="canvasLocation" x="2060" y="585"/>
         </scene>
         <!--Lottery Table View Controller-->
         <scene sceneID="Cxs-ZR-Lgm">
@@ -92,7 +105,7 @@
                     <navigationItem key="navigationItem" id="zv1-ZT-g47">
                         <barButtonItem key="leftBarButtonItem" title="Winning #'s" id="Yka-Y2-fpf">
                             <connections>
-                                <segue destination="y5V-DL-p3a" kind="show" id="8ny-FQ-xza"/>
+                                <segue destination="y5V-DL-p3a" kind="show" identifier="ShowWinningNumbers" id="8ny-FQ-xza"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="xSz-fI-rcp">

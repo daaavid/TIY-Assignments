@@ -10,37 +10,32 @@ import Foundation
 
 class Validator
 {
-//    var winningTicket = Ticket?()
+    let ticketClassArray = Ticket()
 //    var ticketToTest = Ticket?()
     
     var prizeAmount = 0
-    let winningTicketArray = [1, 2, 3, 4, 5, 6,]
-    var winningNumbers = Array<Ticket>()
+//    let winningTicketArray = [1, 2, 3, 4, 5, 6,]
+//    var winningNumbers = Array<Ticket>()
     
+
     
     
     //    func validateTicket(ticketToTest: Array<Int>) -> Int
-//    func validateTicket(ticketToTest: Array<Ticket>) -> Int
-//    {
-//        //       var rc = false
-//        winningNumbers = []
-//        
-//        for number in ticketToTest
-//        {
-//            for winningNumber in winningTicketArray
-//            {
-//                if number == winningNumber
-//                {
-//                    //                    rc = true
-//                    winningNumbers.append(winningNumber)
-//                }
-//            }
-//        }
-//        //        return rc
-//        return winningAmount(winningNumbers)
-//        
-//    }
-//    
+    func validateTicket(ticketToTest: Ticket, winningTicket: Ticket) -> Int
+    {
+        var matches = 0
+//        let newArray = winningTicket.winningTicket
+        for x in winningTicket.winningTicket
+        {
+            if ticketToTest.ticketArray.contains(x)
+            {
+                matches += 1
+            }
+        }
+        
+        return matches
+    }
+//
 //    func winningAmount(winningNumbers: Array<Int>) -> Int
 //    {
 //        let matchingNumbers = winningNumbers.count
@@ -67,13 +62,16 @@ class Validator
 //        return prizeAmount
 //    }
 
-    func breakTicket(
-    
-//    func validateTicket(ticketToTest: Array<Int>) -> Int
-    func validateTicket(ticketToTest: Array<Ticket>) -> Int
+    func breakTicket()
+    {
+        
+    }
+/*
+////    func validateTicket(ticketToTest: Array<Int>) -> Int
+    func validateTicket(ticketToTest: Ticket) -> Int
     {
  //       var rc = false
-        winningNumbers = []
+        var winningNumbers = []
         
         for number in ticketToTest
         {
@@ -116,6 +114,7 @@ class Validator
         
         return prizeAmount
     }
+*/
     
     func prizeAmountAsString(prize: Int) -> String
     {
