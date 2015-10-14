@@ -17,6 +17,8 @@ protocol PickerDelegate
 class LotteryTableViewController: UITableViewController, PickerDelegate
 {
 
+    @IBOutlet var numberDisplay: UIBarButtonItem!
+
     var ticketClass = Ticket()
     var ticketClassArray = Array<Ticket>()
 //    var ticketClassArray = Array<Array<Int>>()
@@ -88,7 +90,7 @@ class LotteryTableViewController: UITableViewController, PickerDelegate
 
     func numberWasChosen(winningTicketNum: Int)
     {
-        
+        numberDisplay.title = "\(winningTicketNum)"
     }
     // MARK: - Navigation
 

@@ -14,6 +14,7 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet var picker: UIPickerView!
     
     var delegate: PickerDelegate?
+    var pickerData: [String] = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +30,9 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
     override func viewWillDisappear(animated: Bool)
     {
         super.viewWillDisappear(animated)
-        createPickerArray()
-        delegate?.numberWasChosen(53-picker.selectedRowInComponent(0))
+        let chosenValues = picker.selectedRowInComponent(0)
+        let chosenArray = [chosenValues]
+        delegate?.numberWasChosen(chosenValues)
 //        delegate?.numberWasChosen(
     }
     
@@ -51,7 +53,7 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
 
         return "\(53 - row)"
     }
-    
+
     func createPickerArray()
     {
 //        picker.

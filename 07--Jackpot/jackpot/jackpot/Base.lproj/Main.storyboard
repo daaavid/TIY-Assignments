@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Winning Number View Controller-->
@@ -108,12 +109,18 @@
                                 <segue destination="y5V-DL-p3a" kind="show" identifier="ShowWinningNumbers" id="8ny-FQ-xza"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="xSz-fI-rcp">
-                            <connections>
-                                <action selector="addButton:" destination="Y6e-5s-eyk" id="eyS-Hp-dIz"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Add" id="xSz-fI-rcp">
+                                <connections>
+                                    <action selector="addButton:" destination="Y6e-5s-eyk" id="eyS-Hp-dIz"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="-" style="plain" id="3bU-c7-vL8"/>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="numberDisplay" destination="3bU-c7-vL8" id="GiY-7O-cdN"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fw3-Nh-qo2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
