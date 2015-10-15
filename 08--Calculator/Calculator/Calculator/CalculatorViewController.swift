@@ -10,7 +10,12 @@ import UIKit
 
 class CalculatorViewController: UIViewController
 {
-
+    @IBOutlet var calcDisplayLabel: UILabel!
+    var firstNum = 0
+    var secondNum = 0
+    var isTyping = false
+    var calcBrain = CalculatorBrain?()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -22,7 +27,49 @@ class CalculatorViewController: UIViewController
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+//MARK: - ACTION HANDLERS
+    
+    @IBAction func clearButton(sender: UIButton)
+    {
+        calcDisplayLabel.text = ""
+    }
+    @IBAction func numberButton(sender: UIButton)
+    {
+        let currentNum = sender.currentTitle
+        
+        if isTyping == true
+        {
+            calcDisplayLabel.text = calcDisplayLabel.text! + currentNum!
+        }
+        else
+        {
+            calcDisplayLabel.text = currentNum!
+            isTyping = true
+        }
+//        if sender.titleLabel!.text != ".
+//        {
+//            calcDisplayLabel.text = sender.titleLabel!.text
+//        }
+//        else
+//        {
+//            calcDisplayLabel.text = calcDisplayLabel.text! + sender.titleLabel!.text!
+//        }
+    }
+    @IBAction func operatorButton(sender: UIButton)
+    {
+        isTyping = false
+        
+//        switch sender
+//        {
+//        case sender.currentTitle:
+//            
+//        }
+    }
+    @IBAction func equalsButton(sender: UIButton)
+    {
+        isTyping = false
+    }
 
 }
 

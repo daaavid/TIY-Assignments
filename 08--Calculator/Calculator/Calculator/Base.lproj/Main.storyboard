@@ -45,6 +45,9 @@
                                         <exclude reference="iXo-he-ak1"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="clearButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dTW-iL-c21"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RlM-e4-FUh">
                                 <rect key="frame" x="151" y="145" width="146.5" height="84"/>
@@ -63,6 +66,9 @@
                                         <exclude reference="jpG-ZI-C7k"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="operatorButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5ar-uX-Jsp"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mef-M6-v0I">
                                 <rect key="frame" x="299" y="145" width="146.5" height="84"/>
@@ -81,6 +87,9 @@
                                         <exclude reference="Ui9-wo-s6z"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="operatorButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0HI-yY-Wi0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7L0-Mn-HBX">
                                 <rect key="frame" x="447" y="145" width="147" height="84"/>
@@ -100,6 +109,9 @@
                                         <exclude reference="YXL-Di-2I4"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="operatorButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yDx-aE-tYY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3TH-8d-v2e">
                                 <rect key="frame" x="2" y="231" width="147" height="84"/>
@@ -118,6 +130,9 @@
                                         <exclude reference="C6w-hK-efJ"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="numberButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PqE-cw-fN3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVb-fB-qb0">
                                 <rect key="frame" x="2" y="317" width="147" height="84"/>
@@ -136,6 +151,9 @@
                                         <exclude reference="vRp-r5-zyt"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="numberButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="170-QR-2hk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xW6-MH-bpF">
                                 <rect key="frame" x="2" y="403" width="147" height="84"/>
@@ -154,6 +172,9 @@
                                         <exclude reference="pJ9-bn-gs0"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="numberButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qSe-rn-KtL"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9AG-bJ-kZP">
                                 <rect key="frame" x="151" y="231" width="146.5" height="84"/>
@@ -172,6 +193,30 @@
                                         <exclude reference="nrL-nG-j3W"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="numberButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5ZO-JO-f06"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsN-gs-mha">
+                                <rect key="frame" x="151" y="317" width="146.5" height="84"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.96858638740000003" green="0.96858638740000003" blue="0.96858638740000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="135" id="hW7-3G-OmK"/>
+                                    <constraint firstAttribute="height" constant="135" id="qxh-c5-bg2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="60"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="5"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="hW7-3G-OmK"/>
+                                        <exclude reference="qxh-c5-bg2"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="numberButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i2L-9l-lUd"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3CY-j0-hI7">
                                 <rect key="frame" x="151" y="403" width="146.5" height="84"/>
@@ -190,6 +235,9 @@
                                         <exclude reference="n3J-aV-TaS"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="numberButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TAJ-GQ-uBe"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCO-qf-Byj">
                                 <rect key="frame" x="2" y="489" width="295.5" height="84"/>
@@ -208,6 +256,9 @@
                                         <exclude reference="lFQ-fo-wN6"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="numberButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="97u-TP-pFM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRS-C8-rlE">
                                 <rect key="frame" x="299" y="231" width="146.5" height="84"/>
@@ -226,6 +277,9 @@
                                         <exclude reference="VMC-sD-TuN"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="numberButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6O0-6U-9Ua"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2k-XB-ZvB">
                                 <rect key="frame" x="299" y="317" width="146.5" height="84"/>
@@ -244,6 +298,9 @@
                                         <exclude reference="c8U-lI-P3U"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="numberButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iqH-tv-1KR"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0n-C3-2tQ">
                                 <rect key="frame" x="299" y="403" width="146.5" height="84"/>
@@ -262,6 +319,9 @@
                                         <exclude reference="klP-dV-qbz"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="numberButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sVQ-bD-qUQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCk-c2-it0">
                                 <rect key="frame" x="299" y="489" width="146.5" height="84"/>
@@ -280,6 +340,9 @@
                                         <exclude reference="nuq-9z-u2z"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="numberButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UQe-ng-owA"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFC-tA-5lg">
                                 <rect key="frame" x="447" y="231" width="147" height="84"/>
@@ -299,6 +362,9 @@
                                         <exclude reference="vRd-6l-C5W"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="operatorButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zp0-fN-zKC"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UIn-Bo-Yja">
                                 <rect key="frame" x="447" y="317" width="147" height="84"/>
@@ -318,6 +384,9 @@
                                         <exclude reference="yQA-sN-w6c"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="operatorButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lh0-mM-0aJ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhq-jK-hNg">
                                 <rect key="frame" x="447" y="403" width="147" height="84"/>
@@ -337,6 +406,9 @@
                                         <exclude reference="VqT-3c-gQ8"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="operatorButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R6w-Sz-VNB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBd-gm-7gJ">
                                 <rect key="frame" x="447" y="489" width="147" height="84"/>
@@ -356,24 +428,10 @@
                                         <exclude reference="AaP-IQ-mGk"/>
                                     </mask>
                                 </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsN-gs-mha">
-                                <rect key="frame" x="151" y="317" width="146.5" height="84"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.96858638740000003" green="0.96858638740000003" blue="0.96858638740000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="135" id="hW7-3G-OmK"/>
-                                    <constraint firstAttribute="height" constant="135" id="qxh-c5-bg2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="60"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="5"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="hW7-3G-OmK"/>
-                                        <exclude reference="qxh-c5-bg2"/>
-                                    </mask>
-                                </variation>
+                                <connections>
+                                    <action selector="equalsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bts-Ud-0oN"/>
+                                    <action selector="operatorButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y9O-he-RUU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
@@ -461,6 +519,9 @@
                             <constraint firstItem="3CY-j0-hI7" firstAttribute="height" secondItem="OsN-gs-mha" secondAttribute="height" id="zlX-nm-gFw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="calcDisplayLabel" destination="CRi-CC-Fbr" id="ZAs-KT-DfN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

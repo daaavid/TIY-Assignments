@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6302CE441BD00CF000022C41 /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302CE431BD00CF000022C41 /* CalculatorBrain.swift */; settings = {ASSET_TAGS = (); }; };
 		63E41E651BCFFBAC0095262D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E41E641BCFFBAC0095262D /* AppDelegate.swift */; };
 		63E41E671BCFFBAC0095262D /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E41E661BCFFBAC0095262D /* CalculatorViewController.swift */; };
 		63E41E6A1BCFFBAC0095262D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63E41E681BCFFBAC0095262D /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6302CE431BD00CF000022C41 /* CalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 		63E41E611BCFFBAC0095262D /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E41E641BCFFBAC0095262D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63E41E661BCFFBAC0095262D /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				63E41E641BCFFBAC0095262D /* AppDelegate.swift */,
 				63E41E661BCFFBAC0095262D /* CalculatorViewController.swift */,
+				6302CE431BD00CF000022C41 /* CalculatorBrain.swift */,
 				63E41E681BCFFBAC0095262D /* Main.storyboard */,
 				63E41E6B1BCFFBAC0095262D /* Assets.xcassets */,
 				63E41E6D1BCFFBAC0095262D /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			files = (
 				63E41E671BCFFBAC0095262D /* CalculatorViewController.swift in Sources */,
 				63E41E651BCFFBAC0095262D /* AppDelegate.swift in Sources */,
+				6302CE441BD00CF000022C41 /* CalculatorBrain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +288,7 @@
 				63E41E751BCFFBAC0095262D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
