@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CRi-CC-Fbr">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CRi-CC-Fbr">
                                 <rect key="frame" x="0.0" y="20" width="570" height="120"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -29,7 +29,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMv-vj-De0">
                                 <rect key="frame" x="2" y="145" width="147" height="84"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.96858638743455494" green="0.96858638743455494" blue="0.96858638743455494" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.83603975785340312" green="0.83603975785340312" blue="0.83603975785340312" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="5oD-1n-XUC"/>
                                     <constraint firstAttribute="height" constant="135" id="iXo-he-ak1"/>
@@ -52,7 +52,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RlM-e4-FUh">
                                 <rect key="frame" x="151" y="145" width="146.5" height="84"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.96858638740000003" green="0.96858638740000003" blue="0.96858638740000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.83603975789999996" green="0.83603975789999996" blue="0.83603975789999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="ZTH-Ul-3dq"/>
                                     <constraint firstAttribute="height" constant="135" id="jpG-ZI-C7k"/>
@@ -73,7 +73,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mef-M6-v0I">
                                 <rect key="frame" x="299" y="145" width="146.5" height="84"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.96858638740000003" green="0.96858638740000003" blue="0.96858638740000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.83603975789999996" green="0.83603975789999996" blue="0.83603975789999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="135" id="GRT-rS-Etq"/>
                                     <constraint firstAttribute="width" constant="135" id="Ui9-wo-s6z"/>

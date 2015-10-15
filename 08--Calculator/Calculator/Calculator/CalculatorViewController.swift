@@ -90,7 +90,12 @@ class CalculatorViewController: UIViewController
         
         isTyping = false
         
-        let brain = CalculatorBrain()
+        let brain = CalculatorBrain(firstNum: firstNum, secondNum: secondNum)
+        calcDisplayLabel.text = String(brain.calculate(currentOperator))
+
+        
+        
+        
 //        
 //        if currentOperator == "+"
 //        {
@@ -99,23 +104,23 @@ class CalculatorViewController: UIViewController
 //        
         
         
-        switch currentOperator
-        {
-        case "+":
-            calcDisplayLabel.text = String(brain.add(firstNum, secondNum:secondNum))
-        case "−":
-            calcDisplayLabel.text = String(brain.subtract(firstNum, secondNum:secondNum))
-        case "÷":
-            calcDisplayLabel.text = String(brain.divide(firstNum, secondNum:secondNum))
-        case "×":
-            calcDisplayLabel.text = String(brain.multiply(firstNum, secondNum:secondNum))
-        case "%":
-            calcDisplayLabel.text = String(brain.toPercent(secondNum))
-        case "+/-":
-            calcDisplayLabel.text = String(brain.toInverse(secondNum))
-        default:
-            break
-        }
+//        switch currentOperator
+//        {
+//        case "+":
+//            calcDisplayLabel.text = String(brain.add(firstNum, secondNum:secondNum))
+//        case "−":
+//            calcDisplayLabel.text = String(brain.subtract(firstNum, secondNum:secondNum))
+//        case "÷":
+//            calcDisplayLabel.text = String(brain.divide(firstNum, secondNum:secondNum))
+//        case "×":
+//            calcDisplayLabel.text = String(brain.multiply(firstNum, secondNum:secondNum))
+//        case "%":
+//            calcDisplayLabel.text = String(brain.toPercent(secondNum))
+//        case "+/-":
+//            calcDisplayLabel.text = String(brain.toInverse(secondNum))
+//        default:
+//            break
+//          }
 
     }
 
