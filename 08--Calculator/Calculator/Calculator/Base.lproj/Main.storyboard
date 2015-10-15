@@ -126,8 +126,8 @@
                                 <state key="normal" title="7"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="czT-zu-Fpz"/>
                                         <exclude reference="C6w-hK-efJ"/>
+                                        <exclude reference="czT-zu-Fpz"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -231,8 +231,8 @@
                                 <state key="normal" title="2"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="wVB-MB-8Y4"/>
                                         <exclude reference="n3J-aV-TaS"/>
+                                        <exclude reference="wVB-MB-8Y4"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -402,8 +402,8 @@
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="nL6-5P-c39"/>
                                         <exclude reference="VqT-3c-gQ8"/>
+                                        <exclude reference="nL6-5P-c39"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -424,8 +424,8 @@
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="nbg-oh-OHl"/>
                                         <exclude reference="AaP-IQ-mGk"/>
+                                        <exclude reference="nbg-oh-OHl"/>
                                     </mask>
                                 </variation>
                                 <connections>

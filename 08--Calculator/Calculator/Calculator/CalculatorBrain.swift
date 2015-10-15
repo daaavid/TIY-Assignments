@@ -10,7 +10,46 @@ import Foundation
 
 class CalculatorBrain
 {
-    init()
+    var firstNum = 0.0
+    var secondNum = 0.0
+    var calcDisplay = ""
+    
+    func add()
+    {
+        
+    }
+    
+    func subtract()
+    {
+        
+    }
+    
+    func multiply()
+    {
+        
+    }
+    
+    func divide()
+    {
+        
+    }
+    
+    func inverse()
+    {
+        
+    }
+    
+    func percent()
+    {
+        
+    }
+    
+    func equals()
+    {
+        
+    }
+    
+    func convertToDouble()
     {
         
     }

@@ -11,8 +11,10 @@ import UIKit
 class CalculatorViewController: UIViewController
 {
     @IBOutlet var calcDisplayLabel: UILabel!
-    var firstNum = 0
-    var secondNum = 0
+    
+    var calcDisplay = ""
+    var firstNum = 0.0
+    var secondNum = 0.0
     var isTyping = false
     var calcBrain = CalculatorBrain?()
     
@@ -59,12 +61,13 @@ class CalculatorViewController: UIViewController
     @IBAction func operatorButton(sender: UIButton)
     {
         isTyping = false
+//        calcDisplay = calcDisplayLabel.text!
+//        firstNum = NSString(string: calcDisplay).doubleValue
+//        
+//        calcDisplayLabel.text = ""
         
-//        switch sender
-//        {
-//        case sender.currentTitle:
-//            
-//        }
+        calcDisplay = calcDisplayLabel.text!
+        
     }
     @IBAction func equalsButton(sender: UIButton)
     {
