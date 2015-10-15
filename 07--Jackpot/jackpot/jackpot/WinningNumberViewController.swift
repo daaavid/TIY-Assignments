@@ -33,7 +33,7 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
     {
         super.viewWillDisappear(animated)
         
-        showWinningNumber()
+        delegate?.numberWasChosen(getWinningNumbers())
 //        let chosenValues = picker.selectedRowInComponent(0)
 //        let chosenArray = [chosenValues]
 //        delegate?.numberWasChosen(chosenValues)

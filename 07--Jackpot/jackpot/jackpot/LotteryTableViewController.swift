@@ -10,7 +10,7 @@ import UIKit
 
 protocol PickerDelegate
 {
-    func numberWasChosen(winningTicketNum: Int)
+    func numberWasChosen(winningTicketNum: Array<Int>)
 //    func numberWasChosen(number: Int)
 }
 
@@ -23,6 +23,8 @@ class LotteryTableViewController: UITableViewController, PickerDelegate
     var ticketClassArray = Array<Ticket>()
 //    var ticketClassArray = Array<Array<Int>>()
     var validate = Validator?()
+    var winningTicket: Array<Int> = []
+    
 
     override func viewDidLoad()
     {
@@ -61,6 +63,12 @@ class LotteryTableViewController: UITableViewController, PickerDelegate
     }
 
 //MARK: - Action Handlers
+    func numberWasChosen(winningTicketNum: Array<Int>)
+    {
+        winningTicket = winningTicketNum
+//        let winningTicket = Ticket(arrayFromPicker: winningTicketNum)
+        self.tableView.reloadData()
+    }
     @IBAction func addButton(sender: UIBarButtonItem)
     {
         newTicket()
@@ -68,7 +76,7 @@ class LotteryTableViewController: UITableViewController, PickerDelegate
 
     @IBAction func clearButton(sender: UIBarButtonItem)
     {
-        ticketClassArray = []
+//        ticketClassArray = []
         self.tableView.reloadData()
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -76,10 +84,12 @@ class LotteryTableViewController: UITableViewController, PickerDelegate
         let cell = tableView.dequeueReusableCellWithIdentifier("LottoCell", forIndexPath: indexPath)
 
         let newTicket = ticketClassArray[indexPath.row]
-        
+    
         cell.textLabel?.text = newTicket.ticketString
-        cell.detailTextLabel?.text = newTicket.checkWinningTicket()
-        
+        cell.detailTextLabel?.text = newTicket.checkWinningTicket(winningTicket)
+//        cell.detailTextLabel?.text = ticketClass.checkWinningTicket(Ticket(arrayFromPicker: winningTicket), testTicket: newTicket)
+//        cell.detailTextLabel?.text = ticketClass.checkWinningTicket(winningTicket, testTickingNum: winningTicket)
+//        cell.detailTextLabel?.text = String(winningTicket)
 //        cell.detailTextLabel?.text = String(validate?.validateTicket(newTicket, winningTicket: newTicket))
         
         
@@ -100,10 +110,9 @@ class LotteryTableViewController: UITableViewController, PickerDelegate
         //nothing to see here
     }
 
-    func numberWasChosen(winningTicketNum: Int)
-    {
-        numberDisplay.title = "\(winningTicketNum)"
-    }
+
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
