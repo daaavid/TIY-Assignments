@@ -74,7 +74,9 @@ class LotteryTableViewController: UITableViewController, PickerDelegate
         let newTicket = ticketClassArray[indexPath.row]
         
         cell.textLabel?.text = newTicket.ticketString
-        cell.detailTextLabel?.text = String(validate?.validateTicket(newTicket, winningTicket: newTicket))
+        cell.detailTextLabel?.text = newTicket.checkWinningTicket()
+        
+//        cell.detailTextLabel?.text = String(validate?.validateTicket(newTicket, winningTicket: newTicket))
         
         
 //        cell.detailTextLabel?.text = String(validate!.validateTicket(newTicket))

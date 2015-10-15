@@ -20,8 +20,13 @@ class Ticket
     {
         ticketArray = makeTicket()
         ticketString = formatTicket(ticketArray)
-        winningTicket = [1, 2, 3, 4, 5, 6,]
-        checkWinningTicket()
+//        winningTicket = [1, 2, 3, 4, 5, 6,]
+////        checkWinningTicket()
+    }
+    
+    init(arrayFromPicker: Array<Int>)
+    {
+        winningTicket = arrayFromPicker
     }
     
     func makeTicket() -> Array<Int>
@@ -31,7 +36,8 @@ class Ticket
         {
             ticketArray = []
             
-            for var x = 6; x > 0; x--
+//            for var x = 6; x > 0; x--
+            while ticketArray.count < 6
             {
                 let number = Int(1 + arc4random() % 52)
                 ticketArray.append(number)
@@ -70,18 +76,37 @@ class Ticket
         return ticketAsString
     }
 
-    func checkWinningTicket() -> Int
+    func checkWinningTicket() -> String
     {
         let winningNumber = [1, 2, 3, 4, 5, 6]
-        var hits = 0
+        var matchingNumbers = 0
+        var prizeAmount = 0
         for x in winningNumber
         {
             if ticketArray.contains(x)
             {
-                hits += 1
+                matchingNumbers += 1
             }
         }
-        return hits
+        if matchingNumbers == 3
+        {
+            prizeAmount = 1
+        }
+        if matchingNumbers == 4
+        {
+            prizeAmount = 5
+        }
+        if matchingNumbers == 5
+        {
+            prizeAmount = 20
+        }
+        if matchingNumbers == 6
+        {
+            prizeAmount = 100
+        }
+        
+        return "$ " + String(prizeAmount)
+
     }
     
 }

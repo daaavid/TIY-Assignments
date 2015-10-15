@@ -14,15 +14,17 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet var picker: UIPickerView!
     
     var delegate: PickerDelegate?
-    var pickerData: [String] = [String]()
+    var winningNumber: Array<Int> = []
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -30,11 +32,18 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
     override func viewWillDisappear(animated: Bool)
     {
         super.viewWillDisappear(animated)
-        let chosenValues = picker.selectedRowInComponent(0)
-        let chosenArray = [chosenValues]
-        delegate?.numberWasChosen(chosenValues)
-//        delegate?.numberWasChosen(
+        
+        showWinningNumber()
+//        let chosenValues = picker.selectedRowInComponent(0)
+//        let chosenArray = [chosenValues]
+//        delegate?.numberWasChosen(chosenValues)
+////        delegate?.numberWasChosen(
     }
+    
+//    init(arrayFromViewPicker: Array<Int>)
+//    {
+//        newTicket = arrayFromViewPicker
+//    }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
     {
@@ -45,18 +54,19 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int //must return Int
     {
     
-        return 53
+        return [53][1]
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? //must return String
     {
 
-        return "\(53 - row)"
+//        return "\(53 - row)"
+        return["\(row)"][1]
     }
 
-    func createPickerArray()
+    func showWinningNumber()
     {
-//        picker.
+        winningNumber = [1,2,3,4,5,6]
     }
 
     
