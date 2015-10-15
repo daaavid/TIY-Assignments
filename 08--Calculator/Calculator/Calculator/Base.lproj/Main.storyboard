@@ -18,11 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRi-CC-Fbr">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CRi-CC-Fbr">
                                 <rect key="frame" x="0.0" y="20" width="570" height="120"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="110"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="120"/>
                                 <color key="textColor" red="0.0" green="0.75114304700000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -323,27 +323,6 @@
                                     <action selector="numberButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sVQ-bD-qUQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCk-c2-it0">
-                                <rect key="frame" x="299" y="489" width="146.5" height="84"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.96858638740000003" green="0.96858638740000003" blue="0.96858638740000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="135" id="GUw-j1-85g"/>
-                                    <constraint firstAttribute="width" constant="135" id="nuq-9z-u2z"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="60"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="."/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="GUw-j1-85g"/>
-                                        <exclude reference="nuq-9z-u2z"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="numberButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UQe-ng-owA"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFC-tA-5lg">
                                 <rect key="frame" x="447" y="231" width="147" height="84"/>
                                 <animations/>
@@ -433,6 +412,27 @@
                                     <action selector="operatorButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y9O-he-RUU"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCk-c2-it0">
+                                <rect key="frame" x="299" y="489" width="146.5" height="84"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.96858638740000003" green="0.96858638740000003" blue="0.96858638740000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="135" id="GUw-j1-85g"/>
+                                    <constraint firstAttribute="width" constant="135" id="nuq-9z-u2z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="60"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="."/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="GUw-j1-85g"/>
+                                        <exclude reference="nuq-9z-u2z"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="numberButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UQe-ng-owA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.15183246073298429" green="0.15183246073298429" blue="0.15183246073298429" alpha="1" colorSpace="calibratedRGB"/>
@@ -496,6 +496,7 @@
                             <constraint firstItem="UIn-Bo-Yja" firstAttribute="height" secondItem="KFC-tA-5lg" secondAttribute="height" id="gNq-Ta-wQZ"/>
                             <constraint firstItem="KFC-tA-5lg" firstAttribute="width" secondItem="7L0-Mn-HBX" secondAttribute="width" id="gau-NO-VVZ"/>
                             <constraint firstItem="3CY-j0-hI7" firstAttribute="leading" secondItem="OsN-gs-mha" secondAttribute="leading" id="hE3-AJ-Gr9"/>
+                            <constraint firstItem="NCO-qf-Byj" firstAttribute="trailing" secondItem="3CY-j0-hI7" secondAttribute="trailing" id="hGu-4q-fXQ"/>
                             <constraint firstItem="OsN-gs-mha" firstAttribute="leading" secondItem="9AG-bJ-kZP" secondAttribute="leading" id="hKX-81-CYk"/>
                             <constraint firstItem="yhq-jK-hNg" firstAttribute="top" secondItem="UIn-Bo-Yja" secondAttribute="bottom" constant="2" id="hdi-cj-4FY"/>
                             <constraint firstItem="UVb-fB-qb0" firstAttribute="top" secondItem="3TH-8d-v2e" secondAttribute="bottom" constant="2" id="j3d-TS-BNo"/>
@@ -518,6 +519,11 @@
                             <constraint firstItem="UVb-fB-qb0" firstAttribute="leading" secondItem="3TH-8d-v2e" secondAttribute="leading" id="yWu-z7-xlD"/>
                             <constraint firstItem="3CY-j0-hI7" firstAttribute="height" secondItem="OsN-gs-mha" secondAttribute="height" id="zlX-nm-gFw"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="54E-NM-RfD"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="calcDisplayLabel" destination="CRi-CC-Fbr" id="ZAs-KT-DfN"/>

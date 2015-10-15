@@ -10,38 +10,49 @@ import Foundation
 
 class CalculatorBrain
 {
-    var firstNum = 0.0
-    var secondNum = 0.0
-    var calcDisplay = ""
+ //   var firstNum = 0.0
+ //   var secondNum = 0.0
+ //   var calcDisplay = ""
     
-    func add()
+//    func storNum(firstNumber: String)
+//    {
+//        firstNum = NSString(string: firstNumber).doubleValue
+//    }
+    
+    func add(firstNum: Double, secondNum: Double) -> Double
     {
-        
+        let result = firstNum + secondNum
+        return result
     }
     
-    func subtract()
+    func subtract(firstNum: Double, secondNum: Double) -> Double
     {
-        
+        let result = firstNum - secondNum
+        return result
     }
     
-    func multiply()
+    func multiply(firstNum: Double, secondNum: Double) -> Double
     {
-        
+        let result = firstNum * secondNum
+        return result
     }
     
-    func divide()
+    func divide(firstNum: Double, secondNum: Double) -> Double
     {
-        
+        let result = firstNum / secondNum
+        return result
     }
     
-    func inverse()
+    func toInverse(firstNum: Double) -> Double
     {
-        
+        let result = firstNum * -1
+        return result
     }
     
-    func percent()
+    func toPercent(firstNum: Double) -> Double
     {
-        
+        let result = firstNum * 0.01
+        return result
     }
     
     func equals()
@@ -49,8 +60,9 @@ class CalculatorBrain
         
     }
     
-    func convertToDouble()
+    func toDouble()
     {
         
     }
+
 }

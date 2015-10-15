@@ -12,11 +12,15 @@ class CalculatorViewController: UIViewController
 {
     @IBOutlet var calcDisplayLabel: UILabel!
     
-    var calcDisplay = ""
+    var calcDisplayNum = ""
+    var currentOperator = ""
     var firstNum = 0.0
     var secondNum = 0.0
     var isTyping = false
     var calcBrain = CalculatorBrain?()
+    var storedNum = 0.0
+//    var currentNum: Double
+//    var currentNumStr: NSString
     
     override func viewDidLoad()
     {
@@ -38,16 +42,18 @@ class CalculatorViewController: UIViewController
     }
     @IBAction func numberButton(sender: UIButton)
     {
-        let currentNum = sender.currentTitle
+//        currentNum = currentNumStr.doubleValue
+//        currentNumStr = NSString(string: sender.currentTitle!)
+
         
-        if isTyping == true
+        if isTyping == false
         {
-            calcDisplayLabel.text = calcDisplayLabel.text! + currentNum!
+            calcDisplayLabel.text = sender.currentTitle!
+            isTyping = true
         }
         else
         {
-            calcDisplayLabel.text = currentNum!
-            isTyping = true
+            calcDisplayLabel.text = calcDisplayLabel.text! + sender.currentTitle!
         }
 //        if sender.titleLabel!.text != ".
 //        {
@@ -57,21 +63,60 @@ class CalculatorViewController: UIViewController
 //        {
 //            calcDisplayLabel.text = calcDisplayLabel.text! + sender.titleLabel!.text!
 //        }
+        
     }
     @IBAction func operatorButton(sender: UIButton)
     {
         isTyping = false
+        currentOperator = sender.currentTitle!
+        calcDisplayNum = calcDisplayLabel.text!
+        
+        
+        
+ //       calcBrain?.storNum(calcDisplayNum)
+        
+        
 //        calcDisplay = calcDisplayLabel.text!
-//        firstNum = NSString(string: calcDisplay).doubleValue
+        firstNum = NSString(string: calcDisplayNum).doubleValue
 //        
 //        calcDisplayLabel.text = ""
         
-        calcDisplay = calcDisplayLabel.text!
+        
         
     }
     @IBAction func equalsButton(sender: UIButton)
     {
+        secondNum = NSString(string: calcDisplayLabel.text!).doubleValue
+        
         isTyping = false
+        
+        let brain = CalculatorBrain()
+//        
+//        if currentOperator == "+"
+//        {
+//            calcDisplayLabel.text = String(brain.add(firstNum, secondNum:storedNum))
+//        }
+//        
+        
+        
+        switch currentOperator
+        {
+        case "+":
+            calcDisplayLabel.text = String(brain.add(firstNum, secondNum:secondNum))
+        case "−":
+            calcDisplayLabel.text = String(brain.subtract(firstNum, secondNum:secondNum))
+        case "÷":
+            calcDisplayLabel.text = String(brain.divide(firstNum, secondNum:secondNum))
+        case "×":
+            calcDisplayLabel.text = String(brain.multiply(firstNum, secondNum:secondNum))
+        case "%":
+            calcDisplayLabel.text = String(brain.toPercent(secondNum))
+        case "+/-":
+            calcDisplayLabel.text = String(brain.toInverse(secondNum))
+        default:
+            break
+        }
+
     }
 
 }
