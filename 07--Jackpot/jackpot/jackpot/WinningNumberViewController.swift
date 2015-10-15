@@ -12,7 +12,6 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
 {
 
     @IBOutlet var picker: UIPickerView!
-    @IBOutlet var numLabel: UILabel!
     
     var delegate: PickerDelegate?
     var winningNumber: Array<Int> = []
@@ -34,16 +33,7 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
         super.viewWillDisappear(animated)
         
         delegate?.numberWasChosen(getWinningNumbers())
-//        let chosenValues = picker.selectedRowInComponent(0)
-//        let chosenArray = [chosenValues]
-//        delegate?.numberWasChosen(chosenValues)
-////        delegate?.numberWasChosen(
     }
-    
-//    init(arrayFromViewPicker: Array<Int>)
-//    {
-//        newTicket = arrayFromViewPicker
-//    }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
     {
@@ -53,20 +43,13 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int //must return Int
     {
-    
+        //how many rows
         return 53
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? //must return String
     {
-
         return "\(row)"
-//        return["\(row)"][1]
-    }
-
-    func showWinningNumber()
-    {
- //       winningNumber = [1,2,3,4,5,6]
     }
 
     func getWinningNumbers() -> Array<Int>
@@ -89,23 +72,4 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
         }
         return ticketAsString
     }
-
-    @IBAction func refreshButton(sender: UIButton)
-    {
-        numLabel.text = formatTicket(getWinningNumbers())
-//        numLabel.text = String(picker.selectedRowInComponent(0)) + String(picker.selectedRowInComponent(1))
-//        numLabel.text = "\(picker.selectedRowInComponent(0).description) + \(picker.selectedRowInComponent(1).description) + \(picker.selectedRowInComponent(2).description) + \(picker.selectedRowInComponent(3).description) + \(picker.selectedRowInComponent(4).description) + \(picker.selectedRowInComponent(5).description)  \(picker.selectedRowInComponent(6).description)"
-
-
-    }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

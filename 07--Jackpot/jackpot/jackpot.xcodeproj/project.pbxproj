@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		634875C11BCEB83A00D852F1 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634875C01BCEB83A00D852F1 /* Validator.swift */; settings = {ASSET_TAGS = (); }; };
 		634875C31BCEB93700D852F1 /* WinningNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634875C21BCEB93700D852F1 /* WinningNumberViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		638FF16A1BCD6C8A00DE4177 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FF1691BCD6C8A00DE4177 /* AppDelegate.swift */; };
 		638FF16F1BCD6C8A00DE4177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638FF16D1BCD6C8A00DE4177 /* Main.storyboard */; };
@@ -18,7 +17,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		634875C01BCEB83A00D852F1 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		634875C21BCEB93700D852F1 /* WinningNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinningNumberViewController.swift; sourceTree = "<group>"; };
 		638FF1661BCD6C8A00DE4177 /* jackpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jackpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		638FF1691BCD6C8A00DE4177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +61,6 @@
 				638FF1691BCD6C8A00DE4177 /* AppDelegate.swift */,
 				638FF17B1BCD6F5C00DE4177 /* LotteryTableViewController.swift */,
 				634875C21BCEB93700D852F1 /* WinningNumberViewController.swift */,
-				634875C01BCEB83A00D852F1 /* Validator.swift */,
 				638FF17D1BCD8D7700DE4177 /* Ticket.swift */,
 				638FF16D1BCD6C8A00DE4177 /* Main.storyboard */,
 				638FF1701BCD6C8A00DE4177 /* Assets.xcassets */,
@@ -144,7 +141,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				634875C11BCEB83A00D852F1 /* Validator.swift in Sources */,
 				634875C31BCEB93700D852F1 /* WinningNumberViewController.swift in Sources */,
 				638FF17C1BCD6F5C00DE4177 /* LotteryTableViewController.swift in Sources */,
 				638FF17E1BCD8D7700DE4177 /* Ticket.swift in Sources */,

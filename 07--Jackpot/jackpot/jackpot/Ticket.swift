@@ -125,6 +125,8 @@ class Ticket//: PickerDelegate
         
     }
     
+    
+    
 //    func checkWinningTicket(winningTicketNum: Array<Int>, testTicket: Array<Int>) -> String
 //    {
 //        var matchingNumbers = 0

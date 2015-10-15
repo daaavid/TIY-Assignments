@@ -18,29 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6cY-8B-ISi">
-                                <rect key="frame" x="0.0" y="64" width="600" height="216"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cY-8B-ISi">
+                                <rect key="frame" x="0.0" y="64" width="600" height="400"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="75G-Sx-Hk1"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="y5V-DL-p3a" id="ZrF-7D-MNh"/>
                                     <outlet property="delegate" destination="y5V-DL-p3a" id="IBW-oh-Gxw"/>
                                 </connections>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79e-AT-1Z6">
-                                <rect key="frame" x="268" y="324" width="63.5" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSE-E6-5La">
-                                <rect key="frame" x="273.5" y="353" width="53" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Refresh"/>
-                                <connections>
-                                    <action selector="refreshButton:" destination="y5V-DL-p3a" eventType="touchUpInside" id="cGN-gr-UW1"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,17 +36,12 @@
                             <constraint firstItem="6cY-8B-ISi" firstAttribute="centerY" secondItem="dgW-o4-RQL" secondAttribute="centerY" id="0PZ-my-VYt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6cY-8B-ISi" secondAttribute="trailing" constant="-20" id="4qL-2N-Qq4"/>
                             <constraint firstItem="6cY-8B-ISi" firstAttribute="leading" secondItem="dgW-o4-RQL" secondAttribute="leadingMargin" constant="-20" id="CXk-Qe-k2X"/>
-                            <constraint firstItem="79e-AT-1Z6" firstAttribute="centerX" secondItem="6cY-8B-ISi" secondAttribute="centerX" id="ESZ-O4-uYR"/>
-                            <constraint firstItem="SSE-E6-5La" firstAttribute="top" secondItem="79e-AT-1Z6" secondAttribute="bottom" constant="8" id="GZn-Jc-gJc"/>
                             <constraint firstItem="6cY-8B-ISi" firstAttribute="top" secondItem="QqF-bm-5DU" secondAttribute="bottom" id="IkF-1T-dbt"/>
-                            <constraint firstItem="ZqQ-8X-guo" firstAttribute="top" secondItem="79e-AT-1Z6" secondAttribute="bottom" constant="255" id="LcF-AL-sDZ"/>
                             <constraint firstItem="ZqQ-8X-guo" firstAttribute="top" secondItem="6cY-8B-ISi" secondAttribute="bottom" constant="320" id="ORT-od-dKn"/>
                             <constraint firstItem="6cY-8B-ISi" firstAttribute="centerX" secondItem="dgW-o4-RQL" secondAttribute="centerX" id="OTp-KT-Zfi"/>
-                            <constraint firstItem="SSE-E6-5La" firstAttribute="centerX" secondItem="79e-AT-1Z6" secondAttribute="centerX" id="Ot4-vT-qgI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6cY-8B-ISi" secondAttribute="trailing" constant="-20" id="TJ7-VJ-jqx"/>
                             <constraint firstItem="6cY-8B-ISi" firstAttribute="centerX" secondItem="dgW-o4-RQL" secondAttribute="centerX" id="WzX-QB-J9P"/>
                             <constraint firstItem="6cY-8B-ISi" firstAttribute="centerY" secondItem="dgW-o4-RQL" secondAttribute="centerY" id="a82-Po-oGE"/>
-                            <constraint firstItem="79e-AT-1Z6" firstAttribute="top" secondItem="6cY-8B-ISi" secondAttribute="bottom" constant="44" id="cMx-aW-wdH"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -72,7 +55,6 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="numLabel" destination="79e-AT-1Z6" id="azB-pM-oYa"/>
                         <outlet property="picker" destination="6cY-8B-ISi" id="IJx-UV-eXe"/>
                     </connections>
                 </viewController>
@@ -102,7 +84,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="###" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Di-LU-17m">
@@ -125,7 +107,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="zv1-ZT-g47">
-                        <barButtonItem key="leftBarButtonItem" title="Winning #'s" id="Yka-Y2-fpf">
+                        <barButtonItem key="leftBarButtonItem" title="Set Winning #'s" id="Yka-Y2-fpf">
                             <connections>
                                 <segue destination="y5V-DL-p3a" kind="show" identifier="ShowWinningNumbers" id="8ny-FQ-xza"/>
                             </connections>
@@ -138,15 +120,16 @@
                             </barButtonItem>
                             <barButtonItem systemItem="refresh" id="uRs-xb-1gu">
                                 <connections>
-                                    <action selector="clearButton:" destination="Y6e-5s-eyk" id="Kte-Dt-5l1"/>
+                                    <action selector="refreshButton:" destination="Y6e-5s-eyk" id="eYz-t2-GUD"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="-" id="3bU-c7-vL8"/>
+                            <barButtonItem systemItem="stop" id="Esa-1F-Aas">
+                                <connections>
+                                    <action selector="destroyButton:" destination="Y6e-5s-eyk" id="9Av-2b-7cs"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
-                    <connections>
-                        <outlet property="numberDisplay" destination="3bU-c7-vL8" id="GiY-7O-cdN"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fw3-Nh-qo2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
