@@ -27,6 +27,8 @@ class LotteryTableViewController: UITableViewController, PickerDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        title = "Jackpot"
+        newTicket()
     }
 
     override func didReceiveMemoryWarning()
@@ -58,15 +60,17 @@ class LotteryTableViewController: UITableViewController, PickerDelegate
         }
     }
 
-
+//MARK: - Action Handlers
     @IBAction func addButton(sender: UIBarButtonItem)
     {
-        ticketClassArray.append(Ticket())
-        //add a new Ticket object to the tickets array
-        self.tableView.reloadData()
-        //reload the view so we can see the new ticket after it's set in the next function
+        newTicket()
     }
 
+    @IBAction func clearButton(sender: UIBarButtonItem)
+    {
+        ticketClassArray = []
+        self.tableView.reloadData()
+    }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("LottoCell", forIndexPath: indexPath)
@@ -85,9 +89,15 @@ class LotteryTableViewController: UITableViewController, PickerDelegate
         return cell
     }
     
+    func newTicket()
+    {
+        ticketClassArray.append(Ticket())
+        self.tableView.reloadData()
+    }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-
+        //nothing to see here
     }
 
     func numberWasChosen(winningTicketNum: Int)

@@ -12,6 +12,7 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
 {
 
     @IBOutlet var picker: UIPickerView!
+    @IBOutlet var numLabel: UILabel!
     
     var delegate: PickerDelegate?
     var winningNumber: Array<Int> = []
@@ -19,7 +20,6 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -54,14 +54,14 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int //must return Int
     {
     
-        return [53][1]
+        return 53
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? //must return String
     {
 
-//        return "\(53 - row)"
-        return["\(row)"][1]
+        return "\(row)"
+//        return["\(row)"][1]
     }
 
     func showWinningNumber()
@@ -69,8 +69,25 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
         winningNumber = [1,2,3,4,5,6]
     }
 
-    
+    func getWinningNumbers() -> String
+    {
+//        var x = 6; while x > 0
+//        {
+//            winningNumber.append(picker.selectedRowInComponent(x).description)
+//            x--
+//        }
+//        return String(winningNumber)
+        return "hello"
+    }
 
+    @IBAction func refreshButton(sender: UIButton)
+    {
+//        numLabel.text = getWinningNumbers()
+        numLabel.text = String(picker.selectedRowInComponent(0)) + String(picker.selectedRowInComponent(1))
+//        numLabel.text = "\(picker.selectedRowInComponent(0).description) + \(picker.selectedRowInComponent(1).description) + \(picker.selectedRowInComponent(2).description) + \(picker.selectedRowInComponent(3).description) + \(picker.selectedRowInComponent(4).description) + \(picker.selectedRowInComponent(5).description)  \(picker.selectedRowInComponent(6).description)"
+
+
+    }
     /*
     // MARK: - Navigation
 
