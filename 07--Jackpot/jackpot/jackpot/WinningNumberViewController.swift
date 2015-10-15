@@ -66,24 +66,34 @@ class WinningNumberViewController: UIViewController, UIPickerViewDataSource, UIP
 
     func showWinningNumber()
     {
-        winningNumber = [1,2,3,4,5,6]
+ //       winningNumber = [1,2,3,4,5,6]
     }
 
-    func getWinningNumbers() -> String
+    func getWinningNumbers() -> Array<Int>
     {
-//        var x = 6; while x > 0
-//        {
-//            winningNumber.append(picker.selectedRowInComponent(x).description)
-//            x--
-//        }
-//        return String(winningNumber)
-        return "hello"
+        for var x = 0; x <= 5; x++
+        {
+            winningNumber.append(picker.selectedRowInComponent(x))
+        }
+        let tempArray = winningNumber
+        winningNumber = []
+        return tempArray
+    }
+    
+    func formatTicket(ticketArray: Array<Int>) -> String
+    {
+        var ticketAsString = ""
+        for number in ticketArray
+        {
+            ticketAsString = ticketAsString + "\(number)" + " "
+        }
+        return ticketAsString
     }
 
     @IBAction func refreshButton(sender: UIButton)
     {
-//        numLabel.text = getWinningNumbers()
-        numLabel.text = String(picker.selectedRowInComponent(0)) + String(picker.selectedRowInComponent(1))
+        numLabel.text = formatTicket(getWinningNumbers())
+//        numLabel.text = String(picker.selectedRowInComponent(0)) + String(picker.selectedRowInComponent(1))
 //        numLabel.text = "\(picker.selectedRowInComponent(0).description) + \(picker.selectedRowInComponent(1).description) + \(picker.selectedRowInComponent(2).description) + \(picker.selectedRowInComponent(3).description) + \(picker.selectedRowInComponent(4).description) + \(picker.selectedRowInComponent(5).description)  \(picker.selectedRowInComponent(6).description)"
 
 
