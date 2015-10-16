@@ -42,13 +42,10 @@ class CalculatorViewController: UIViewController
     @IBAction func clearButton(sender: UIButton)
     {
         calcDisplayLabel.text = ""
+        clearStorValues()
     }
     @IBAction func numberButton(sender: UIButton)
     {
-//        currentNum = currentNumStr.doubleValue
-//        currentNumStr = NSString(string: sender.currentTitle!)
-
-        
         if isTyping == false
         {
             calcDisplayLabel.text = sender.currentTitle!
@@ -58,30 +55,36 @@ class CalculatorViewController: UIViewController
         {
             calcDisplayLabel.text = calcDisplayLabel.text! + sender.currentTitle!
         }
-//        if sender.titleLabel!.text != ".
-//        {
-//            calcDisplayLabel.text = sender.titleLabel!.text
-//        }
-//        else
-//        {
-//            calcDisplayLabel.text = calcDisplayLabel.text! + sender.titleLabel!.text!
-//        }
-        
     }
+    
     @IBAction func operatorButton(sender: UIButton)
     {
         isTyping = false
-        currentOperator = sender.currentTitle!
         calcDisplayNum = calcDisplayLabel.text!
-
-        if brain.firstNumber != 0
+        let operatorPressed = sender.currentTitle!
+        brain.operatorStor(operatorPressed)
+        
+//        if brain.firstNumber == nil //if there's not a value already in firstNumber, put one in
+        if brain.firstNumberStr == ""
         {
-            brain.secondNumStor(calcDisplayNum)
-            performCalculation()
-        }
-        else
-        {
+//            currentOperator = sender.currentTitle!
+//            brain.operatorSign = operatorPressed
+//            brain.operatorStor(operatorPressed)
             brain.firstNumStor(calcDisplayNum)
+        }
+//        if brain.secondNumber != 0
+//        {
+//            performCalculation()
+//        }
+        else //otherwise if there's already a value, put it in the secondNumber and then run the calc on it
+        {
+//            currentOperator = sender.currentTitle!
+//            operatorPressed = brain.operatorSign
+//            brain.operatorStor(operatorPressed)
+//            brain.operatorStor("")
+//            brain.secondNumStor(calcDisplayNum)
+            performCalculation()
+//            brain.firstNumberStr = ""
         }
         
 //just assigning first number over and over
@@ -101,52 +104,92 @@ class CalculatorViewController: UIViewController
         
         
     }
+    
     @IBAction func equalsButton(sender: UIButton)
     {
-        calcDisplayNum = calcDisplayLabel.text!
-        brain.secondNumStor(calcDisplayNum)
         
+        calcDisplayNum = calcDisplayLabel.text!
+//        brain.secondNumStor(calcDisplayNum)
         performCalculation()
+//        brain.firstNumberStr = ""
     }
     
     func performCalculation()
     {
+        calcDisplayNum = calcDisplayLabel.text!
+        
         isTyping = false
+        brain.secondNumStor(calcDisplayNum)
+ //       let answer = brain.calculate(brain.operatorSign)
+
+        
+        if brain.firstNumberStr == ""
+        {
+            brain.operatorSign = ""
+        }
+    
+        let answer = brain.calculate(brain.operatorSign)
+
+        
+        if brain.canBeInt(answer) == true
+        {
+            calcDisplayLabel.text = brain.convertToIntString(answer)
+        }
+        else
+        {
+            calcDisplayLabel.text = String(answer)
+        }
+
+        brain.firstNumStor(String(answer))
+        brain.secondNumStor("")
+    }
+
+    
+//    func performCalculation()
+//    {
+//        isTyping = false
+//        let answer = brain.calculate(currentOperator)
+//        
+//        if brain.canBeInt(answer) == true
+//        {
+//            calcDisplayLabel.text = brain.convertToIntString(answer)
+//        }
+//        else
+//        {
+//            calcDisplayLabel.text = String(answer)
+//        }
+//        
+//        brain.firstNumStor(String(answer))
+//        brain.secondNumStor("0")
+    
+//        brain.secondNumStor(String(answer))
+//        brain.secondNumber = answer
+        
+//        brain.firstNumStor("0")
+//        brain.firstNumber = 0
         
 //       secondNum = NSString(string: calcDisplayLabel.text!).doubleValue
 //        brain.secondNumStor(calcDisplayNum)
 //        let brain = CalculatorBrain(firstNum: firstNum, secondNum: secondNum)
-        
-        
-        calcDisplayLabel.text = String(brain.calculate(currentOperator))
-    }
-        
-        
-//        
-//        if currentOperator == "+"
+//        if brain.canBeInt(answer) == true
 //        {
-//            calcDisplayLabel.text = String(brain.add(firstNum, secondNum:storedNum))
+//            let answerAsIntArr = String(answer).componentsSeparatedByString(".")
+//            calcDisplayLabel.text = String(answerAsIntArr[0])
 //        }
-//        
-        
-        
-//        switch currentOperator
+//        else
 //        {
-//        case "+":
-//            calcDisplayLabel.text = String(brain.add(firstNum, secondNum:secondNum))
-//        case "−":
-//            calcDisplayLabel.text = String(brain.subtract(firstNum, secondNum:secondNum))
-//        case "÷":
-//            calcDisplayLabel.text = String(brain.divide(firstNum, secondNum:secondNum))
-//        case "×":
-//            calcDisplayLabel.text = String(brain.multiply(firstNum, secondNum:secondNum))
-//        case "%":
-//            calcDisplayLabel.text = String(brain.toPercent(secondNum))
-//        case "+/-":
-//            calcDisplayLabel.text = String(brain.toInverse(secondNum))
-//        default:
-//            break
-//          }
+//            calcDisplayLabel.text = String(brain.calculate(currentOperator))
+//        }
+//    }
+    
+    func clearStorValues()
+    {
+        brain.firstNumStor("0")
+        brain.secondNumStor("0")
+        brain.firstNumberStr = ""
+        brain.firstNumber = 0
+        brain.secondNumber = 0
+    }
 
 
 }

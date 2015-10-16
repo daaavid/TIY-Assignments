@@ -12,6 +12,9 @@ class CalculatorBrain
 {
     var firstNumber = 0.0
     var secondNumber = 0.0
+    var firstNumberStr = ""
+    var secondNumberStr = ""
+    var operatorSign = ""
     var result = 0.0
     
 //    func storNum(firstNumber: String)
@@ -22,11 +25,17 @@ class CalculatorBrain
     func firstNumStor(firstNum: String)
     {
         firstNumber = makeDouble(firstNum)
+        firstNumberStr = String(firstNumber)
     }
     
     func secondNumStor(secondNum: String)
     {
         secondNumber = makeDouble(secondNum)
+    }
+    
+    func operatorStor(operatorS: String)
+    {
+        operatorSign = operatorS
     }
     
     func makeDouble(numberToMake: String) -> Double
@@ -57,14 +66,27 @@ class CalculatorBrain
             result = secondNumber * 0.01
         case "+/-":
             result = secondNumber * -1
+        case "":
+            result = firstNumber
         default:
-            break
+//            result = secondNumber
+            result = firstNumber
+            
         }
         
-        firstNumber = 0.0
-        secondNumber = 0.0
-        
         return result
+//        firstNumber = 0.0
+//        secondNumber = 0.0
+        
+//        if canBeInt(result) == true
+//        {
+//            let resultAsIntArr = String(result).componentsSeparatedByString(".")
+//            return String(resultAsIntArr[0])
+//        }
+//        else
+//        {
+//            return String(result)
+//        }
     }
     
     func canBeInt(isDouble: Double) -> Bool
@@ -77,6 +99,12 @@ class CalculatorBrain
         {
             return false
         }
+    }
+    
+    func convertToIntString(result: Double) -> String
+    {
+        let resultAsIntArr = String(result).componentsSeparatedByString(".")
+        return String(resultAsIntArr[0])
     }
 //    func add(firstNum: Double, secondNum: Double) -> Double
 //    {
