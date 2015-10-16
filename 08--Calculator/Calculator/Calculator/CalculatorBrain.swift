@@ -31,6 +31,7 @@ class CalculatorBrain
     func secondNumStor(secondNum: String)
     {
         secondNumber = makeDouble(secondNum)
+        secondNumberStr = String(secondNumber)
     }
     
     func operatorStor(operatorS: String)
