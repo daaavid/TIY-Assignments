@@ -15,7 +15,6 @@ class CalculatorViewController: UIViewController
     var calcDisplayNum = ""
     var currentOperator = ""
     var isTyping = false
-    var multipleOperators = false
     
     var brain = CalculatorBrain()
     
@@ -41,72 +40,71 @@ class CalculatorViewController: UIViewController
     
     @IBAction func numberButton(sender: UIButton)
     {
-        if isTyping == false
+        if isTyping
         {
-            calcDisplayLabel.text = sender.currentTitle!
-            isTyping = true
+            calcDisplayLabel.text = calcDisplayLabel.text! + sender.currentTitle!
         }
         else
         {
-            calcDisplayLabel.text = calcDisplayLabel.text! + sender.currentTitle!
+            calcDisplayLabel.text = sender.currentTitle!
+            isTyping = true
         }
     }
     
     @IBAction func operatorButton(sender: UIButton)
     {
         isTyping = false
-        calcDisplayNum = calcDisplayLabel.text!
-        let operatorPressed = sender.currentTitle!
-        brain.operatorStor(operatorPressed)
         
-        brain.firstNumStor(calcDisplayNum)
-        
-        if brain.firstNumberStr == ""
+        if brain.operatorSign == "="
         {
-            
+            brain.secondNumStor(calcDisplayLabel.text!)
+        }
+        else
+        {
+            brain.operatorSign = sender.currentTitle!
+        }
+        
+        if brain.firstNumStr == ""
+        {
+            brain.firstNumStor(calcDisplayLabel.text!)
+        }
+        else
+        {
+            brain.secondNumStor(calcDisplayLabel.text!)
+            performCalculation()
         }
         
     }
     
     @IBAction func equalsButton(sender: UIButton)
     {
-        
-//        calcDisplayNum = calcDisplayLabel.text!
-        
+        if brain.firstNumStr == ""
+        {
+            brain.firstNumStor(calcDisplayLabel.text!)
+        }
+        else
+        {
+            brain.secondNumStor("")
+            brain.secondNumStor(calcDisplayLabel.text!)
+        }
         performCalculation()
+        clearStorValues()
     }
     
     func performCalculation()
     {
         isTyping = false
-
-        calcDisplayNum = calcDisplayLabel.text!
-        brain.secondNumStor(calcDisplayNum)
-
-        let answer = brain.calculate(brain.operatorSign)
-
-        
-        if brain.canBeInt(answer) == true
-        {
-            calcDisplayLabel.text = brain.convertToIntString(answer)
-        }
-        else
-        {
-            calcDisplayLabel.text = String(answer)
-        }
-
+        let answer = brain.calculate()
+        calcDisplayLabel.text = brain.resultAsString(answer)
         brain.firstNumStor(String(answer))
-        brain.secondNumberStr = ""
-        brain.secondNumStor("")
+        brain.secondNumStor("0")
     }
     
     func clearStorValues()
     {
-        brain.firstNumStor("0")
-        brain.secondNumStor("0")
-        brain.firstNumberStr = ""
-        brain.firstNumber = 0
-        brain.secondNumber = 0
+        brain.firstNumStor("")
+        brain.secondNumStor("")
+        brain.operatorSign = ""
     }
 
 

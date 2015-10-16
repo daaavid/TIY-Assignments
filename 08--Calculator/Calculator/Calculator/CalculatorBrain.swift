@@ -12,48 +12,45 @@ class CalculatorBrain
 {
     var firstNumber = 0.0
     var secondNumber = 0.0
-    var firstNumberStr = ""
-    var secondNumberStr = ""
+    var firstNumStr = ""
+    var secondNumStr = ""
     var operatorSign = ""
     var result = 0.0
     
-//    func storNum(firstNumber: String)
+    func firstNumStor(number: String)
+    {
+        firstNumStr = number
+    }
+    
+    func secondNumStor(number: String)
+    {
+        secondNumStr = number
+    }
+    
+//    func numStor(number: String)
 //    {
-//        firstNum = NSString(string: firstNumber).doubleValue
+//        if operatorSign == ""
+//        {
+//            firstNumberStr = firstNumberStr + number
+//        }
+//
+//        else
+//        {
+//            secondNumberStr = secondNumberStr + number
+//        }
 //    }
     
-    func firstNumStor(firstNum: String)
+    func opStor(operat: String)
     {
-        firstNumber = makeDouble(firstNum)
-        firstNumberStr = String(firstNumber)
+        operatorSign = operat
     }
     
-    func secondNumStor(secondNum: String)
+    func calculate() -> Double
     {
-        secondNumber = makeDouble(secondNum)
-        secondNumberStr = String(secondNumber)
-    }
-    
-    func operatorStor(operatorS: String)
-    {
-        operatorSign = operatorS
-    }
-    
-    func makeDouble(numberToMake: String) -> Double
-    {
-        let numberAsDouble = NSString(string: numberToMake).doubleValue
-        return numberAsDouble
-    }
-    
-//    init(firstNum: Double, secondNum: Double)
-//    {
-//        firstNumber = firstNum
-//        secondNumber = secondNum
-//    }
-    
-    func calculate(currentOperator: String) -> Double
-    {
-        switch currentOperator
+        firstNumber = toDouble(firstNumStr)
+        secondNumber = toDouble(secondNumStr)
+        
+        switch operatorSign
         {
         case "+":
             result = firstNumber + secondNumber
@@ -67,39 +64,44 @@ class CalculatorBrain
             result = secondNumber * 0.01
         case "+/-":
             result = secondNumber * -1
-        case "":
+        case "=":
             result = firstNumber
         default:
-//            result = secondNumber
             result = firstNumber
-            
         }
+
+        firstNumber = 0
+        secondNumber = 0
         
         return result
-//        firstNumber = 0.0
-//        secondNumber = 0.0
-        
-//        if canBeInt(result) == true
-//        {
-//            let resultAsIntArr = String(result).componentsSeparatedByString(".")
-//            return String(resultAsIntArr[0])
-//        }
-//        else
-//        {
-//            return String(result)
-//        }
+    }
+    
+    func resultAsString(result: Double) -> String
+    {
+        if canBeInt(result)
+        {
+            return convertToIntString(result)
+        }
+        else
+        {
+            return String(result)
+        }
+    }
+    
+    func toDouble(numberToMake: String) -> Double
+    {
+        let numberAsDouble = NSString(string: numberToMake).doubleValue
+        return numberAsDouble
     }
     
     func canBeInt(isDouble: Double) -> Bool
     {
+        var rc = false
         if isDouble % 1 == 0
         {
-            return true
+            rc = true
         }
-        else
-        {
-            return false
-        }
+        return rc
     }
     
     func convertToIntString(result: Double) -> String
@@ -107,50 +109,5 @@ class CalculatorBrain
         let resultAsIntArr = String(result).componentsSeparatedByString(".")
         return String(resultAsIntArr[0])
     }
-//    func add(firstNum: Double, secondNum: Double) -> Double
-//    {
-//        let result = firstNum + secondNum
-//        return result
-//    }
-//    
-//    func subtract(firstNum: Double, secondNum: Double) -> Double
-//    {
-//        let result = firstNum - secondNum
-//        return result
-//    }
-//    
-//    func multiply(firstNum: Double, secondNum: Double) -> Double
-//    {
-//        let result = firstNum * secondNum
-//        return result
-//    }
-//    
-//    func divide(firstNum: Double, secondNum: Double) -> Double
-//    {
-//        let result = firstNum / secondNum
-//        return result
-//    }
-//    
-//    func toInverse(firstNum: Double) -> Double
-//    {
-//        let result = firstNum * -1
-//        return result
-//    }
-//    
-//    func toPercent(firstNum: Double) -> Double
-//    {
-//        let result = firstNum * 0.01
-//        return result
-//    }
-//    
-//    func equals()
-//    {
-//        
-//    }
-//    
-//    func toDouble()
-//    {
-//        
-//    }
 
 }
