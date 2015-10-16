@@ -1,0 +1,300 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		634875C31BCEB93700D852F1 /* WinningNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634875C21BCEB93700D852F1 /* WinningNumberViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		638FF16A1BCD6C8A00DE4177 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FF1691BCD6C8A00DE4177 /* AppDelegate.swift */; };
+		638FF16F1BCD6C8A00DE4177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638FF16D1BCD6C8A00DE4177 /* Main.storyboard */; };
+		638FF1711BCD6C8A00DE4177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 638FF1701BCD6C8A00DE4177 /* Assets.xcassets */; };
+		638FF1741BCD6C8A00DE4177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638FF1721BCD6C8A00DE4177 /* LaunchScreen.storyboard */; };
+		638FF17C1BCD6F5C00DE4177 /* LotteryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FF17B1BCD6F5C00DE4177 /* LotteryTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		638FF17E1BCD8D7700DE4177 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FF17D1BCD8D7700DE4177 /* Ticket.swift */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		634875C21BCEB93700D852F1 /* WinningNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinningNumberViewController.swift; sourceTree = "<group>"; };
+		638FF1661BCD6C8A00DE4177 /* jackpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jackpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		638FF1691BCD6C8A00DE4177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		638FF16E1BCD6C8A00DE4177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		638FF1701BCD6C8A00DE4177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		638FF1731BCD6C8A00DE4177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		638FF1751BCD6C8A00DE4177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		638FF17B1BCD6F5C00DE4177 /* LotteryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryTableViewController.swift; sourceTree = "<group>"; };
+		638FF17D1BCD8D7700DE4177 /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		638FF1631BCD6C8A00DE4177 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		638FF15D1BCD6C8A00DE4177 = {
+			isa = PBXGroup;
+			children = (
+				638FF1681BCD6C8A00DE4177 /* jackpot */,
+				638FF1671BCD6C8A00DE4177 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		638FF1671BCD6C8A00DE4177 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				638FF1661BCD6C8A00DE4177 /* jackpot.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		638FF1681BCD6C8A00DE4177 /* jackpot */ = {
+			isa = PBXGroup;
+			children = (
+				638FF1691BCD6C8A00DE4177 /* AppDelegate.swift */,
+				638FF17B1BCD6F5C00DE4177 /* LotteryTableViewController.swift */,
+				634875C21BCEB93700D852F1 /* WinningNumberViewController.swift */,
+				638FF17D1BCD8D7700DE4177 /* Ticket.swift */,
+				638FF16D1BCD6C8A00DE4177 /* Main.storyboard */,
+				638FF1701BCD6C8A00DE4177 /* Assets.xcassets */,
+				638FF1721BCD6C8A00DE4177 /* LaunchScreen.storyboard */,
+				638FF1751BCD6C8A00DE4177 /* Info.plist */,
+			);
+			path = jackpot;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		638FF1651BCD6C8A00DE4177 /* jackpot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 638FF1781BCD6C8A00DE4177 /* Build configuration list for PBXNativeTarget "jackpot" */;
+			buildPhases = (
+				638FF1621BCD6C8A00DE4177 /* Sources */,
+				638FF1631BCD6C8A00DE4177 /* Frameworks */,
+				638FF1641BCD6C8A00DE4177 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = jackpot;
+			productName = jackpot;
+			productReference = 638FF1661BCD6C8A00DE4177 /* jackpot.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		638FF15E1BCD6C8A00DE4177 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "The Iron Yard";
+				TargetAttributes = {
+					638FF1651BCD6C8A00DE4177 = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 95P55J7Q5M;
+					};
+				};
+			};
+			buildConfigurationList = 638FF1611BCD6C8A00DE4177 /* Build configuration list for PBXProject "jackpot" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 638FF15D1BCD6C8A00DE4177;
+			productRefGroup = 638FF1671BCD6C8A00DE4177 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				638FF1651BCD6C8A00DE4177 /* jackpot */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		638FF1641BCD6C8A00DE4177 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				638FF1741BCD6C8A00DE4177 /* LaunchScreen.storyboard in Resources */,
+				638FF1711BCD6C8A00DE4177 /* Assets.xcassets in Resources */,
+				638FF16F1BCD6C8A00DE4177 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		638FF1621BCD6C8A00DE4177 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				634875C31BCEB93700D852F1 /* WinningNumberViewController.swift in Sources */,
+				638FF17C1BCD6F5C00DE4177 /* LotteryTableViewController.swift in Sources */,
+				638FF17E1BCD8D7700DE4177 /* Ticket.swift in Sources */,
+				638FF16A1BCD6C8A00DE4177 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		638FF16D1BCD6C8A00DE4177 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				638FF16E1BCD6C8A00DE4177 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		638FF1721BCD6C8A00DE4177 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				638FF1731BCD6C8A00DE4177 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		638FF1761BCD6C8A00DE4177 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		638FF1771BCD6C8A00DE4177 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		638FF1791BCD6C8A00DE4177 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = jackpot/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiy.jackpot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		638FF17A1BCD6C8A00DE4177 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = jackpot/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiy.jackpot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		638FF1611BCD6C8A00DE4177 /* Build configuration list for PBXProject "jackpot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				638FF1761BCD6C8A00DE4177 /* Debug */,
+				638FF1771BCD6C8A00DE4177 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		638FF1781BCD6C8A00DE4177 /* Build configuration list for PBXNativeTarget "jackpot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				638FF1791BCD6C8A00DE4177 /* Debug */,
+				638FF17A1BCD6C8A00DE4177 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 638FF15E1BCD6C8A00DE4177 /* Project object */;
+}
