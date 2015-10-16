@@ -19,11 +19,27 @@ class CalculatorBrain
 //        firstNum = NSString(string: firstNumber).doubleValue
 //    }
     
-    init(firstNum: Double, secondNum: Double)
+    func firstNumStor(firstNum: String)
     {
-        firstNumber = firstNum
-        secondNumber = secondNum
+        firstNumber = makeDouble(firstNum)
     }
+    
+    func secondNumStor(secondNum: String)
+    {
+        secondNumber = makeDouble(secondNum)
+    }
+    
+    func makeDouble(numberToMake: String) -> Double
+    {
+        let numberAsDouble = NSString(string: numberToMake).doubleValue
+        return numberAsDouble
+    }
+    
+//    init(firstNum: Double, secondNum: Double)
+//    {
+//        firstNumber = firstNum
+//        secondNumber = secondNum
+//    }
     
     func calculate(currentOperator: String) -> Double
     {
@@ -45,7 +61,22 @@ class CalculatorBrain
             break
         }
         
+        firstNumber = 0.0
+        secondNumber = 0.0
+        
         return result
+    }
+    
+    func canBeInt(isDouble: Double) -> Bool
+    {
+        if isDouble % 1 == 0
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
     }
 //    func add(firstNum: Double, secondNum: Double) -> Double
 //    {

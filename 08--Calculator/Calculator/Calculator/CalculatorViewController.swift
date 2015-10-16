@@ -14,13 +14,16 @@ class CalculatorViewController: UIViewController
     
     var calcDisplayNum = ""
     var currentOperator = ""
-    var firstNum = 0.0
-    var secondNum = 0.0
+//    var firstNum = 0.0
+//    var secondNum = 0.0
     var isTyping = false
-    var calcBrain = CalculatorBrain?()
-    var storedNum = 0.0
+    var moreNums = false
+//    var calcBrain = CalculatorBrain?()
+//    var storedNum = 0.0
 //    var currentNum: Double
 //    var currentNumStr: NSString
+    
+    var brain = CalculatorBrain()
     
     override func viewDidLoad()
     {
@@ -70,14 +73,28 @@ class CalculatorViewController: UIViewController
         isTyping = false
         currentOperator = sender.currentTitle!
         calcDisplayNum = calcDisplayLabel.text!
+
+        if brain.firstNumber != 0
+        {
+            brain.secondNumStor(calcDisplayNum)
+            performCalculation()
+        }
+        else
+        {
+            brain.firstNumStor(calcDisplayNum)
+        }
         
+//just assigning first number over and over
+        
+        
+//        firstNum = NSString(string: calcDisplayNum).doubleValue
         
         
  //       calcBrain?.storNum(calcDisplayNum)
         
         
 //        calcDisplay = calcDisplayLabel.text!
-        firstNum = NSString(string: calcDisplayNum).doubleValue
+        
 //        
 //        calcDisplayLabel.text = ""
         
@@ -86,14 +103,23 @@ class CalculatorViewController: UIViewController
     }
     @IBAction func equalsButton(sender: UIButton)
     {
-        secondNum = NSString(string: calcDisplayLabel.text!).doubleValue
+        calcDisplayNum = calcDisplayLabel.text!
+        brain.secondNumStor(calcDisplayNum)
         
+        performCalculation()
+    }
+    
+    func performCalculation()
+    {
         isTyping = false
         
-        let brain = CalculatorBrain(firstNum: firstNum, secondNum: secondNum)
-        calcDisplayLabel.text = String(brain.calculate(currentOperator))
-
+//       secondNum = NSString(string: calcDisplayLabel.text!).doubleValue
+//        brain.secondNumStor(calcDisplayNum)
+//        let brain = CalculatorBrain(firstNum: firstNum, secondNum: secondNum)
         
+        
+        calcDisplayLabel.text = String(brain.calculate(currentOperator))
+    }
         
         
 //        
@@ -122,7 +148,6 @@ class CalculatorViewController: UIViewController
 //            break
 //          }
 
-    }
 
 }
 
