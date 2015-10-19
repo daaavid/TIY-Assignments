@@ -23,9 +23,9 @@ class AstroDetailViewController: UIViewController {
         super.viewDidLoad()
 
         nameLabel.text = astro!.name
-        distLabel.text = astro!.distance
-        orbitLabel.text = astro!.orbit
-        massLabel.text = astro!.mass
+        distLabel.text = "DISTANCE FROM SOL: " + astro!.distance
+        orbitLabel.text = "ORBIT CYCLE: " + astro!.orbit
+        massLabel.text = "MASS: " + astro!.mass
         picture.image = UIImage(named: astro!.picture)
     }
 
