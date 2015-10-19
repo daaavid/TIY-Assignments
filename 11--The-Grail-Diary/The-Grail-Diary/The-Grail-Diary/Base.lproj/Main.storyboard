@@ -106,6 +106,114 @@
             </objects>
             <point key="canvasLocation" x="1097" y="501"/>
         </scene>
+        <!--Astro Detail View Controller-->
+        <scene sceneID="70T-kR-t8W">
+            <objects>
+                <viewController storyboardIdentifier="AstroDetailViewController" id="ie6-O7-5NU" customClass="AstroDetailViewController" customModule="The_Grail_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rfs-6C-9el"/>
+                        <viewControllerLayoutGuide type="bottom" id="60y-cF-KDs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="A4p-ef-bxH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="siW-Rc-9nX">
+                                <rect key="frame" x="0.0" y="44" width="600" height="576"/>
+                                <animations/>
+                            </imageView>
+                            <visualEffectView opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eCr-C9-TYF">
+                                <rect key="frame" x="0.0" y="44" width="600" height="576"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="hr2-G5-bqC">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="576"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <animations/>
+                                </view>
+                                <animations/>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISTANCE" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXh-CI-91M">
+                                <rect key="frame" x="411" y="72" width="168.5" height="49"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ORBIT TIME" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zq-GM-xs7">
+                                <rect key="frame" x="390" y="131" width="189.5" height="49"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MASS" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5G-ST-ulW">
+                                <rect key="frame" x="480" y="190" width="99.5" height="49"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEs-eC-OwH">
+                                <rect key="frame" x="20" y="495" width="177.5" height="85"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="70"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="-1" height="-1"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="H5G-ST-ulW" firstAttribute="top" secondItem="1Zq-GM-xs7" secondAttribute="bottom" constant="10" id="075-A6-I7H"/>
+                            <constraint firstItem="eCr-C9-TYF" firstAttribute="bottom" secondItem="siW-Rc-9nX" secondAttribute="bottom" id="0q1-2u-cjv"/>
+                            <constraint firstItem="H5G-ST-ulW" firstAttribute="trailing" secondItem="1Zq-GM-xs7" secondAttribute="trailing" id="2Za-Ik-hLW"/>
+                            <constraint firstItem="eCr-C9-TYF" firstAttribute="width" secondItem="siW-Rc-9nX" secondAttribute="width" id="3cu-b0-cEi"/>
+                            <constraint firstItem="eCr-C9-TYF" firstAttribute="height" secondItem="siW-Rc-9nX" secondAttribute="height" id="3vU-U4-oWY"/>
+                            <constraint firstItem="eCr-C9-TYF" firstAttribute="trailing" secondItem="siW-Rc-9nX" secondAttribute="trailing" id="6Xr-Zq-UdA"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="fEs-eC-OwH" secondAttribute="leading" id="8e7-nw-M9q"/>
+                            <constraint firstItem="siW-Rc-9nX" firstAttribute="top" secondItem="Rfs-6C-9el" secondAttribute="bottom" constant="-20" id="EAi-6I-c2H"/>
+                            <constraint firstItem="siW-Rc-9nX" firstAttribute="leading" secondItem="A4p-ef-bxH" secondAttribute="leadingMargin" constant="-20" id="Er7-TQ-DX1"/>
+                            <constraint firstItem="eCr-C9-TYF" firstAttribute="leading" secondItem="siW-Rc-9nX" secondAttribute="leading" id="LJg-xi-IDv"/>
+                            <constraint firstItem="siW-Rc-9nX" firstAttribute="height" secondItem="A4p-ef-bxH" secondAttribute="height" id="RIc-xw-Gpj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="siW-Rc-9nX" secondAttribute="trailing" constant="-20" id="Sun-rl-APd"/>
+                            <constraint firstItem="60y-cF-KDs" firstAttribute="top" secondItem="fEs-eC-OwH" secondAttribute="bottom" constant="20" id="Yre-wl-hzP"/>
+                            <constraint firstItem="eCr-C9-TYF" firstAttribute="top" secondItem="siW-Rc-9nX" secondAttribute="top" id="gJo-Y6-gc3"/>
+                            <constraint firstItem="1Zq-GM-xs7" firstAttribute="trailing" secondItem="lXh-CI-91M" secondAttribute="trailing" id="gLU-fY-3D2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lXh-CI-91M" secondAttribute="trailing" id="iXp-11-9XQ"/>
+                            <constraint firstItem="fEs-eC-OwH" firstAttribute="top" secondItem="Rfs-6C-9el" secondAttribute="bottom" id="kLK-zy-C08"/>
+                            <constraint firstItem="lXh-CI-91M" firstAttribute="top" secondItem="Rfs-6C-9el" secondAttribute="bottom" constant="8" id="q3F-iQ-8OC"/>
+                            <constraint firstItem="siW-Rc-9nX" firstAttribute="top" secondItem="Rfs-6C-9el" secondAttribute="bottom" constant="-20" id="qHt-jL-0LP"/>
+                            <constraint firstItem="60y-cF-KDs" firstAttribute="top" secondItem="siW-Rc-9nX" secondAttribute="bottom" constant="-20" id="tQ1-O5-AaA"/>
+                            <constraint firstItem="1Zq-GM-xs7" firstAttribute="top" secondItem="lXh-CI-91M" secondAttribute="bottom" constant="10" id="tQ4-xe-FtT"/>
+                            <constraint firstItem="siW-Rc-9nX" firstAttribute="width" secondItem="A4p-ef-bxH" secondAttribute="width" id="tVx-vW-fyO"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="EAi-6I-c2H"/>
+                                <exclude reference="RIc-xw-Gpj"/>
+                                <exclude reference="tVx-vW-fyO"/>
+                                <exclude reference="kLK-zy-C08"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="distLabel" destination="lXh-CI-91M" id="7dQ-hx-F33"/>
+                        <outlet property="massLabel" destination="H5G-ST-ulW" id="gjh-0c-OFS"/>
+                        <outlet property="nameLabel" destination="fEs-eC-OwH" id="pZC-fU-deF"/>
+                        <outlet property="orbitLabel" destination="1Zq-GM-xs7" id="n91-d2-tgg"/>
+                        <outlet property="picture" destination="siW-Rc-9nX" id="3nA-KT-2VQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fni-yW-gTk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1722" y="501"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="lhm-Cq-2z1">
             <objects>

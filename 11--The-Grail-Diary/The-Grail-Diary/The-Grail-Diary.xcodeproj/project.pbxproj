@@ -17,6 +17,7 @@
 		6385545B1BD57F1200ADEA75 /* sol.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 638554511BD57F1200ADEA75 /* sol.jpg */; settings = {ASSET_TAGS = (); }; };
 		6385545C1BD57F1200ADEA75 /* uranus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 638554521BD57F1200ADEA75 /* uranus.jpg */; settings = {ASSET_TAGS = (); }; };
 		6385545D1BD57F1200ADEA75 /* venus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 638554531BD57F1200ADEA75 /* venus.jpg */; settings = {ASSET_TAGS = (); }; };
+		63902CDD1BD5866500E08F66 /* AstroDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63902CDC1BD5866500E08F66 /* AstroDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		63E72A001BD54ADA000077F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E729FF1BD54ADA000077F9 /* AppDelegate.swift */; };
 		63E72A051BD54ADA000077F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63E72A031BD54ADA000077F9 /* Main.storyboard */; };
 		63E72A071BD54ADA000077F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63E72A061BD54ADA000077F9 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		638554511BD57F1200ADEA75 /* sol.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sol.jpg; sourceTree = "<group>"; };
 		638554521BD57F1200ADEA75 /* uranus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = uranus.jpg; sourceTree = "<group>"; };
 		638554531BD57F1200ADEA75 /* venus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = venus.jpg; sourceTree = "<group>"; };
+		63902CDC1BD5866500E08F66 /* AstroDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstroDetailViewController.swift; sourceTree = "<group>"; };
 		63E729FC1BD54ADA000077F9 /* The-Grail-Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The-Grail-Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E729FF1BD54ADA000077F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63E72A041BD54ADA000077F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				63E72A111BD54B89000077F9 /* TableViewController.swift */,
+				63902CDC1BD5866500E08F66 /* AstroDetailViewController.swift */,
 				63E72A131BD55048000077F9 /* SolSystem.swift */,
 				63E729FF1BD54ADA000077F9 /* AppDelegate.swift */,
 				63E72A151BD556E8000077F9 /* AstroCell.swift */,
@@ -194,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63E72A001BD54ADA000077F9 /* AppDelegate.swift in Sources */,
+				63902CDD1BD5866500E08F66 /* AstroDetailViewController.swift in Sources */,
 				63E72A141BD55048000077F9 /* SolSystem.swift in Sources */,
 				63E72A121BD54B89000077F9 /* TableViewController.swift in Sources */,
 				63E72A161BD556E8000077F9 /* AstroCell.swift in Sources */,

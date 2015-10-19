@@ -85,6 +85,17 @@ class TableViewController: UITableViewController
             print(error)
         }
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        let astroBody = astro[indexPath.row]
+        let ViewControllerfromTemplate = storyboard?.instantiateViewControllerWithIdentifier("AstroDetailViewController") as! AstroDetailViewController
+        ViewControllerfromTemplate.astro = astroBody
+        //        presentViewController(NVCfromTemplate, animated: true, completion: nil)
+        navigationController?.pushViewController(ViewControllerfromTemplate, animated: true)
+        
+    }
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
