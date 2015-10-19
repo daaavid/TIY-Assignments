@@ -1,0 +1,352 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		638554541BD57F1200ADEA75 /* earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6385544A1BD57F1200ADEA75 /* earth.jpg */; settings = {ASSET_TAGS = (); }; };
+		638554551BD57F1200ADEA75 /* jupiter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6385544B1BD57F1200ADEA75 /* jupiter.jpg */; settings = {ASSET_TAGS = (); }; };
+		638554561BD57F1200ADEA75 /* mars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6385544C1BD57F1200ADEA75 /* mars.jpg */; settings = {ASSET_TAGS = (); }; };
+		638554571BD57F1200ADEA75 /* mercury.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6385544D1BD57F1200ADEA75 /* mercury.jpg */; settings = {ASSET_TAGS = (); }; };
+		638554581BD57F1200ADEA75 /* neptune.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6385544E1BD57F1200ADEA75 /* neptune.jpg */; settings = {ASSET_TAGS = (); }; };
+		638554591BD57F1200ADEA75 /* pluto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6385544F1BD57F1200ADEA75 /* pluto.jpg */; settings = {ASSET_TAGS = (); }; };
+		6385545A1BD57F1200ADEA75 /* saturn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 638554501BD57F1200ADEA75 /* saturn.jpg */; settings = {ASSET_TAGS = (); }; };
+		6385545B1BD57F1200ADEA75 /* sol.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 638554511BD57F1200ADEA75 /* sol.jpg */; settings = {ASSET_TAGS = (); }; };
+		6385545C1BD57F1200ADEA75 /* uranus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 638554521BD57F1200ADEA75 /* uranus.jpg */; settings = {ASSET_TAGS = (); }; };
+		6385545D1BD57F1200ADEA75 /* venus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 638554531BD57F1200ADEA75 /* venus.jpg */; settings = {ASSET_TAGS = (); }; };
+		63E72A001BD54ADA000077F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E729FF1BD54ADA000077F9 /* AppDelegate.swift */; };
+		63E72A051BD54ADA000077F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63E72A031BD54ADA000077F9 /* Main.storyboard */; };
+		63E72A071BD54ADA000077F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63E72A061BD54ADA000077F9 /* Assets.xcassets */; };
+		63E72A0A1BD54ADA000077F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63E72A081BD54ADA000077F9 /* LaunchScreen.storyboard */; };
+		63E72A121BD54B89000077F9 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E72A111BD54B89000077F9 /* TableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		63E72A141BD55048000077F9 /* SolSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E72A131BD55048000077F9 /* SolSystem.swift */; settings = {ASSET_TAGS = (); }; };
+		63E72A161BD556E8000077F9 /* AstroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E72A151BD556E8000077F9 /* AstroCell.swift */; settings = {ASSET_TAGS = (); }; };
+		63E72A181BD55840000077F9 /* astro.json in Resources */ = {isa = PBXBuildFile; fileRef = 63E72A171BD55840000077F9 /* astro.json */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6385544A1BD57F1200ADEA75 /* earth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = earth.jpg; sourceTree = "<group>"; };
+		6385544B1BD57F1200ADEA75 /* jupiter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jupiter.jpg; sourceTree = "<group>"; };
+		6385544C1BD57F1200ADEA75 /* mars.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mars.jpg; sourceTree = "<group>"; };
+		6385544D1BD57F1200ADEA75 /* mercury.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mercury.jpg; sourceTree = "<group>"; };
+		6385544E1BD57F1200ADEA75 /* neptune.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = neptune.jpg; sourceTree = "<group>"; };
+		6385544F1BD57F1200ADEA75 /* pluto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pluto.jpg; sourceTree = "<group>"; };
+		638554501BD57F1200ADEA75 /* saturn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = saturn.jpg; sourceTree = "<group>"; };
+		638554511BD57F1200ADEA75 /* sol.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sol.jpg; sourceTree = "<group>"; };
+		638554521BD57F1200ADEA75 /* uranus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = uranus.jpg; sourceTree = "<group>"; };
+		638554531BD57F1200ADEA75 /* venus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = venus.jpg; sourceTree = "<group>"; };
+		63E729FC1BD54ADA000077F9 /* The-Grail-Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The-Grail-Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		63E729FF1BD54ADA000077F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		63E72A041BD54ADA000077F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		63E72A061BD54ADA000077F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		63E72A091BD54ADA000077F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		63E72A0B1BD54ADA000077F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63E72A111BD54B89000077F9 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = ../TableViewController.swift; sourceTree = "<group>"; };
+		63E72A131BD55048000077F9 /* SolSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolSystem.swift; sourceTree = "<group>"; };
+		63E72A151BD556E8000077F9 /* AstroCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstroCell.swift; sourceTree = "<group>"; };
+		63E72A171BD55840000077F9 /* astro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = astro.json; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		63E729F91BD54ADA000077F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		638554491BD57F1200ADEA75 /* astro */ = {
+			isa = PBXGroup;
+			children = (
+				6385544A1BD57F1200ADEA75 /* earth.jpg */,
+				6385544B1BD57F1200ADEA75 /* jupiter.jpg */,
+				6385544C1BD57F1200ADEA75 /* mars.jpg */,
+				6385544D1BD57F1200ADEA75 /* mercury.jpg */,
+				6385544E1BD57F1200ADEA75 /* neptune.jpg */,
+				6385544F1BD57F1200ADEA75 /* pluto.jpg */,
+				638554501BD57F1200ADEA75 /* saturn.jpg */,
+				638554511BD57F1200ADEA75 /* sol.jpg */,
+				638554521BD57F1200ADEA75 /* uranus.jpg */,
+				638554531BD57F1200ADEA75 /* venus.jpg */,
+			);
+			path = astro;
+			sourceTree = "<group>";
+		};
+		63E729F31BD54ADA000077F9 = {
+			isa = PBXGroup;
+			children = (
+				63E729FE1BD54ADA000077F9 /* The-Grail-Diary */,
+				63E729FD1BD54ADA000077F9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		63E729FD1BD54ADA000077F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63E729FC1BD54ADA000077F9 /* The-Grail-Diary.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		63E729FE1BD54ADA000077F9 /* The-Grail-Diary */ = {
+			isa = PBXGroup;
+			children = (
+				63E72A111BD54B89000077F9 /* TableViewController.swift */,
+				63E72A131BD55048000077F9 /* SolSystem.swift */,
+				63E729FF1BD54ADA000077F9 /* AppDelegate.swift */,
+				63E72A151BD556E8000077F9 /* AstroCell.swift */,
+				63E72A171BD55840000077F9 /* astro.json */,
+				63E72A061BD54ADA000077F9 /* Assets.xcassets */,
+				63E72A081BD54ADA000077F9 /* LaunchScreen.storyboard */,
+				63E72A0B1BD54ADA000077F9 /* Info.plist */,
+				63E72A031BD54ADA000077F9 /* Main.storyboard */,
+				638554491BD57F1200ADEA75 /* astro */,
+			);
+			path = "The-Grail-Diary";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		63E729FB1BD54ADA000077F9 /* The-Grail-Diary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63E72A0E1BD54ADA000077F9 /* Build configuration list for PBXNativeTarget "The-Grail-Diary" */;
+			buildPhases = (
+				63E729F81BD54ADA000077F9 /* Sources */,
+				63E729F91BD54ADA000077F9 /* Frameworks */,
+				63E729FA1BD54ADA000077F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "The-Grail-Diary";
+			productName = "The-Grail-Diary";
+			productReference = 63E729FC1BD54ADA000077F9 /* The-Grail-Diary.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		63E729F41BD54ADA000077F9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "The Iron Yard";
+				TargetAttributes = {
+					63E729FB1BD54ADA000077F9 = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 95P55J7Q5M;
+					};
+				};
+			};
+			buildConfigurationList = 63E729F71BD54ADA000077F9 /* Build configuration list for PBXProject "The-Grail-Diary" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 63E729F31BD54ADA000077F9;
+			productRefGroup = 63E729FD1BD54ADA000077F9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				63E729FB1BD54ADA000077F9 /* The-Grail-Diary */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		63E729FA1BD54ADA000077F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6385545B1BD57F1200ADEA75 /* sol.jpg in Resources */,
+				6385545D1BD57F1200ADEA75 /* venus.jpg in Resources */,
+				63E72A0A1BD54ADA000077F9 /* LaunchScreen.storyboard in Resources */,
+				6385545A1BD57F1200ADEA75 /* saturn.jpg in Resources */,
+				638554581BD57F1200ADEA75 /* neptune.jpg in Resources */,
+				638554591BD57F1200ADEA75 /* pluto.jpg in Resources */,
+				638554571BD57F1200ADEA75 /* mercury.jpg in Resources */,
+				638554541BD57F1200ADEA75 /* earth.jpg in Resources */,
+				63E72A181BD55840000077F9 /* astro.json in Resources */,
+				638554551BD57F1200ADEA75 /* jupiter.jpg in Resources */,
+				6385545C1BD57F1200ADEA75 /* uranus.jpg in Resources */,
+				63E72A071BD54ADA000077F9 /* Assets.xcassets in Resources */,
+				638554561BD57F1200ADEA75 /* mars.jpg in Resources */,
+				63E72A051BD54ADA000077F9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		63E729F81BD54ADA000077F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63E72A001BD54ADA000077F9 /* AppDelegate.swift in Sources */,
+				63E72A141BD55048000077F9 /* SolSystem.swift in Sources */,
+				63E72A121BD54B89000077F9 /* TableViewController.swift in Sources */,
+				63E72A161BD556E8000077F9 /* AstroCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		63E72A031BD54ADA000077F9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63E72A041BD54ADA000077F9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		63E72A081BD54ADA000077F9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63E72A091BD54ADA000077F9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		63E72A0C1BD54ADA000077F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		63E72A0D1BD54ADA000077F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		63E72A0F1BD54ADA000077F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "The-Grail-Diary/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tiy.The-Grail-Diary";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		63E72A101BD54ADA000077F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "The-Grail-Diary/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tiy.The-Grail-Diary";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		63E729F71BD54ADA000077F9 /* Build configuration list for PBXProject "The-Grail-Diary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63E72A0C1BD54ADA000077F9 /* Debug */,
+				63E72A0D1BD54ADA000077F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63E72A0E1BD54ADA000077F9 /* Build configuration list for PBXNativeTarget "The-Grail-Diary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63E72A0F1BD54ADA000077F9 /* Debug */,
+				63E72A101BD54ADA000077F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 63E729F41BD54ADA000077F9 /* Project object */;
+}

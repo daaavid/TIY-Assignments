@@ -1,0 +1,72 @@
+[
+ {
+ "name": "SOL",
+ "distance": "0 AU",
+ "orbit": "0 DAYS",
+ "mass": "1.989 × 10^30 KG",
+ "picture": "sol.jpg"
+ },
+ {
+ "name": "MERCURY",
+ "distance": "0.387 AU",
+ "orbit": "88 DAYS",
+ "mass": "3.301 × 10^23 KG",
+ "picture": "mercury.jpg"
+ },
+ {
+ "name": "VENUS",
+ "distance": "0.723 AU",
+ "orbit": "225 DAYS",
+ "mass": "4.867 × 10^24 KG",
+ "picture": "venus.jpg"
+ },
+ {
+ "name": "EARTH",
+ "distance": "1 AU",
+ "orbit": "365 DAYS",
+ "mass": "5.972 × 10^24 KG",
+ "picture": "earth.jpg"
+ },
+ {
+ "name": "MARS",
+ "distance": "1.524 AU",
+ "orbit": "687 DAYS",
+ "mass": "6.39 × 10^23 KG",
+ "picture": "mars.jpg"
+ },
+ {
+ "name": "JUPITER",
+ "distance": "5.203 AU",
+ "orbit": "4380 DAYS",
+ "mass": "1.898 × 10^27 KG",
+ "picture": "jupiter.jpg"
+ },
+ {
+ "name": "SATURN",
+ "distance": "9.523 AU",
+ "orbit": "10585 DAYS",
+ "mass": "5.683 × 10^26 KG",
+ "picture": "saturn.jpg"
+ },
+ {
+ "name": "URANUS",
+ "distance": "19.208 AU",
+ "orbit": "30660 DAYS",
+ "mass": "8.681 × 10^25 KG",
+ "picture": "uranus.jpg"
+ },
+ {
+ "name": "NEPTUNE",
+ "distance": "30.087 AU",
+ "orbit": "60225 DAYS",
+ "mass": "1.024 × 10^26 KG",
+ "picture": "neptune.jpg"
+ },
+ {
+ "name": "PLUTO",
+ "distance": "39.746 AU",
+ "orbit": "90520 DAYS",
+ "mass": "1.30900 × 10^22 KG",
+ "picture": "pluto.jpg"
+ },
+]

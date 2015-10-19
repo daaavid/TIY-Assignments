@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="SIa-hw-pbB">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Table View Controller-->
+        <scene sceneID="cBo-2S-67y">
+            <objects>
+                <tableViewController id="EPA-Qg-xMW" customClass="TableViewController" customModule="The_Grail_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="28" sectionFooterHeight="28" id="7WA-bQ-z8q">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexTrackingBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoCell" rowHeight="59" id="DSv-v1-Gry" customClass="AstroCell" customModule="The_Grail_Diary" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="59"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DSv-v1-Gry" id="riK-Ge-zXJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="58.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CFx-Qh-T9b">
+                                            <rect key="frame" x="-12" y="0.0" width="660" height="58.5"/>
+                                            <animations/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcN-Bt-Opm">
+                                            <rect key="frame" x="28" y="7.5" width="89.5" height="43"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="35"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                            <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <size key="shadowOffset" width="-1" height="-1"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eJ-IO-MJb">
+                                            <rect key="frame" x="535" y="11" width="42" height="12"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orbit Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13N-vH-av4">
+                                            <rect key="frame" x="526" y="23" width="50.5" height="12"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mass" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9NF-FM-72b">
+                                            <rect key="frame" x="552" y="35" width="25" height="12"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="CFx-Qh-T9b" firstAttribute="width" secondItem="riK-Ge-zXJ" secondAttribute="width" multiplier="1.1" id="0XF-53-kvW"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="CFx-Qh-T9b" secondAttribute="trailing" id="7Wb-0P-iaS"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="9NF-FM-72b" secondAttribute="trailing" constant="15" id="Iqi-l5-ukI"/>
+                                        <constraint firstItem="CFx-Qh-T9b" firstAttribute="leading" secondItem="riK-Ge-zXJ" secondAttribute="leadingMargin" constant="-20" id="Msq-N1-ba7"/>
+                                        <constraint firstItem="FcN-Bt-Opm" firstAttribute="centerY" secondItem="riK-Ge-zXJ" secondAttribute="centerY" id="UOF-TU-aXu"/>
+                                        <constraint firstItem="13N-vH-av4" firstAttribute="centerY" secondItem="FcN-Bt-Opm" secondAttribute="centerY" id="XUm-Pf-8dr"/>
+                                        <constraint firstItem="CFx-Qh-T9b" firstAttribute="height" secondItem="riK-Ge-zXJ" secondAttribute="height" id="YHX-ra-cw8"/>
+                                        <constraint firstItem="9NF-FM-72b" firstAttribute="top" secondItem="13N-vH-av4" secondAttribute="bottom" id="b9z-O3-Wck"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="8eJ-IO-MJb" secondAttribute="trailing" constant="15" id="fJ0-VA-Z6c"/>
+                                        <constraint firstItem="CFx-Qh-T9b" firstAttribute="centerY" secondItem="riK-Ge-zXJ" secondAttribute="centerY" id="ll9-fs-byi"/>
+                                        <constraint firstItem="13N-vH-av4" firstAttribute="top" secondItem="8eJ-IO-MJb" secondAttribute="bottom" id="loo-33-dKD"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="13N-vH-av4" secondAttribute="trailing" constant="15" id="n5F-F7-4xU"/>
+                                        <constraint firstItem="FcN-Bt-Opm" firstAttribute="leading" secondItem="riK-Ge-zXJ" secondAttribute="leadingMargin" constant="20" id="xAk-i2-2bo"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="7Wb-0P-iaS"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="distLabel" destination="8eJ-IO-MJb" id="yvg-8P-ZdC"/>
+                                    <outlet property="nameLabel" destination="FcN-Bt-Opm" id="1v1-Ih-PFN"/>
+                                    <outlet property="orbitLabel" destination="13N-vH-av4" id="aPL-oQ-Ruu"/>
+                                    <outlet property="picture" destination="CFx-Qh-T9b" id="Szx-sl-Dxn"/>
+                                    <outlet property="tempLabel" destination="9NF-FM-72b" id="yuf-5D-2d0"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="EPA-Qg-xMW" id="B2c-Bk-PCQ"/>
+                            <outlet property="delegate" destination="EPA-Qg-xMW" id="ew1-Ud-esg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="rk2-zW-Ovu"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nks-Gg-XXX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1097" y="501"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lhm-Cq-2z1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SIa-hw-pbB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uQv-9D-u8m">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EPA-Qg-xMW" kind="relationship" relationship="rootViewController" id="mzk-2R-ieA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1rd-jm-9Gl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="411" y="501"/>
+        </scene>
+    </scenes>
+</document>
