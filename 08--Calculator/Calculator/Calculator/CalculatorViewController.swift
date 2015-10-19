@@ -11,11 +11,8 @@ import UIKit
 class CalculatorViewController: UIViewController
 {
     @IBOutlet var calcDisplayLabel: UILabel!
-    
-    var calcDisplayNum = ""
-    var currentOperator = ""
+
     var isTyping = false
-    
     var brain = CalculatorBrain()
     
     override func viewDidLoad()
@@ -30,7 +27,7 @@ class CalculatorViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
     
-//MARK: - ACTION HANDLERS
+//MARK: - THE ACTION HANDLERS 2: ELECTRIC BOOGALOO
     
     @IBAction func clearButton(sender: UIButton)
     {
@@ -40,6 +37,8 @@ class CalculatorViewController: UIViewController
     
     @IBAction func numberButton(sender: UIButton)
     {
+        brain.lastPressWasNum = true
+        
         if isTyping
         {
             calcDisplayLabel.text = calcDisplayLabel.text! + sender.currentTitle!
@@ -54,59 +53,64 @@ class CalculatorViewController: UIViewController
     @IBAction func operatorButton(sender: UIButton)
     {
         isTyping = false
-        
-        if brain.operatorSign == "="
-        {
-            brain.secondNumStor(calcDisplayLabel.text!)
-        }
-        else
-        {
-            brain.operatorSign = sender.currentTitle!
-        }
-        
+        brain.operatorSign = sender.currentTitle!
+
         if brain.firstNumStr == ""
         {
-            brain.firstNumStor(calcDisplayLabel.text!)
+            //if there isn't a first number, assign one
+            brain.firstNumStr = calcDisplayLabel.text!
         }
         else
         {
-            brain.secondNumStor(calcDisplayLabel.text!)
+            //otherwie, store it in the second number and do that calculation right away.
+            //however, only if the last selection before the operator was a number.
+            //ie no = then +
+            
+            if brain.lastPressWasNum == true
+            {
+                brain.secondNumStr = calcDisplayLabel.text!
+            }
+        
             performCalculation()
         }
-        
     }
     
     @IBAction func equalsButton(sender: UIButton)
     {
-        if brain.firstNumStr == ""
+        
+        if brain.operatorSign == ""
         {
-            brain.firstNumStor(calcDisplayLabel.text!)
+            //if user just presses a number and then 0 without pressing an operator, the calc display just shows the number
+            brain.firstNumStr = calcDisplayLabel.text!
         }
         else
         {
-            brain.secondNumStor("")
-            brain.secondNumStor(calcDisplayLabel.text!)
+            //otherwise, store the second number that's on the screen
+            brain.secondNumStr = calcDisplayLabel.text!
         }
+
         performCalculation()
-        clearStorValues()
     }
+    
+//MARK: - private
     
     func performCalculation()
     {
         isTyping = false
+        
         let answer = brain.calculate()
         calcDisplayLabel.text = brain.resultAsString(answer)
-        brain.firstNumStor(String(answer))
-        brain.secondNumStor("0")
+        
+        brain.firstNumStr = String(answer)
+        brain.secondNumStr = "0"
+        brain.lastPressWasNum = false
     }
     
     func clearStorValues()
     {
-        brain.firstNumStor("")
-        brain.secondNumStor("")
+        brain.firstNumStr = ""
+        brain.secondNumStr = ""
         brain.operatorSign = ""
     }
-
-
 }
 

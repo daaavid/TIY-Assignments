@@ -10,45 +10,16 @@ import Foundation
 
 class CalculatorBrain
 {
-    var firstNumber = 0.0
-    var secondNumber = 0.0
     var firstNumStr = ""
     var secondNumStr = ""
     var operatorSign = ""
     var result = 0.0
-    
-    func firstNumStor(number: String)
-    {
-        firstNumStr = number
-    }
-    
-    func secondNumStor(number: String)
-    {
-        secondNumStr = number
-    }
-    
-//    func numStor(number: String)
-//    {
-//        if operatorSign == ""
-//        {
-//            firstNumberStr = firstNumberStr + number
-//        }
-//
-//        else
-//        {
-//            secondNumberStr = secondNumberStr + number
-//        }
-//    }
-    
-    func opStor(operat: String)
-    {
-        operatorSign = operat
-    }
-    
+    var lastPressWasNum = false
+
     func calculate() -> Double
     {
-        firstNumber = toDouble(firstNumStr)
-        secondNumber = toDouble(secondNumStr)
+        let firstNumber = toDouble(firstNumStr)
+        let secondNumber = toDouble(secondNumStr)
         
         switch operatorSign
         {
@@ -70,15 +41,12 @@ class CalculatorBrain
             result = firstNumber
         }
 
-        firstNumber = 0
-        secondNumber = 0
-        
         return result
     }
     
     func resultAsString(result: Double) -> String
     {
-        if canBeInt(result)
+        if canBeInt(result) == true
         {
             return convertToIntString(result)
         }
@@ -109,5 +77,4 @@ class CalculatorBrain
         let resultAsIntArr = String(result).componentsSeparatedByString(".")
         return String(resultAsIntArr[0])
     }
-
 }
