@@ -10,13 +10,7 @@
 
 import Foundation
 
-//protocol PickerDelegate
-//{
-//    func numberWasChosen(winningTicketNum: Array<Int>)
-//    //    func numberWasChosen(number: Int)
-//}
-
-class Ticket//: PickerDelegate
+class Ticket
 {
     var ticketString = ""
     var ticketArray = Array<Int>()
@@ -27,20 +21,13 @@ class Ticket//: PickerDelegate
     {
         ticketArray = makeTicket()
         ticketString = formatTicket(ticketArray)
-//        winningTicket = [1, 2, 3, 4, 5, 6,]
-////        checkWinningTicket()
     }
     
     init(arrayFromPicker: Array<Int>)
     {
         winningTicket = arrayFromPicker
     }
-    
-//    func setWinningTicket()
-//    {
-//        
-//    }
-    
+
     func makeTicket() -> Array<Int>
     {
         var willLoop = true
@@ -48,7 +35,6 @@ class Ticket//: PickerDelegate
         {
             ticketArray = []
             
-//            for var x = 6; x > 0; x--
             while ticketArray.count < 6
             {
                 let number = Int(1 + arc4random() % 52)
@@ -64,7 +50,6 @@ class Ticket//: PickerDelegate
         }
     }
     
-
     func checkDuplicateNumbers(arrayToTest: Array<Int>) -> Bool
     {
         let arrayFromSet = Set<Int>(arrayToTest)
@@ -88,10 +73,6 @@ class Ticket//: PickerDelegate
         return ticketAsString
     }
     
-//    func numberWasChosen(winningTicketNum: Array<Int>)
-//    {
-//        checkWinningTicket(winningTicket)
-//    }
     
     func checkWinningTicket(winningTicketNum: Array<Int>) -> String
     {
@@ -124,73 +105,4 @@ class Ticket//: PickerDelegate
         return "$ " + String(prizeAmount)
         
     }
-    
-    
-    
-//    func checkWinningTicket(winningTicketNum: Array<Int>, testTicket: Array<Int>) -> String
-//    {
-//        var matchingNumbers = 0
-//        var prizeAmount = 0
-//        for x in winningTicketNum
-//        {
-//            if testTicket.contains(x)
-//            {
-//                matchingNumbers += 1
-//            }
-//        }
-//        if matchingNumbers == 3
-//        {
-//            prizeAmount = 1
-//        }
-//        if matchingNumbers == 4
-//        {
-//            prizeAmount = 5
-//        }
-//        if matchingNumbers == 5
-//        {
-//            prizeAmount = 20
-//        }
-//        if matchingNumbers == 6
-//        {
-//            prizeAmount = 100
-//        }
-//        
-//        return "$ " + String(prizeAmount)
-//        
-//    }
-    
-    
-//    func checkWinningTicket() -> String
-//    {
-//        let winningNumber = [1, 2, 3, 4, 5, 6]
-//        var matchingNumbers = 0
-//        var prizeAmount = 0
-//        for x in winningNumber
-//        {
-//            if ticketArray.contains(x)
-//            {
-//                matchingNumbers += 1
-//            }
-//        }
-//        if matchingNumbers == 3
-//        {
-//            prizeAmount = 1
-//        }
-//        if matchingNumbers == 4
-//        {
-//            prizeAmount = 5
-//        }
-//        if matchingNumbers == 5
-//        {
-//            prizeAmount = 20
-//        }
-//        if matchingNumbers == 6
-//        {
-//            prizeAmount = 100
-//        }
-//        
-//        return "$ " + String(prizeAmount)
-//
-//    }
-    
 }
