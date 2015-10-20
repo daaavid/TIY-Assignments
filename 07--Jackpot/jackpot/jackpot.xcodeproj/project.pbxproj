@@ -60,8 +60,8 @@
 			children = (
 				638FF1691BCD6C8A00DE4177 /* AppDelegate.swift */,
 				638FF17B1BCD6F5C00DE4177 /* LotteryTableViewController.swift */,
-				634875C21BCEB93700D852F1 /* WinningNumberViewController.swift */,
 				638FF17D1BCD8D7700DE4177 /* Ticket.swift */,
+				634875C21BCEB93700D852F1 /* WinningNumberViewController.swift */,
 				638FF16D1BCD6C8A00DE4177 /* Main.storyboard */,
 				638FF1701BCD6C8A00DE4177 /* Assets.xcassets */,
 				638FF1721BCD6C8A00DE4177 /* LaunchScreen.storyboard */,
