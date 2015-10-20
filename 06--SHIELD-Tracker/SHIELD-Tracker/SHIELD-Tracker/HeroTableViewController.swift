@@ -95,7 +95,8 @@ class HeroTableViewController: UITableViewController
         let aHero = heroes[indexPath.row]
         let NVCfromTemplate = storyboard?.instantiateViewControllerWithIdentifier("HeroDetailViewController") as! HeroDetailViewController
         NVCfromTemplate.hero = aHero
-        presentViewController(NVCfromTemplate, animated: true, completion: nil)
+//        presentViewController(NVCfromTemplate, animated: true, completion: nil)
+        navigationController?.pushViewController(NVCfromTemplate, animated: true)
         
     }
 
