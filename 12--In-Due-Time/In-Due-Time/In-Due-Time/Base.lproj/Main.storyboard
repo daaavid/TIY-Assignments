@@ -42,7 +42,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Todo Item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kso-B2-ppb">
-                                            <rect key="frame" x="8" y="13" width="412" height="17"/>
+                                            <rect key="frame" x="8" y="13" width="312" height="17"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -79,7 +79,7 @@
                                     <constraints>
                                         <constraint firstAttribute="leadingMargin" secondItem="kso-B2-ppb" secondAttribute="leading" id="1PM-1j-k8f"/>
                                         <constraint firstItem="MpQ-VJ-1F4" firstAttribute="centerY" secondItem="KUl-wg-d3G" secondAttribute="centerY" id="9ki-j4-yOB"/>
-                                        <constraint firstItem="MpQ-VJ-1F4" firstAttribute="leading" secondItem="kso-B2-ppb" secondAttribute="trailing" constant="140" id="FXp-i2-KtL"/>
+                                        <constraint firstItem="MpQ-VJ-1F4" firstAttribute="leading" secondItem="kso-B2-ppb" secondAttribute="trailing" constant="240" id="FXp-i2-KtL"/>
                                         <constraint firstItem="kso-B2-ppb" firstAttribute="centerY" secondItem="KUl-wg-d3G" secondAttribute="centerY" id="JKw-B4-S2e"/>
                                         <constraint firstItem="MpQ-VJ-1F4" firstAttribute="leading" secondItem="zvw-9Q-cyK" secondAttribute="trailing" constant="19" id="TWM-Ab-c20"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="MpQ-VJ-1F4" secondAttribute="trailing" constant="2" id="Xj8-6b-5tI"/>
