@@ -29,8 +29,8 @@
 		631386161BD6A54E0097E57F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		631386181BD6A54E0097E57F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6313861E1BD6A57C0097E57F /* TodoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
-		631386201BD6A6F60097E57F /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		631386211BD6A6F60097E57F /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		631386201BD6A6F60097E57F /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Todo+CoreDataProperties.swift"; path = "../Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		631386211BD6A6F60097E57F /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Todo.swift; path = ../Todo.swift; sourceTree = "<group>"; };
 		631386241BD6A9D10097E57F /* TodoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		631386271BD6B2070097E57F /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 		631386281BD6B2070097E57F /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
@@ -50,8 +50,6 @@
 		631385FD1BD6A54E0097E57F = {
 			isa = PBXGroup;
 			children = (
-				631386201BD6A6F60097E57F /* Todo+CoreDataProperties.swift */,
-				631386211BD6A6F60097E57F /* Todo.swift */,
 				631386081BD6A54E0097E57F /* In-Due-Time */,
 				631386071BD6A54E0097E57F /* Products */,
 			);
@@ -76,6 +74,8 @@
 				631386101BD6A54E0097E57F /* In_Due_Time.xcdatamodeld */,
 				631386241BD6A9D10097E57F /* TodoCell.swift */,
 				631386091BD6A54E0097E57F /* AppDelegate.swift */,
+				631386201BD6A6F60097E57F /* Todo+CoreDataProperties.swift */,
+				631386211BD6A6F60097E57F /* Todo.swift */,
 				631386261BD6B2070097E57F /* check */,
 			);
 			path = "In-Due-Time";

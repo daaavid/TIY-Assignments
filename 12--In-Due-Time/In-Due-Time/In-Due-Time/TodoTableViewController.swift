@@ -9,11 +9,6 @@
 import UIKit
 import CoreData
 
-//@objc protocol DatePickerDelegate
-//{
-//    func dateWasChosen(dueDate: NSDate)
-//}
-
 class TodoTableViewController: UITableViewController, UITextFieldDelegate//, DatePickerDelegate
 {
     
@@ -50,18 +45,6 @@ class TodoTableViewController: UITableViewController, UITextFieldDelegate//, Dat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-//    {
-//        //runs any time we segue out of timecircuits
-//        //take datepickerviewcontroller
-//        if segue.identifier == "ShowDatePickerSegue"
-//        {
-//            let pickerVC = segue.destinationViewController as! PickerViewController
-//
-//            pickerVC.delegate = self
-//        }
-//    }
 
 
     // MARK: - Table view data source
@@ -92,15 +75,6 @@ class TodoTableViewController: UITableViewController, UITextFieldDelegate//, Dat
             cell.titleTextField.text = todoItem.title
         }
         
-//        if todoItem.date == nil
-//        {
-//            cell.dateTextField.becomeFirstResponder()
-//        }
-//        else
-//        {
-//            cell.dateTextField.text = todoItem.date
-//        }
-        
         if todoItem.isDone
         {
             cell.checkbox.setImage(checkImg, forState: UIControlState.Normal)
@@ -117,16 +91,12 @@ class TodoTableViewController: UITableViewController, UITextFieldDelegate//, Dat
         return cell
     }
     
-
-    
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
     {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    
-
     
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
@@ -143,42 +113,11 @@ class TodoTableViewController: UITableViewController, UITextFieldDelegate//, Dat
                 managedObjectContext.deleteObject(todoItem)
             }
             
-            saveContext()
+            saveSlot1()
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
-        else
-        {
-            
-        }
-        
     }
-    
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     //MARK: - ACTION HANDLERS 3: REVENGE OF THE HANDLERS
     @IBAction func addTodo(sender: UIBarButtonItem)
@@ -210,39 +149,10 @@ class TodoTableViewController: UITableViewController, UITextFieldDelegate//, Dat
             cell.backgroundColor = UIColor(red:0.91, green:0.91, blue:0.91, alpha:1.0)
             cell.titleTextField.textColor = UIColor.blackColor()
         }
-//        let countAsInt = Int16(sender.value)
-//        aCounter.count = countAsInt
-//        cell.countLabel.text = "\(countAsInt)"
-        tableView.reloadData()
-        saveContext()
 
+        tableView.reloadData()
+        saveSlot1()
     }
-        
-//    @IBAction func checkboxPressed(sender: UIButton)
-//    {
-//        let contentView = sender.superview
-//        let cell = contentView?.superview as! TodoCell
-//        let indexPath = tableView.indexPathForCell(cell)
-//        let todoItem = todoArray[indexPath!.row]
-//
-//        if sender.currentImage == uncheckImg
-//        {
-//            cell.checkbox.setImage(checkImg, forState: UIControlState.Normal)
-//            todoItem.isDone = true
-//            cell.backgroundColor = UIColor.greenColor()
-//        }
-//        else
-//        {
-//            cell.checkbox.setImage(uncheckImg, forState: UIControlState.Normal)
-//            todoItem.isDone = false
-//            cell.backgroundColor = UIColor.whiteColor()
-//        }
-////        let countAsInt = Int16(sender.value)
-////        aCounter.count = countAsInt
-////        cell.countLabel.text = "\(countAsInt)"
-//        tableView.reloadData()
-//        saveContext()
-//    }
     
     //MARK: - Delegates
     
@@ -259,25 +169,15 @@ class TodoTableViewController: UITableViewController, UITextFieldDelegate//, Dat
             let todoItem = todoArray[indexPath!.row]
             todoItem.title = textField.text
             textField.resignFirstResponder()
-            saveContext()
+            saveSlot1()
         }
         
         return rc
     }
-//    
-//    func dateWasChosen(dueDate: NSDate)
-//    {
-//        let contentView = sender.superview
-//        let cell = contentView?.superview as! TodoCell
-//        let indexPath = tableView.indexPathForCell(cell)
-//        let todoItem = todoArray[indexPath!.row]
-//        
-//        cell.
-//    }
     
     //MARK: - Private
     
-    func saveContext()
+    func saveSlot1()
     {
         do
         {
@@ -287,10 +187,8 @@ class TodoTableViewController: UITableViewController, UITextFieldDelegate//, Dat
         catch
         {
             let nserror = error as NSError
-            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            NSLog("WHOOPS SOMETHING WENT WRONG AHAHA \(nserror), \(nserror.userInfo)")
             abort() //<<<<<
         }
     }
-    
-
 }

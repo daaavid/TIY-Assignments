@@ -12,8 +12,6 @@ class TodoCell: UITableViewCell {
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var checkbox: UIButton!
-    @IBOutlet weak var errorLabel: UILabel!
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()

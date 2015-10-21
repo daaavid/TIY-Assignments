@@ -16,5 +16,4 @@ extension Todo {
 
     @NSManaged var title: String?
     @NSManaged var isDone: Bool
-    @NSManaged var date: String?
 }
