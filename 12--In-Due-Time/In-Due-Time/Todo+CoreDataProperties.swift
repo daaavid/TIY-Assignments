@@ -2,7 +2,7 @@
 //  Todo+CoreDataProperties.swift
 //  In-Due-Time
 //
-//  Created by david on 10/20/15.
+//  Created by david on 10/21/15.
 //  Copyright © 2015 The Iron Yard. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,6 +14,8 @@ import CoreData
 
 extension Todo {
 
-    @NSManaged var title: String?
     @NSManaged var isDone: Bool
+    @NSManaged var title: String?
+    @NSManaged var date: String?
+
 }

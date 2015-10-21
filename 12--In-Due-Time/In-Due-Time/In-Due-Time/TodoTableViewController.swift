@@ -9,14 +9,24 @@
 import UIKit
 import CoreData
 
-class TodoTableViewController: UITableViewController, UITextFieldDelegate//, DatePickerDelegate
+@objc protocol PickerDelegate
 {
-    
+    func dateWasChosen(date: String)
+}
+
+class TodoTableViewController: UITableViewController, UITextFieldDelegate, PickerDelegate
+{
+    @IBOutlet weak var errorLabel: UILabel!
+
     var todoArray = Array<Todo>()
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     let checkImg = UIImage(named: "checked.png")
     let uncheckImg = UIImage(named: "unchecked.png")
+    var buttonIndex: NSIndexPath!
+    
+    
+//    var senderButton: UIButton?
 
     override func viewDidLoad()
     {
@@ -34,6 +44,7 @@ class TodoTableViewController: UITableViewController, UITextFieldDelegate//, Dat
             NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
             abort()
         }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -45,7 +56,15 @@ class TodoTableViewController: UITableViewController, UITextFieldDelegate//, Dat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if segue.identifier == "ShowPickerSegue"
+        {
+            let pickerVC = segue.destinationViewController as! PickerViewController
+            pickerVC.delegate = self
+        }
+    }
 
     // MARK: - Table view data source
 
@@ -60,8 +79,12 @@ class TodoTableViewController: UITableViewController, UITextFieldDelegate//, Dat
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
         let cell = tableView.dequeueReusableCellWithIdentifier("TodoCell", forIndexPath: indexPath) as! TodoCell
+        
+        errorLabel.text = ""
+        cell.dateButton.setTitle("Set Due Date", forState: UIControlState.Normal)
 
         let todoItem = todoArray[indexPath.row]
         
@@ -69,6 +92,7 @@ class TodoTableViewController: UITableViewController, UITextFieldDelegate//, Dat
         {
             cell.titleTextField.becomeFirstResponder()
             cell.checkbox.setImage(uncheckImg, forState: UIControlState.Normal)
+            cell.titleTextField.text = ""
         }
         else
         {
@@ -87,7 +111,12 @@ class TodoTableViewController: UITableViewController, UITextFieldDelegate//, Dat
             cell.backgroundColor = UIColor(red:0.91, green:0.91, blue:0.91, alpha:1.0)
             cell.titleTextField.textColor = UIColor.blackColor()
         }
-    
+        
+        if todoItem.date != nil
+        {
+            cell.dateButton.setTitle("Due By: " + todoItem.date!, forState: UIControlState.Normal)
+        }
+        
         return cell
     }
     
@@ -117,6 +146,10 @@ class TodoTableViewController: UITableViewController, UITextFieldDelegate//, Dat
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
+        else
+        {
+            errorLabel.text = "Check tasks before you delete them!"
+        }
     }
     
     //MARK: - ACTION HANDLERS 3: REVENGE OF THE HANDLERS
@@ -126,6 +159,13 @@ class TodoTableViewController: UITableViewController, UITextFieldDelegate//, Dat
         todoArray.append(todoItem)
         tableView.reloadData()
     }
+   
+    @IBAction func dateButtonPressed(sender: UIButton)
+    {
+        let contentView = sender.superview
+        let cell = contentView?.superview as! TodoCell
+        buttonIndex = tableView.indexPathForCell(cell)!
+    }
     
     @IBAction func checkboxPressed(sender: UIButton)
     {
@@ -133,7 +173,9 @@ class TodoTableViewController: UITableViewController, UITextFieldDelegate//, Dat
         let cell = contentView?.superview as! TodoCell
         let indexPath = tableView.indexPathForCell(cell)
         let todoItem = todoArray[indexPath!.row]
-
+        
+        todoItem.title = cell.titleTextField.text //just in case they don't press enter when they're typing in their todo and just immediately check it off
+        
         if sender.currentImage == uncheckImg
         {
             cell.checkbox.setImage(checkImg, forState: UIControlState.Normal)
@@ -155,6 +197,15 @@ class TodoTableViewController: UITableViewController, UITextFieldDelegate//, Dat
     }
     
     //MARK: - Delegates
+    
+    func dateWasChosen(date: String)
+    {
+        todoArray[buttonIndex.row].date = date
+        
+        tableView.reloadData()
+        saveSlot1()
+    }
+
     
     func textFieldShouldReturn(textField: UITextField) -> Bool
     {
