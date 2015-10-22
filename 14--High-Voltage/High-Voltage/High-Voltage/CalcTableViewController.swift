@@ -19,6 +19,8 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
     @IBOutlet weak var clearButton: UIBarButtonItem!
     var shownCalcItems = Array<String>()
     
+    var calcBrain = CalculatorBrainerino?()
+    
     let allCalcItems = ["Yup", "Nope", "Maybe"]
     var remainingCalcItems = ["Yup", "Nope", "Maybe"]
     
@@ -53,11 +55,11 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CalcCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("CalcCell", forIndexPath: indexPath) as! CalcCell
 
         let aCalc = shownCalcItems[indexPath.row]
-        cell.textLabel?.text = aCalc
-        cell.detailTextLabel?.text = "1+1"
+        cell.calcLabel.text = aCalc
+        cell.calcNumTextField.text = "1+1"
 
         return cell
     }

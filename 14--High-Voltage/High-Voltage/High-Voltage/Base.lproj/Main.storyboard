@@ -2,7 +2,14 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GQ1-qb-zBb">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="digital-7.ttf">
+            <string>Digital-7</string>
+            <string>Digital-7</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Calc Table View Controller-->
         <scene sceneID="3fH-C0-7U4">
@@ -14,33 +21,50 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalcCell" textLabel="HqL-5b-2Zv" detailTextLabel="RUV-ch-iYR" style="IBUITableViewCellStyleValue1" id="1k4-VF-tkT">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalcCell" id="1k4-VF-tkT" customClass="CalcCell" customModule="High_Voltage" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1k4-VF-tkT" id="x1b-hb-rgz">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HqL-5b-2Zv">
-                                            <rect key="frame" x="15" y="12" width="31.5" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gu2-Fa-Dze">
+                                            <rect key="frame" x="492" y="7" width="100" height="30"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="MRz-xw-kPT"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Digital-7" family="Digital-7" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AMPERAGE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQz-2s-NE2">
+                                            <rect key="frame" x="28" y="8" width="304" height="27.5"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" name="Digital-7" family="Digital-7" pointSize="30"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RUV-ch-iYR">
-                                            <rect key="frame" x="543.5" y="12" width="41.5" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstItem="gu2-Fa-Dze" firstAttribute="top" secondItem="cQz-2s-NE2" secondAttribute="bottom" constant="-29.5" id="6wd-Lk-Dpj"/>
+                                        <constraint firstItem="gu2-Fa-Dze" firstAttribute="leading" secondItem="cQz-2s-NE2" secondAttribute="trailing" constant="160" id="KIG-it-6G7"/>
+                                        <constraint firstItem="gu2-Fa-Dze" firstAttribute="centerY" secondItem="x1b-hb-rgz" secondAttribute="centerY" id="UTK-iQ-fX0"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="gu2-Fa-Dze" secondAttribute="trailing" id="oZZ-hK-eqf"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="cQz-2s-NE2" secondAttribute="leading" constant="-20" id="tzy-eh-dVE"/>
+                                        <constraint firstItem="cQz-2s-NE2" firstAttribute="centerY" secondItem="x1b-hb-rgz" secondAttribute="centerY" id="uUm-NK-rJb"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="6wd-Lk-Dpj"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="calcLabel" destination="cQz-2s-NE2" id="UPZ-kq-qfj"/>
+                                    <outlet property="calcNumTextField" destination="gu2-Fa-Dze" id="nfq-00-3CR"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -111,7 +135,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gTb-4D-fvR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1215" y="288"/>
+            <point key="canvasLocation" x="1262" y="288"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mWt-ZX-ytQ">
