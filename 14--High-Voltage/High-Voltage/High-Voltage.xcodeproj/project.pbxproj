@@ -12,7 +12,7 @@
 		635820621BD9495900BB86D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 635820611BD9495900BB86D4 /* Assets.xcassets */; };
 		635820651BD9495900BB86D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 635820631BD9495900BB86D4 /* LaunchScreen.storyboard */; };
 		6358206D1BD949C100BB86D4 /* CalcTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6358206C1BD949C100BB86D4 /* CalcTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		6358206F1BD949ED00BB86D4 /* EquationPopoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6358206E1BD949ED00BB86D4 /* EquationPopoverTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		6358206F1BD949ED00BB86D4 /* ElecPopoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6358206E1BD949ED00BB86D4 /* ElecPopoverTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		635820641BD9495900BB86D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		635820661BD9495900BB86D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6358206C1BD949C100BB86D4 /* CalcTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcTableViewController.swift; sourceTree = "<group>"; };
-		6358206E1BD949ED00BB86D4 /* EquationPopoverTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquationPopoverTableViewController.swift; sourceTree = "<group>"; };
+		6358206E1BD949ED00BB86D4 /* ElecPopoverTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElecPopoverTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +58,7 @@
 			children = (
 				6358205E1BD9495900BB86D4 /* Main.storyboard */,
 				6358206C1BD949C100BB86D4 /* CalcTableViewController.swift */,
-				6358206E1BD949ED00BB86D4 /* EquationPopoverTableViewController.swift */,
+				6358206E1BD949ED00BB86D4 /* ElecPopoverTableViewController.swift */,
 				635820701BD94A1500BB86D4 /* other-stuff */,
 			);
 			path = "High-Voltage";
@@ -147,7 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6358206D1BD949C100BB86D4 /* CalcTableViewController.swift in Sources */,
-				6358206F1BD949ED00BB86D4 /* EquationPopoverTableViewController.swift in Sources */,
+				6358206F1BD949ED00BB86D4 /* ElecPopoverTableViewController.swift in Sources */,
 				6358205B1BD9495900BB86D4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
