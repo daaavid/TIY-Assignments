@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GQ1-qb-zBb">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--Calc Table View Controller-->
+        <scene sceneID="3fH-C0-7U4">
+            <objects>
+                <tableViewController id="qAl-vd-fuj" customClass="CalcTableViewController" customModule="High_Voltage" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vey-Z9-Krb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalcCell" id="1k4-VF-tkT">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1k4-VF-tkT" id="x1b-hb-rgz">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qAl-vd-fuj" id="Dda-Uf-yC2"/>
+                            <outlet property="delegate" destination="qAl-vd-fuj" id="uT6-qB-Yh5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="9bx-P9-oX4">
+                        <barButtonItem key="leftBarButtonItem" title="Clear" id="1f4-H7-aJi">
+                            <connections>
+                                <action selector="clearButton:" destination="qAl-vd-fuj" id="aJF-tb-5FP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="F32-cV-REh">
+                            <connections>
+                                <action selector="addButton:" destination="qAl-vd-fuj" id="qrD-NN-t6k"/>
+                                <segue destination="8bJ-bs-0fU" kind="popoverPresentation" identifier="EqPopoverSegue" popoverAnchorBarButtonItem="F32-cV-REh" id="LWD-zb-Y2Z">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addButton" destination="F32-cV-REh" id="kQW-yv-hGn"/>
+                        <outlet property="clearButton" destination="1f4-H7-aJi" id="1ea-iZ-kKI"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cQ1-64-WM4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="593" y="288"/>
+        </scene>
+        <!--Equation Popover Table View Controller-->
+        <scene sceneID="qgM-Qz-xmH">
+            <objects>
+                <tableViewController id="8bJ-bs-0fU" customClass="EquationPopoverTableViewController" customModule="High_Voltage" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="poA-iQ-p7y">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EqCell" id="B72-6w-uTE">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B72-6w-uTE" id="gsI-Ll-uzv">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8bJ-bs-0fU" id="7IG-q7-D4M"/>
+                            <outlet property="delegate" destination="8bJ-bs-0fU" id="QaI-oG-9gN"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gTb-4D-fvR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1215" y="288"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mWt-ZX-ytQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GQ1-qb-zBb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4sE-dO-wnY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qAl-vd-fuj" kind="relationship" relationship="rootViewController" id="n54-eG-Y13"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pl1-09-E2B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-67" y="288"/>
+        </scene>
+    </scenes>
+</document>
