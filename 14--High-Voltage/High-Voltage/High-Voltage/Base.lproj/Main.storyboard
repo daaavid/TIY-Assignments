@@ -20,9 +20,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="0Fd-My-8cS">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehy-JO-uQZ">
+                                    <rect key="frame" x="257.5" y="7" width="85" height="30"/>
+                                    <animations/>
+                                    <state key="normal" title="CALCULATE"/>
+                                    <state key="disabled" title="ENTER TWO VALUES"/>
+                                    <connections>
+                                        <action selector="calculateButton:" destination="qAl-vd-fuj" eventType="touchUpInside" id="JCv-Iw-jQJ"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <animations/>
+                            <color key="backgroundColor" red="0.90575916229999998" green="0.90575916229999998" blue="0.90575916229999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="ehy-JO-uQZ" secondAttribute="trailing" constant="8" id="JOi-Mu-65n"/>
+                                <constraint firstItem="ehy-JO-uQZ" firstAttribute="top" secondItem="0Fd-My-8cS" secondAttribute="top" constant="8" id="ahH-zX-mcG"/>
+                                <constraint firstItem="ehy-JO-uQZ" firstAttribute="centerX" secondItem="0Fd-My-8cS" secondAttribute="centerX" id="dfM-TE-JHa"/>
+                                <constraint firstItem="ehy-JO-uQZ" firstAttribute="centerY" secondItem="0Fd-My-8cS" secondAttribute="centerY" id="zdb-GM-zpB"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="JOi-Mu-65n"/>
+                                    <exclude reference="ahH-zX-mcG"/>
+                                </mask>
+                            </variation>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalcCell" id="1k4-VF-tkT" customClass="CalcCell" customModule="High_Voltage" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1k4-VF-tkT" id="x1b-hb-rgz">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -36,11 +65,14 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Digital-7" family="Digital-7" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="qAl-vd-fuj" id="HrY-Gs-I3O"/>
+                                            </connections>
                                         </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AMPERAGE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQz-2s-NE2">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="AMPERAGE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQz-2s-NE2">
                                             <rect key="frame" x="28" y="8" width="304" height="27.5"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" name="Digital-7" family="Digital-7" pointSize="30"/>
+                                            <fontDescription key="fontDescription" name="Digital-7" family="Digital-7" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -89,6 +121,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="F32-cV-REh" id="kQW-yv-hGn"/>
+                        <outlet property="calculateButton" destination="ehy-JO-uQZ" id="TfP-Tt-be1"/>
                         <outlet property="clearButton" destination="1f4-H7-aJi" id="1ea-iZ-kKI"/>
                     </connections>
                 </tableViewController>
