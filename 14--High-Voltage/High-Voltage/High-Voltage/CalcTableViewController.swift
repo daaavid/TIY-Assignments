@@ -19,90 +19,50 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
     @IBOutlet weak var clearButton: UIBarButtonItem!
     @IBOutlet weak var calculateButton: UIButton!
 
-    var calcButtonEnabled = false
-    
-    var shownCalcItems = Array<String>()
-    
+    var calcButtonEnabled: Bool = false
     var brain = Brainerino()
     
     let allCalcItems = ["AMPS", "WATTS", "VOLTS", "OHMS"]
     var remainingCalcItems = ["AMPS", "WATTS", "VOLTS", "OHMS"]
+    var shownCalcItems = Array<String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "electricity and also more electricity"
-        
-        if calcButtonEnabled == false
-        {
-            calculateButton.enabled = false
-        }
-        else
-        {
-            calculateButton.enabled = true
-        }
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return shownCalcItems.count
     }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CalcCell", forIndexPath: indexPath) as! CalcCell
         
-
-
         let aCalc = shownCalcItems[indexPath.row]
         cell.calcLabel.text = aCalc
+        cell.calcNumTextField.userInteractionEnabled = true
         
-        if cell.calcNumTextField.text == ""
+        if cell.calcNumTextField.text == "" && brain.calculateFinished == false
         {
             cell.calcNumTextField.becomeFirstResponder()
+            addButton.enabled = false
         }
     
         if brain.calculateFinished == true
         {
-            
-            if cell.calcLabel.text == "WATTS"
-            {
-                print("watts")
-                cell.calcNumTextField.text = String(brain.watts)
-            }
-            if cell.calcLabel.text == "VOLTS"
-            {
-                print("volts")
-                cell.calcNumTextField.text = String(brain.volts)
-            }
-            if cell.calcLabel.text == "AMPS"
-            {
-                print("amps")
-                cell.calcNumTextField.text = String(brain.amps)
-            }
-            if cell.calcLabel.text == "OHMS"
-            {
-                cell.calcNumTextField.text = String(brain.ohms)
-            }
-            
+            populateCellTexts(cell)
         }
         
         return cell
@@ -111,10 +71,13 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
     func elecItemWasChosenFromPopover(chosenItem: String)
     {
         navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        
         shownCalcItems.append(chosenItem)
         
         let elecItemToRemoveFromPopover = (remainingCalcItems as NSArray).indexOfObject(chosenItem)
         remainingCalcItems.removeAtIndex(elecItemToRemoveFromPopover)
+        
+        checkButtonStatus()
         
         tableView.reloadData()
     }
@@ -133,12 +96,18 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
 
             checkCalcLabel(cell.calcLabel.text!, textField: cell.calcNumTextField.text!)
             
-            textField.resignFirstResponder()
-            
-            if remainingCalcItems.count == 2
+            if textField.text != ""
             {
-                addButton.enabled = false
-                calcButtonEnabled == true
+                textField.resignFirstResponder()
+                addButton.enabled = true
+            
+                if remainingCalcItems.count == 2
+                {
+                    addButton.enabled = false
+                    calculateButton.enabled = true
+                    
+                    tableView.reloadData()
+                }
             }
         }
         
@@ -165,79 +134,132 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
         if label == "OHMS"
         {
             print("ohms")
-            brain.watts = Float(textField)!
+            brain.ohms = Float(textField)!
         }
     }
 
-    
-    // MARK: - UIPopoverPresentationController Delegate
-    
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle
-    {
-        //        return UIModalPresentationStyle.None
-        return .None
-    }
 
-    @IBAction func calculateButton(sender: UIButton)
+    // MARK: - THE ACTION HANDLERS 4: FALL OF THE HANDLERS
+    
+    @IBAction func clearButton(sender: UIBarButtonItem)
     {
-        brain.calculate()
+        shownCalcItems.removeAll()
         
-        print(" watts \(brain.watts) \n volts \(brain.volts) \n amps \(brain.amps) \n ohms \(brain.ohms)")
+        brain.reset()
         
-        shownCalcItems.removeAll(); for x in allCalcItems
-        {
-            shownCalcItems.append(x)
-        }
-        
-        calcButtonEnabled = false
         tableView.reloadData()
         
-        spookyScarySkeleton()
-
+        remainingCalcItems = allCalcItems
+        
+        addButton.enabled = true
+        
+        brain.calculateFinished = false
+    
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    @IBAction func calculateButton(sender: UIButton)
+    {
+        
+        calculate()
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func calculate()
+    {
+        for x in allCalcItems
+        {
+            if !shownCalcItems.contains(x)
+            {
+                shownCalcItems.append(x)
+            }
+            
+        }
+        tableView.reloadData()
+        
+        calculateButton.enabled = false
+        
+        brain.calculate()
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    
+    @IBAction func addButton(sender: UIBarButtonItem)
+    {
+        
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    func checkButtonStatus()
+    {
+        if shownCalcItems.count < 2
+        {
+            calculateButton.enabled = false
+            addButton.enabled = true
+        }
+        else
+        {
+            calculateButton.enabled = true
+            addButton.enabled = false
+        }
     }
-    */
-
+    
+    func populateCellTexts(cell: CalcCell)
+    {
+        if cell.calcLabel.text == "WATTS"
+        {
+            print("watts")
+            cell.calcNumTextField.text = brain.wattStr
+            cell.calcNumTextField.userInteractionEnabled = false
+        }
+        if cell.calcLabel.text == "VOLTS"
+        {
+            print("volts")
+            cell.calcNumTextField.text = brain.voltStr
+            cell.calcNumTextField.userInteractionEnabled = false
+        }
+        if cell.calcLabel.text == "AMPS"
+        {
+            print("amps")
+            cell.calcNumTextField.text = brain.ampStr
+            cell.calcNumTextField.userInteractionEnabled = false
+        }
+        if cell.calcLabel.text == "OHMS"
+        {
+            cell.calcNumTextField.text = brain.ohmStr
+            cell.calcNumTextField.userInteractionEnabled = false
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     // MARK: - Navigation
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        if segue.identifier == "EqPopoverSegue"        {
+        if segue.identifier == "EqPopoverSegue"
+        {
             let destVC = segue.destinationViewController as! ElecPopoverTableViewController
             destVC.elecItems = remainingCalcItems
             destVC.popoverPresentationController?.delegate = self
@@ -249,25 +271,13 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
             destVC.preferredContentSize = CGSizeMake(200.0, contentHeight)
         }
     }
-
     
-    // MARK: - THE ACTION HANDLERS 4: FALL OF THE HANDLERS
+    // MARK: - UIPopoverPresentationController Delegate
     
-    @IBAction func addButton(sender: UIBarButtonItem)
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle
     {
-
-    }
-    
-    @IBAction func clearButton(sender: UIBarButtonItem)
-    {
-        shownCalcItems.removeAll()
-        tableView.reloadData()
-        
-        remainingCalcItems = allCalcItems
-        
-        addButton.enabled = true
-        
-        brain.calculateFinished = false
+        //        return UIModalPresentationStyle.None
+        return .None
     }
     
     func spookyScarySkeleton()

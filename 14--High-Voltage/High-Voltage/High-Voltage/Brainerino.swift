@@ -14,6 +14,12 @@ class Brainerino
     var volts: Float  = 0.0
     var amps: Float  = 0.0
     var ohms: Float  = 0.0
+    
+    var wattStr = ""
+    var voltStr = ""
+    var ampStr = ""
+    var ohmStr = ""
+    
     var calculateFinished = false
     
     func calculate()
@@ -46,9 +52,19 @@ class Brainerino
         else if ohms != 0 && amps != 0
         {
             watts = wattsCalc(3)
-            volts = (1)
+            volts = voltsCalc(1)
         }
         
+        wattStr = String(watts)
+        voltStr = String(volts)
+        ampStr = String(amps)
+        ohmStr = String(ohms)
+        
+        watts = 0
+        volts = 0
+        amps = 0
+        ohms = 0
+
         calculateFinished = true
     }
     
@@ -116,11 +132,16 @@ class Brainerino
         return watts
     }
     
-    func brainReset()
+    func reset()
     {
-        watts = 0
-        volts = 0
-        amps = 0
-        ohms = 0
+//        watts = 0
+//        volts = 0
+//        amps = 0
+//        ohms = 0
+        
+        wattStr = ""
+        voltStr = ""
+        ampStr = ""
+        ohmStr = ""
     }
 }

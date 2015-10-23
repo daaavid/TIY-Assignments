@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="digital-7.ttf">
@@ -169,6 +170,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gTb-4D-fvR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1262" y="288"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="foq-a7-wXE">
+            <objects>
+                <viewController id="G6N-iQ-UHY" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="e5N-gh-qhq"/>
+                        <viewControllerLayoutGuide type="bottom" id="a6z-Fa-IY5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cy1-13-oqo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXI-65-Ynq">
+                                <rect key="frame" x="30" y="40" width="540" height="150"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <color key="textColor" red="1" green="0.53883642890000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iud-8v-Ee0">
+                                <rect key="frame" x="30" y="208" width="135" height="150"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.83603975789999996" green="0.83603975789999996" blue="0.83603975789999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <state key="normal" title="1"/>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LXI-65-Ynq" firstAttribute="width" secondItem="cy1-13-oqo" secondAttribute="width" multiplier="0.9" id="4tW-zn-2aL"/>
+                            <constraint firstItem="LXI-65-Ynq" firstAttribute="centerX" secondItem="cy1-13-oqo" secondAttribute="centerX" id="D7w-Vl-2vC"/>
+                            <constraint firstItem="iud-8v-Ee0" firstAttribute="height" secondItem="LXI-65-Ynq" secondAttribute="height" id="LMx-l4-muq"/>
+                            <constraint firstItem="LXI-65-Ynq" firstAttribute="top" secondItem="e5N-gh-qhq" secondAttribute="bottom" constant="20" id="MOT-V3-QIf"/>
+                            <constraint firstItem="LXI-65-Ynq" firstAttribute="height" secondItem="cy1-13-oqo" secondAttribute="height" multiplier="0.25" id="QfY-D8-MzR"/>
+                            <constraint firstItem="iud-8v-Ee0" firstAttribute="width" secondItem="LXI-65-Ynq" secondAttribute="width" multiplier="0.25" id="TLA-vJ-8GG"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kre-Ad-pcZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1892" y="288"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mWt-ZX-ytQ">
