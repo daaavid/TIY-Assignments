@@ -75,6 +75,22 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
         return cell
     }
     
+
+
+    // MARK: - THE ACTION HANDLERS 4: FALL OF THE HANDLERS
+    
+    @IBAction func clearButton(sender: UIBarButtonItem)
+    {
+        clear()
+    }
+    
+    @IBAction func calculateButton(sender: UIButton)
+    {
+        calculate()
+    }
+    
+    // MARK: - private
+    
     func elecItemWasChosenFromPopover(chosenItem: String)
     {
         navigationController?.dismissViewControllerAnimated(true, completion: nil)
@@ -93,11 +109,15 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
     {
         var rc = false
         
-        if textField.text != ""
+        if Float(textField.text!) > 0
         {
             rc = true
             textField.resignFirstResponder()
             checkButtonStatus()
+        }
+        else
+        {
+            errorLabel.text = "Please enter a valid number!"
         }
         
         return rc
@@ -105,59 +125,63 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
     
     func checkCalcLabel(label: String, textField: String)
     {
-        switch label
+        if Float(textField) > 0
         {
-        case "WATTS":
-            brain.watts = Float(textField)!
-        case "VOLTS":
-            brain.volts = Float(textField)!
-        case "AMPS":
-            brain.amps = Float(textField)!
-        case "OHMS":
-            brain.ohms = Float(textField)!
-        default:
-            print("?")
+            switch label
+            {
+            case "WATTS":
+                brain.watts = Float(textField)!
+            case "VOLTS":
+                brain.volts = Float(textField)!
+            case "AMPS":
+                brain.amps = Float(textField)!
+            case "OHMS":
+                brain.ohms = Float(textField)!
+            default:
+                print("?")
+            }
         }
     }
-
-    // MARK: - THE ACTION HANDLERS 4: FALL OF THE HANDLERS
-    
-    @IBAction func clearButton(sender: UIBarButtonItem)
-    {
-        clear()
-    }
-    
-    @IBAction func calculateButton(sender: UIButton)
-    {
-        calculate()
-    }
-    
-    // MARK: - private
     
     func calculate()
     {
+        var validCalc = false
+        
         let visibleCellsArray = self.tableView.visibleCells as! Array<CalcCell>
         
         for individualCell in visibleCellsArray
         {
             checkCalcLabel(individualCell.calcLabel.text!, textField: individualCell.calcNumTextField.text!)
-        }
-        
-        brain.calculate()
-        brain.calculateFinished = true
-        calculateButton.enabled = false
-        
-        for x in allCalcItems
-        {
-            if !shownCalcItems.contains(x)
+            
+            let calcNum = Float(individualCell.calcNumTextField.text!)
+            
+            if calcNum == 0 || calcNum == nil
             {
-                shownCalcItems.append(x)
+                errorLabel.text = "Please enter valid values before calculating!"
+            }
+            else
+            {
+                validCalc = true
             }
         }
         
-        tableView.reloadData()
-        
-        spookyScarySkeleton()
+        if validCalc == true
+        {
+            brain.calculate()
+            brain.calculateFinished = true
+            calculateButton.enabled = false
+            
+            for x in allCalcItems
+            {
+                if !shownCalcItems.contains(x)
+                {
+                    shownCalcItems.append(x)
+                }
+            }
+            
+            tableView.reloadData()
+            spookyScarySkeleton()
+        }
     }
     
     func clear()
