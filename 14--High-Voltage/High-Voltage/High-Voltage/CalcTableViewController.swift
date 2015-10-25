@@ -109,7 +109,7 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
     {
         var rc = false
         
-        if Float(textField.text!) > 0
+        if let _ = Float(textField.text!)
         {
             rc = true
             textField.resignFirstResponder()
@@ -123,10 +123,14 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
         return rc
     }
     
-    func checkCalcLabel(label: String, textField: String)
+    func checkCalcLabel(label: String, textField: String) -> Bool
     {
-        if Float(textField) > 0
+        var rc = false
+    
+        if let _ = Float(textField)
         {
+            rc = true
+            
             switch label
             {
             case "WATTS":
@@ -141,6 +145,7 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
                 print("?")
             }
         }
+        return rc
     }
     
     func calculate()
@@ -151,17 +156,13 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
         
         for individualCell in visibleCellsArray
         {
-            checkCalcLabel(individualCell.calcLabel.text!, textField: individualCell.calcNumTextField.text!)
-            
-            let calcNum = Float(individualCell.calcNumTextField.text!)
-            
-            if calcNum == 0 || calcNum == nil
+            if checkCalcLabel(individualCell.calcLabel.text!, textField: individualCell.calcNumTextField.text!) == true
             {
-                errorLabel.text = "Please enter valid values before calculating!"
+                validCalc = true
             }
             else
             {
-                validCalc = true
+                errorLabel.text = "Please enter valid values before calculating!"
             }
         }
         
