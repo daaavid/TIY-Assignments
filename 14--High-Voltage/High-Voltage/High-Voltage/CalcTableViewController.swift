@@ -18,19 +18,20 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var clearButton: UIBarButtonItem!
     @IBOutlet weak var calculateButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
 
-    var calcButtonEnabled: Bool = false
     var brain = Brainerino()
     
     let allCalcItems = ["AMPS", "WATTS", "VOLTS", "OHMS"]
     var remainingCalcItems = ["AMPS", "WATTS", "VOLTS", "OHMS"]
     var shownCalcItems = Array<String>()
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
-        title = "electricity and also more electricity"
-
+        title = "High Voltage"
+        checkButtonStatus()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,30 +40,36 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         return shownCalcItems.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CalcCell", forIndexPath: indexPath) as! CalcCell
         
+        checkButtonStatus()
+        
         let aCalc = shownCalcItems[indexPath.row]
         cell.calcLabel.text = aCalc
+        
         cell.calcNumTextField.userInteractionEnabled = true
         
         if cell.calcNumTextField.text == "" && brain.calculateFinished == false
         {
             cell.calcNumTextField.becomeFirstResponder()
-            addButton.enabled = false
+            errorLabel.text = "Enter in a number!"
         }
     
         if brain.calculateFinished == true
         {
             populateCellTexts(cell)
+            errorLabel.text = "Press Clear if you want to perform another calculation!"
         }
         
         return cell
@@ -78,8 +85,8 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
         remainingCalcItems.removeAtIndex(elecItemToRemoveFromPopover)
         
         checkButtonStatus()
-        
         tableView.reloadData()
+        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool
@@ -89,26 +96,8 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
         if textField.text != ""
         {
             rc = true
-            let contentView = textField.superview
-            let cell = contentView?.superview as! CalcCell
-//            let indexPath = tableView.indexPathForCell(cell)
-//            let aCalcItem = allCalcItems[indexPath!.row]
-
-            checkCalcLabel(cell.calcLabel.text!, textField: cell.calcNumTextField.text!)
-            
-            if textField.text != ""
-            {
-                textField.resignFirstResponder()
-                addButton.enabled = true
-            
-                if remainingCalcItems.count == 2
-                {
-                    addButton.enabled = false
-                    calculateButton.enabled = true
-                    
-                    tableView.reloadData()
-                }
-            }
+            textField.resignFirstResponder()
+            checkButtonStatus()
         }
         
         return rc
@@ -116,73 +105,81 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
     
     func checkCalcLabel(label: String, textField: String)
     {
-        if label == "WATTS"
+        switch label
         {
-            print("watts")
+        case "WATTS":
             brain.watts = Float(textField)!
-        }
-        if label == "VOLTS"
-        {
-            print("volts")
+        case "VOLTS":
             brain.volts = Float(textField)!
-        }
-        if label == "AMPS"
-        {
-            print("amps")
+        case "AMPS":
             brain.amps = Float(textField)!
-        }
-        if label == "OHMS"
-        {
-            print("ohms")
+        case "OHMS":
             brain.ohms = Float(textField)!
+        default:
+            print("?")
         }
     }
-
 
     // MARK: - THE ACTION HANDLERS 4: FALL OF THE HANDLERS
     
     @IBAction func clearButton(sender: UIBarButtonItem)
     {
-        shownCalcItems.removeAll()
-        
-        brain.reset()
-        
-        tableView.reloadData()
-        
-        remainingCalcItems = allCalcItems
-        
-        addButton.enabled = true
-        
-        brain.calculateFinished = false
-    
+        clear()
     }
     
     @IBAction func calculateButton(sender: UIButton)
     {
-        
         calculate()
     }
     
+    // MARK: - private
+    
     func calculate()
     {
+        let visibleCellsArray = self.tableView.visibleCells as! Array<CalcCell>
+        
+        for individualCell in visibleCellsArray
+        {
+            checkCalcLabel(individualCell.calcLabel.text!, textField: individualCell.calcNumTextField.text!)
+        }
+        
+        brain.calculate()
+        brain.calculateFinished = true
+        calculateButton.enabled = false
+        
         for x in allCalcItems
         {
             if !shownCalcItems.contains(x)
             {
                 shownCalcItems.append(x)
             }
-            
         }
+        
         tableView.reloadData()
         
-        calculateButton.enabled = false
-        
-        brain.calculate()
+        spookyScarySkeleton()
     }
     
-    @IBAction func addButton(sender: UIBarButtonItem)
+    func clear()
     {
+        let visibleCellsArray = self.tableView.visibleCells as! Array<CalcCell>
         
+        for individualCell in visibleCellsArray
+        {
+            individualCell.calcNumTextField.text = ""
+        }
+        
+        shownCalcItems.removeAll()
+        
+        brain.reset()
+        
+        remainingCalcItems = allCalcItems
+        
+        brain.calculateFinished = false
+        
+        checkButtonStatus()
+        
+        tableView.reloadData()
     }
     
     func checkButtonStatus()
@@ -197,62 +194,46 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
             calculateButton.enabled = true
             addButton.enabled = false
         }
+        
+        if brain.calculateFinished == true
+        {
+            calculateButton.enabled = false
+        }
+        
+        switch shownCalcItems.count
+        {
+        case 0:
+            errorLabel.text = "Enter two values!"
+        case 1:
+            errorLabel.text = "Enter one more value!"
+        default:
+            errorLabel.text = ""
+        }
     }
     
     func populateCellTexts(cell: CalcCell)
     {
         if cell.calcLabel.text == "WATTS"
         {
-            print("watts")
             cell.calcNumTextField.text = brain.wattStr
             cell.calcNumTextField.userInteractionEnabled = false
         }
-        if cell.calcLabel.text == "VOLTS"
+        else if cell.calcLabel.text == "VOLTS"
         {
-            print("volts")
             cell.calcNumTextField.text = brain.voltStr
             cell.calcNumTextField.userInteractionEnabled = false
         }
-        if cell.calcLabel.text == "AMPS"
+        else if cell.calcLabel.text == "AMPS"
         {
-            print("amps")
             cell.calcNumTextField.text = brain.ampStr
             cell.calcNumTextField.userInteractionEnabled = false
         }
-        if cell.calcLabel.text == "OHMS"
+        else if cell.calcLabel.text == "OHMS"
         {
             cell.calcNumTextField.text = brain.ohmStr
             cell.calcNumTextField.userInteractionEnabled = false
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     // MARK: - Navigation
     
@@ -283,5 +264,6 @@ class CalcTableViewController: UITableViewController, ElecPopoverTableViewContro
     func spookyScarySkeleton()
     {
         print("  ▒▒▒░░░░░░░░░░▄▐░░░░ \n ▒░░░░░░▄▄▄░░▄██▄░░░ \n ░░░░░░▐▀█▀▌░░░░▀█▄░ \n ░░░░░░▐█▄█▌░░░░░░▀█▄ \n ░░░░░░░▀▄▀░░░▄▄▄▄▄▀▀ \n ░░░░░▄▄▄██▀▀▀▀░░░░░ \n ░░░░█▀▄▄▄█░▀▀░░░░░░ \n ░░░░▌░▄▄▄▐▌▀▀▀░░░░░ \n ░░░░▌░▄▄▄▐▌▀▀▀░░░░░ \n ░▄░▐░░░▄▄░█░▀▀░░░░░ \n ░▀█▌░░░▄░▀█▀░▀░░░░░ \n ░░░░░░░░▄▄▐▌▄▄░░░░░ \n ░░░░░░░░▀███▀█░▄░░░ \n ░░░░░░░▐▌▀▄▀▄▀▐▄░░░ \n ░░░░░░░▐▀░░░░░░▐▌░░ \n ░░░░░░░█░░░░░░░░█░░ \n ░░░░░░▐▌░░░░░░░░░█░  ")
+        print("This skeleton man was killed by high voltage. Rest in Peace")
     }
 }

@@ -8,7 +8,6 @@
     <customFonts key="customFonts">
         <mutableArray key="digital-7.ttf">
             <string>Digital-7</string>
-            <string>Digital-7</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -26,27 +25,40 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehy-JO-uQZ">
-                                    <rect key="frame" x="257.5" y="7" width="85" height="30"/>
+                                    <rect key="frame" x="507" y="7" width="85" height="30"/>
                                     <animations/>
                                     <state key="normal" title="CALCULATE"/>
-                                    <state key="disabled" title="ENTER TWO VALUES"/>
+                                    <state key="disabled" title="HOLD UP"/>
                                     <connections>
                                         <action selector="calculateButton:" destination="qAl-vd-fuj" eventType="touchUpInside" id="JCv-Iw-jQJ"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2Y-wp-xtG">
+                                    <rect key="frame" x="150" y="0.0" width="300" height="44"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <animations/>
                             <color key="backgroundColor" red="0.90575916229999998" green="0.90575916229999998" blue="0.90575916229999998" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
+                                <constraint firstItem="e2Y-wp-xtG" firstAttribute="centerY" secondItem="0Fd-My-8cS" secondAttribute="centerY" id="0lf-S5-4BE"/>
+                                <constraint firstItem="e2Y-wp-xtG" firstAttribute="width" secondItem="0Fd-My-8cS" secondAttribute="width" multiplier="0.5" id="8u2-aj-WLO"/>
                                 <constraint firstAttribute="trailing" secondItem="ehy-JO-uQZ" secondAttribute="trailing" constant="8" id="JOi-Mu-65n"/>
+                                <constraint firstItem="e2Y-wp-xtG" firstAttribute="centerX" secondItem="0Fd-My-8cS" secondAttribute="centerX" id="XXa-sx-F2T"/>
                                 <constraint firstItem="ehy-JO-uQZ" firstAttribute="top" secondItem="0Fd-My-8cS" secondAttribute="top" constant="8" id="ahH-zX-mcG"/>
                                 <constraint firstItem="ehy-JO-uQZ" firstAttribute="centerX" secondItem="0Fd-My-8cS" secondAttribute="centerX" id="dfM-TE-JHa"/>
+                                <constraint firstItem="e2Y-wp-xtG" firstAttribute="height" secondItem="0Fd-My-8cS" secondAttribute="height" id="jd1-U6-Dq1"/>
+                                <constraint firstAttribute="trailing" secondItem="ehy-JO-uQZ" secondAttribute="trailing" constant="8" id="r4f-c7-B8n"/>
                                 <constraint firstItem="ehy-JO-uQZ" firstAttribute="centerY" secondItem="0Fd-My-8cS" secondAttribute="centerY" id="zdb-GM-zpB"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
                                     <exclude reference="JOi-Mu-65n"/>
                                     <exclude reference="ahH-zX-mcG"/>
+                                    <exclude reference="dfM-TE-JHa"/>
                                 </mask>
                             </variation>
                         </view>
@@ -71,10 +83,13 @@
                                             </connections>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="AMPERAGE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQz-2s-NE2">
-                                            <rect key="frame" x="28" y="8" width="304" height="27.5"/>
+                                            <rect key="frame" x="28" y="14" width="304" height="15.5"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" name="Digital-7" family="Digital-7" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                            </accessibility>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -113,7 +128,6 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="F32-cV-REh">
                             <connections>
-                                <action selector="addButton:" destination="qAl-vd-fuj" id="qrD-NN-t6k"/>
                                 <segue destination="8bJ-bs-0fU" kind="popoverPresentation" identifier="EqPopoverSegue" popoverAnchorBarButtonItem="F32-cV-REh" id="LWD-zb-Y2Z">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
@@ -124,6 +138,7 @@
                         <outlet property="addButton" destination="F32-cV-REh" id="kQW-yv-hGn"/>
                         <outlet property="calculateButton" destination="ehy-JO-uQZ" id="TfP-Tt-be1"/>
                         <outlet property="clearButton" destination="1f4-H7-aJi" id="1ea-iZ-kKI"/>
+                        <outlet property="errorLabel" destination="e2Y-wp-xtG" id="sHV-1f-YeO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cQ1-64-WM4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -152,7 +167,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -170,50 +185,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gTb-4D-fvR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1262" y="288"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="foq-a7-wXE">
-            <objects>
-                <viewController id="G6N-iQ-UHY" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="e5N-gh-qhq"/>
-                        <viewControllerLayoutGuide type="bottom" id="a6z-Fa-IY5"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cy1-13-oqo">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXI-65-Ynq">
-                                <rect key="frame" x="30" y="40" width="540" height="150"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
-                                <color key="textColor" red="1" green="0.53883642890000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iud-8v-Ee0">
-                                <rect key="frame" x="30" y="208" width="135" height="150"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.83603975789999996" green="0.83603975789999996" blue="0.83603975789999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
-                                <state key="normal" title="1"/>
-                            </button>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="LXI-65-Ynq" firstAttribute="width" secondItem="cy1-13-oqo" secondAttribute="width" multiplier="0.9" id="4tW-zn-2aL"/>
-                            <constraint firstItem="LXI-65-Ynq" firstAttribute="centerX" secondItem="cy1-13-oqo" secondAttribute="centerX" id="D7w-Vl-2vC"/>
-                            <constraint firstItem="iud-8v-Ee0" firstAttribute="height" secondItem="LXI-65-Ynq" secondAttribute="height" id="LMx-l4-muq"/>
-                            <constraint firstItem="LXI-65-Ynq" firstAttribute="top" secondItem="e5N-gh-qhq" secondAttribute="bottom" constant="20" id="MOT-V3-QIf"/>
-                            <constraint firstItem="LXI-65-Ynq" firstAttribute="height" secondItem="cy1-13-oqo" secondAttribute="height" multiplier="0.25" id="QfY-D8-MzR"/>
-                            <constraint firstItem="iud-8v-Ee0" firstAttribute="width" secondItem="LXI-65-Ynq" secondAttribute="width" multiplier="0.25" id="TLA-vJ-8GG"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kre-Ad-pcZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1892" y="288"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mWt-ZX-ytQ">

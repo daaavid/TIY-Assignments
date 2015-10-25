@@ -59,11 +59,6 @@ class Brainerino
         voltStr = String(volts)
         ampStr = String(amps)
         ohmStr = String(ohms)
-        
-        watts = 0
-        volts = 0
-        amps = 0
-        ohms = 0
 
         calculateFinished = true
     }
@@ -134,10 +129,10 @@ class Brainerino
     
     func reset()
     {
-//        watts = 0
-//        volts = 0
-//        amps = 0
-//        ohms = 0
+        watts = 0
+        volts = 0
+        amps = 0
+        ohms = 0
         
         wattStr = ""
         voltStr = ""

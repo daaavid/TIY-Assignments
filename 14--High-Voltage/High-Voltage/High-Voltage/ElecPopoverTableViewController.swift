@@ -43,7 +43,7 @@ class ElecPopoverTableViewController: UITableViewController
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ElecCell", forIndexPath: indexPath)
-
+        
         let anElecItem = elecItems?[indexPath.row]
         cell.textLabel?.text = anElecItem
 
