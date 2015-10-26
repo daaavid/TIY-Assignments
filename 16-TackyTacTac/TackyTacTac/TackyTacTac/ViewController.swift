@@ -25,8 +25,8 @@ class ViewController: UIViewController
     let gameClearButton = UIButton(frame: CGRect(x: 0, y: 600, width: 130, height: 50))
     let scoreClearButton = UIButton(frame: CGRect(x: 0, y: 600, width: 80, height: 50))
     
-    let player1ScoreLabel = UILabel(frame: CGRect(x: 0, y: 80, width: 200, height: 50))
-    let player2ScoreLabel = UILabel(frame: CGRect(x: 0, y: 80, width: 200, height: 50))
+    let player1ScoreLabel = UILabel(frame: CGRect(x: 0, y: 80, width: 50, height: 50))
+    let player2ScoreLabel = UILabel(frame: CGRect(x: 0, y: 80, width: 50, height: 50))
     let stalemateScoreLabel = UILabel(frame: CGRect(x: 0, y: 160, width: 200, height: 50))
 
     override func viewDidLoad()
@@ -34,7 +34,7 @@ class ViewController: UIViewController
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.lightGrayColor()
         
         showButtonsLabels()
         
@@ -247,10 +247,12 @@ class ViewController: UIViewController
             gameStatusLabel.text = "Player 1 wins!"
             player1Score++
             player1ScoreLabel.text = "P1: \(player1Score)"
+            player1ScoreLabel.backgroundColor = UIColor(red:0.83, green:0.69, blue:0.22, alpha:1.0)
         default:
             gameStatusLabel.text = "Player 2 wins!"
             player2Score++
             player2ScoreLabel.text = "P2: \(player2Score)"
+            player2ScoreLabel.backgroundColor = UIColor(red:0.83, green:0.69, blue:0.22, alpha:1.0)
         }
     }
     
@@ -278,6 +280,9 @@ class ViewController: UIViewController
         grid = [[0,0,0], [0,0,0], [0,0,0]]
         showTacs()
         
+        player1ScoreLabel.backgroundColor = UIColor.lightGrayColor()
+        player2ScoreLabel.backgroundColor = UIColor.lightGrayColor()
+        isPlayer1Turn = true
         gameStatusLabel.text = "Player 1 Turn"
         playerWon = false
         boxCount = 0
@@ -301,8 +306,9 @@ class TTTButton: UIButton
             {
             case 1: backgroundColor = setColor(p1Color)
 //            case 2: backgroundColor = setColor(p2Color)
-                
+                    setTitle("X", forState: UIControlState.Normal)
             default: backgroundColor = setColor(p2Color)
+                    setTitle("O", forState: UIControlState.Normal)
                 
                 //            case 1: backgroundColor = UIColor.magentaColor()
                 //            case 2: backgroundColor = UIColor.yellowColor()
