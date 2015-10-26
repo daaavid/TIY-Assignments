@@ -213,8 +213,6 @@ class ViewController: UIViewController
             {
                 if value1 != 0
                 {
-                    print("Player \(value1) wins!")
-                    
                     playerVictory(value1)
                     
                     playerWon = true
@@ -282,11 +280,13 @@ class ViewController: UIViewController
         
         gameStatusLabel.text = "Player 1 Turn"
         playerWon = false
+        boxCount = 0
     }
 }
 
 class TTTButton: UIButton
 {
+//    var p0Color = 0
     var p1Color = 0
     var p2Color = 0
     
@@ -300,9 +300,9 @@ class TTTButton: UIButton
             switch player
             {
             case 1: backgroundColor = setColor(p1Color)
-            case 2: backgroundColor = setColor(p2Color)
+//            case 2: backgroundColor = setColor(p2Color)
                 
-            default: setColor(0)
+            default: backgroundColor = setColor(p2Color)
                 
                 //            case 1: backgroundColor = UIColor.magentaColor()
                 //            case 2: backgroundColor = UIColor.yellowColor()
