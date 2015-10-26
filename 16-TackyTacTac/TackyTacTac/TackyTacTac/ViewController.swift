@@ -18,12 +18,16 @@ class ViewController: UIViewController
     var player2Score = 0
     var stalemateScore = 0
     
+    var boxCount = 0
+    var playerWon = false
+    
     let gameStatusLabel = UILabel(frame: CGRect(x: 0, y: 80, width: 200, height: 50))
     let gameClearButton = UIButton(frame: CGRect(x: 0, y: 600, width: 130, height: 50))
     let scoreClearButton = UIButton(frame: CGRect(x: 0, y: 600, width: 80, height: 50))
     
     let player1ScoreLabel = UILabel(frame: CGRect(x: 0, y: 80, width: 200, height: 50))
     let player2ScoreLabel = UILabel(frame: CGRect(x: 0, y: 80, width: 200, height: 50))
+    let stalemateScoreLabel = UILabel(frame: CGRect(x: 0, y: 160, width: 200, height: 50))
 
     override func viewDidLoad()
     {
@@ -112,6 +116,12 @@ class ViewController: UIViewController
         player2ScoreLabel.center.x = view.center.x + 100
         
         view.addSubview(player2ScoreLabel)
+        
+        stalemateScoreLabel.text = ""
+        stalemateScoreLabel.textAlignment = .Center
+        stalemateScoreLabel.center.x = view.center.x
+        
+        view.addSubview(stalemateScoreLabel)
     }
     
     func showTacs()
@@ -205,21 +215,33 @@ class ViewController: UIViewController
                 {
                     print("Player \(value1) wins!")
                     
-                    playerWon(value1)
+                    playerVictory(value1)
+                    
+                    playerWon = true
                 }
-                else
-                {
-                    print("No winner: all zeroes")
-                }
+//                else
+//                {
+//                    print("No winner: all zeroes")
+//                }
             }
-            else
-            {
-                print("Does not match")
-            }
+//            else if value1 != value2 && value2 != value3
+//            {
+//                print("Does not match")
+//            }
+        }
+        
+        boxCount++
+        print(boxCount)
+        
+        if playerWon == false && boxCount >= 9
+        {
+            gameStatusLabel.text = "Stalemate!"
+            stalemateScore++
+            stalemateScoreLabel.text = "Stalemates: \(stalemateScore)"
         }
     }
     
-    func playerWon(player: Int)
+    func playerVictory(player: Int)
     {
         switch player
         {
@@ -243,6 +265,7 @@ class ViewController: UIViewController
     {
         player1Score = 0
         player2Score = 0
+        stalemateScore = 0
         
         player1ScoreLabel.text = "P1: \(player1Score)"
         player2ScoreLabel.text = "P1: \(player1Score)"
@@ -258,6 +281,7 @@ class ViewController: UIViewController
         showTacs()
         
         gameStatusLabel.text = "Player 1 Turn"
+        playerWon = false
     }
 }
 
