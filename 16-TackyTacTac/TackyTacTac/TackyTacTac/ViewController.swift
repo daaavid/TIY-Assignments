@@ -127,7 +127,20 @@ class ViewController: UIViewController
         let leftSpacing = (screenWidth - gridHW) / 2
         let topSpacing = (screenHeight - gridHW) / 2
         
-        let randomNumber = Int(arc4random() % 8)
+        let p0Color = Int(arc4random() % 8)
+        
+        var p1Color = p0Color
+        while p1Color == p0Color
+        {
+            p1Color = Int(arc4random() % 8)
+        }
+        
+        
+        var p2Color = p1Color
+        while p2Color == p1Color
+        {
+            p2Color = Int(arc4random() % 8)
+        }
         
         for (r, row) in grid.enumerate()
         {
@@ -139,7 +152,12 @@ class ViewController: UIViewController
                 let button = TTTButton(frame: CGRect(x: x, y: y, width: buttonHW, height: buttonHW))
                 //button.playe = 0
                 //button.backgroundColor = UIColor.cyanColor()
-                button.setColor(randomNumber)
+                button.backgroundColor = button.setColor(p0Color)
+                button.p1Color = p1Color
+                button.p2Color = p2Color
+                
+                player1ScoreLabel.textColor = button.setColor(p1Color)
+                player2ScoreLabel.textColor = button.setColor(p2Color)
                 
                 button.row = r
                 button.col = c
@@ -208,11 +226,11 @@ class ViewController: UIViewController
         case 1:
             gameStatusLabel.text = "Player 1 wins!"
             player1Score++
-            player1ScoreLabel.text = "P1 \(player1Score)"
+            player1ScoreLabel.text = "P1: \(player1Score)"
         default:
             gameStatusLabel.text = "Player 2 wins!"
             player2Score++
-            player2ScoreLabel.text = "P2 \(player2Score)"
+            player2ScoreLabel.text = "P2: \(player2Score)"
         }
     }
     
@@ -226,8 +244,8 @@ class ViewController: UIViewController
         player1Score = 0
         player2Score = 0
         
-        player1ScoreLabel.text = "P1 \(player1Score)"
-        player2ScoreLabel.text = "P1 \(player1Score)"
+        player1ScoreLabel.text = "P1: \(player1Score)"
+        player2ScoreLabel.text = "P1: \(player1Score)"
         
         gameStatusLabel.text = "Player 1 Turn"
         
@@ -245,8 +263,8 @@ class ViewController: UIViewController
 
 class TTTButton: UIButton
 {
-    let p1Color = Int(arc4random() % 8)
-    let p2Color = Int(arc4random() % 8)
+    var p1Color = 0
+    var p2Color = 0
     
     var row = 0
     var col = 0
@@ -257,8 +275,8 @@ class TTTButton: UIButton
         {
             switch player
             {
-            case 1: setColor(p1Color)
-            case 2: setColor(p2Color)
+            case 1: backgroundColor = setColor(p1Color)
+            case 2: backgroundColor = setColor(p2Color)
                 
             default: setColor(0)
                 
@@ -271,23 +289,29 @@ class TTTButton: UIButton
         }
     }
     
-    func setColor(colorSet: Int)
+    func setColor(colorSet: Int) -> UIColor
     {
+//        switch colorSet
+//        {
+//        case 1: backgroundColor = UIColor.magentaColor()
+//        case 2: backgroundColor = UIColor.yellowColor()
+//        case 3: backgroundColor = UIColor.purpleColor()
+//        case 4: backgroundColor = UIColor.orangeColor()
+//        case 5: backgroundColor = UIColor.grayColor()
+//        case 6: backgroundColor = UIColor.greenColor()
+//        case 7: backgroundColor = UIColor.redColor()
+//        default: backgroundColor = UIColor.cyanColor()
+//        }
         switch colorSet
         {
-        case 1: backgroundColor = UIColor.magentaColor()
-        case 2: backgroundColor = UIColor.yellowColor()
-        case 3: backgroundColor = UIColor.purpleColor()
-        case 4: backgroundColor = UIColor.orangeColor()
-        case 5: backgroundColor = UIColor.grayColor()
-        case 6: backgroundColor = UIColor.greenColor()
-        case 7: backgroundColor = UIColor.redColor()
-        default: backgroundColor = UIColor.cyanColor()
+        case 1: return UIColor.magentaColor()
+        case 2: return UIColor.yellowColor()
+        case 3: return UIColor.purpleColor()
+        case 4: return UIColor.orangeColor()
+        case 5: return UIColor.grayColor()
+        case 6: return UIColor.greenColor()
+        case 7: return UIColor.redColor()
+        default: return UIColor.cyanColor()
         }
     }
-}
-
-class color
-{
-    
 }
