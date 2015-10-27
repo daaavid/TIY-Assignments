@@ -29,7 +29,7 @@ class NewFriendViewController: UIViewController
     
     func showViews()
     {
-        view.backgroundColor = UIColor.lightTextColor()
+        view.backgroundColor = UIColor.whiteColor()
         
         searchTextField.placeholder = "Name"
         searchTextField.center.x = view.center.x

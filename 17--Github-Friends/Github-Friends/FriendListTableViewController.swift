@@ -10,7 +10,7 @@ import UIKit
 
 protocol APIControllerProtocol
 {
-    func didReceiveAPIResults(results: NSArray)
+    func didReceiveAPIResults(results: NSDictionary)
 }
 
 class FriendListTableViewController: UITableViewController, APIControllerProtocol
@@ -23,7 +23,7 @@ class FriendListTableViewController: UITableViewController, APIControllerProtoco
         
         api = APIController(delegate: self)
         api.searchGithubFor("daaavid")
-        tableView.registerClass(UITableView.self, forCellReuseIdentifier: "FriendCell")
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "FriendCell")
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     }
 
@@ -34,12 +34,14 @@ class FriendListTableViewController: UITableViewController, APIControllerProtoco
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         // #warning Incomplete implementation, return the number of rows
         return friends.count
     }
@@ -48,14 +50,23 @@ class FriendListTableViewController: UITableViewController, APIControllerProtoco
         let cell = tableView.dequeueReusableCellWithIdentifier("FriendCell", forIndexPath: indexPath)
         
         let friend = friends[indexPath.row]
-        cell.textLabel?.text = friend.name
+        cell.textLabel?.text = friend.username
         
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let chosenFriend = friends[indexPath.row]
+        let detailVC = FriendDetailViewController()
+        detailVC.friend = chosenFriend
+        detailVC.populateLabels()
+        
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
     // MARK: - API Controller Protocol
     
-    func didReceiveAPIResults(results: NSArray)
+    func didReceiveAPIResults(results: NSDictionary)
     {
         dispatch_async(dispatch_get_main_queue(), {
             self.friends = Friend.albumsWithJSON(results)
