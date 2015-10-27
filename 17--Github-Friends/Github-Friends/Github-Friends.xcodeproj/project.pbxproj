@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		630425691BDFFA3300772109 /* FriendListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630425681BDFFA3300772109 /* FriendListTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		6304256D1BDFFA8B00772109 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304256C1BDFFA8B00772109 /* APIController.swift */; settings = {ASSET_TAGS = (); }; };
+		6304256F1BDFFE7700772109 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304256E1BDFFE7700772109 /* Friend.swift */; settings = {ASSET_TAGS = (); }; };
 		637F169C1BDFEF5C00ED3E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F169B1BDFEF5C00ED3E2B /* AppDelegate.swift */; };
 		637F169E1BDFEF5C00ED3E2B /* NewFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F169D1BDFEF5C00ED3E2B /* NewFriendViewController.swift */; };
 		637F16A11BDFEF5C00ED3E2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 637F169F1BDFEF5C00ED3E2B /* Main.storyboard */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		630425681BDFFA3300772109 /* FriendListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendListTableViewController.swift; path = ../FriendListTableViewController.swift; sourceTree = "<group>"; };
+		6304256C1BDFFA8B00772109 /* APIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
+		6304256E1BDFFE7700772109 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		637F16981BDFEF5C00ED3E2B /* Github-Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Github-Friends.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		637F169B1BDFEF5C00ED3E2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		637F169D1BDFEF5C00ED3E2B /* NewFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFriendViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +41,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		630425671BDFFA1100772109 /* garbage */ = {
+			isa = PBXGroup;
+			children = (
+				637F169F1BDFEF5C00ED3E2B /* Main.storyboard */,
+				637F16A41BDFEF5C00ED3E2B /* LaunchScreen.storyboard */,
+				637F16A21BDFEF5C00ED3E2B /* Assets.xcassets */,
+				637F16A71BDFEF5C00ED3E2B /* Info.plist */,
+				637F169B1BDFEF5C00ED3E2B /* AppDelegate.swift */,
+			);
+			name = garbage;
+			sourceTree = "<group>";
+		};
 		637F168F1BDFEF5B00ED3E2B = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +72,11 @@
 		637F169A1BDFEF5C00ED3E2B /* Github-Friends */ = {
 			isa = PBXGroup;
 			children = (
-				637F169B1BDFEF5C00ED3E2B /* AppDelegate.swift */,
 				637F169D1BDFEF5C00ED3E2B /* NewFriendViewController.swift */,
-				637F169F1BDFEF5C00ED3E2B /* Main.storyboard */,
-				637F16A21BDFEF5C00ED3E2B /* Assets.xcassets */,
-				637F16A41BDFEF5C00ED3E2B /* LaunchScreen.storyboard */,
-				637F16A71BDFEF5C00ED3E2B /* Info.plist */,
+				630425681BDFFA3300772109 /* FriendListTableViewController.swift */,
+				6304256C1BDFFA8B00772109 /* APIController.swift */,
+				6304256E1BDFFE7700772109 /* Friend.swift */,
+				630425671BDFFA1100772109 /* garbage */,
 			);
 			path = "Github-Friends";
 			sourceTree = "<group>";
@@ -135,6 +152,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				630425691BDFFA3300772109 /* FriendListTableViewController.swift in Sources */,
+				6304256D1BDFFA8B00772109 /* APIController.swift in Sources */,
+				6304256F1BDFFE7700772109 /* Friend.swift in Sources */,
 				637F169E1BDFEF5C00ED3E2B /* NewFriendViewController.swift in Sources */,
 				637F169C1BDFEF5C00ED3E2B /* AppDelegate.swift in Sources */,
 			);
@@ -284,6 +304,7 @@
 				637F16AC1BDFEF5C00ED3E2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

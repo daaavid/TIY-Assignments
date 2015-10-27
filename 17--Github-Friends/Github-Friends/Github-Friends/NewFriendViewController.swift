@@ -10,11 +10,15 @@ import UIKit
 
 class NewFriendViewController: UIViewController
 {
-
+    let searchTextField = UITextField(frame: CGRect(x: 0, y: 200, width: 100, height: 40))
+    let searchButton = UIButton(frame: CGRect(x: 0, y: 240, width: 100, height: 40))
+    let cancelButton = UIButton(frame: CGRect(x: 0, y: 240, width: 100, height: 40))
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        showViews()
     }
 
     override func didReceiveMemoryWarning()
@@ -22,7 +26,24 @@ class NewFriendViewController: UIViewController
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    func showViews()
+    {
+        view.backgroundColor = UIColor.lightTextColor()
+        
+        searchTextField.placeholder = "Name"
+        searchTextField.center.x = view.center.x
+        searchTextField.textAlignment = .Center
+        
+        searchButton.setTitle("Search", forState: UIControlState.Normal)
+        searchButton.center.x = searchTextField.center.x - 50
+        
+        cancelButton.setTitle("Search", forState: UIControlState.Normal)
+        cancelButton.center.x = searchTextField.center.x + 50
+        
+        view.addSubview(searchTextField)
+        view.addSubview(searchButton)
+        view.addSubview(cancelButton)
+    }
 }
 
