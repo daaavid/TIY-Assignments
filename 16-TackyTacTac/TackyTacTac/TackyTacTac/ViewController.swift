@@ -284,6 +284,7 @@ class ViewController: UIViewController
         player2ScoreLabel.backgroundColor = UIColor.lightGrayColor()
         isPlayer1Turn = true
         gameStatusLabel.text = "Player 1 Turn"
+        stalemateScoreLabel.text = ""
         playerWon = false
         boxCount = 0
     }
