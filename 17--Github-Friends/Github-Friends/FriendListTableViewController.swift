@@ -107,21 +107,16 @@ class FriendListTableViewController: UITableViewController, UIPopoverPresentatio
 //        newFriendVC.delegate = self
 //        newFriendVC.popoverPresentationController?.delegate
 //        newFriendVC.delegate = self
-//        newFriendVC.modalPresentationStyle = .Popover
-//        newFriendVC.preferredContentSize = CGSizeMake(200, 200)
-//        newFriendVC.sourceRect = CGRect(
-//            x: view.center.x,
-//            y: view.center.y,
-//            width: 1,
-//            height: 1)
-//        presentViewController(
-//            menuViewController,
-//            animated: true,
-//            completion: nil)
         newFriendVC.delegate = self
-        navigationController?.presentViewController(newFriendVC, animated: true, completion: nil)
+    
+        newFriendVC.modalPresentationStyle = .Popover
+        newFriendVC.preferredContentSize = CGSizeMake(200, 200)
         
-//        navigationController?.pushViewController(newFriendVC, animated: true)
+        
+        
+//        navigationController?.presentViewController(newFriendVC, animated: true, completion: nil)
+        
+        navigationController?.pushViewController(newFriendVC, animated: true)
         
     }
     

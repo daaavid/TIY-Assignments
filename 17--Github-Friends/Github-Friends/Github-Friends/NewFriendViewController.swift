@@ -89,22 +89,21 @@ class NewFriendViewController: UIViewController, UITextFieldDelegate //, APICont
     // MARK: - Misc
     
     func search()
-    {
-        searchButton.userInteractionEnabled = false
-        
+    {        
         if searchTextField.text != ""
         {
             let username = searchTextField.text!
             flvc.searchTerm = username
             print(flvc.searchTerm)
             delegate!.searchWasCompleted(username)
+            self.dismissViewControllerAnimated(true, completion: nil)
 //            flvc!.searchTerm = String("david")
 //            let user = searchTextField.text!
 //            api = APIController(delegate: self)
 //            api.searchGithubFor("daaavid")
 //            delegate!.searchWasCompleted(username)
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-            
+
 //            print(user)
         }
         
