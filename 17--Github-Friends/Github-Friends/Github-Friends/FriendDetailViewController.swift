@@ -14,6 +14,7 @@ class FriendDetailViewController: UIViewController
     let nameLabel = UILabel(frame: CGRect(x: 0, y: 80, width: 500, height: 40))
     let emailLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 500, height: 40))
     let reposLabel = UILabel(frame: CGRect(x: 0, y: 120, width: 500, height: 40))
+    let image = UIImageView(frame: CGRect(x: 0, y: 200, width: 100, height: 100))
     
     var friend = Friend?()
     
@@ -38,12 +39,13 @@ class FriendDetailViewController: UIViewController
         nameLabel.center.x = usernameLabel.center.x
         emailLabel.center.x = usernameLabel.center.x
         reposLabel.center.x = usernameLabel.center.x
+        image.center.x = usernameLabel.center.x - 200
         
         view.addSubview(usernameLabel)
         view.addSubview(nameLabel)
         view.addSubview(emailLabel)
         view.addSubview(reposLabel)
-
+        view.addSubview(image)
     }
     
     func populateLabels()
@@ -52,6 +54,14 @@ class FriendDetailViewController: UIViewController
         nameLabel.text = "Real Name: " + String(friend!.name)
         emailLabel.text = "Email: " + String(friend!.email)
         reposLabel.text = "Repos: " + String(friend!.repos)
+        
+        if let url = NSURL(string: friend!.image)
+        {
+            if let data = NSData(contentsOfURL: url)
+            {
+                image.image = UIImage(data: data)
+            }
+        }
     }
     /*
     // MARK: - Navigation

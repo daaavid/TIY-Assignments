@@ -15,10 +15,13 @@ import UIKit
 
 class NewFriendViewController: UIViewController, UITextFieldDelegate //, APIControllerProtocol
 {
+
+    
     var friends = [Friend]()
     var api: APIController!
-    var delegate: NewFriendViewControllerProtocol?
     var flvc = FriendListTableViewController()
+    var delegate: NewFriendViewControllerProtocol?
+    
     
     let searchTextField = UITextField(frame: CGRect(x: 0, y: 90, width: 100, height: 30))
     let searchButton = UIButton(frame: CGRect(x: 0, y: 120, width: 100, height: 30))
@@ -26,6 +29,7 @@ class NewFriendViewController: UIViewController, UITextFieldDelegate //, APICont
     
     override func viewDidLoad()
     {
+//        self.delegate = NewFriendViewControllerProtocol
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         showViews()
@@ -44,7 +48,7 @@ class NewFriendViewController: UIViewController, UITextFieldDelegate //, APICont
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        delegate?.searchWasCompleted(searchTextField.text!)
+//        delegate.searchWasCompleted(searchTextField.text!)
     }
     // MARK: - View
     
@@ -96,7 +100,7 @@ class NewFriendViewController: UIViewController, UITextFieldDelegate //, APICont
             flvc.searchTerm = username
             print(username)
             print(flvc.searchTerm)
-            delegate?.searchWasCompleted(username)
+            delegate!.searchWasCompleted(username)
 //            flvc!.searchTerm = String("david")
 //            let user = searchTextField.text!
 //            api = APIController(delegate: self)

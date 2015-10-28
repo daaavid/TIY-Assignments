@@ -14,18 +14,20 @@ struct Friend
     let name: String
     let email: String
     let repos: Int
+    let image: String
 //    let imageURL: String
 //    let largeImageURL: String
 //    let itemURL: String
 //    let artistURL: String
     
   //  init(name: String, price: String, thumbnailImageURL: String, largeImageURL: String, itemURL: String, artistURL: String)
-    init(login: String, name: String, email: String, repos: Int)
+    init(login: String, name: String, email: String, repos: Int, image: String)
     {
         self.username = login
         self.name = name
         self.email = email
         self.repos = repos
+        self.image = image
     }
     
     static func friendsWithJSON(results: NSDictionary) -> [Friend]
@@ -57,8 +59,14 @@ struct Friend
             {
                 repos = 0
             }
+            var image = results.valueForKey("avatar_url") as? String
+            if image == nil
+            {
+                image = ""
+            }
+            
                 
-            friends.append(Friend(login: login!, name: name!, email: email!, repos: repos!))
+            friends.append(Friend(login: login!, name: name!, email: email!, repos: repos!, image: image!))
 //                albums.append(Album(name: name!, price: price!, thumbnailImageURL: thumbnailURL, largeImageURL: imageURL, itemURL: itemURL!, artistURL: artistURL))
 //            }
         }
