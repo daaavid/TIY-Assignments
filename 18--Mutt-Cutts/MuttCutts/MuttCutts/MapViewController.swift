@@ -22,8 +22,10 @@ class MapViewController: UIViewController, UIPopoverPresentationControllerDelega
     @IBOutlet weak var blurView: UIVisualEffectView!
     
     let geocoder = CLGeocoder()
+    var distance: CLLocationDistance?
     var annotations = [MKPointAnnotation]()
     var secondLocation = ""
+    var mapRoute: MKRoute?
     
     override func viewDidLoad()
     {
@@ -46,7 +48,7 @@ class MapViewController: UIViewController, UIPopoverPresentationControllerDelega
             popVC.popoverPresentationController?.delegate = self
             popVC.delegate = self
             
-            popVC.preferredContentSize = CGSizeMake(200, 140)
+            popVC.preferredContentSize = CGSizeMake(200, 100)
         }
     }
     
@@ -69,18 +71,15 @@ class MapViewController: UIViewController, UIPopoverPresentationControllerDelega
     
     func geocoderSearch(location: String)
     {
-        geocoder.geocodeAddressString(location, completionHandler: {(placemarks: [CLPlacemark]?,
-            error: NSError?) -> Void in
+        geocoder.geocodeAddressString(location, completionHandler:
+        {
+            (placemarks: [CLPlacemark]?, error: NSError?) -> Void in
             //go do this and run the code once you've found it
             if let placemark = placemarks?[0] //grab first in placemarks array
             {
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = (placemark.location?.coordinate)!
-                
-                let cityAndState = location.componentsSeparatedByString(",")
-            
-                annotation.title = cityAndState[0]
-                annotation.subtitle = cityAndState[1]
+                annotation.title = location
                 
                 self.annotations.append(annotation)
                 print("geocoder closure \(self.annotations)")
@@ -97,41 +96,74 @@ class MapViewController: UIViewController, UIPopoverPresentationControllerDelega
     
     func refresh()
     {
-        
         if annotations.count == 2
         {
-//            let firstLoc = annotations[0].coordinate
-//            let secondLoc = annotations[1].coordinate
-
-            let firstDist = CLLocation(coordinate: annotations[0].coordinate, altitude: 0, horizontalAccuracy: 0, verticalAccuracy: 0, timestamp: NSDate())
-            let secondDist = CLLocation(coordinate: annotations[1].coordinate, altitude: 0, horizontalAccuracy: 0, verticalAccuracy: 0, timestamp: NSDate())
-            
-            let lineOfSightDistance = firstDist.distanceFromLocation(secondDist)
-            print("distance between \(annotations[0].title!) and \(annotations[1].title!): " + String(format: "%.2f", lineOfSightDistance * 0.00062137) + " miles")
-            blurView.hidden = false
-            distanceLabel.text = ("The distance between \(annotations[0].title!),\(annotations[0].subtitle!) and \(annotations[1].title!),\(annotations[1].subtitle!) is " + String(format: "%.2f", lineOfSightDistance * 0.00062137) + " miles")
-            
-            
+//            let lineOfSightDistance = firstDist.distanceFromLocation(secondDist)
             mapView.addAnnotations(annotations)
             mapView.showAnnotations(annotations, animated: true)
             mapView.camera.altitude * 0.8
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            route()
+        }
+    }
+
+    func route()
+    {
+        //http://studyswift.blogspot.com/2014/10/mkdirections-draw-route-from-location.html
+        
+        let plot = MKDirectionsRequest()
+        
+        plot.source = MKMapItem(placemark: MKPlacemark(coordinate: annotations[0].coordinate, addressDictionary: nil))
+        plot.destination = MKMapItem(placemark: MKPlacemark(coordinate: annotations[1].coordinate, addressDictionary: nil))
+        plot.transportType = .Automobile
+        
+        let route = MKDirections(request: plot)
+        
+        route.calculateDirectionsWithCompletionHandler
+        {
+            (response: MKDirectionsResponse?, error: NSError?) -> Void in
+            
+            if error == nil
+            {
+                self.distance = response!.routes.first?.distance
+                
+                self.mapRoute = response!.routes[0]
+                self.mapView.addOverlay((self.mapRoute?.polyline)!)
+                
+                self.annotations[0].subtitle = "Origin"
+                self.annotations[1].subtitle = "Destination"
+                
+                self.setDistLabel()
+            }
+            else if error != nil
+            {
+                print(error)
+            }
+
         }
     }
     
-//    func mapView
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer
+    {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor.redColor()
+        renderer.lineWidth = 3
+        return renderer
+    }
+    
+    func setDistLabel()
+    {
+        distanceLabel.text = ("The distance between \(annotations[0].title!) and \(annotations[1].title!) is " + String(format: "%.2f", distance! * 0.00062137) + " miles")
+        blurView.hidden = false
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    }
     
     @IBAction func clearButton(sender: UIBarButtonItem)
     {
         mapView.removeAnnotations(annotations)
+        mapRoute = nil
         blurView.hidden = true
         distanceLabel.text = ""
     }
-    
-//    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer
-//    {
-//        mapView.addOverlay(overlay)
-//    }
     
 }
 

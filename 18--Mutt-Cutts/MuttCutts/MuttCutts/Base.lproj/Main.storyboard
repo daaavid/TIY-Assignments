@@ -106,7 +106,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Orlando, FL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Lf-U3-DWK">
-                                <rect key="frame" x="60" y="40" width="480" height="30"/>
+                                <rect key="frame" x="30" y="35" width="540" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -115,7 +115,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tampa, FL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bDp-eP-k4T">
-                                <rect key="frame" x="60" y="90" width="480" height="30"/>
+                                <rect key="frame" x="30" y="75" width="540" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -130,11 +130,11 @@
                             <constraint firstItem="bDp-eP-k4T" firstAttribute="width" secondItem="6Lf-U3-DWK" secondAttribute="width" id="51b-dV-fSj"/>
                             <constraint firstItem="6Lf-U3-DWK" firstAttribute="centerX" secondItem="GG7-JR-14f" secondAttribute="centerX" id="6sd-FS-cIA"/>
                             <constraint firstItem="6Lf-U3-DWK" firstAttribute="centerY" secondItem="GG7-JR-14f" secondAttribute="centerY" constant="-20" id="AIP-uv-8nE"/>
-                            <constraint firstItem="6Lf-U3-DWK" firstAttribute="top" secondItem="2sM-iy-7ih" secondAttribute="bottom" constant="20" id="S0K-s7-BBc"/>
+                            <constraint firstItem="6Lf-U3-DWK" firstAttribute="top" secondItem="2sM-iy-7ih" secondAttribute="bottom" constant="15" id="S0K-s7-BBc"/>
                             <constraint firstItem="bDp-eP-k4T" firstAttribute="leading" secondItem="6Lf-U3-DWK" secondAttribute="leading" id="h2h-Ij-Lag"/>
-                            <constraint firstItem="bDp-eP-k4T" firstAttribute="top" secondItem="6Lf-U3-DWK" secondAttribute="bottom" constant="20" id="opx-C9-5px"/>
+                            <constraint firstItem="bDp-eP-k4T" firstAttribute="top" secondItem="6Lf-U3-DWK" secondAttribute="bottom" constant="10" id="opx-C9-5px"/>
                             <constraint firstItem="bDp-eP-k4T" firstAttribute="height" secondItem="6Lf-U3-DWK" secondAttribute="height" id="t7l-cg-W0W"/>
-                            <constraint firstItem="6Lf-U3-DWK" firstAttribute="width" secondItem="GG7-JR-14f" secondAttribute="width" multiplier="0.8" id="zop-bO-7Me"/>
+                            <constraint firstItem="6Lf-U3-DWK" firstAttribute="width" secondItem="GG7-JR-14f" secondAttribute="width" multiplier="0.9" id="zop-bO-7Me"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
