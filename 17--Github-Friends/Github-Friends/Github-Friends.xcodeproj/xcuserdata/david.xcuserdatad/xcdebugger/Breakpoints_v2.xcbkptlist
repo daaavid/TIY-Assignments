@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Github-Friends/NewFriendViewController.swift"
-            timestampString = "467684548.670053"
+            filePath = "FriendListTableViewController.swift"
+            timestampString = "467687744.134995"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "didReceiveAPIResults(_:)"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "searchWasCompleted(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

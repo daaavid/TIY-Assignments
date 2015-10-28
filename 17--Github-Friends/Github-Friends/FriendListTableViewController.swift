@@ -8,10 +8,10 @@
 
 import UIKit
 
-//protocol APIControllerProtocol
-//{
-//    func didReceiveAPIResults(results: NSDictionary)
-//}
+protocol APIControllerProtocol
+{
+    func didReceiveAPIResults(results: NSDictionary)
+}
 
 //protocol NewFriendViewControllerProtocol
 //{
@@ -25,23 +25,26 @@ import UIKit
 
 protocol NewFriendViewControllerProtocol
 {
-    func searchWasCompleted()
+    func searchWasCompleted(username: String)
 }
 
-class FriendListTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, NewFriendViewControllerProtocol//, APIControllerProtocol
+class FriendListTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, NewFriendViewControllerProtocol, APIControllerProtocol
 {
     var friends = [Friend]()
     var api: APIController!
+    var searchTerm = ""
 //    var nfvc: NewFriendViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        api = APIController(delegate: self)
+        api.searchGithubFor("daaavid")
+
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addTapped:")
         navigationItem.rightBarButtonItems = [addButton]
-//        
-//        api = APIController(delegate: self)
-//        api.searchGithubFor("daaavid")
+        
+
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "FriendCell")
 //        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     }
@@ -137,25 +140,40 @@ class FriendListTableViewController: UITableViewController, UIPopoverPresentatio
 //        //        self.tableView.reloadData()
 //    }
     
-    func searchWasCompleted()
+    func searchWasCompleted(username: String)
     {
         navigationController?.dismissViewControllerAnimated(true, completion: nil)
         
         print("searchWasCompleted")
         
-        self.friends = nfvc.friends
-        self.tableView.reloadData()
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+//        self.friends = nfvc.friends
         print("searchWasCompleted")
+        
+        api.searchGithubFor("daaavid")
+        api.searchGithubFor(username)
+        self.tableView.reloadData()
         //
         //        self.friends = Friend.friendsWithJSON(results)
         //        self.tableView.reloadData()
+        
+//        api = APIController(delegate: self)
+//        api.searchGithubFor("daaavid")
+    }
+    
+    func didReceiveAPIResults(results: NSDictionary)
+    {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.friends = Friend.friendsWithJSON(results)
+            self.tableView.reloadData()
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        })
     }
 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-//        <#code#>
+        let view = segue.destinationViewController as! NewFriendViewController
+        view.delegate = self
     }
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle
