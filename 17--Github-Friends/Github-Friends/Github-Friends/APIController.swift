@@ -11,6 +11,7 @@ import Foundation
 class APIController
 {
     var delegate: APIControllerProtocol
+    var task: NSURLSessionDataTask!
     
     init(delegate: APIControllerProtocol)
     {
@@ -26,7 +27,7 @@ class APIController
 
             let url = NSURL(string: "https://api.github.com/users/\(username)")
             let session = NSURLSession.sharedSession()
-            let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
+            task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
                 print("Task completed")
                 if error != nil
                 {
@@ -69,6 +70,9 @@ class APIController
         }
     }
     
-    
+    func cancelSearch()
+    {
+        task.cancel()
+    }
     
 }

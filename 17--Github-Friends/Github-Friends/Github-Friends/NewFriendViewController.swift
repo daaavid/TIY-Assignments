@@ -8,12 +8,12 @@
 
 import UIKit
 
-//protocol APIControllerProtocol
-//{
-//    func didReceiveAPIResults(results: NSDictionary)
-//}
+protocol APIControllerProtocol
+{
+    func didReceiveAPIResults(results: NSDictionary)
+}
 
-class NewFriendViewController: UIViewController, UITextFieldDelegate //, APIControllerProtocol
+class NewFriendViewController: UIViewController, UITextFieldDelegate , APIControllerProtocol
 {
     var friends = [Friend]()
     var api: APIController!
@@ -26,7 +26,7 @@ class NewFriendViewController: UIViewController, UITextFieldDelegate //, APICont
     
     override func viewDidLoad()
     {
-//        self.delegate = NewFriendViewControllerProtocol
+        api = APIController(delegate: self)
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         showViews()
@@ -43,9 +43,9 @@ class NewFriendViewController: UIViewController, UITextFieldDelegate //, APICont
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(animated: Bool)
+    {
         super.viewWillDisappear(animated)
-//        delegate.searchWasCompleted(searchTextField.text!)
     }
     // MARK: - View
     
@@ -80,7 +80,7 @@ class NewFriendViewController: UIViewController, UITextFieldDelegate //, APICont
     
     func cancel(sender: UIButton)
     {
-        api = nil
+        api.cancelSearch()
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -93,20 +93,10 @@ class NewFriendViewController: UIViewController, UITextFieldDelegate //, APICont
         if searchTextField.text != ""
         {
             let username = searchTextField.text!
-            flvc.searchTerm = username
-            print(flvc.searchTerm)
-            delegate!.searchWasCompleted(username)
-            self.dismissViewControllerAnimated(true, completion: nil)
-//            flvc!.searchTerm = String("david")
-//            let user = searchTextField.text!
-//            api = APIController(delegate: self)
-//            api.searchGithubFor("daaavid")
-//            delegate!.searchWasCompleted(username)
+            api = APIController(delegate: self)
+            api.searchGithubFor(username)
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-
-//            print(user)
         }
-        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool
@@ -120,35 +110,18 @@ class NewFriendViewController: UIViewController, UITextFieldDelegate //, APICont
         }
         return rc
     }
-//    
-//    func didReceiveAPIResults(results: NSDictionary)
-//    {
-//        dispatch_async(dispatch_get_main_queue(), {
-//            
-//            self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-// //           print(results)
-//            
-//            self.friends = Friend.friendsWithJSON(results)
-//            print(self.friends)
-////            self.delegate!.searchWasCompleted()
-////            self.flvc.friends = self.friends
-////            print(self.friends)
-////            self.delegate.searchWasCompleted(); print("delegate")
-//            
-////            self.delegate.searchWasCompleted(self.friends); print("delegate searchWasCompleted")
-//            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-//            
-//            print("didReceiveAPIResults")
-//        })
-    
-//        print(self.friends)
-//        print("no")
-//        flvc.friends = self.friends
-//        self.delegate.searchWasCompleted(); print("delegate")
 
-        
-//        self.delegate?.searchWasCompleted(Friend.friendsWithJSON(results))
-//    }
+    func didReceiveAPIResults(results: NSDictionary)
+    {
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+            self.delegate?.searchWasCompleted(results)
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            
+            print("didReceiveAPIResults")
+        })
+    }
 
 }
 

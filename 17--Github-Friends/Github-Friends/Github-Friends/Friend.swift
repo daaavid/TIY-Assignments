@@ -42,17 +42,17 @@ struct Friend
             var login = results.valueForKey("login") as? String
             if login == nil
             {
-                login = "Not Found"
+                login = "Not Listed"
             }
             var name = results.valueForKey("name") as? String
             if name == nil
             {
-                name = "Not Found"
+                name = "Not Listed"
             }
             var email = results.valueForKey("email") as? String
             if email == nil
             {
-                email = "Not Found"
+                email = "Not Listed"
             }
             var repos = results.valueForKey("public_repos") as? Int
             if repos == nil
@@ -62,7 +62,7 @@ struct Friend
             var image = results.valueForKey("avatar_url") as? String
             if image == nil
             {
-                image = "Not Found"
+                image = "Not Listed"
             }
             
                 
