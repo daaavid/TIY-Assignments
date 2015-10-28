@@ -88,13 +88,13 @@ class MapViewController: UIViewController, UIPopoverPresentationControllerDelega
                 {
                     self.geocoderSearch(self.secondLocation)
                 }
-                self.refresh()
+                self.showPins()
             }
         })
         print("geocoder search \(annotations)")
     }
     
-    func refresh()
+    func showPins()
     {
         if annotations.count == 2
         {
@@ -152,7 +152,7 @@ class MapViewController: UIViewController, UIPopoverPresentationControllerDelega
     
     func setDistLabel()
     {
-        distanceLabel.text = ("The distance between \(annotations[0].title!) and \(annotations[1].title!) is " + String(format: "%.2f", distance! * 0.00062137) + " miles")
+        distanceLabel.text = ("Driving distance between \(annotations[0].title!) and \(annotations[1].title!): " + String(format: "%.2f", distance! * 0.00062137) + " miles")
         blurView.hidden = false
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
@@ -160,7 +160,7 @@ class MapViewController: UIViewController, UIPopoverPresentationControllerDelega
     @IBAction func clearButton(sender: UIBarButtonItem)
     {
         mapView.removeAnnotations(annotations)
-        mapRoute = nil
+        mapView.removeOverlays(mapView.overlays)
         blurView.hidden = true
         distanceLabel.text = ""
     }
