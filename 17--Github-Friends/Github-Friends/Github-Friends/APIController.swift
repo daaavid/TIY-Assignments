@@ -22,6 +22,7 @@ class APIController
         let githubSearchTerm = searchTerm.stringByReplacingOccurrencesOfString(" ", withString: "%20", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
         if let username = githubSearchTerm.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet())
         {
+            print(username)
 
             let url = NSURL(string: "https://api.github.com/users/\(username)")
             let session = NSURLSession.sharedSession()
@@ -57,6 +58,8 @@ class APIController
         do
         {
             let dictionary: NSDictionary! = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSDictionary
+            print("parseJSON")
+            
             return dictionary
         }
         catch let error as NSError

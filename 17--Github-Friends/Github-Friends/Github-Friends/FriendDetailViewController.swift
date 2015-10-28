@@ -19,6 +19,7 @@ class FriendDetailViewController: UIViewController
     
     override func viewDidLoad()
     {
+        title = String(friend!.name)
         super.viewDidLoad()
         showLabels()
         // Do any additional setup after loading the view.

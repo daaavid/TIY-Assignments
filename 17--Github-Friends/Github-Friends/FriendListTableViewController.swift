@@ -8,23 +8,42 @@
 
 import UIKit
 
-protocol APIControllerProtocol
+//protocol APIControllerProtocol
+//{
+//    func didReceiveAPIResults(results: NSDictionary)
+//}
+
+//protocol NewFriendViewControllerProtocol
+//{
+//    func searchWasCompleted(results: NSDictionary)
+//}
+
+//protocol NewFriendViewControllerProtocol
+//{
+//    func searchWasCompleted(results: [Friend])
+//}
+
+protocol NewFriendViewControllerProtocol
 {
-    func didReceiveAPIResults(results: NSDictionary)
+    func searchWasCompleted()
 }
 
-class FriendListTableViewController: UITableViewController, APIControllerProtocol
+class FriendListTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, NewFriendViewControllerProtocol//, APIControllerProtocol
 {
     var friends = [Friend]()
     var api: APIController!
+//    var nfvc: NewFriendViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        api = APIController(delegate: self)
-        api.searchGithubFor("daaavid")
+        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addTapped:")
+        navigationItem.rightBarButtonItems = [addButton]
+//        
+//        api = APIController(delegate: self)
+//        api.searchGithubFor("daaavid")
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "FriendCell")
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+//        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,16 +83,97 @@ class FriendListTableViewController: UITableViewController, APIControllerProtoco
         navigationController?.pushViewController(detailVC, animated: true)
     }
     
+    func addTapped(sender: UIBarButtonItem)
+    {
+        let newFriendVC = NewFriendViewController()
+//        newFriendVC.delegate = self
+//        newFriendVC.popoverPresentationController?.delegate
+//        newFriendVC.delegate = self
+//        newFriendVC.modalPresentationStyle = .Popover
+//        newFriendVC.preferredContentSize = CGSizeMake(200, 200)
+//        newFriendVC.sourceRect = CGRect(
+//            x: view.center.x,
+//            y: view.center.y,
+//            width: 1,
+//            height: 1)
+//        presentViewController(
+//            menuViewController,
+//            animated: true,
+//            completion: nil)
+
+        navigationController?.pushViewController(newFriendVC, animated: true)
+        
+    }
+    
+//    func searchWasCompleted(results: NSDictionary)
+//    {
+//        navigationController?.dismissViewControllerAnimated(true, completion: nil)
+//        
+//        print("searchWasCompleted")
+//        dispatch_async(dispatch_get_main_queue(), {
+//            self.friends = Friend.friendsWithJSON(results)
+//            self.tableView.reloadData()
+//            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+//            print("searchWasCompleted")
+//        })
+////
+////        self.friends = Friend.friendsWithJSON(results)
+////        self.tableView.reloadData()
+//    }
+    
+//    func searchWasCompleted(results: [Friend])
+//    {
+//        navigationController?.dismissViewControllerAnimated(true, completion: nil)
+//        
+//        print("searchWasCompleted")
+//        dispatch_async(dispatch_get_main_queue(), {
+//            self.friends = results
+//            self.tableView.reloadData()
+//            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+//            print("searchWasCompleted")
+//        })
+//        //
+//        //        self.friends = Friend.friendsWithJSON(results)
+//        //        self.tableView.reloadData()
+//    }
+    
+    func searchWasCompleted()
+    {
+        navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        
+        print("searchWasCompleted")
+        
+        self.friends = nfvc.friends
+        self.tableView.reloadData()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        print("searchWasCompleted")
+        //
+        //        self.friends = Friend.friendsWithJSON(results)
+        //        self.tableView.reloadData()
+    }
+
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+//        <#code#>
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle
+    {
+        //        return UIModalPresentationStyle.None
+        return .None
+    }
+    
     // MARK: - API Controller Protocol
     
-    func didReceiveAPIResults(results: NSDictionary)
-    {
-        dispatch_async(dispatch_get_main_queue(), {
-            self.friends = Friend.albumsWithJSON(results)
-            self.tableView.reloadData()
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-        })
-    }
+//    func didReceiveAPIResults(results: NSDictionary)
+//    {
+//        dispatch_async(dispatch_get_main_queue(), {
+//            self.friends = Friend.albumsWithJSON(results)
+//            self.tableView.reloadData()
+//            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+//        })
+//    }
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

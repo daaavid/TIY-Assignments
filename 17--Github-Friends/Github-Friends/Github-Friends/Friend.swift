@@ -28,8 +28,9 @@ struct Friend
         self.repos = repos
     }
     
-    static func albumsWithJSON(results: NSDictionary) -> [Friend]
+    static func friendsWithJSON(results: NSDictionary) -> [Friend]
     {
+        //friends with jason
         var friends = [Friend]()
         
         if results.count > 0
