@@ -10,11 +10,11 @@ import UIKit
 
 class FriendDetailViewController: UIViewController
 {
-    let usernameLabel = UILabel(frame: CGRect(x: 0, y: 60, width: 500, height: 40))
-    let nameLabel = UILabel(frame: CGRect(x: 0, y: 80, width: 500, height: 40))
-    let emailLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 500, height: 40))
-    let reposLabel = UILabel(frame: CGRect(x: 0, y: 120, width: 500, height: 40))
-    let image = UIImageView(frame: CGRect(x: 0, y: 200, width: 100, height: 100))
+    let usernameLabel = UILabel(frame: CGRect(x: 0, y: 180, width: 500, height: 40))
+    let nameLabel = UILabel(frame: CGRect(x: 0, y: 200, width: 500, height: 40))
+    let emailLabel = UILabel(frame: CGRect(x: 0, y: 220, width: 500, height: 40))
+    let reposLabel = UILabel(frame: CGRect(x: 0, y: 240, width: 500, height: 40))
+    let image = UIImageView(frame: CGRect(x: 0, y: 80, width: 100, height: 100))
     
     var friend = Friend?()
     

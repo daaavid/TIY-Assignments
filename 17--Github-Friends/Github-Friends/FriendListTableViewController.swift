@@ -31,6 +31,8 @@ protocol NewFriendViewControllerProtocol
 class FriendListTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, NewFriendViewControllerProtocol, APIControllerProtocol
 {
     var friends = [Friend]()
+    var displayFriends = [[Friend]]()
+    
     var api: APIController!
     var searchTerm = ""
 //    var nfvc: NewFriendViewController!
@@ -43,6 +45,8 @@ class FriendListTableViewController: UITableViewController, UIPopoverPresentatio
 
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addTapped:")
         navigationItem.rightBarButtonItems = [addButton]
+        let clearButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "clearTapped:")
+        navigationItem.leftBarButtonItems = [clearButton]
         
 
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "FriendCell")
@@ -65,6 +69,7 @@ class FriendListTableViewController: UITableViewController, UIPopoverPresentatio
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         // #warning Incomplete implementation, return the number of rows
+//        return friends.count
         return friends.count
     }
     
@@ -73,7 +78,17 @@ class FriendListTableViewController: UITableViewController, UIPopoverPresentatio
         
         let friend = friends[indexPath.row]
         cell.textLabel?.text = friend.username
+        if friend.username == ""
+        {
+            cell.textLabel?.text = "Not Found!"
+        }
         
+        if cell.textLabel?.text == "Not Found!"
+        {
+            friends.removeAtIndex(indexPath.row)
+        }
+//        let friend = displayFriends[indexPath.row]
+//        cell.textLabel?.text =
         return cell
     }
     
@@ -103,9 +118,17 @@ class FriendListTableViewController: UITableViewController, UIPopoverPresentatio
 //            menuViewController,
 //            animated: true,
 //            completion: nil)
-
-        navigationController?.pushViewController(newFriendVC, animated: true)
+        newFriendVC.delegate = self
+        navigationController?.presentViewController(newFriendVC, animated: true, completion: nil)
         
+//        navigationController?.pushViewController(newFriendVC, animated: true)
+        
+    }
+    
+    func clearTapped(sender: UIBarButtonItem)
+    {
+        friends.removeAll()
+        tableView.reloadData()
     }
     
 //    func searchWasCompleted(results: NSDictionary)
@@ -149,7 +172,7 @@ class FriendListTableViewController: UITableViewController, UIPopoverPresentatio
 //        self.friends = nfvc.friends
         print("searchWasCompleted")
         
-        api.searchGithubFor("daaavid")
+//        api.searchGithubFor("daaavid")
         api.searchGithubFor(username)
         self.tableView.reloadData()
         //
@@ -163,18 +186,18 @@ class FriendListTableViewController: UITableViewController, UIPopoverPresentatio
     func didReceiveAPIResults(results: NSDictionary)
     {
         dispatch_async(dispatch_get_main_queue(), {
-            self.friends = Friend.friendsWithJSON(results)
+            self.friends = self.friends + Friend.friendsWithJSON(results)
             self.tableView.reloadData()
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         })
     }
 
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
-        let view = segue.destinationViewController as! NewFriendViewController
-        view.delegate = self
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+//    {
+//        let view = segue.destinationViewController as! NewFriendViewController
+//        view.delegate = self
+//    }
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle
     {

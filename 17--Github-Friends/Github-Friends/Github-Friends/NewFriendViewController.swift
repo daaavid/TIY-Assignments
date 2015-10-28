@@ -15,15 +15,12 @@ import UIKit
 
 class NewFriendViewController: UIViewController, UITextFieldDelegate //, APIControllerProtocol
 {
-
-    
     var friends = [Friend]()
     var api: APIController!
     var flvc = FriendListTableViewController()
     var delegate: NewFriendViewControllerProtocol?
     
-    
-    let searchTextField = UITextField(frame: CGRect(x: 0, y: 90, width: 100, height: 30))
+    let searchTextField = UITextField(frame: CGRect(x: 0, y: 90, width: 140, height: 30))
     let searchButton = UIButton(frame: CGRect(x: 0, y: 120, width: 100, height: 30))
     let cancelButton = UIButton(frame: CGRect(x: 0, y: 150, width: 100, height: 30))
     
@@ -83,7 +80,8 @@ class NewFriendViewController: UIViewController, UITextFieldDelegate //, APICont
     
     func cancel(sender: UIButton)
     {
-//        api = nil
+        api = nil
+        
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -98,7 +96,6 @@ class NewFriendViewController: UIViewController, UITextFieldDelegate //, APICont
         {
             let username = searchTextField.text!
             flvc.searchTerm = username
-            print(username)
             print(flvc.searchTerm)
             delegate!.searchWasCompleted(username)
 //            flvc!.searchTerm = String("david")

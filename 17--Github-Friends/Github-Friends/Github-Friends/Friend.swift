@@ -42,17 +42,17 @@ struct Friend
             var login = results.valueForKey("login") as? String
             if login == nil
             {
-                login = ""
+                login = "Not Found"
             }
             var name = results.valueForKey("name") as? String
             if name == nil
             {
-                name = ""
+                name = "Not Found"
             }
             var email = results.valueForKey("email") as? String
             if email == nil
             {
-                email = ""
+                email = "Not Found"
             }
             var repos = results.valueForKey("public_repos") as? Int
             if repos == nil
@@ -62,11 +62,12 @@ struct Friend
             var image = results.valueForKey("avatar_url") as? String
             if image == nil
             {
-                image = ""
+                image = "Not Found"
             }
             
                 
             friends.append(Friend(login: login!, name: name!, email: email!, repos: repos!, image: image!))
+            print(friends)
 //                albums.append(Album(name: name!, price: price!, thumbnailImageURL: thumbnailURL, largeImageURL: imageURL, itemURL: itemURL!, artistURL: artistURL))
 //            }
         }
