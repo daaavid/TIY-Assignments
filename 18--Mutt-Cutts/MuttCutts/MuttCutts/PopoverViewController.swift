@@ -33,32 +33,6 @@ class PopoverViewController: UIViewController, UITextFieldDelegate
     
     @IBAction func searchButton(sender: UIButton)
     {
-//        if firstLocationTextField.text != "" && secondLocationTextField.text != ""
-//        {
-//            if firstLocationTextField.text?.componentsSeparatedByString(",").count == 2
-//            {
-//                if secondLocationTextField.text?.componentsSeparatedByString(",").count == 2
-//                {
-//                                    }
-//                else
-//                {
-//                    secondLocationTextField.placeholder = "Please enter valid City, State"
-//                }
-//                
-//            }
-//            else
-//            {
-//                firstLocationTextField.placeholder = "Please enter valid City, State"
-//            }
-//        }
-//        else if firstLocationTextField.text == ""
-//        {
-//            firstLocationTextField.placeholder = "Enter first City, State"
-//        }
-//        else if secondLocationTextField.text == ""
-//        {
-//            secondLocationTextField.placeholder = "Enter second City, State"
-//        }
         search()
     }
     

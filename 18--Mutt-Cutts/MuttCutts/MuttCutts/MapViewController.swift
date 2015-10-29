@@ -108,6 +108,8 @@ class MapViewController: UIViewController, UIPopoverPresentationControllerDelega
 
     func route()
     {
+        blurView.hidden = true
+        
         //http://studyswift.blogspot.com/2014/10/mkdirections-draw-route-from-location.html
         
         let plot = MKDirectionsRequest()
@@ -137,8 +139,8 @@ class MapViewController: UIViewController, UIPopoverPresentationControllerDelega
             else if error != nil
             {
                 print(error)
+                self.errorOutput()
             }
-
         }
     }
     
@@ -152,8 +154,18 @@ class MapViewController: UIViewController, UIPopoverPresentationControllerDelega
     
     func setDistLabel()
     {
-        distanceLabel.text = ("Driving distance between \(annotations[0].title!) and \(annotations[1].title!): " + String(format: "%.2f", distance! * 0.00062137) + " miles")
+//        distanceLabel.text = ("Driving distance between \(annotations[0].title!) and \(annotations[1].title!): " + String(format: "%.2f", distance! * 0.00062137) + " miles")
+//        blurView.hidden = false
         blurView.hidden = false
+        UIView.animateWithDuration(0.5, animations: {
+            var blurViewTop = self.blurView.frame
+            blurViewTop.origin.y -= self.blurView.frame.size.height
+            
+            self.blurView.frame = blurViewTop
+            self.distanceLabel.text = ("Driving distance between \(self.annotations[0].title!) and \(self.annotations[1].title!): " + String(format: "%.2f", self.distance! * 0.00062137) + " miles")
+            
+        })
+        
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
     
@@ -161,9 +173,30 @@ class MapViewController: UIViewController, UIPopoverPresentationControllerDelega
     {
         mapView.removeAnnotations(annotations)
         mapView.removeOverlays(mapView.overlays)
-        blurView.hidden = true
+  
+        UIView.animateWithDuration(0.5, animations: {
+            var blurViewTop = self.blurView.frame
+            blurViewTop.origin.y -= self.blurView.frame.size.height
+            
+            self.blurView.frame = blurViewTop
+            self.blurView.hidden = true
+        })
         distanceLabel.text = ""
+
     }
+    
+    func errorOutput()
+    {
+        UIView.animateWithDuration(0.5, animations: {
+            var blurViewTop = self.blurView.frame
+            blurViewTop.origin.y -= self.blurView.frame.size.height
+            
+            self.blurView.frame = blurViewTop
+            self.distanceLabel.text = "Couldn't access route at this time. Please try again later."
+            
+        })
+    }
+    
     
 }
 
