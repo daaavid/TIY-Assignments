@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xLN-2w-AcE">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Gotham Thin.ttf">
+            <string>GothamThin</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--Table View Controller-->
+        <scene sceneID="Cg4-0u-MWE">
+            <objects>
+                <tableViewController id="5hg-2X-nbW" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="oc5-KE-dJr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherCell" id="uZ2-u8-EBq">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uZ2-u8-EBq" id="mcB-Nk-58T">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5hg-2X-nbW" id="yU5-jo-ZIW"/>
+                            <outlet property="delegate" destination="5hg-2X-nbW" id="eTl-kU-cFI"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="eAn-k2-Ajr">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="PIP-W9-Onv">
+                            <connections>
+                                <segue destination="9RI-TF-K0R" kind="popoverPresentation" identifier="popover" popoverAnchorBarButtonItem="PIP-W9-Onv" id="Ba2-Mx-whv">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="acE-I4-gKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1164" y="238"/>
+        </scene>
+        <!--Zip Pop View Controller-->
+        <scene sceneID="ngo-78-HZA">
+            <objects>
+                <viewController id="9RI-TF-K0R" customClass="ZipPopViewController" customModule="Forecaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Mj8-nd-0dg"/>
+                        <viewControllerLayoutGuide type="bottom" id="UMv-Zq-E9W"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tfo-wE-Whq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Zip" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pj8-ZL-Qw7">
+                                <rect key="frame" x="30.5" y="30" width="540" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="GothamThin" family="Gotham Thin" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9RI-TF-K0R" id="bSd-au-IWQ"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pj8-ZL-Qw7" firstAttribute="width" secondItem="Tfo-wE-Whq" secondAttribute="width" multiplier="0.9" id="E3I-Bl-xX6"/>
+                            <constraint firstItem="pj8-ZL-Qw7" firstAttribute="centerX" secondItem="Tfo-wE-Whq" secondAttribute="centerX" id="Ueh-we-LX2"/>
+                            <constraint firstItem="pj8-ZL-Qw7" firstAttribute="top" secondItem="Mj8-nd-0dg" secondAttribute="bottom" constant="10" id="sYG-g1-T3J"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="zipTextField" destination="pj8-ZL-Qw7" id="EHC-mX-5vv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xTa-pk-mHo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1842" y="61"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="DmX-5M-Sa4">
+            <objects>
+                <viewController storyboardIdentifier="WeatherDetail" id="doT-da-5RY" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="i1I-UR-7Pr"/>
+                        <viewControllerLayoutGuide type="bottom" id="hZb-Ju-sMX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="meM-o2-a5T">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WFF-W0-mE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1842" y="710"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="V4z-3D-T61">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xLN-2w-AcE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1xG-5s-QLn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5hg-2X-nbW" kind="relationship" relationship="rootViewController" id="IiN-bF-UrB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HNU-iF-HiY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="494" y="238"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" red="0.0" green="0.58620689660000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+</document>
