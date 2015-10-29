@@ -18,6 +18,8 @@
 		632B0EED1BE2625A006EB419 /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0EEC1BE2625A006EB419 /* WeatherDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		632B0EEF1BE262B4006EB419 /* DarkSkyAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0EEE1BE262B4006EB419 /* DarkSkyAPIController.swift */; settings = {ASSET_TAGS = (); }; };
 		632B0EF31BE26B6C006EB419 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0EF21BE26B6C006EB419 /* Weather.swift */; settings = {ASSET_TAGS = (); }; };
+		632B0EF51BE26E99006EB419 /* GoogleZipAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0EF41BE26E99006EB419 /* GoogleZipAPIController.swift */; settings = {ASSET_TAGS = (); }; };
+		632B0EF71BE2831C006EB419 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0EF61BE2831C006EB419 /* WeatherCell.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		632B0EEC1BE2625A006EB419 /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
 		632B0EEE1BE262B4006EB419 /* DarkSkyAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkSkyAPIController.swift; sourceTree = "<group>"; };
 		632B0EF21BE26B6C006EB419 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		632B0EF41BE26E99006EB419 /* GoogleZipAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleZipAPIController.swift; sourceTree = "<group>"; };
+		632B0EF61BE2831C006EB419 /* WeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +75,9 @@
 				632B0EEA1BE26249006EB419 /* ZipPopViewController.swift */,
 				632B0EEC1BE2625A006EB419 /* WeatherDetailViewController.swift */,
 				632B0EEE1BE262B4006EB419 /* DarkSkyAPIController.swift */,
+				632B0EF41BE26E99006EB419 /* GoogleZipAPIController.swift */,
 				632B0EF21BE26B6C006EB419 /* Weather.swift */,
+				632B0EF61BE2831C006EB419 /* WeatherCell.swift */,
 				632B0EE51BE25EE8006EB419 /* garbage */,
 			);
 			path = Forecaster;
@@ -164,9 +170,11 @@
 			files = (
 				632B0ED11BE25ECA006EB419 /* AppDelegate.swift in Sources */,
 				632B0EE91BE2621D006EB419 /* WeatherTableViewController.swift in Sources */,
+				632B0EF71BE2831C006EB419 /* WeatherCell.swift in Sources */,
 				632B0EEF1BE262B4006EB419 /* DarkSkyAPIController.swift in Sources */,
 				632B0EEB1BE26249006EB419 /* ZipPopViewController.swift in Sources */,
 				632B0EED1BE2625A006EB419 /* WeatherDetailViewController.swift in Sources */,
+				632B0EF51BE26E99006EB419 /* GoogleZipAPIController.swift in Sources */,
 				632B0ED91BE25ECA006EB419 /* Forecaster.xcdatamodeld in Sources */,
 				632B0EF31BE26B6C006EB419 /* Weather.swift in Sources */,
 			);
@@ -316,6 +324,7 @@
 				632B0EE41BE25ECA006EB419 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

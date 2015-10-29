@@ -15,14 +15,30 @@ protocol ZipPopViewControllerDelegate
 
 protocol DarkSkyAPIControllerProtocol
 {
-    func searchWasCompleted(results: NSDictionary)
+    func darkSkySearchWasCompleted(results: NSDictionary)
 }
 
-class WeatherTableViewController: UITableViewController, ZipPopViewControllerDelegate, UIPopoverPresentationControllerDelegate, DarkSkyAPIControllerProtocol
+protocol GoogleZipAPIControllerProtocol
 {
+    func googleSearchWasCompleted(results: NSArray)
+}
 
-    override func viewDidLoad() {
+class WeatherTableViewController: UITableViewController, ZipPopViewControllerDelegate, UIPopoverPresentationControllerDelegate, DarkSkyAPIControllerProtocol, GoogleZipAPIControllerProtocol
+{
+    var weatherArr = [Weather]()
+    var googleAPI: GoogleZipAPIController!
+    var darkskyAPI: DarkSkyAPIController!
+//    var weatherDetailVC: WeatherDetailViewController!
+
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
+        
+//        print("videogames")
+//        googleAPI = GoogleZipAPIController(delegate: self)
+//        googleAPI.search("53094")
+//        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -45,15 +61,39 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return weatherArr.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("WeatherCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("WeatherCell", forIndexPath: indexPath) as! WeatherCell
+        
+        let weather = weatherArr[indexPath.row]
+//        cell.textLabel?.text = weather.city
+//        cell.detailTextLabel?.text = "\(weather.lat), \(weather.lng)"
+        cell.cityLabel.text = weather.city
+        cell.quickWeatherLabel.text = weather.lat
+        cell.tempLabel.text = weather.lng
+        
+        print(weather.lat)
 
         return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        let chosenWeather = weatherArr[indexPath.row]
+        
+        let weatherDetailVC = storyboard?.instantiateViewControllerWithIdentifier("WeatherDetail") as! WeatherDetailViewController
+        
+        weatherDetailVC.weather = chosenWeather
+        
+        weatherDetailVC.populate()
+        
+        navigationController?.pushViewController(weatherDetailVC, animated: true)
+    }
+    
+    //MARK: - View
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
@@ -63,7 +103,8 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
             popVC.popoverPresentationController?.delegate = self
             popVC.delegate = self
             
-            popVC.preferredContentSize = CGSizeMake(200, 100)
+            popVC.view.backgroundColor = UIColor.whiteColor()
+            popVC.preferredContentSize = CGSizeMake(200, 40)
         }
     }
     
@@ -72,15 +113,40 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
         return .None
     }
 
+    //MARK: - Private
     
     func zipWasChosen(zip: String)
     {
+        print(zip)
         
+        googleAPI = GoogleZipAPIController(delegate: self)
+        googleAPI.search(zip)
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     }
     
-    func searchWasCompleted(results: NSDictionary)
+    func darkSkySearchWasCompleted(results: NSDictionary)
     {
+        dispatch_async(dispatch_get_main_queue(), {
+ //           self.weatherArr = self.weatherArr + Weather.locationWithJSON(results)
+            self.tableView.reloadData()
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        })
+    }
+    
+    func googleSearchWasCompleted(results: NSArray)
+    {
+        self.dismissViewControllerAnimated(true, completion: nil)
         
+        dispatch_async(dispatch_get_main_queue(), {
+            let weatherObj = Weather.locationWithJSON(results)
+            self.weatherArr = self.weatherArr + weatherObj
+//            self.darkskyAPI.search(weatherObj[0].lng, long: weatherObj[0].lat)
+            
+            self.tableView.reloadData()
+            
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        })
     }
 
 

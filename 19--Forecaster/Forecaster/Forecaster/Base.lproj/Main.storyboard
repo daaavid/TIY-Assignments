@@ -2,33 +2,73 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xLN-2w-AcE">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Gotham Thin.ttf">
             <string>GothamThin</string>
+            <string>GothamThin</string>
+            <string>GothamThin</string>
+            <string>GothamThin</string>
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Table View Controller-->
+        <!--Weather Table View Controller-->
         <scene sceneID="Cg4-0u-MWE">
             <objects>
-                <tableViewController id="5hg-2X-nbW" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="oc5-KE-dJr">
+                <tableViewController id="5hg-2X-nbW" customClass="WeatherTableViewController" customModule="Forecaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" id="oc5-KE-dJr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherCell" id="uZ2-u8-EBq">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="WeatherCell" rowHeight="72" id="uZ2-u8-EBq" customClass="WeatherCell" customModule="Forecaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uZ2-u8-EBq" id="mcB-Nk-58T">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="71.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pW8-qG-PFN">
+                                            <rect key="frame" x="18" y="8" width="84" height="18"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" name="GothamThin" family="Gotham Thin" pointSize="20"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Forecast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75Y-8R-6v3">
+                                            <rect key="frame" x="18" y="40" width="188" height="23.5"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" name="GothamThin" family="Gotham Thin" pointSize="26"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swq-PU-LzV">
+                                            <rect key="frame" x="513" y="19" width="45.5" height="32.5"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" name="GothamThin" family="Gotham Thin" pointSize="36"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="topMargin" secondItem="pW8-qG-PFN" secondAttribute="top" id="1SN-bj-Ugs"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="75Y-8R-6v3" secondAttribute="bottom" id="drI-Xf-DxB"/>
+                                        <constraint firstItem="75Y-8R-6v3" firstAttribute="leading" secondItem="mcB-Nk-58T" secondAttribute="leadingMargin" constant="10" id="hca-eO-QDX"/>
+                                        <constraint firstItem="pW8-qG-PFN" firstAttribute="leading" secondItem="mcB-Nk-58T" secondAttribute="leadingMargin" constant="10" id="lLl-HE-wJR"/>
+                                        <constraint firstItem="swq-PU-LzV" firstAttribute="centerY" secondItem="mcB-Nk-58T" secondAttribute="centerY" id="xeO-9O-zRd"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="swq-PU-LzV" secondAttribute="trailing" constant="41" id="2oV-XR-LWO"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="cityLabel" destination="pW8-qG-PFN" id="ueW-0C-hct"/>
+                                    <outlet property="quickWeatherLabel" destination="75Y-8R-6v3" id="GGu-bp-dQD"/>
+                                    <outlet property="tempLabel" destination="swq-PU-LzV" id="k8D-CS-rTP"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -63,7 +103,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Zip" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pj8-ZL-Qw7">
-                                <rect key="frame" x="30.5" y="30" width="540" height="30"/>
+                                <rect key="frame" x="30.5" y="30" width="540" height="560"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="GothamThin" family="Gotham Thin" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -76,9 +116,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pj8-ZL-Qw7" firstAttribute="width" secondItem="Tfo-wE-Whq" secondAttribute="width" multiplier="0.9" id="E3I-Bl-xX6"/>
+                            <constraint firstItem="UMv-Zq-E9W" firstAttribute="top" secondItem="pj8-ZL-Qw7" secondAttribute="bottom" constant="10" id="FEr-KF-H5c"/>
                             <constraint firstItem="pj8-ZL-Qw7" firstAttribute="centerX" secondItem="Tfo-wE-Whq" secondAttribute="centerX" id="Ueh-we-LX2"/>
+                            <constraint firstItem="pj8-ZL-Qw7" firstAttribute="height" secondItem="Tfo-wE-Whq" secondAttribute="height" id="ZkZ-Iw-ECe"/>
                             <constraint firstItem="pj8-ZL-Qw7" firstAttribute="top" secondItem="Mj8-nd-0dg" secondAttribute="bottom" constant="10" id="sYG-g1-T3J"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ZkZ-Iw-ECe"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="zipTextField" destination="pj8-ZL-Qw7" id="EHC-mX-5vv"/>
@@ -88,10 +135,10 @@
             </objects>
             <point key="canvasLocation" x="1842" y="61"/>
         </scene>
-        <!--View Controller-->
+        <!--Weather Detail View Controller-->
         <scene sceneID="DmX-5M-Sa4">
             <objects>
-                <viewController storyboardIdentifier="WeatherDetail" id="doT-da-5RY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WeatherDetail" id="doT-da-5RY" customClass="WeatherDetailViewController" customModule="Forecaster" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="i1I-UR-7Pr"/>
                         <viewControllerLayoutGuide type="bottom" id="hZb-Ju-sMX"/>
@@ -99,9 +146,54 @@
                     <view key="view" contentMode="scaleToFill" id="meM-o2-a5T">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMu-BJ-2t5">
+                                <rect key="frame" x="20" y="72" width="42" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YyM-Hl-8J8">
+                                <rect key="frame" x="20" y="100" width="42" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YyM-Hl-8J8" firstAttribute="centerX" secondItem="wMu-BJ-2t5" secondAttribute="centerX" id="4sF-7s-SOy"/>
+                            <constraint firstItem="YyM-Hl-8J8" firstAttribute="top" secondItem="wMu-BJ-2t5" secondAttribute="bottom" constant="7.5" id="Ar8-9v-jbN"/>
+                            <constraint firstItem="wMu-BJ-2t5" firstAttribute="top" secondItem="i1I-UR-7Pr" secondAttribute="bottom" constant="8" id="Cyn-RE-Sif"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="wMu-BJ-2t5" secondAttribute="leading" id="EO8-HF-zp6"/>
+                            <constraint firstItem="YyM-Hl-8J8" firstAttribute="centerY" secondItem="wMu-BJ-2t5" secondAttribute="centerY" id="P8P-O8-Gou"/>
+                            <constraint firstItem="YyM-Hl-8J8" firstAttribute="centerX" secondItem="wMu-BJ-2t5" secondAttribute="centerX" id="c2g-MB-peo"/>
+                            <constraint firstItem="YyM-Hl-8J8" firstAttribute="centerX" secondItem="wMu-BJ-2t5" secondAttribute="centerX" id="iYs-wV-CeX"/>
+                            <constraint firstItem="YyM-Hl-8J8" firstAttribute="top" secondItem="wMu-BJ-2t5" secondAttribute="bottom" constant="8" id="ji4-UR-3YX"/>
+                            <constraint firstItem="YyM-Hl-8J8" firstAttribute="top" secondItem="wMu-BJ-2t5" secondAttribute="bottom" constant="8" id="oTJ-FO-6NF"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="wMu-BJ-2t5" secondAttribute="leading" id="sdu-09-z0S"/>
+                            <constraint firstItem="wMu-BJ-2t5" firstAttribute="top" secondItem="i1I-UR-7Pr" secondAttribute="bottom" id="w9q-sC-P7S"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="sdu-09-z0S"/>
+                                <exclude reference="w9q-sC-P7S"/>
+                                <exclude reference="4sF-7s-SOy"/>
+                                <exclude reference="P8P-O8-Gou"/>
+                                <exclude reference="iYs-wV-CeX"/>
+                                <exclude reference="ji4-UR-3YX"/>
+                                <exclude reference="oTJ-FO-6NF"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="latLabel" destination="wMu-BJ-2t5" id="cca-rJ-SDc"/>
+                        <outlet property="lngLabel" destination="YyM-Hl-8J8" id="ohd-1G-yFQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WFF-W0-mE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

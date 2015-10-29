@@ -1,5 +1,5 @@
 //
-//  DarkSkyAPIController.swift
+//  GoogleZipAPIController.swift
 //  Forecaster
 //
 //  Created by david on 10/29/15.
@@ -8,30 +8,38 @@
 
 import Foundation
 
-class DarkSkyAPIController
+class GoogleZipAPIController
 {
-    var darkSkyAPI: DarkSkyAPIControllerProtocol
+    //http://maps.googleapis.com/maps/api/geocode/json?address=santa+cruz&components=postal_code:53094&sensor=false
+    
+    var googleAPI: GoogleZipAPIControllerProtocol
     var task: NSURLSessionDataTask!
     
-    init(delegate: DarkSkyAPIControllerProtocol)
+    init(delegate: GoogleZipAPIControllerProtocol)
     {
-        self.darkSkyAPI = delegate
+        self.googleAPI = delegate
     }
     
-    func search(lat: String, long: String)
+    func search(zipCode: String)
     {
-        let url = NSURL(string: "https://api.forecast.io/forecast/20e7ef512551da7f8d7ab6d2c9b4128c/\(lat), \(long)")
+        print(zipCode)
+        
+        let url = NSURL(string: "https://maps.googleapis.com/maps/api/geocode/json?address=santa+cruz&components=postal_code:\(zipCode)&sensor=false")
         let session = NSURLSession.sharedSession()
-        task = session.dataTaskWithURL(url!, completionHandler: {data, reponse, error -> Void in
+        task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
+            print("Task completed")
             if error != nil
             {
                 print(error!.localizedDescription)
             }
             else
             {
-                if let dictionary = self.parseJSON(data!)
+                if let results = self.parseJSON(data!)
                 {
-                    self.darkSkyAPI.darkSkySearchWasCompleted(dictionary)
+                    if let results: NSArray = results["results"] as? NSArray
+                    {
+                        self.googleAPI.googleSearchWasCompleted(results)
+                    }
                 }
             }
         })
@@ -58,4 +66,6 @@ class DarkSkyAPIController
     {
         task.cancel()
     }
+
+
 }

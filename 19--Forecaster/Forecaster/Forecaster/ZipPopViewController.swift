@@ -33,18 +33,20 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool
     {
         var rc = false
-        if textField.text != ""
+        if textField.text != "" && textField.text?.characters.count == 5
         {
+            print(textField.text!)
             if let _ = Int(textField.text!)
             {
+                print(textField.text!)
                 rc = true
-                self.dismissViewControllerAnimated(true, completion: nil)
                 delegate?.zipWasChosen(textField.text!)
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
         else
         {
-            textField.placeholder = "Please enter a valid zip code"
+            textField.text = "Please enter a valid zip code"
         }
         return rc
     }
