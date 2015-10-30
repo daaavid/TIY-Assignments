@@ -11,7 +11,6 @@
 		6313A0861BE3A27200B32638 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6313A0851BE3A27200B32638 /* Color.swift */; settings = {ASSET_TAGS = (); }; };
 		6313A08A1BE3B7B700B32638 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6313A0891BE3B7B700B32638 /* Lato-Black.ttf */; settings = {ASSET_TAGS = (); }; };
 		6313A08C1BE3B7DD00B32638 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6313A08B1BE3B7DD00B32638 /* Lato-Light.ttf */; settings = {ASSET_TAGS = (); }; };
-		6313A1611BE3B9CC00B32638 /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = 6313A0F71BE3B9CC00B32638 /* Thumbs.db */; settings = {ASSET_TAGS = (); }; };
 		6313A1631BE3BB6400B32638 /* BGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6313A1621BE3BB6400B32638 /* BGImage.swift */; settings = {ASSET_TAGS = (); }; };
 		6313A1651BE3BCB100B32638 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6313A1641BE3BCB100B32638 /* Time.swift */; settings = {ASSET_TAGS = (); }; };
 		6313A1711BE3CC6A00B32638 /* clear-day.png in Resources */ = {isa = PBXBuildFile; fileRef = 6313A1661BE3CC6A00B32638 /* clear-day.png */; settings = {ASSET_TAGS = (); }; };
@@ -23,7 +22,6 @@
 		6313A1771BE3CC6A00B32638 /* rain.png in Resources */ = {isa = PBXBuildFile; fileRef = 6313A16C1BE3CC6A00B32638 /* rain.png */; settings = {ASSET_TAGS = (); }; };
 		6313A1781BE3CC6A00B32638 /* sleet.png in Resources */ = {isa = PBXBuildFile; fileRef = 6313A16D1BE3CC6A00B32638 /* sleet.png */; settings = {ASSET_TAGS = (); }; };
 		6313A1791BE3CC6A00B32638 /* snow.png in Resources */ = {isa = PBXBuildFile; fileRef = 6313A16E1BE3CC6A00B32638 /* snow.png */; settings = {ASSET_TAGS = (); }; };
-		6313A17A1BE3CC6A00B32638 /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = 6313A16F1BE3CC6A00B32638 /* Thumbs.db */; settings = {ASSET_TAGS = (); }; };
 		6313A17B1BE3CC6A00B32638 /* wind.png in Resources */ = {isa = PBXBuildFile; fileRef = 6313A1701BE3CC6A00B32638 /* wind.png */; settings = {ASSET_TAGS = (); }; };
 		6313A17D1BE3CF2400B32638 /* na.png in Resources */ = {isa = PBXBuildFile; fileRef = 6313A17C1BE3CF2400B32638 /* na.png */; settings = {ASSET_TAGS = (); }; };
 		632B0ED11BE25ECA006EB419 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0ED01BE25ECA006EB419 /* AppDelegate.swift */; };
@@ -46,7 +44,6 @@
 		6313A0851BE3A27200B32638 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		6313A0891BE3B7B700B32638 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		6313A08B1BE3B7DD00B32638 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
-		6313A0F71BE3B9CC00B32638 /* Thumbs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.db; sourceTree = "<group>"; };
 		6313A1621BE3BB6400B32638 /* BGImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BGImage.swift; sourceTree = "<group>"; };
 		6313A1641BE3BCB100B32638 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		6313A1661BE3CC6A00B32638 /* clear-day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clear-day.png"; sourceTree = "<group>"; };
@@ -58,7 +55,6 @@
 		6313A16C1BE3CC6A00B32638 /* rain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rain.png; sourceTree = "<group>"; };
 		6313A16D1BE3CC6A00B32638 /* sleet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sleet.png; sourceTree = "<group>"; };
 		6313A16E1BE3CC6A00B32638 /* snow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snow.png; sourceTree = "<group>"; };
-		6313A16F1BE3CC6A00B32638 /* Thumbs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.db; sourceTree = "<group>"; };
 		6313A1701BE3CC6A00B32638 /* wind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wind.png; sourceTree = "<group>"; };
 		6313A17C1BE3CF2400B32638 /* na.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = na.png; sourceTree = "<group>"; };
 		632B0ECD1BE25ECA006EB419 /* Forecaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forecaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,10 +128,8 @@
 				6313A16C1BE3CC6A00B32638 /* rain.png */,
 				6313A16D1BE3CC6A00B32638 /* sleet.png */,
 				6313A16E1BE3CC6A00B32638 /* snow.png */,
-				6313A16F1BE3CC6A00B32638 /* Thumbs.db */,
 				6313A1701BE3CC6A00B32638 /* wind.png */,
 				6313A17C1BE3CF2400B32638 /* na.png */,
-				6313A0F71BE3B9CC00B32638 /* Thumbs.db */,
 			);
 			name = WeatherIcons;
 			path = "Flat Black";
@@ -259,8 +253,6 @@
 				6313A1771BE3CC6A00B32638 /* rain.png in Resources */,
 				6313A1741BE3CC6A00B32638 /* fog.png in Resources */,
 				6313A17D1BE3CF2400B32638 /* na.png in Resources */,
-				6313A1611BE3B9CC00B32638 /* Thumbs.db in Resources */,
-				6313A17A1BE3CC6A00B32638 /* Thumbs.db in Resources */,
 				6313A08A1BE3B7B700B32638 /* Lato-Black.ttf in Resources */,
 				632B0ED61BE25ECA006EB419 /* Main.storyboard in Resources */,
 			);

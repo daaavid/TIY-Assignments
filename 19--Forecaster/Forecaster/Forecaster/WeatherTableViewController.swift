@@ -38,7 +38,7 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
         let colors = bgColor()
-        view.backgroundColor = UIColor(red: colors[0], green: colors[1], blue: 1, alpha: 1.0)
+        view.backgroundColor = UIColor(red: 0.1, green: colors[0], blue: colors[0] + 0.2, alpha: 1.0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -136,13 +136,17 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
     func bgColor() -> [CGFloat]
     {
         let color = colorBasedOnTime()
-        let colorsArr = color.bgColorBasedOnTime(0.5)
+        let colorsArr = color.bgColorBasedOnTime(0.65)
         var colors = [CGFloat]()
+        
+        print(colorsArr)
+        
         for x in colorsArr
         {
             colors.append(CGFloat(x))
         }
         
+        print(colors)
         return colors
     }
     
@@ -181,7 +185,7 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
     {
         if location.imgHasBeenAnimated == false
         {
-            UIView.animateWithDuration(0.5, delay: 1.0, options: [], animations:
+            UIView.animateWithDuration(0.5, delay: 0.5, options: [], animations:
                 {
                     var img = cell.img.frame
                     img.origin.x += img.size.width + 10
