@@ -10,8 +10,6 @@ import Foundation
 
 class GoogleZipAPIController
 {
-    //http://maps.googleapis.com/maps/api/geocode/json?address=santa+cruz&components=postal_code:53094&sensor=false
-    
     var googleAPI: GoogleZipAPIControllerProtocol
     var task: NSURLSessionDataTask!
     
@@ -39,6 +37,10 @@ class GoogleZipAPIController
                     if let results: NSArray = results["results"] as? NSArray
                     {
                         self.googleAPI.googleSearchWasCompleted(results)
+//                        if let dictionary = results[0] as? NSDictionary
+//                        {
+//                            self.googleAPI.googleSearchWasCompleted(dictionary)
+//                        }
                     }
                 }
             }

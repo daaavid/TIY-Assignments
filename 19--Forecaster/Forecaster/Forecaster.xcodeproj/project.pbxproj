@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6301B8BD1BE2EF99009D4A42 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6301B8BC1BE2EF99009D4A42 /* Weather.swift */; settings = {ASSET_TAGS = (); }; };
 		632B0ED11BE25ECA006EB419 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0ED01BE25ECA006EB419 /* AppDelegate.swift */; };
 		632B0ED61BE25ECA006EB419 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 632B0ED41BE25ECA006EB419 /* Main.storyboard */; };
 		632B0ED91BE25ECA006EB419 /* Forecaster.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 632B0ED71BE25ECA006EB419 /* Forecaster.xcdatamodeld */; };
@@ -17,12 +18,13 @@
 		632B0EEB1BE26249006EB419 /* ZipPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0EEA1BE26249006EB419 /* ZipPopViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		632B0EED1BE2625A006EB419 /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0EEC1BE2625A006EB419 /* WeatherDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		632B0EEF1BE262B4006EB419 /* DarkSkyAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0EEE1BE262B4006EB419 /* DarkSkyAPIController.swift */; settings = {ASSET_TAGS = (); }; };
-		632B0EF31BE26B6C006EB419 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0EF21BE26B6C006EB419 /* Weather.swift */; settings = {ASSET_TAGS = (); }; };
-		632B0EF51BE26E99006EB419 /* GoogleZipAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0EF41BE26E99006EB419 /* GoogleZipAPIController.swift */; settings = {ASSET_TAGS = (); }; };
+		632B0EF31BE26B6C006EB419 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0EF21BE26B6C006EB419 /* Location.swift */; settings = {ASSET_TAGS = (); }; };
+		632B0EF51BE26E99006EB419 /* GoogleAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0EF41BE26E99006EB419 /* GoogleAPIController.swift */; settings = {ASSET_TAGS = (); }; };
 		632B0EF71BE2831C006EB419 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0EF61BE2831C006EB419 /* WeatherCell.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6301B8BC1BE2EF99009D4A42 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		632B0ECD1BE25ECA006EB419 /* Forecaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forecaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		632B0ED01BE25ECA006EB419 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		632B0ED51BE25ECA006EB419 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,8 +37,8 @@
 		632B0EEA1BE26249006EB419 /* ZipPopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipPopViewController.swift; sourceTree = "<group>"; };
 		632B0EEC1BE2625A006EB419 /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
 		632B0EEE1BE262B4006EB419 /* DarkSkyAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkSkyAPIController.swift; sourceTree = "<group>"; };
-		632B0EF21BE26B6C006EB419 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
-		632B0EF41BE26E99006EB419 /* GoogleZipAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleZipAPIController.swift; sourceTree = "<group>"; };
+		632B0EF21BE26B6C006EB419 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		632B0EF41BE26E99006EB419 /* GoogleAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAPIController.swift; sourceTree = "<group>"; };
 		632B0EF61BE2831C006EB419 /* WeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,6 +53,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6301B8BA1BE2EED8009D4A42 /* APIControllers */ = {
+			isa = PBXGroup;
+			children = (
+				632B0EEE1BE262B4006EB419 /* DarkSkyAPIController.swift */,
+				632B0EF41BE26E99006EB419 /* GoogleAPIController.swift */,
+			);
+			name = APIControllers;
+			sourceTree = "<group>";
+		};
+		6301B8BB1BE2EEE4009D4A42 /* Other VC */ = {
+			isa = PBXGroup;
+			children = (
+				632B0EEA1BE26249006EB419 /* ZipPopViewController.swift */,
+				632B0EEC1BE2625A006EB419 /* WeatherDetailViewController.swift */,
+			);
+			name = "Other VC";
+			sourceTree = "<group>";
+		};
 		632B0EC41BE25ECA006EB419 = {
 			isa = PBXGroup;
 			children = (
@@ -72,12 +92,10 @@
 			children = (
 				632B0ED41BE25ECA006EB419 /* Main.storyboard */,
 				632B0EE81BE2621D006EB419 /* WeatherTableViewController.swift */,
-				632B0EEA1BE26249006EB419 /* ZipPopViewController.swift */,
-				632B0EEC1BE2625A006EB419 /* WeatherDetailViewController.swift */,
-				632B0EEE1BE262B4006EB419 /* DarkSkyAPIController.swift */,
-				632B0EF41BE26E99006EB419 /* GoogleZipAPIController.swift */,
-				632B0EF21BE26B6C006EB419 /* Weather.swift */,
-				632B0EF61BE2831C006EB419 /* WeatherCell.swift */,
+				6301B8BB1BE2EEE4009D4A42 /* Other VC */,
+				6301B8BA1BE2EED8009D4A42 /* APIControllers */,
+				632B0EF21BE26B6C006EB419 /* Location.swift */,
+				6301B8BC1BE2EF99009D4A42 /* Weather.swift */,
 				632B0EE51BE25EE8006EB419 /* garbage */,
 			);
 			path = Forecaster;
@@ -86,6 +104,7 @@
 		632B0EE51BE25EE8006EB419 /* garbage */ = {
 			isa = PBXGroup;
 			children = (
+				632B0EF61BE2831C006EB419 /* WeatherCell.swift */,
 				632B0EE61BE26053006EB419 /* Gotham Thin.ttf */,
 				632B0ED01BE25ECA006EB419 /* AppDelegate.swift */,
 				632B0EDA1BE25ECA006EB419 /* Assets.xcassets */,
@@ -172,11 +191,12 @@
 				632B0EE91BE2621D006EB419 /* WeatherTableViewController.swift in Sources */,
 				632B0EF71BE2831C006EB419 /* WeatherCell.swift in Sources */,
 				632B0EEF1BE262B4006EB419 /* DarkSkyAPIController.swift in Sources */,
+				6301B8BD1BE2EF99009D4A42 /* Weather.swift in Sources */,
 				632B0EEB1BE26249006EB419 /* ZipPopViewController.swift in Sources */,
 				632B0EED1BE2625A006EB419 /* WeatherDetailViewController.swift in Sources */,
-				632B0EF51BE26E99006EB419 /* GoogleZipAPIController.swift in Sources */,
+				632B0EF51BE26E99006EB419 /* GoogleAPIController.swift in Sources */,
 				632B0ED91BE25ECA006EB419 /* Forecaster.xcdatamodeld in Sources */,
-				632B0EF31BE26B6C006EB419 /* Weather.swift in Sources */,
+				632B0EF31BE26B6C006EB419 /* Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

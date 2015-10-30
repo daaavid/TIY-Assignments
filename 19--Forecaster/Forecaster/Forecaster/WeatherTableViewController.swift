@@ -15,7 +15,8 @@ protocol ZipPopViewControllerDelegate
 
 protocol DarkSkyAPIControllerProtocol
 {
-    func darkSkySearchWasCompleted(results: NSDictionary)
+    func darkSkySearchWasCompleted(results: NSDictionary, location: Location)
+    //    func darkSkySearchWasCompleted(results: NSDictionary)
 }
 
 protocol GoogleZipAPIControllerProtocol
@@ -25,19 +26,16 @@ protocol GoogleZipAPIControllerProtocol
 
 class WeatherTableViewController: UITableViewController, ZipPopViewControllerDelegate, UIPopoverPresentationControllerDelegate, DarkSkyAPIControllerProtocol, GoogleZipAPIControllerProtocol
 {
-    var weatherArr = [Weather]()
+    var locationArr = [Location]()
+    var zipArr = [String]()
     var googleAPI: GoogleZipAPIController!
-    var darkskyAPI: DarkSkyAPIController!
+//    var darkskyAPI: DarkSkyAPIController!
 //    var weatherDetailVC: WeatherDetailViewController!
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-//        print("videogames")
-//        googleAPI = GoogleZipAPIController(delegate: self)
-//        googleAPI.search("53094")
-//        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+
 
 
         // Uncomment the following line to preserve selection between presentations
@@ -61,34 +59,32 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return weatherArr.count
+        return locationArr.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("WeatherCell", forIndexPath: indexPath) as! WeatherCell
         
-        let weather = weatherArr[indexPath.row]
-//        cell.textLabel?.text = weather.city
-//        cell.detailTextLabel?.text = "\(weather.lat), \(weather.lng)"
-        cell.cityLabel.text = weather.city
-        cell.quickWeatherLabel.text = weather.lat
-        cell.tempLabel.text = weather.lng
-        
-        print(weather.lat)
+        let location = locationArr[indexPath.row]
+
+        cell.cityLabel.text = location.city
+        cell.quickWeatherLabel.text = location.weather?.summary
+        if location.weather?.temp != nil
+        {
+            cell.tempLabel.text = String(location.weather!.temp).componentsSeparatedByString(".")[0] + "°"
+        }
 
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        let chosenWeather = weatherArr[indexPath.row]
+        let chosenLocation = locationArr[indexPath.row]
         
         let weatherDetailVC = storyboard?.instantiateViewControllerWithIdentifier("WeatherDetail") as! WeatherDetailViewController
         
-        weatherDetailVC.weather = chosenWeather
-        
-        weatherDetailVC.populate()
+        weatherDetailVC.location = chosenLocation
         
         navigationController?.pushViewController(weatherDetailVC, animated: true)
     }
@@ -117,34 +113,76 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
     
     func zipWasChosen(zip: String)
     {
-        print(zip)
-        
         googleAPI = GoogleZipAPIController(delegate: self)
         googleAPI.search(zip)
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     }
     
-    func darkSkySearchWasCompleted(results: NSDictionary)
-    {
-        dispatch_async(dispatch_get_main_queue(), {
- //           self.weatherArr = self.weatherArr + Weather.locationWithJSON(results)
-            self.tableView.reloadData()
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-        })
-    }
+    // MARK: - Search
     
     func googleSearchWasCompleted(results: NSArray)
     {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        
-        dispatch_async(dispatch_get_main_queue(), {
-            let weatherObj = Weather.locationWithJSON(results)
-            self.weatherArr = self.weatherArr + weatherObj
-//            self.darkskyAPI.search(weatherObj[0].lng, long: weatherObj[0].lat)
+        dispatch_async(dispatch_get_main_queue(),
+        {
+            self.dismissViewControllerAnimated(true, completion: nil)
+
+            let userLocation = Location.locationWithJSON(results)
+            self.locationArr.append(userLocation)
+            
+            /*{
+//            print("dispatch \(weatherObj[0].lng) \(weatherObj[0].lat)")
+
+//            for x in weatherObj
+//            {
+//                let lat = x.lat
+//                let lng = x.lng
+//                
+//                print("dispatch" + x.lat); print("dispatch" + x.lng)
+//                
+//                self.darkskyAPI.search(lat, long: lng)
+//            }
+                }*/
+                
+            let darkSkyAPI = DarkSkyAPIController(delegate: self)
+            darkSkyAPI.search(userLocation)
+            self.tableView.reloadData()
+        })
+    }
+    
+    func darkSkySearchWasCompleted(results: NSDictionary, location: Location)
+    {
+        dispatch_async(dispatch_get_main_queue(),
+        {
+            let weather = Weather.weatherWithJSON(results)
+            
+            for city in self.locationArr
+            {
+                if city.city == location.city
+                {
+                    city.weather = weather
+                }
+            }
+            
+            /*{
+            
+//            self.tableView.visibleCells.indexOf(location.city)
+//            for cell in visibleCells.indexOf(location.city)
+//            {
+//                if cell.cityLabel.text! == location.city
+//                {
+//                    
+//                }
+//            }
+            
+//            let weatherObj = Weather.weatherWithJSON(results)
+            //fetch particular weather object 
+        //city and weather objcts
+        //city with weather object in it
+        //update city weather 
+            }*/
             
             self.tableView.reloadData()
-            
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         })
     }

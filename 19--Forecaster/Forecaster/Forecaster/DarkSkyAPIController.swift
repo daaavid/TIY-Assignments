@@ -13,14 +13,18 @@ class DarkSkyAPIController
     var darkSkyAPI: DarkSkyAPIControllerProtocol
     var task: NSURLSessionDataTask!
     
+//    var weather
+    
     init(delegate: DarkSkyAPIControllerProtocol)
     {
         self.darkSkyAPI = delegate
     }
     
-    func search(lat: String, long: String)
+//    func search(lat: String, long: String)
+    func search(location: Location)
     {
-        let url = NSURL(string: "https://api.forecast.io/forecast/20e7ef512551da7f8d7ab6d2c9b4128c/\(lat), \(long)")
+        let lat = location.lat ; let lng = location.lng
+        let url = NSURL(string: "https://api.forecast.io/forecast/20e7ef512551da7f8d7ab6d2c9b4128c/\(lat),%20\(lng)")
         let session = NSURLSession.sharedSession()
         task = session.dataTaskWithURL(url!, completionHandler: {data, reponse, error -> Void in
             if error != nil
@@ -31,7 +35,11 @@ class DarkSkyAPIController
             {
                 if let dictionary = self.parseJSON(data!)
                 {
-                    self.darkSkyAPI.darkSkySearchWasCompleted(dictionary)
+                    if let currently = dictionary["currently"] as? NSDictionary
+                    {
+                    
+                    self.darkSkyAPI.darkSkySearchWasCompleted(currently, location: location)
+                    }
                 }
             }
         })

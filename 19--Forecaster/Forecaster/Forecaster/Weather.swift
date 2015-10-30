@@ -10,59 +10,54 @@ import Foundation
 
 class Weather
 {
-    let city: String
-    let lat: String
-    let lng: String
+    let temp: Double
+    let apparentTemp: Double
     
-    init(city: String, lat: String, lng: String)
+    let summary: String
+    let icon: String
+    
+    let precipProbability: Double
+//    let precipType: String
+    let precipIntensity: Double
+    
+    let windSpeed: Double
+    
+    let humidity: Double
+    let visibility: Double
+    let cloudCover: Double
+    
+    init(summary: String, icon: String, precipIntensity: Double, precipProbability: Double, temperature: Double, apparentTemp: Double, humidity: Double, windSpeed: Double, visibility: Double, cloudCover: Double)
     {
-        self.city = city
-        self.lat = lat
-        self.lng = lng
+        self.summary = summary
+        self.icon = icon
+        self.precipIntensity = precipIntensity
+        self.precipProbability = precipProbability
+        self.temp = temperature
+        self.apparentTemp = apparentTemp
+        self.humidity = humidity
+        self.windSpeed = windSpeed
+        self.visibility = visibility
+        self.cloudCover = cloudCover
     }
     
-    static func locationWithJSON(results: NSArray) -> [Weather]
+    static func weatherWithJSON(currently: NSDictionary) -> Weather
     {
-        var weatherArr = [Weather]()
-        var city = ""
-        var latStr = ""
-        var lngStr = ""
-        
-        if results.count > 0
-        {
-            for result in results
-            {
-                let formattedAdress = result["formatted_address"] as? String
-                if formattedAdress != nil
-                {
-                    var addressComponentsForCity = formattedAdress!.componentsSeparatedByString(",")
-                    city = String(addressComponentsForCity[0])
-                    
-                }
-                
-                let geometry = result["geometry"] as? NSDictionary
-                if geometry != nil
-                {
-                    let latLong = geometry?["location"] as? NSDictionary
-                    if latLong != nil
-                    {
-                        let lat = latLong?.valueForKey("lat") as! Double
-                        let lng = latLong?.valueForKey("lng") as! Double
-                        
-                        latStr = String(lat)
-                        lngStr = String(lng)
-                    }
-                }
-            
-                weatherArr.append(Weather(city: city, lat: latStr, lng: lngStr))
-            }
-        }
-        
-        return weatherArr
-    }
-    
-    static func weatherWithJSON()
-    {
-        
+        var weather = Weather?()
+
+        let summary = currently["summary"] as! String
+        let icon = currently["icon"] as! String
+        let precipIntensity = currently["precipIntensity"] as!Double
+        let precipProbability = currently["precipProbability"] as! Double
+        let temp = currently["temperature"] as! Double
+        let apparentTemp = currently["apparentTemperature"] as! Double
+        let humidity = currently["humidity"] as! Double
+        let windSpeed = currently["windSpeed"] as! Double
+        let visibility = currently["visibility"] as! Double
+        let cloudCover = currently["cloudCover"] as! Double
+
+        weather = Weather(summary: summary, icon: icon, precipIntensity: precipIntensity, precipProbability: precipProbability, temperature: temp, apparentTemp: apparentTemp, humidity: humidity, windSpeed: windSpeed, visibility: visibility, cloudCover: cloudCover)
+        return weather!
+
     }
 }
+

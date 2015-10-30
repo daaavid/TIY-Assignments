@@ -10,7 +10,7 @@ import UIKit
 
 class WeatherDetailViewController: UIViewController
 {
-    var weather = Weather?()
+    var location = Location?()
     
     @IBOutlet var latLabel: UILabel!
     @IBOutlet var lngLabel: UILabel!
@@ -21,8 +21,8 @@ class WeatherDetailViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        latLabel.text = weather!.lat
-        lngLabel.text = weather!.lng
+        latLabel.text = location!.lat
+        lngLabel.text = location!.lng
 //        print(lat)
 //        print(lng)
 //        latLabel.text = self.lat
@@ -35,11 +35,4 @@ class WeatherDetailViewController: UIViewController
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func populate()
-    {
-        print("populate() " + weather!.lat + weather!.lng)
-
-    }
-
 }
