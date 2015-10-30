@@ -36,10 +36,13 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
     {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        let colors = bgColorBasedOnTime()
+        view.backgroundColor = UIColor(red: colors[0], green: colors[1], blue: 1, alpha: 0.8)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
         // Dispose of any resources that can be recreated.
     }
 
@@ -76,10 +79,69 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
                 cell.tempLabel.text = String(location.weather!.temp).componentsSeparatedByString(".")[0] + "°"
             }
         }
+
+        let colors = bgColorBasedOnTime()
+        cell.backgroundColor = UIColor(white: 0.0, alpha: 0.0)
         
-
-
+        if colors[0] + colors[1] + colors[2] < 1.2
+        {
+            cell.color = UIColor.whiteColor()
+        }
+        
         return cell
+    }
+    
+    func bgColorBasedOnTime() -> [CGFloat]
+    {
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = .ShortStyle
+        let time = formatter.stringFromDate(NSDate())
+        let ampm = time.componentsSeparatedByString(" ")[1]
+        var hour = Int(time.componentsSeparatedByString(":")[0])!
+        
+        if ampm == "PM"
+        {
+            hour += 12
+        }
+        
+        var colors = [CGFloat]()
+        
+        switch hour
+        {
+        case 1...6:
+            colors = colorAdd(0.2)
+        case 6...12:
+            colors = colorAdd(0.3)
+        case 12...18:
+            colors = colorAdd(0.4)
+        case 18...24:
+            colors = colorAdd(0.3)
+        default: break
+        }
+        
+//        let color = UIColor(red: colors[0], green: colors[1], blue: colors[2], alpha: alpha)
+        print(colors)
+        return colors
+    }
+    
+    
+    
+    //popover as table view, add a bunch of locations
+    //once it reaches 5, stop
+    
+    
+    
+    
+    
+    
+    func colorAdd(num: CGFloat) -> [CGFloat]
+    {
+        var colors = [CGFloat]()
+        for _ in 1...3
+        {
+            colors.append(num)
+        }
+        return colors
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)

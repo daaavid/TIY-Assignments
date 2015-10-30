@@ -14,9 +14,13 @@ class WeatherCell: UITableViewCell {
     @IBOutlet var quickWeatherLabel: UILabel!
     @IBOutlet var tempLabel: UILabel!
     
+    var color = UIColor.whiteColor()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        cityLabel.textColor = color
+        quickWeatherLabel.textColor = color
+        tempLabel.textColor = color
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
