@@ -10,11 +10,11 @@ import Foundation
 
 class Weather
 {
-    let temp: Double
+    var temp: Double
     let apparentTemp: Double
     
     let summary: String
-    let icon: String
+    var icon: String
     
     let precipProbability: Double
 //    let precipType: String

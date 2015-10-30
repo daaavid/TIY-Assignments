@@ -23,12 +23,14 @@ class WeatherDetailViewController: UIViewController
     
     @IBOutlet var quickWeatherLabel: UILabel!
     @IBOutlet var humidityLabel: UILabel!
-    @IBOutlet var rainProb: UILabel!
-    @IBOutlet var rainIntensity: UILabel!
+    @IBOutlet var rainProbabilityLabel: UILabel!
+//    @IBOutlet var rainIntensityLabel: UILabel!
     
     
     @IBOutlet var weatherImg: UIImageView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet var latLabel: UILabel!
+    @IBOutlet var lngLabel: UILabel!
     
 //    var lat = ""
 //    var lng = ""
@@ -38,7 +40,13 @@ class WeatherDetailViewController: UIViewController
         super.viewDidLoad()
         
         animateBlurViews()
-        
+
+        setLabels()
+    }
+    
+    
+    func setLabels()
+    {
         if location?.weather != nil
         {
             assignWeatherImg((location?.weather!.icon)!)
@@ -46,11 +54,49 @@ class WeatherDetailViewController: UIViewController
             
             cityLabel.text = location!.city
             quickWeatherLabel.text = location!.weather!.summary
-            tempLabel.text = String(location!.weather!.temp).componentsSeparatedByString(".")[0] + "°"
-            appTempLabel.text = "Feels like " + String(location!.weather!.apparentTemp).componentsSeparatedByString(".")[0] + "°"
+            
+            let humidity = location!.weather!.humidity
+            switch humidity
+            {
+            case 0.0...0.2: humidityLabel.text = "It's very dry today"
+            case 0.2...0.4: humidityLabel.text = "It's dry today"
+            case 0.4...0.6: humidityLabel.text = "It's neither dry nor humid"
+            case 0.6...0.8: humidityLabel.text = "It's humid today"
+            case 0.8...1.0: humidityLabel.text = "It's very humid today"
+            default: "Humidity"
+            }
+            
+            let rainProb = location!.weather!.precipProbability
+            if rainProb != 0.0
+            {
+                
+            }
+            
+            let rainIntens = location!.weather!.precipIntensity
+            if rainIntens != 0.0
+            {
+            }
+            
+            latLabel.text = location!.lat
+            lngLabel.text = location!.lng
+            
+            
+            let temp =  String(location!.weather!.temp).componentsSeparatedByString(".")[0]
+            tempLabel.text = temp + "°"
+            
+            let apparentTemp = String(location!.weather!.apparentTemp).componentsSeparatedByString(".")[0]
+            if Int(apparentTemp) == Int(temp)
+            {
+                appTempLabel.text = "  fahrenheit"
+            }
+            else
+            {
+                print(apparentTemp) ; print(temp)
+                appTempLabel.text = ", but feels like " + apparentTemp + "°"
+            }
         }
     }
-    
+
     func assignWeatherImg(icon: String)
     {
         switch icon
@@ -82,11 +128,15 @@ class WeatherDetailViewController: UIViewController
     
     func animateWeatherImg()
     {
-        UIView.animateWithDuration(0.5, delay: 1.5, options: [], animations:
+        UIView.animateWithDuration(0.5, delay: 1.0, options: [], animations:
         {
             var img = self.weatherImg.frame
             img.origin.x += img.size.width + 400
             
+            self.tempLabel.frame = img
+            self.appTempLabel.frame = img
+            self.rainProbabilityLabel.frame = img
+            self.humidityLabel.frame = img
             self.quickWeatherLabel.frame = img
             self.weatherImg.frame = img
         }, completion: nil)
@@ -94,7 +144,6 @@ class WeatherDetailViewController: UIViewController
     
     func animateBlurViews()
     {
-
         UIView.animateWithDuration(0.5, delay: 0.5, options: [], animations:
         {
             var blurView = self.blurView.frame
@@ -109,7 +158,6 @@ class WeatherDetailViewController: UIViewController
         }, completion: nil)
 
     }
-
     
     func startGeocoder()
     {
@@ -119,27 +167,12 @@ class WeatherDetailViewController: UIViewController
             {
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = (placemark.location?.coordinate)!
-//                annotation.title = "Lakeland, FL"
-                self.mapView.addAnnotation(annotation)
-//                let span = MKCoordinateSpanMake(Double(self.location!.lat)!, Double(self.location!.lng)!)
-//                self.mapView.setRegion(MKCoordinateRegionMake(annotation.coordinate, span), animated: true)
+                annotation.title = self.location!.city
+                annotation.subtitle = String(self.location!.weather!.temp).componentsSeparatedByString(".")[0] + "°"
+//                self.mapView.addAnnotation(annotation)
+                let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 20000, 20000)
                 
-                
-                
-                let annArr = [annotation]
-                self.mapView.showAnnotations(annArr, animated: true)
-                self.mapView.camera.altitude *= 1
-
-//                var region: MKCoordinateRegion = self.mapView.region
-//                var span: MKCoordinateSpan = self.mapView.region.span
-//                
-//                span.latitudeDelta *= span.latitudeDelta
-//                span.longitudeDelta *= span.longitudeDelta
-//                
-//                region.span = span
-//                
-//                self.mapView.setRegion(region, animated: true)
-                
+                self.mapView.setRegion(region, animated: true)
             }
             
         })

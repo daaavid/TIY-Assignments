@@ -59,7 +59,6 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
         }
         else
         {
-            print("false")
             zipTextField.text = ""
             zipTextField.placeholder = "Enter Zip"
         }

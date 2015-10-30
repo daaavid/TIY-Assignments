@@ -39,12 +39,12 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
 
         let colors = bgColor()
         view.backgroundColor = UIColor(red: 0.1, green: colors[0], blue: colors[0] + 0.2, alpha: 1.0)
+        
+        zipWasChosen(String(32801))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -85,22 +85,6 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
         
         return cell
     }
-    
-
-    
-
-    
-    
-    
-    //popover as table view, add a bunch of locations
-    //once it reaches 5, stop
-    
-    
-    
-    
-    
-    
-
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
@@ -150,7 +134,7 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
         return colors
     }
     
-    //MARK: - WeatherCell Images
+    //MARK: - Images and Animation
     
     func assignWeatherImg(cell: WeatherCell, icon: String, location: Location)
     {
@@ -185,11 +169,13 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
     {
         if location.imgHasBeenAnimated == false
         {
-            UIView.animateWithDuration(0.5, delay: 0.5, options: [], animations:
+            UIView.animateWithDuration(0.5, delay: 0.0, options: [], animations:
                 {
                     var img = cell.img.frame
                     img.origin.x += img.size.width + 10
                     
+                    cell.quickWeatherLabel.frame = img
+                    cell.tempLabel.frame = img
                     cell.img.frame = img
                 }, completion: nil)
             location.imgHasBeenAnimated = true
@@ -288,17 +274,18 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
     }
     */
 
-    /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            locationArr.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.reloadData()
+            
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.
