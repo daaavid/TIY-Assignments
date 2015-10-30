@@ -27,22 +27,15 @@ protocol GoogleZipAPIControllerProtocol
 class WeatherTableViewController: UITableViewController, ZipPopViewControllerDelegate, UIPopoverPresentationControllerDelegate, DarkSkyAPIControllerProtocol, GoogleZipAPIControllerProtocol
 {
     var locationArr = [Location]()
-    var zipArr = [String]()
     var googleAPI: GoogleZipAPIController!
+    
 //    var darkskyAPI: DarkSkyAPIController!
 //    var weatherDetailVC: WeatherDetailViewController!
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
-
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {

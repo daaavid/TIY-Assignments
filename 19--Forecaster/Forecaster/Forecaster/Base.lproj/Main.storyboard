@@ -44,8 +44,8 @@
                                             <fontDescription key="fontDescription" name="GothamThin" family="Gotham Thin" pointSize="26"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swq-PU-LzV">
-                                            <rect key="frame" x="513" y="19" width="45.5" height="32.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swq-PU-LzV">
+                                            <rect key="frame" x="543" y="19" width="15.5" height="32.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="GothamThin" family="Gotham Thin" pointSize="36"/>
                                             <nil key="highlightedColor"/>
@@ -204,10 +204,14 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xLN-2w-AcE" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1xG-5s-QLn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
+                        <color key="backgroundColor" red="0.0" green="0.58620689660000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.0" green="0.58620689660000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
