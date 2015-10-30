@@ -36,8 +36,9 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
     {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        let colors = bgColorBasedOnTime()
-        view.backgroundColor = UIColor(red: colors[0], green: colors[1], blue: 1, alpha: 0.8)
+
+        let colors = bgColor()
+        view.backgroundColor = UIColor(red: colors[0], green: colors[1], blue: 1, alpha: 1.0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,68 +62,33 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("WeatherCell", forIndexPath: indexPath) as! WeatherCell
+        cell.backgroundColor = UIColor(white: 0.0, alpha: 0.0)
         
         let location = locationArr[indexPath.row]
         
         if location.city == ""
         {
-            cell.cityLabel.text = "Not Found!" ; cell.quickWeatherLabel.text = "Not Found!" ; cell.quickWeatherLabel.text = ""
             locationArr.removeAtIndex(indexPath.row)
+            tableView.reloadData()
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         }
-        
-        if location.city != ""
+        else if location.city != ""
         {
             cell.cityLabel.text = location.city
             cell.quickWeatherLabel.text = location.weather?.summary
             if location.weather?.temp != nil
             {
                 cell.tempLabel.text = String(location.weather!.temp).componentsSeparatedByString(".")[0] + "°"
+                assignWeatherImg(cell, icon: location.weather!.icon, location: location)
             }
-        }
-
-        let colors = bgColorBasedOnTime()
-        cell.backgroundColor = UIColor(white: 0.0, alpha: 0.0)
-        
-        if colors[0] + colors[1] + colors[2] < 1.2
-        {
-            cell.color = UIColor.whiteColor()
         }
         
         return cell
     }
     
-    func bgColorBasedOnTime() -> [CGFloat]
-    {
-        let formatter = NSDateFormatter()
-        formatter.timeStyle = .ShortStyle
-        let time = formatter.stringFromDate(NSDate())
-        let ampm = time.componentsSeparatedByString(" ")[1]
-        var hour = Int(time.componentsSeparatedByString(":")[0])!
-        
-        if ampm == "PM"
-        {
-            hour += 12
-        }
-        
-        var colors = [CGFloat]()
-        
-        switch hour
-        {
-        case 1...6:
-            colors = colorAdd(0.2)
-        case 6...12:
-            colors = colorAdd(0.3)
-        case 12...18:
-            colors = colorAdd(0.4)
-        case 18...24:
-            colors = colorAdd(0.3)
-        default: break
-        }
-        
-//        let color = UIColor(red: colors[0], green: colors[1], blue: colors[2], alpha: alpha)
-        print(colors)
-        return colors
-    }
+
+    
+
     
     
     
@@ -134,15 +100,7 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
     
     
     
-    func colorAdd(num: CGFloat) -> [CGFloat]
-    {
-        var colors = [CGFloat]()
-        for _ in 1...3
-        {
-            colors.append(num)
-        }
-        return colors
-    }
+
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
@@ -174,13 +132,77 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
     {
         return .None
     }
+    
+    func bgColor() -> [CGFloat]
+    {
+        let color = colorBasedOnTime()
+        let colorsArr = color.bgColorBasedOnTime(0.5)
+        var colors = [CGFloat]()
+        for x in colorsArr
+        {
+            colors.append(CGFloat(x))
+        }
+        
+        return colors
+    }
+    
+    //MARK: - WeatherCell Images
+    
+    func assignWeatherImg(cell: WeatherCell, icon: String, location: Location)
+    {
+        switch icon
+        {
+        case "clear-day": cell.img.image = UIImage(named: "clear-day")
+        animateWeatherImg(cell, location: location)
+        case "clear-night": cell.img.image = UIImage(named: "clear-night")
+        animateWeatherImg(cell, location: location)
+        case "rain": cell.img.image = UIImage(named: "rain")
+        animateWeatherImg(cell, location: location)
+        case "snow": cell.img.image = UIImage(named: "snow")
+        animateWeatherImg(cell, location: location)
+        case "sleet": cell.img.image = UIImage(named: "sleet")
+        animateWeatherImg(cell, location: location)
+        case "wind": cell.img.image = UIImage(named: "wind")
+        animateWeatherImg(cell, location: location)
+        case "fog": cell.img.image = UIImage(named: "fog")
+        animateWeatherImg(cell, location: location)
+        case "cloudy": cell.img.image = UIImage(named: "cloudy")
+        animateWeatherImg(cell, location: location)
+        case "partly-cloudy-day": cell.img.image = UIImage(named: "partly-cloudy-day")
+        animateWeatherImg(cell, location: location)
+        case "partly-cloudy-night": cell.img.image = UIImage(named: "partly-cloudy-night")
+        animateWeatherImg(cell, location: location)
+        default: cell.img.image = UIImage(named: "na")
+        animateWeatherImg(cell, location: location)
+        }
+    }
+    
+    func animateWeatherImg(cell: WeatherCell, location: Location)
+    {
+        if location.imgHasBeenAnimated == false
+        {
+            UIView.animateWithDuration(0.5, delay: 1.0, options: [], animations:
+                {
+                    var img = cell.img.frame
+                    img.origin.x += img.size.width + 10
+                    
+                    cell.img.frame = img
+                }, completion: nil)
+            location.imgHasBeenAnimated = true
+        }
+    }
 
     //MARK: - Private
     
     func zipWasChosen(zip: String)
     {
         googleAPI = GoogleZipAPIController(delegate: self)
-        googleAPI.search(zip)
+        
+        let zipArr = [zip]
+        for zip in zipArr
+        {
+            googleAPI.search(zip)
+        }
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     }

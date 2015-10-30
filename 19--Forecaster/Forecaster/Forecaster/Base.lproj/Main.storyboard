@@ -2,14 +2,17 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xLN-2w-AcE">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Gotham Thin.ttf">
             <string>GothamThin</string>
-            <string>GothamThin</string>
-            <string>GothamThin</string>
-            <string>GothamThin</string>
+        </mutableArray>
+        <mutableArray key="Lato-Light.ttf">
+            <string>Lato-Light</string>
+            <string>Lato-Light</string>
+            <string>Lato-Light</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -18,53 +21,74 @@
             <objects>
                 <tableViewController id="5hg-2X-nbW" customClass="WeatherTableViewController" customModule="Forecaster" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" id="oc5-KE-dJr">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="WeatherCell" rowHeight="72" id="uZ2-u8-EBq" customClass="WeatherCell" customModule="Forecaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="72"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uZ2-u8-EBq" id="mcB-Nk-58T">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="71.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pW8-qG-PFN">
-                                            <rect key="frame" x="18" y="8" width="84" height="18"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" name="GothamThin" family="Gotham Thin" pointSize="20"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Forecast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75Y-8R-6v3">
-                                            <rect key="frame" x="18" y="40" width="188" height="23.5"/>
+                                            <rect key="frame" x="82" y="32" width="167.5" height="31.5"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" name="GothamThin" family="Gotham Thin" pointSize="26"/>
+                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="26"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swq-PU-LzV">
-                                            <rect key="frame" x="543" y="19" width="15.5" height="32.5"/>
+                                            <rect key="frame" x="545" y="5" width="20" height="60"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" name="GothamThin" family="Gotham Thin" pointSize="36"/>
+                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="50"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="32.png" translatesAutoresizingMaskIntoConstraints="NO" id="nfy-oG-hJc">
+                                            <rect key="frame" x="3" y="0.0" width="71" height="70.5"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="nfy-oG-hJc" secondAttribute="height" multiplier="71:70" id="pcp-NN-0w6"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pW8-qG-PFN">
+                                            <rect key="frame" x="82" y="8" width="73.5" height="24"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <animations/>
                                     <constraints>
                                         <constraint firstAttribute="topMargin" secondItem="pW8-qG-PFN" secondAttribute="top" id="1SN-bj-Ugs"/>
+                                        <constraint firstItem="75Y-8R-6v3" firstAttribute="leading" secondItem="nfy-oG-hJc" secondAttribute="trailing" constant="8" id="1zy-ch-rvh"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="nfy-oG-hJc" secondAttribute="bottom" constant="-7" id="DQw-jA-5Lb"/>
+                                        <constraint firstItem="pW8-qG-PFN" firstAttribute="leading" secondItem="nfy-oG-hJc" secondAttribute="trailing" constant="8" id="Gpi-O4-HIE"/>
+                                        <constraint firstItem="nfy-oG-hJc" firstAttribute="top" secondItem="mcB-Nk-58T" secondAttribute="topMargin" constant="-8" id="WdJ-m1-Y93"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="75Y-8R-6v3" secondAttribute="bottom" id="drI-Xf-DxB"/>
                                         <constraint firstItem="75Y-8R-6v3" firstAttribute="leading" secondItem="mcB-Nk-58T" secondAttribute="leadingMargin" constant="10" id="hca-eO-QDX"/>
+                                        <constraint firstItem="nfy-oG-hJc" firstAttribute="centerX" secondItem="mcB-Nk-58T" secondAttribute="centerX" id="jdT-HW-nqi"/>
                                         <constraint firstItem="pW8-qG-PFN" firstAttribute="leading" secondItem="mcB-Nk-58T" secondAttribute="leadingMargin" constant="10" id="lLl-HE-wJR"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="nfy-oG-hJc" secondAttribute="leading" constant="5" id="oPi-IP-XXK"/>
                                         <constraint firstItem="swq-PU-LzV" firstAttribute="centerY" secondItem="mcB-Nk-58T" secondAttribute="centerY" id="xeO-9O-zRd"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="jdT-HW-nqi"/>
+                                            <exclude reference="lLl-HE-wJR"/>
+                                            <exclude reference="hca-eO-QDX"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="swq-PU-LzV" secondAttribute="trailing" constant="41" id="2oV-XR-LWO"/>
+                                    <constraint firstAttribute="trailing" secondItem="swq-PU-LzV" secondAttribute="trailing" constant="35" id="2oV-XR-LWO"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="cityLabel" destination="pW8-qG-PFN" id="ueW-0C-hct"/>
+                                    <outlet property="img" destination="nfy-oG-hJc" id="Qee-1x-S3g"/>
                                     <outlet property="quickWeatherLabel" destination="75Y-8R-6v3" id="GGu-bp-dQD"/>
                                     <outlet property="tempLabel" destination="swq-PU-LzV" id="k8D-CS-rTP"/>
                                 </connections>
@@ -206,11 +230,12 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xLN-2w-AcE" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="1xG-5s-QLn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="1xG-5s-QLn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                         <color key="backgroundColor" red="0.0" green="0.58620689660000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" white="0.13781984060402686" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -225,5 +250,8 @@
             <point key="canvasLocation" x="494" y="238"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="32.png" width="128" height="128"/>
+    </resources>
     <color key="tintColor" red="0.0" green="0.58620689660000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

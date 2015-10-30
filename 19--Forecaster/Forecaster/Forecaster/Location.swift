@@ -13,7 +13,10 @@ class Location
     let city: String
     let lat: String
     let lng: String
+    
     var weather: Weather?
+    
+    var imgHasBeenAnimated = false
     
     init(city: String, lat: String, lng: String, weather: Weather?)
     {
