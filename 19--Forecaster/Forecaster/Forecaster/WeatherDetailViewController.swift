@@ -14,8 +14,19 @@ class WeatherDetailViewController: UIViewController
 {
     var location = Location?()
     
-    @IBOutlet var latLabel: UILabel!
-    @IBOutlet var lngLabel: UILabel!
+    @IBOutlet var blurView: UIVisualEffectView!
+    @IBOutlet var cityBlurView: UIVisualEffectView!
+    
+    @IBOutlet var cityLabel: UILabel!
+    @IBOutlet var tempLabel: UILabel!
+    @IBOutlet var appTempLabel: UILabel!
+    
+    @IBOutlet var quickWeatherLabel: UILabel!
+    @IBOutlet var humidityLabel: UILabel!
+    @IBOutlet var rainProb: UILabel!
+    @IBOutlet var rainIntensity: UILabel!
+    
+    
     @IBOutlet var weatherImg: UIImageView!
     @IBOutlet weak var mapView: MKMapView!
     
@@ -26,10 +37,17 @@ class WeatherDetailViewController: UIViewController
     {
         super.viewDidLoad()
         
+        animateBlurViews()
+        
         if location?.weather != nil
         {
             assignWeatherImg((location?.weather!.icon)!)
             startGeocoder()
+            
+            cityLabel.text = location!.city
+            quickWeatherLabel.text = location!.weather!.summary
+            tempLabel.text = String(location!.weather!.temp).componentsSeparatedByString(".")[0] + "°"
+            appTempLabel.text = "Feels like " + String(location!.weather!.apparentTemp).componentsSeparatedByString(".")[0] + "°"
         }
     }
     
@@ -64,18 +82,34 @@ class WeatherDetailViewController: UIViewController
     
     func animateWeatherImg()
     {
-//        if location.imgHasBeenAnimated == false
-//        {
-            UIView.animateWithDuration(0.5, delay: 0.5, options: [], animations:
-                {
-                    var img = self.weatherImg.frame
-                    img.origin.x += img.size.width + 100
-                    
-                    self.weatherImg.frame = img
-                }, completion: nil)
-//            location.imgHasBeenAnimated = true
-//        }
+        UIView.animateWithDuration(0.5, delay: 1.5, options: [], animations:
+        {
+            var img = self.weatherImg.frame
+            img.origin.x += img.size.width + 400
+            
+            self.quickWeatherLabel.frame = img
+            self.weatherImg.frame = img
+        }, completion: nil)
     }
+    
+    func animateBlurViews()
+    {
+
+        UIView.animateWithDuration(0.5, delay: 0.5, options: [], animations:
+        {
+            var blurView = self.blurView.frame
+            blurView.origin.y -= blurView.size.height + 600
+            
+            var cityBlurView = self.cityBlurView.frame
+            cityBlurView.origin.y -= cityBlurView.size.height - 600
+            
+            self.blurView.frame = blurView
+            self.cityBlurView.frame = cityBlurView
+            
+        }, completion: nil)
+
+    }
+
     
     func startGeocoder()
     {
@@ -87,9 +121,25 @@ class WeatherDetailViewController: UIViewController
                 annotation.coordinate = (placemark.location?.coordinate)!
 //                annotation.title = "Lakeland, FL"
                 self.mapView.addAnnotation(annotation)
+//                let span = MKCoordinateSpanMake(Double(self.location!.lat)!, Double(self.location!.lng)!)
+//                self.mapView.setRegion(MKCoordinateRegionMake(annotation.coordinate, span), animated: true)
+                
+                
+                
                 let annArr = [annotation]
-                self.mapView.camera.altitude *= 2
                 self.mapView.showAnnotations(annArr, animated: true)
+                self.mapView.camera.altitude *= 1
+
+//                var region: MKCoordinateRegion = self.mapView.region
+//                var span: MKCoordinateSpan = self.mapView.region.span
+//                
+//                span.latitudeDelta *= span.latitudeDelta
+//                span.longitudeDelta *= span.longitudeDelta
+//                
+//                region.span = span
+//                
+//                self.mapView.setRegion(region, animated: true)
+                
             }
             
         })
