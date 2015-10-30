@@ -33,33 +33,43 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool
     {
         var rc = false
-        if textField.text != "" && textField.text?.characters.count == 5
+        if isZip(textField.text!)
         {
-            print(textField.text!)
-            if let _ = Int(textField.text!)
-            {
-                print(textField.text!)
-                rc = true
-                delegate?.zipWasChosen(textField.text!)
-                self.dismissViewControllerAnimated(true, completion: nil)
-            }
-        }
-        else
-        {
-            textField.text = "Please enter a valid zip code"
+            search(Int(textField.text!)!)
+            rc = true
         }
         return rc
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func addCity(sender: UIButton)
+    {
+        if isZip(zipTextField.text!)
+        {
+            search(Int(zipTextField.text!)!)
+        }
     }
-    */
-
+    
+    func isZip(zip: String) -> Bool
+    {
+        var rc = false
+        
+        if zip.characters.count == 5 && Int(zip) != nil
+        {
+            rc = true
+        }
+        else
+        {
+            print("false")
+            zipTextField.text = ""
+            zipTextField.placeholder = "Enter Zip"
+        }
+        
+        return rc
+    }
+    
+    func search(zip: Int)
+    {
+        let zipStr = String(zip)
+        delegate?.zipWasChosen(zipStr)
+    }
 }

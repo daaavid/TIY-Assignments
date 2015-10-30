@@ -60,13 +60,24 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
         let cell = tableView.dequeueReusableCellWithIdentifier("WeatherCell", forIndexPath: indexPath) as! WeatherCell
         
         let location = locationArr[indexPath.row]
-
-        cell.cityLabel.text = location.city
-        cell.quickWeatherLabel.text = location.weather?.summary
-        if location.weather?.temp != nil
+        
+        if location.city == ""
         {
-            cell.tempLabel.text = String(location.weather!.temp).componentsSeparatedByString(".")[0] + "°"
+            cell.cityLabel.text = "Not Found!" ; cell.quickWeatherLabel.text = "Not Found!" ; cell.quickWeatherLabel.text = ""
+            locationArr.removeAtIndex(indexPath.row)
         }
+        
+        if location.city != ""
+        {
+            cell.cityLabel.text = location.city
+            cell.quickWeatherLabel.text = location.weather?.summary
+            if location.weather?.temp != nil
+            {
+                cell.tempLabel.text = String(location.weather!.temp).componentsSeparatedByString(".")[0] + "°"
+            }
+        }
+        
+
 
         return cell
     }
@@ -93,7 +104,7 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
             popVC.delegate = self
             
             popVC.view.backgroundColor = UIColor.whiteColor()
-            popVC.preferredContentSize = CGSizeMake(200, 40)
+            popVC.preferredContentSize = CGSizeMake(140, 70)
         }
     }
     

@@ -3,7 +3,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Gotham Thin.ttf">
@@ -19,13 +18,13 @@
             <objects>
                 <tableViewController id="5hg-2X-nbW" customClass="WeatherTableViewController" customModule="Forecaster" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" id="oc5-KE-dJr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="WeatherCell" rowHeight="72" id="uZ2-u8-EBq" customClass="WeatherCell" customModule="Forecaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="72"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uZ2-u8-EBq" id="mcB-Nk-58T">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="71.5"/>
@@ -103,7 +102,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Zip" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pj8-ZL-Qw7">
-                                <rect key="frame" x="30.5" y="30" width="540" height="560"/>
+                                <rect key="frame" x="252" y="275" width="96" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="GothamThin" family="Gotham Thin" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -111,21 +110,23 @@
                                     <outlet property="delegate" destination="9RI-TF-K0R" id="bSd-au-IWQ"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7b-hM-nrK">
+                                <rect key="frame" x="271" y="305" width="59" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Add City"/>
+                                <connections>
+                                    <action selector="addCity:" destination="9RI-TF-K0R" eventType="touchUpInside" id="Ypt-07-Ve4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="pj8-ZL-Qw7" firstAttribute="width" secondItem="Tfo-wE-Whq" secondAttribute="width" multiplier="0.9" id="E3I-Bl-xX6"/>
-                            <constraint firstItem="UMv-Zq-E9W" firstAttribute="top" secondItem="pj8-ZL-Qw7" secondAttribute="bottom" constant="10" id="FEr-KF-H5c"/>
-                            <constraint firstItem="pj8-ZL-Qw7" firstAttribute="centerX" secondItem="Tfo-wE-Whq" secondAttribute="centerX" id="Ueh-we-LX2"/>
-                            <constraint firstItem="pj8-ZL-Qw7" firstAttribute="height" secondItem="Tfo-wE-Whq" secondAttribute="height" id="ZkZ-Iw-ECe"/>
-                            <constraint firstItem="pj8-ZL-Qw7" firstAttribute="top" secondItem="Mj8-nd-0dg" secondAttribute="bottom" constant="10" id="sYG-g1-T3J"/>
+                            <constraint firstItem="L7b-hM-nrK" firstAttribute="centerX" secondItem="pj8-ZL-Qw7" secondAttribute="centerX" id="8Hp-nS-Rly"/>
+                            <constraint firstItem="pj8-ZL-Qw7" firstAttribute="centerY" secondItem="Tfo-wE-Whq" secondAttribute="centerY" constant="-10" id="9XA-Vg-LCI"/>
+                            <constraint firstItem="L7b-hM-nrK" firstAttribute="top" secondItem="pj8-ZL-Qw7" secondAttribute="bottom" id="aoG-HU-Z2Y"/>
+                            <constraint firstItem="pj8-ZL-Qw7" firstAttribute="centerX" secondItem="Tfo-wE-Whq" secondAttribute="centerX" id="yib-lJ-YQO"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="ZkZ-Iw-ECe"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="zipTextField" destination="pj8-ZL-Qw7" id="EHC-mX-5vv"/>
@@ -205,13 +206,14 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xLN-2w-AcE" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1xG-5s-QLn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="1xG-5s-QLn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                         <color key="backgroundColor" red="0.0" green="0.58620689660000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.0" green="0.58620689660000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

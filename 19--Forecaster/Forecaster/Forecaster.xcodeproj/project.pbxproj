@@ -71,6 +71,15 @@
 			name = "Other VC";
 			sourceTree = "<group>";
 		};
+		6301B8BE1BE321ED009D4A42 /* Custom Objects */ = {
+			isa = PBXGroup;
+			children = (
+				632B0EF21BE26B6C006EB419 /* Location.swift */,
+				6301B8BC1BE2EF99009D4A42 /* Weather.swift */,
+			);
+			name = "Custom Objects";
+			sourceTree = "<group>";
+		};
 		632B0EC41BE25ECA006EB419 = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +103,7 @@
 				632B0EE81BE2621D006EB419 /* WeatherTableViewController.swift */,
 				6301B8BB1BE2EEE4009D4A42 /* Other VC */,
 				6301B8BA1BE2EED8009D4A42 /* APIControllers */,
-				632B0EF21BE26B6C006EB419 /* Location.swift */,
-				6301B8BC1BE2EF99009D4A42 /* Weather.swift */,
+				6301B8BE1BE321ED009D4A42 /* Custom Objects */,
 				632B0EE51BE25EE8006EB419 /* garbage */,
 			);
 			path = Forecaster;
