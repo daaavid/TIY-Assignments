@@ -74,7 +74,7 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
         }
         else if location.city != ""
         {
-            cell.cityLabel.text = location.city
+            cell.cityLabel.text = location.city + ", " + location.state
             cell.quickWeatherLabel.text = location.weather?.summary
             if location.weather?.temp != nil
             {
@@ -172,7 +172,7 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
             UIView.animateWithDuration(0.5, delay: 0.0, options: [], animations:
                 {
                     var img = cell.img.frame
-                    img.origin.x += img.size.width + 10
+                    img.origin.x += img.size.width + 100
                     
                     cell.quickWeatherLabel.frame = img
                     cell.tempLabel.frame = img

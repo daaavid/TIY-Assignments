@@ -19,9 +19,9 @@ class WeatherCell: UITableViewCell {
     override func awakeFromNib()
     {
         super.awakeFromNib()
-        cityLabel.textColor = UIColor(red: bgColor()[0], green: bgColor()[0], blue: bgColor()[0], alpha: 1)
-        quickWeatherLabel.textColor = UIColor(red: bgColor()[0], green: bgColor()[0], blue: bgColor()[0], alpha: 1)
-        tempLabel.textColor = UIColor(red: bgColor()[0], green: bgColor()[0], blue: bgColor()[0], alpha: 1)
+//        cityLabel.textColor = UIColor(red: bgColor()[0], green: bgColor()[0], blue: bgColor()[0], alpha: 1)
+//        quickWeatherLabel.textColor = UIColor(red: bgColor()[0], green: bgColor()[0], blue: bgColor()[0], alpha: 1)
+//        tempLabel.textColor = UIColor(red: bgColor()[0], green: bgColor()[0], blue: bgColor()[0], alpha: 1)
         
 //        UIView.animateWithDuration(0.5, animations: {
 //            var img = self.img.frame

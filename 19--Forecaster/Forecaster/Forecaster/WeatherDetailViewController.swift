@@ -24,20 +24,17 @@ class WeatherDetailViewController: UIViewController
     @IBOutlet var quickWeatherLabel: UILabel!
     @IBOutlet var humidityLabel: UILabel!
     @IBOutlet var rainProbabilityLabel: UILabel!
-//    @IBOutlet var rainIntensityLabel: UILabel!
-    
     
     @IBOutlet var weatherImg: UIImageView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet var latLabel: UILabel!
     @IBOutlet var lngLabel: UILabel!
     
-//    var lat = ""
-//    var lng = ""
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        mapView.mapType = MKMapType.HybridFlyover
         
         animateBlurViews()
 
@@ -56,26 +53,65 @@ class WeatherDetailViewController: UIViewController
             quickWeatherLabel.text = location!.weather!.summary
             
             let humidity = location!.weather!.humidity
+            var humidStr = ""
+            
+//            switch humidity
+//            {
+//            case 0.0...0.2: humidStr = "It's very dry"
+//            case 0.2...0.4: humidStr = "It's dry today"
+//            case 0.4...0.6: humidStr = "It's neither dry nor humid"
+//            case 0.6...0.8: humidStr = "It's humid"
+//            case 0.8...0.9: humidStr = "It's very humid"
+//            case 0.9...1.0: humidStr = "It's very very humid"
+//            default: break
+//            }
+            
             switch humidity
             {
-            case 0.0...0.2: humidityLabel.text = "It's very dry today"
-            case 0.2...0.4: humidityLabel.text = "It's dry today"
-            case 0.4...0.6: humidityLabel.text = "It's neither dry nor humid"
-            case 0.6...0.8: humidityLabel.text = "It's humid today"
-            case 0.8...1.0: humidityLabel.text = "It's very humid today"
-            default: "Humidity"
+            case 0...40: humidStr = "It's horibly dry"
+            case 40...50: humidStr = "It's very dry"
+            case 50...55: humidStr = "It's somewhat dry"
+            case 55...60: humidStr = "It's neither dry nor humid"
+            case 60...65: humidStr = "It's somewhat humid"
+            case 65...70: humidStr = "It's humid"
+            case 70...75: humidStr = "It's very humid"
+            case 70...80: humidStr = "It's horribly humid"
+            case 80...100: humidStr = "It's digustingly humid"
+            default: break
             }
+            
+            humidityLabel.text = humidStr
             
             let rainProb = location!.weather!.precipProbability
+            var rainStr = "No rain today"
+            
             if rainProb != 0.0
             {
+                switch rainProb
+                {
+                case 0.0...0.4: rainStr = "Rain is unlikely"
+                case 0.4...0.6: rainStr = "It may rain"
+                case 0.6...0.8: rainStr = "It will probably rain"
+                case 0.8...0.9: rainStr = "Rain is very likely"
+                default: break
+                }
                 
+                if rainProb == 1.0
+                {
+                    let rainIntens = location!.weather!.precipIntensity
+                    
+                    switch rainIntens
+                    {
+                    case 0.0...0.2: rainStr = "It is raining lightly"
+                    case 0.2...0.5: rainStr = "It is raining moderately"
+                    case 0.5...0.8: rainStr = "It is raining heavily"
+                    case 0.8...1.0: rainStr = "It is raining very heavily"
+                    default: break
+                    }
+                }
             }
             
-            let rainIntens = location!.weather!.precipIntensity
-            if rainIntens != 0.0
-            {
-            }
+            rainProbabilityLabel.text = rainStr
             
             latLabel.text = location!.lat
             lngLabel.text = location!.lng
@@ -87,7 +123,7 @@ class WeatherDetailViewController: UIViewController
             let apparentTemp = String(location!.weather!.apparentTemp).componentsSeparatedByString(".")[0]
             if Int(apparentTemp) == Int(temp)
             {
-                appTempLabel.text = "  fahrenheit"
+                appTempLabel.text = ", and feels like it too"
             }
             else
             {
@@ -162,7 +198,9 @@ class WeatherDetailViewController: UIViewController
     func startGeocoder()
     {
         let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString((location?.city)!, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?)-> Void in
+        let cityAndState = "\(location!.city), \(location!.state)"
+        print(cityAndState)
+        geocoder.geocodeAddressString(cityAndState, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?)-> Void in
             if let placemark = placemarks?[0]
             {
                 let annotation = MKPointAnnotation()

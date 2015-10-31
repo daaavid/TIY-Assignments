@@ -40,10 +40,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="72"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Forecast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75Y-8R-6v3">
-                                            <rect key="frame" x="78" y="32" width="167.5" height="31.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Forecast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="75Y-8R-6v3">
+                                            <rect key="frame" x="78" y="32" width="411" height="31.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="26"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nfy-oG-hJc">
@@ -58,23 +59,27 @@
                                             <rect key="frame" x="78" y="8" width="73.5" height="24"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="0.83603975789999996" green="0.83603975789999996" blue="0.83603975789999996" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swq-PU-LzV">
-                                            <rect key="frame" x="565" y="36" width="0.0" height="0.0"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swq-PU-LzV">
+                                            <rect key="frame" x="507" y="6" width="58" height="60"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="50"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <animations/>
                                     <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="75Y-8R-6v3" secondAttribute="trailing" constant="120" id="0gY-TD-9D1"/>
                                         <constraint firstAttribute="topMargin" secondItem="pW8-qG-PFN" secondAttribute="top" id="1SN-bj-Ugs"/>
                                         <constraint firstItem="75Y-8R-6v3" firstAttribute="leading" secondItem="nfy-oG-hJc" secondAttribute="trailing" constant="8" id="1zy-ch-rvh"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="nfy-oG-hJc" secondAttribute="bottom" constant="-7" id="DQw-jA-5Lb"/>
                                         <constraint firstItem="pW8-qG-PFN" firstAttribute="leading" secondItem="nfy-oG-hJc" secondAttribute="trailing" constant="8" id="Gpi-O4-HIE"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="75Y-8R-6v3" secondAttribute="trailing" constant="70" id="QNK-AA-79O"/>
                                         <constraint firstItem="nfy-oG-hJc" firstAttribute="top" secondItem="mcB-Nk-58T" secondAttribute="topMargin" constant="-5" id="WdJ-m1-Y93"/>
+                                        <constraint firstItem="75Y-8R-6v3" firstAttribute="top" secondItem="pW8-qG-PFN" secondAttribute="bottom" id="Z1U-hG-1iM"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="75Y-8R-6v3" secondAttribute="bottom" id="drI-Xf-DxB"/>
                                         <constraint firstItem="75Y-8R-6v3" firstAttribute="leading" secondItem="mcB-Nk-58T" secondAttribute="leadingMargin" constant="10" id="hca-eO-QDX"/>
                                         <constraint firstItem="nfy-oG-hJc" firstAttribute="centerX" secondItem="mcB-Nk-58T" secondAttribute="centerX" id="jdT-HW-nqi"/>
@@ -86,6 +91,7 @@
                                         <mask key="constraints">
                                             <exclude reference="jdT-HW-nqi"/>
                                             <exclude reference="lLl-HE-wJR"/>
+                                            <exclude reference="0gY-TD-9D1"/>
                                             <exclude reference="hca-eO-QDX"/>
                                         </mask>
                                     </variation>
@@ -197,21 +203,21 @@
                                             <rect key="frame" x="8" y="3" width="88" height="26"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="24"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTm-HB-9Jx">
                                             <rect key="frame" x="558" y="5" width="37" height="12"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="10"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="0.90575916229999998" green="0.90575916229999998" blue="0.90575916229999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c92-l8-jcd">
                                             <rect key="frame" x="558" y="18" width="37" height="12"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="10"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="0.90575916229999998" green="0.90575916229999998" blue="0.90575916229999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -227,7 +233,9 @@
                                     </constraints>
                                 </view>
                                 <animations/>
-                                <blurEffect style="dark"/>
+                                <color key="backgroundColor" red="0.10654638707637787" green="0.62572973966598511" blue="0.9968712329864502" alpha="0.53000000000000003" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0" green="0.6470588235294118" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
+                                <blurEffect style="light"/>
                             </visualEffectView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WeH-VV-38W">
                                 <rect key="frame" x="0.0" y="450" width="600" height="150"/>
@@ -242,39 +250,39 @@
                                                 <constraint firstAttribute="width" secondItem="d1q-1p-ty1" secondAttribute="height" multiplier="70:70" id="ukc-3N-nih"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mostly Cloudy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4R-mu-250">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mostly Cloudy" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4R-mu-250">
                                             <rect key="frame" x="39" y="0.0" width="186.5" height="36"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="30"/>
-                                            <color key="textColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrK-rp-XMb">
                                             <rect key="frame" x="8" y="32" width="47" height="36"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="30"/>
-                                            <color key="textColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=", but feels like 9001°" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6C0-g8-mwl">
-                                            <rect key="frame" x="49" y="39" width="206.5" height="29"/>
+                                            <rect key="frame" x="49" y="38" width="206.5" height="29"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="24"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="0.83603975789999996" green="0.83603975789999996" blue="0.83603975789999996" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No rain today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKM-g7-6aM">
-                                            <rect key="frame" x="8" y="87" width="137.5" height="29"/>
+                                            <rect key="frame" x="8" y="97" width="114.5" height="24"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="24"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
+                                            <color key="textColor" red="0.83603975789999996" green="0.83603975789999996" blue="0.83603975789999996" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It's humid" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5c-ik-JAE">
-                                            <rect key="frame" x="8" y="116" width="100" height="29"/>
+                                            <rect key="frame" x="8" y="121" width="83.5" height="24"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="24"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
+                                            <color key="textColor" red="0.83603975789999996" green="0.83603975789999996" blue="0.83603975789999996" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -295,7 +303,7 @@
                                         <constraint firstItem="HKM-g7-6aM" firstAttribute="leading" secondItem="xrK-rp-XMb" secondAttribute="leading" id="efZ-yc-uxz"/>
                                         <constraint firstAttribute="bottom" secondItem="u5c-ik-JAE" secondAttribute="bottom" constant="5" id="hO4-yB-RaK"/>
                                         <constraint firstAttribute="trailing" secondItem="u5c-ik-JAE" secondAttribute="trailing" constant="6" id="hvB-yR-mUY"/>
-                                        <constraint firstItem="6C0-g8-mwl" firstAttribute="bottom" secondItem="xrK-rp-XMb" secondAttribute="bottom" id="oEu-2i-Siv"/>
+                                        <constraint firstItem="6C0-g8-mwl" firstAttribute="bottom" secondItem="xrK-rp-XMb" secondAttribute="bottom" constant="-1" id="oEu-2i-Siv"/>
                                         <constraint firstItem="xrK-rp-XMb" firstAttribute="top" secondItem="d1q-1p-ty1" secondAttribute="bottom" constant="2" id="ori-Rk-t5q"/>
                                         <constraint firstItem="xrK-rp-XMb" firstAttribute="leading" secondItem="d1q-1p-ty1" secondAttribute="leading" constant="2" id="sEZ-WP-mXH"/>
                                         <constraint firstItem="u5c-ik-JAE" firstAttribute="leading" secondItem="xrK-rp-XMb" secondAttribute="leading" id="shs-Cs-ABm"/>
@@ -312,7 +320,9 @@
                                     </variation>
                                 </view>
                                 <animations/>
-                                <blurEffect style="dark"/>
+                                <color key="backgroundColor" red="0.086725398898124695" green="0.69705688953399658" blue="0.99864625930786133" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0" green="0.6470588235294118" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
+                                <blurEffect style="light"/>
                             </visualEffectView>
                         </subviews>
                         <animations/>
@@ -367,12 +377,12 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xLN-2w-AcE" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1xG-5s-QLn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="1xG-5s-QLn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
-                        <color key="backgroundColor" red="0.0" green="0.58620689660000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.83603975789999996" green="0.83603975789999996" blue="0.83603975789999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.023163389414548874" green="0.22151373326778412" blue="0.42402341961860657" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.05912364274263382" green="0.29764801263809204" blue="0.45742154121398926" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>

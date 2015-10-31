@@ -10,7 +10,7 @@ import Foundation
 
 class Weather
 {
-    var temp: Double
+    let temp: Double
     let apparentTemp: Double
     
     let summary: String
@@ -51,7 +51,8 @@ class Weather
         let precipProbability = currently["precipProbability"] as! Double
         let temp = currently["temperature"] as! Double
         let apparentTemp = currently["apparentTemperature"] as! Double
-        let humidity = currently["humidity"] as! Double
+//        let humidity = currently["humidity"] as! Double
+        let humidity = currently["dewPoint"] as! Double
         let windSpeed = currently["windSpeed"] as! Double
         if let _ = currently["visibility"]
         {
