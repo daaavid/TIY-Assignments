@@ -20,8 +20,6 @@ class GoogleZipAPIController
     
     func search(zipCode: String)
     {
-        print(zipCode)
-        
         let url = NSURL(string: "https://maps.googleapis.com/maps/api/geocode/json?address=santa+cruz&components=postal_code:\(zipCode)&sensor=false")
         let session = NSURLSession.sharedSession()
         task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in

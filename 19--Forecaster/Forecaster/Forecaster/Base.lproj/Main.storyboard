@@ -389,7 +389,7 @@
         <scene sceneID="wr5-Ni-rlX">
             <objects>
                 <tableViewController storyboardIdentifier="WeekForecastTableViewController" id="gaZ-kb-MX3" customClass="WeekForecastTableViewController" customModule="Forecaster" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" id="TJG-Zi-y4h">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="79" sectionHeaderHeight="28" sectionFooterHeight="28" id="TJG-Zi-y4h">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -404,53 +404,54 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ForecastCell" rowHeight="72" id="KMn-gC-uFF" customClass="ForecastCell" customModule="Forecaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="149" width="600" height="72"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ForecastCell" rowHeight="70" id="KMn-gC-uFF" customClass="ForecastCell" customModule="Forecaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="149" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KMn-gC-uFF" id="tSV-hy-eem">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="71.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="39w-is-czv">
-                                            <rect key="frame" x="3" y="6" width="38.5" height="37.5"/>
+                                            <rect key="frame" x="3" y="6" width="26.5" height="25.5"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="39w-is-czv" secondAttribute="height" multiplier="70:70" constant="1" id="iQl-EN-QdL"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="daySummary" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85m-jD-naM">
-                                            <rect key="frame" x="8" y="41" width="100" height="22"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="18"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="98°-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9t-1L-lIS">
-                                            <rect key="frame" x="512.5" y="6" width="43" height="29"/>
+                                            <rect key="frame" x="512" y="6" width="43" height="29"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="24"/>
                                             <color key="textColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iic-CW-jFb">
-                                            <rect key="frame" x="557.5" y="6" width="37.5" height="29"/>
+                                            <rect key="frame" x="557" y="6" width="37.5" height="29"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="24"/>
                                             <color key="textColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQJ-iJ-eww">
-                                            <rect key="frame" x="51.5" y="11" width="56" height="26.5"/>
+                                            <rect key="frame" x="39" y="6" width="56" height="26.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="22"/>
                                             <color key="textColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="daySummary" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="7" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="85m-jD-naM">
+                                            <rect key="frame" x="8" y="29" width="584" height="40.5"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="14"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <animations/>
                                     <constraints>
                                         <constraint firstAttribute="leadingMargin" secondItem="85m-jD-naM" secondAttribute="leading" id="0ut-u5-Who"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="39w-is-czv" secondAttribute="bottom" constant="20" id="7jU-ju-Q2A"/>
+                                        <constraint firstItem="85m-jD-naM" firstAttribute="top" secondItem="h9t-1L-lIS" secondAttribute="bottom" constant="-6" id="7Va-fB-4O5"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="39w-is-czv" secondAttribute="bottom" constant="30" id="7jU-ju-Q2A"/>
                                         <constraint firstItem="Iic-CW-jFb" firstAttribute="centerY" secondItem="tSV-hy-eem" secondAttribute="centerY" id="9ae-2J-ihc"/>
                                         <constraint firstItem="sQJ-iJ-eww" firstAttribute="centerY" secondItem="39w-is-czv" secondAttribute="centerY" id="ABo-pM-UHm"/>
                                         <constraint firstItem="39w-is-czv" firstAttribute="top" secondItem="tSV-hy-eem" secondAttribute="topMargin" constant="-2" id="Bbb-Hq-I1b"/>
@@ -458,16 +459,20 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="Iic-CW-jFb" secondAttribute="trailing" constant="-3" id="LQi-cS-9hc"/>
                                         <constraint firstItem="Iic-CW-jFb" firstAttribute="top" secondItem="39w-is-czv" secondAttribute="top" id="N7F-Z5-U8u"/>
                                         <constraint firstItem="85m-jD-naM" firstAttribute="leading" secondItem="39w-is-czv" secondAttribute="trailing" constant="8" id="Rmh-5b-dh8"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="85m-jD-naM" secondAttribute="bottom" id="TTK-4O-SOk"/>
+                                        <constraint firstItem="85m-jD-naM" firstAttribute="top" secondItem="39w-is-czv" secondAttribute="bottom" constant="-2.5" id="RzC-IN-Nqd"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="85m-jD-naM" secondAttribute="bottom" constant="-8" id="TTK-4O-SOk"/>
                                         <constraint firstItem="Iic-CW-jFb" firstAttribute="leading" secondItem="h9t-1L-lIS" secondAttribute="trailing" constant="2" id="Tzf-JH-KnW"/>
                                         <constraint firstItem="h9t-1L-lIS" firstAttribute="centerY" secondItem="Iic-CW-jFb" secondAttribute="centerY" id="YCZ-4J-WsC"/>
                                         <constraint firstItem="39w-is-czv" firstAttribute="width" secondItem="tSV-hy-eem" secondAttribute="height" multiplier="11:12" id="ahf-1A-FB4"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="85m-jD-naM" secondAttribute="trailing" id="c13-f2-D7p"/>
+                                        <constraint firstItem="85m-jD-naM" firstAttribute="top" secondItem="Iic-CW-jFb" secondAttribute="bottom" constant="-6" id="gWW-dz-E7K"/>
                                         <constraint firstItem="39w-is-czv" firstAttribute="leading" secondItem="tSV-hy-eem" secondAttribute="leadingMargin" constant="-5" id="iM0-oL-7RW"/>
                                         <constraint firstItem="Iic-CW-jFb" firstAttribute="top" secondItem="tSV-hy-eem" secondAttribute="topMargin" constant="-10" id="llg-2O-iVn"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="ahf-1A-FB4"/>
+                                            <exclude reference="7Va-fB-4O5"/>
                                             <exclude reference="Rmh-5b-dh8"/>
                                             <exclude reference="9ae-2J-ihc"/>
                                             <exclude reference="llg-2O-iVn"/>
@@ -527,7 +532,7 @@
         <!--Navigation Controller-->
         <scene sceneID="HDs-SZ-11d">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yug-X1-ZbP" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="WeatherDetailNVC" automaticallyAdjustsScrollViewInsets="NO" id="yug-X1-ZbP" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7O4-AE-eYY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

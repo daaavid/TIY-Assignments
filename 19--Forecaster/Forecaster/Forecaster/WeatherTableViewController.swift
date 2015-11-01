@@ -192,11 +192,13 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
     {
         googleAPI = GoogleZipAPIController(delegate: self)
         
-        let zipArr = [zip]
-        for zip in zipArr
-        {
-            googleAPI.search(zip)
-        }
+        googleAPI.search(zip)
+        
+//        let zipArr = [zip]
+//        for zip in zipArr
+//        {
+//            googleAPI.search(zip)
+//        }
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     }

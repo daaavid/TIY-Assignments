@@ -85,23 +85,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6301B8BA1BE2EED8009D4A42 /* APIControllers */ = {
+		6301B8BA1BE2EED8009D4A42 /* API Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				632B0EEE1BE262B4006EB419 /* DarkSkyAPIController.swift */,
 				632B0EF41BE26E99006EB419 /* GoogleAPIController.swift */,
 			);
-			name = APIControllers;
+			name = "API Controllers";
 			sourceTree = "<group>";
 		};
-		6301B8BB1BE2EEE4009D4A42 /* Other VC */ = {
+		6301B8BB1BE2EEE4009D4A42 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6324BAC61BE5A36E00A4E729 /* WeekForecastTableViewController.swift */,
 				632B0EEA1BE26249006EB419 /* ZipPopViewController.swift */,
-				632B0EEC1BE2625A006EB419 /* WeatherDetailViewController.swift */,
 				632B0EE81BE2621D006EB419 /* WeatherTableViewController.swift */,
+				632B0EEC1BE2625A006EB419 /* WeatherDetailViewController.swift */,
 			);
-			name = "Other VC";
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 		6301B8BE1BE321ED009D4A42 /* Custom Objects */ = {
@@ -156,10 +157,9 @@
 			isa = PBXGroup;
 			children = (
 				632B0ED41BE25ECA006EB419 /* Main.storyboard */,
-				6324BAC61BE5A36E00A4E729 /* WeekForecastTableViewController.swift */,
+				6301B8BB1BE2EEE4009D4A42 /* View Controllers */,
 				6301B8BE1BE321ED009D4A42 /* Custom Objects */,
-				6301B8BB1BE2EEE4009D4A42 /* Other VC */,
-				6301B8BA1BE2EED8009D4A42 /* APIControllers */,
+				6301B8BA1BE2EED8009D4A42 /* API Controllers */,
 				6313A08D1BE3B9CC00B32638 /* WeatherIcons */,
 				632B0EE51BE25EE8006EB419 /* garbage */,
 			);
@@ -172,10 +172,10 @@
 				6313A0891BE3B7B700B32638 /* Lato-Black.ttf */,
 				6313A08B1BE3B7DD00B32638 /* Lato-Light.ttf */,
 				632B0ED01BE25ECA006EB419 /* AppDelegate.swift */,
-				632B0EDA1BE25ECA006EB419 /* Assets.xcassets */,
 				632B0EDC1BE25ECA006EB419 /* LaunchScreen.storyboard */,
 				632B0EDF1BE25ECA006EB419 /* Info.plist */,
 				632B0ED71BE25ECA006EB419 /* Forecaster.xcdatamodeld */,
+				632B0EDA1BE25ECA006EB419 /* Assets.xcassets */,
 			);
 			name = garbage;
 			sourceTree = "<group>";

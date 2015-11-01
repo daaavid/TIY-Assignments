@@ -18,7 +18,7 @@ class Location
     var weather: Weather?
     
     var imgHasBeenAnimated = false
-    var weekHasBeenAnimated = false
+//    var weekHasBeenAnimated = false
     
     init(city: String, state: String, lat: String, lng: String, weather: Weather?)
     {
@@ -26,6 +26,7 @@ class Location
         self.state = state
         self.lat = lat
         self.lng = lng
+        
         if weather != nil
         {
             self.weather = weather!
@@ -38,11 +39,9 @@ class Location
     
     static func locationWithJSON(results: NSArray) -> Location
     {
-//        var weatherArr = [Weather]()
-        
         var location: Location
         var city = ""
-        var stateZip = ""
+//        var stateZip = ""
         var state = ""
         var latStr = ""
         var lngStr = ""
@@ -51,15 +50,14 @@ class Location
         {
             for result in results
             {
-                let formattedAdress = result["formatted_address"] as? String
-                if formattedAdress != nil
+                let formattedAddress = result["formatted_address"] as? String
+                if formattedAddress != nil
                 {
-                    var addressComponentsForCity = formattedAdress!.componentsSeparatedByString(",")
+                    let addressComponentsForCity = formattedAddress!.componentsSeparatedByString(",")
                     city = String(addressComponentsForCity[0])
-                    stateZip = String(addressComponentsForCity[1])
-                    print(stateZip)
+                    
+                    let stateZip = String(addressComponentsForCity[1])
                     state = stateZip.componentsSeparatedByString(" ")[1]
-                    print(state)
                 }
                 
                 let geometry = result["geometry"] as? NSDictionary
@@ -68,25 +66,21 @@ class Location
                     let latLong = geometry?["location"] as? NSDictionary
                     if latLong != nil
                     {
-                        let lat = latLong?.valueForKey("lat") as! Double
-                        let lng = latLong?.valueForKey("lng") as! Double
+                        let lat = latLong?["lat"] as! Double
+                        let lng = latLong?["lng"] as! Double
+                        
+//                        let lat = latLong?.valueForKey("lat") as! Double
+//                        let lng = latLong?.valueForKey("lng") as! Double
                         
                         latStr = String(lat)
                         lngStr = String(lng)
                     }
                 }
-            
-//                weatherArr.append(Weather(city: city, lat: latStr, lng: lngStr))
             }
         }
+        
         location = Location(city: city, state: state, lat: latStr, lng: lngStr, weather: nil)
 
-//        return weatherArr
         return location
-    }
-    
-    static func weatherWithJSON()
-    {
-        
     }
 }
