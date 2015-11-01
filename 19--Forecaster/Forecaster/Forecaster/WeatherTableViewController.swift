@@ -39,8 +39,10 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
         editButtonItem().tintColor = UIColor(red:0.00, green:0.75, blue:1.00, alpha:1.0)
         editButtonItem()
 
-        let colors = bgColor()
-        view.backgroundColor = UIColor(red: 0.1, green: colors[0], blue: colors[0] + 0.2, alpha: 1.0)
+//        let colors = bgColor()
+//        view.backgroundColor = UIColor(red: 0.1, green: colors[0], blue: colors[0] + 0.2, alpha: 1.0)
+        view.backgroundColor = UIColor(red: 0.0, green: 0.65, blue: 0.86, alpha: 1.0)
+
         
         zipWasChosen(String(32801))
     }

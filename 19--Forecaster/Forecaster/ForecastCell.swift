@@ -10,6 +10,15 @@ import UIKit
 
 class ForecastCell: UITableViewCell {
 
+    @IBOutlet var img: UIImageView!
+    @IBOutlet var daySummaryLabel: UILabel!
+    
+    @IBOutlet var tempMinLabel: UILabel!
+    @IBOutlet var tempMaxLabel: UILabel!
+    @IBOutlet var dayLabel: UILabel!
+    
+    var hasBeenAnimated = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

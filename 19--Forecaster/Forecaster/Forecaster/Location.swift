@@ -18,6 +18,7 @@ class Location
     var weather: Weather?
     
     var imgHasBeenAnimated = false
+    var weekHasBeenAnimated = false
     
     init(city: String, state: String, lat: String, lng: String, weather: Weather?)
     {
