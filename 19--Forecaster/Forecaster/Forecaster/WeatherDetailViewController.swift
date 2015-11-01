@@ -30,6 +30,8 @@ class WeatherDetailViewController: UIViewController
     @IBOutlet var latLabel: UILabel!
     @IBOutlet var lngLabel: UILabel!
     
+    @IBOutlet var showForecastButton: UIBarButtonItem!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -49,31 +51,22 @@ class WeatherDetailViewController: UIViewController
             assignWeatherImg((location?.weather!.icon)!)
             startGeocoder()
             
-            cityLabel.text = location!.city
+            let city = location!.city
+            
+            cityLabel.text = city
             quickWeatherLabel.text = location!.weather!.summary
             
             let humidity = location!.weather!.humidity
             var humidStr = ""
             
-//            switch humidity
-//            {
-//            case 0.0...0.2: humidStr = "It's very dry"
-//            case 0.2...0.4: humidStr = "It's dry today"
-//            case 0.4...0.6: humidStr = "It's neither dry nor humid"
-//            case 0.6...0.8: humidStr = "It's humid"
-//            case 0.8...0.9: humidStr = "It's very humid"
-//            case 0.9...1.0: humidStr = "It's very very humid"
-//            default: break
-//            }
-            
             switch humidity
             {
-            case 0...40: humidStr = "It's horibly dry"
+            case 0...40: humidStr = "It's horribly dry"
             case 40...50: humidStr = "It's very dry"
             case 50...55: humidStr = "It's somewhat dry"
             case 55...60: humidStr = "It's neither dry nor humid"
             case 60...65: humidStr = "It's somewhat humid"
-            case 65...70: humidStr = "It's humid"
+            case 65...70: humidStr = "It's fairly humid"
             case 70...75: humidStr = "It's very humid"
             case 70...80: humidStr = "It's horribly humid"
             case 80...100: humidStr = "It's digustingly humid"
@@ -117,18 +110,18 @@ class WeatherDetailViewController: UIViewController
             lngLabel.text = location!.lng
             
             
-            let temp =  String(location!.weather!.temp).componentsSeparatedByString(".")[0]
-            tempLabel.text = temp + "°"
+            let temp = location!.weather!.temp
+            tempLabel.text = String(temp) + "°"
             
-            let apparentTemp = String(location!.weather!.apparentTemp).componentsSeparatedByString(".")[0]
-            if Int(apparentTemp) == Int(temp)
+            let apparentTemp = location!.weather!.apparentTemp
+            if temp == apparentTemp
             {
                 appTempLabel.text = ", and feels like it too"
             }
             else
             {
                 print(apparentTemp) ; print(temp)
-                appTempLabel.text = ", but feels like " + apparentTemp + "°"
+                appTempLabel.text = ", but feels like " + String(apparentTemp) + "°"
             }
         }
     }
@@ -208,7 +201,7 @@ class WeatherDetailViewController: UIViewController
                 annotation.title = self.location!.city
                 annotation.subtitle = String(self.location!.weather!.temp).componentsSeparatedByString(".")[0] + "°"
 //                self.mapView.addAnnotation(annotation)
-                let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 20000, 20000)
+                let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 15000, 15000)
                 
                 self.mapView.setRegion(region, animated: true)
             }
@@ -222,5 +215,14 @@ class WeatherDetailViewController: UIViewController
     {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func showForecastButton(sender: UIBarButtonItem)
+    {
+        let weekForecastVC = storyboard?.instantiateViewControllerWithIdentifier("WeekForecastTableViewController") as! WeekForecastTableViewController
+        
+        weekForecastVC.location = location
+        
+        navigationController?.pushViewController(weekForecastVC, animated: true)
     }
 }

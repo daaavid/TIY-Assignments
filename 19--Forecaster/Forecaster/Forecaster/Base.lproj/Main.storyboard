@@ -59,11 +59,11 @@
                                             <rect key="frame" x="78" y="8" width="73.5" height="24"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
-                                            <color key="textColor" red="0.83603975789999996" green="0.83603975789999996" blue="0.83603975789999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.90575916229999998" green="0.90575916229999998" blue="0.90575916229999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swq-PU-LzV">
-                                            <rect key="frame" x="507" y="6" width="58" height="60"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swq-PU-LzV">
+                                            <rect key="frame" x="555" y="6" width="10" height="60"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="50"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -140,17 +140,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Zip" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pj8-ZL-Qw7">
-                                <rect key="frame" x="249.5" y="275" width="101" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Zip" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pj8-ZL-Qw7">
+                                <rect key="frame" x="258" y="278" width="84" height="24"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="go"/>
                                 <connections>
                                     <outlet property="delegate" destination="9RI-TF-K0R" id="bSd-au-IWQ"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7b-hM-nrK">
-                                <rect key="frame" x="271" y="305" width="59" height="30"/>
+                                <rect key="frame" x="271" y="302" width="59" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Add City">
                                     <color key="titleColor" red="0.0" green="0.75294117650000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -175,7 +175,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xTa-pk-mHo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1842" y="61"/>
+            <point key="canvasLocation" x="1782" y="-98"/>
         </scene>
         <!--Weather Detail View Controller-->
         <scene sceneID="DmX-5M-Sa4">
@@ -351,6 +351,14 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="ftX-cD-puO">
+                        <barButtonItem key="rightBarButtonItem" title="Weekly Forecast" id="MD4-xo-ccu">
+                            <color key="tintColor" red="0.0" green="0.75294117650000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="showForecastButton:" destination="doT-da-5RY" id="tbn-3E-vFA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="appTempLabel" destination="6C0-g8-mwl" id="BNM-nj-TrL"/>
@@ -363,13 +371,46 @@
                         <outlet property="mapView" destination="6Wq-pZ-cMj" id="2IW-Ws-daR"/>
                         <outlet property="quickWeatherLabel" destination="g4R-mu-250" id="fVa-bO-PB5"/>
                         <outlet property="rainProbabilityLabel" destination="HKM-g7-6aM" id="0Nr-7q-nKg"/>
+                        <outlet property="showForecastButton" destination="MD4-xo-ccu" id="BgK-Z6-jKj"/>
                         <outlet property="tempLabel" destination="xrK-rp-XMb" id="lLv-18-9k1"/>
                         <outlet property="weatherImg" destination="d1q-1p-ty1" id="YCe-i6-gAn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WFF-W0-mE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1842" y="710"/>
+            <point key="canvasLocation" x="1782" y="547"/>
+        </scene>
+        <!--Week Forecast Table View Controller-->
+        <scene sceneID="wr5-Ni-rlX">
+            <objects>
+                <tableViewController storyboardIdentifier="WeekForecastTableViewController" id="gaZ-kb-MX3" customClass="WeekForecastTableViewController" customModule="Forecaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TJG-Zi-y4h">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ForecastCell" rowHeight="72" id="KMn-gC-uFF">
+                                <rect key="frame" x="0.0" y="92" width="600" height="72"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KMn-gC-uFF" id="tSV-hy-eem">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="72"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gaZ-kb-MX3" id="EiY-WS-dIu"/>
+                            <outlet property="delegate" destination="gaZ-kb-MX3" id="D6g-ja-l3I"/>
+                        </connections>
+                    </tableView>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dv2-uD-Smw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2398" y="547"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="V4z-3D-T61">
@@ -396,6 +437,25 @@
             </objects>
             <point key="canvasLocation" x="494" y="238"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HDs-SZ-11d">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yug-X1-ZbP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7O4-AE-eYY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="doT-da-5RY" kind="relationship" relationship="rootViewController" id="vTd-yK-rAW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o2P-wG-2ZB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1164" y="889"/>
+        </scene>
     </scenes>
-    <color key="tintColor" red="0.0" green="0.58620689660000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" red="0.0" green="0.75294117650000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

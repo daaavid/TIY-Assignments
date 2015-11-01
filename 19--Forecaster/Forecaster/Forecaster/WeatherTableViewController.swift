@@ -36,6 +36,8 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
     {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        editButtonItem().tintColor = UIColor(red:0.00, green:0.75, blue:1.00, alpha:1.0)
+        editButtonItem()
 
         let colors = bgColor()
         view.backgroundColor = UIColor(red: 0.1, green: colors[0], blue: colors[0] + 0.2, alpha: 1.0)
@@ -78,7 +80,7 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
             cell.quickWeatherLabel.text = location.weather?.summary
             if location.weather?.temp != nil
             {
-                cell.tempLabel.text = String(location.weather!.temp).componentsSeparatedByString(".")[0] + "°"
+                cell.tempLabel.text = String(location.weather!.temp) + "°"
                 assignWeatherImg(cell, icon: location.weather!.icon, location: location)
             }
         }
@@ -207,20 +209,6 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
 
             let userLocation = Location.locationWithJSON(results)
             self.locationArr.append(userLocation)
-            
-            /*{
-//            print("dispatch \(weatherObj[0].lng) \(weatherObj[0].lat)")
-
-//            for x in weatherObj
-//            {
-//                let lat = x.lat
-//                let lng = x.lng
-//                
-//                print("dispatch" + x.lat); print("dispatch" + x.lng)
-//                
-//                self.darkskyAPI.search(lat, long: lng)
-//            }
-                }*/
                 
             let darkSkyAPI = DarkSkyAPIController(delegate: self)
             darkSkyAPI.search(userLocation)
@@ -242,39 +230,11 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
                 }
             }
             
-            /*{
-            
-//            self.tableView.visibleCells.indexOf(location.city)
-//            for cell in visibleCells.indexOf(location.city)
-//            {
-//                if cell.cityLabel.text! == location.city
-//                {
-//                    
-//                }
-//            }
-            
-//            let weatherObj = Weather.weatherWithJSON(results)
-            //fetch particular weather object 
-        //city and weather objcts
-        //city with weather object in it
-        //update city weather 
-            }*/
-            
             self.tableView.reloadData()
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         })
     }
 
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
@@ -286,30 +246,4 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
