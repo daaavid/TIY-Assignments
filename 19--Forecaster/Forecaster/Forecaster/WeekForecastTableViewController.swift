@@ -46,7 +46,6 @@ class WeekForecastTableViewController: UITableViewController
         cell.backgroundColor = UIColor(white: 0.0, alpha: 0.0)
         
         let day = getDayOfWeek()
-        print(day)
         
         switch indexPath.row
         {
@@ -138,8 +137,7 @@ class WeekForecastTableViewController: UITableViewController
                 cell.daySummaryLabel.frame = img
                 cell.tempMinLabel.frame = img
                 cell.tempMaxLabel.frame = img
-    //                    cell.dayLabel.frame = img
-
+                
                 cell.img.frame = img
             }, completion: nil)
     }
@@ -150,7 +148,6 @@ class WeekForecastTableViewController: UITableViewController
         let formatter  = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         
-//        let todayDate = formatter.stringFromDate(NSDate())
         let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
         let myComponents = myCalendar.components(NSCalendarUnit.Weekday, fromDate: NSDate())
         let weekDay = myComponents.weekday

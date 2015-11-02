@@ -37,6 +37,7 @@
 		632B0EF31BE26B6C006EB419 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0EF21BE26B6C006EB419 /* Location.swift */; settings = {ASSET_TAGS = (); }; };
 		632B0EF51BE26E99006EB419 /* GoogleAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0EF41BE26E99006EB419 /* GoogleAPIController.swift */; settings = {ASSET_TAGS = (); }; };
 		632B0EF71BE2831C006EB419 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B0EF61BE2831C006EB419 /* WeatherCell.swift */; settings = {ASSET_TAGS = (); }; };
+		63DC6FE41BE7093100E1921E /* windspeed.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DC6FE31BE7093100E1921E /* windspeed.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		632B0EF21BE26B6C006EB419 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		632B0EF41BE26E99006EB419 /* GoogleAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAPIController.swift; sourceTree = "<group>"; };
 		632B0EF61BE2831C006EB419 /* WeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
+		63DC6FE31BE7093100E1921E /* windspeed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = windspeed.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				6313A16E1BE3CC6A00B32638 /* snow.png */,
 				6313A1701BE3CC6A00B32638 /* wind.png */,
 				6313A17C1BE3CF2400B32638 /* na.png */,
+				63DC6FE31BE7093100E1921E /* windspeed.png */,
 			);
 			name = WeatherIcons;
 			path = "Flat Black";
@@ -249,6 +252,7 @@
 				6313A08C1BE3B7DD00B32638 /* Lato-Light.ttf in Resources */,
 				6313A1761BE3CC6A00B32638 /* partly-cloudy-night.png in Resources */,
 				6313A17B1BE3CC6A00B32638 /* wind.png in Resources */,
+				63DC6FE41BE7093100E1921E /* windspeed.png in Resources */,
 				6313A1771BE3CC6A00B32638 /* rain.png in Resources */,
 				6313A1741BE3CC6A00B32638 /* fog.png in Resources */,
 				6313A17D1BE3CF2400B32638 /* na.png in Resources */,

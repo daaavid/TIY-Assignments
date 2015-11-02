@@ -53,7 +53,7 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
     {
         var rc = false
         
-        if zip.characters.count == 5 && Int(zip) != nil
+        if zip.characters.count == 5 && Int(zip) > 00051
         {
             rc = true
         }

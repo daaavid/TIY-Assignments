@@ -24,6 +24,8 @@ class WeatherDetailViewController: UIViewController
     @IBOutlet var quickWeatherLabel: UILabel!
     @IBOutlet var humidityLabel: UILabel!
     @IBOutlet var rainProbabilityLabel: UILabel!
+    @IBOutlet var windSpeedLabel: UILabel!
+    @IBOutlet var windSpeedImg: UIImageView!
     
     @IBOutlet var weatherImg: UIImageView!
     @IBOutlet weak var mapView: MKMapView!
@@ -122,6 +124,21 @@ class WeatherDetailViewController: UIViewController
             {
                 print(apparentTemp) ; print(temp)
                 appTempLabel.text = ", but feels like " + String(apparentTemp) + "°"
+            }
+            
+            let windSpeed = location!.weather!.windSpeed
+            if windSpeed > 0
+            {
+                let fullWindSpeed = String(windSpeed).componentsSeparatedByString(".")
+                var formattedWindSpeed = Int(fullWindSpeed[0])
+                if Int(fullWindSpeed[1]) > 50
+                {
+                    formattedWindSpeed! += 1
+                }
+                
+                windSpeedLabel.text = String(formattedWindSpeed!) + " MPH"
+                windSpeedImg.image = UIImage(named: "windspeed")
+                
             }
         }
     }
