@@ -78,7 +78,11 @@ class WeatherDetailViewController: UIViewController
             humidityLabel.text = humidStr
             
             let rainProb = location!.weather!.precipProbability
-            var rainStr = "No rain today"
+            var rainStr = ""
+            if rainProb == 0.0
+            {
+                rainStr = "No rain today"
+            }
             
             if rainProb != 0.0
             {

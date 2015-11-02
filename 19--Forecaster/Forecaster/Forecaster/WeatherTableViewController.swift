@@ -10,7 +10,7 @@ import UIKit
 
 protocol ZipPopViewControllerDelegate
 {
-    func zipWasChosen(zip: String)
+    func zipWasChosen(zip: String, cc: Int)
 }
 
 protocol DarkSkyAPIControllerProtocol
@@ -44,7 +44,7 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
         view.backgroundColor = UIColor(red: 0.0, green: 0.65, blue: 0.86, alpha: 1.0)
 
         
-        zipWasChosen(String(32801))
+        zipWasChosen(String(32801), cc: 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -112,7 +112,7 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
             popVC.delegate = self
             
             popVC.view.backgroundColor = UIColor.whiteColor()
-            popVC.preferredContentSize = CGSizeMake(140, 70)
+            popVC.preferredContentSize = CGSizeMake(220, 110)
         }
     }
     
@@ -188,11 +188,11 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
 
     //MARK: - Private
     
-    func zipWasChosen(zip: String)
+    func zipWasChosen(zip: String, cc: Int)
     {
         googleAPI = GoogleZipAPIController(delegate: self)
-        
-        googleAPI.search(zip)
+        print(zip, cc)
+        googleAPI.search(zip, cc: cc)
         
 //        let zipArr = [zip]
 //        for zip in zipArr

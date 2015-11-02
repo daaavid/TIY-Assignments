@@ -18,9 +18,28 @@ class GoogleZipAPIController
         self.googleAPI = delegate
     }
     
-    func search(zipCode: String)
+    func search(searchTerm: String, cc: Int)
     {
-        let url = NSURL(string: "https://maps.googleapis.com/maps/api/geocode/json?address=santa+cruz&components=postal_code:\(zipCode)&sensor=false")
+        var urlString = ""
+        
+
+        
+        print(cc)
+        
+        switch cc
+        {
+        case 0: urlString =  "https://maps.googleapis.com/maps/api/geocode/json?address=santa+cruz&components=postal_code:\(searchTerm)&sensor=false"
+        case 1:
+            let formattedSearchTerm = searchTerm.stringByReplacingOccurrencesOfString(" ", withString: "%20", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
+//            let escapedSearchTerm = formattedSearchTerm.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet())
+            urlString = "https://maps.googleapis.com/maps/api/geocode/json?address=\(formattedSearchTerm)&components=postal_code:&sensor=false"
+            print(urlString)
+            
+        default: print("cc was invalid")
+        }
+        
+        let url = NSURL(string: urlString)
+        
         let session = NSURLSession.sharedSession()
         task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
             print("Task completed")

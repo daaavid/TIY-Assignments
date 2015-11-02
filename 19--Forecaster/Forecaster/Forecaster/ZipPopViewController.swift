@@ -11,6 +11,7 @@ import UIKit
 class ZipPopViewController: UIViewController, UITextFieldDelegate
 {
     @IBOutlet weak var zipTextField: UITextField!
+    @IBOutlet var zipCitySegmentedControl: UISegmentedControl!
 
     var delegate: ZipPopViewControllerDelegate?
     
@@ -33,20 +34,78 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool
     {
         var rc = false
-        if isZip(textField.text!)
+        if checkTextField(textField.text!)
         {
-            search(Int(textField.text!)!)
+            search(textField.text!)
             rc = true
         }
         return rc
     }
     
-    @IBAction func addCity(sender: UIButton)
+    @IBAction func zipCitySegmentedControl(sender: UISegmentedControl)
     {
-        if isZip(zipTextField.text!)
+        switch zipCitySegmentedControl.selectedSegmentIndex
         {
-            search(Int(zipTextField.text!)!)
+        case 0:
+            zipTextField.resignFirstResponder()
+            zipTextField.keyboardType = UIKeyboardType.NumbersAndPunctuation
+            zipTextField.becomeFirstResponder()
+        case 1:
+            zipTextField.resignFirstResponder()
+            zipTextField.keyboardType = UIKeyboardType.Alphabet
+            zipTextField.becomeFirstResponder()
+        default: break
         }
+        
+        setPlaceholderText()
+    }
+    
+//    @IBAction func addCity(sender: UIButton)
+//    {
+//        if isZip(zipTextField.text!)
+//        {
+//            search(Int(zipTextField.text!)!)
+//        }
+//    }
+    
+    func checkTextField(text: String) -> Bool
+    {
+        var rc = false
+        switch zipCitySegmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            if isZip(text)
+            {
+                rc = true
+            }
+            else
+            {
+                setPlaceholderText()
+            }
+        case 1:
+            if isAddress(text)
+            {
+                rc = true
+            }
+            else
+            {
+                setPlaceholderText()
+            }
+        default: break
+        }
+        return rc
+    }
+    
+    func isAddress(address: String) -> Bool
+    {
+        var rc = false
+        
+        let testAddress = address.componentsSeparatedByString(",")
+        if testAddress.count == 2 && testAddress[1].componentsSeparatedByString(" ")[1].characters.count == 2
+        {
+            rc = true
+        }
+        return rc
     }
     
     func isZip(zip: String) -> Bool
@@ -57,18 +116,35 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
         {
             rc = true
         }
-        else
-        {
-            zipTextField.text = ""
-            zipTextField.placeholder = "Enter Zip"
-        }
         
         return rc
     }
     
-    func search(zip: Int)
+    func search(searchTerm: String)
     {
-        let zipStr = String(zip)
-        delegate?.zipWasChosen(zipStr)
+        var cc = 2
+        switch zipCitySegmentedControl.selectedSegmentIndex
+        {
+        case 0: cc = 0
+        case 1: cc = 1
+        default: break
+        }
+        
+        delegate?.zipWasChosen(searchTerm, cc: cc)
+    }
+    
+    func setPlaceholderText()
+    {
+        switch zipCitySegmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            zipTextField.text = ""
+            zipTextField.placeholder = "Enter Zip"
+
+        case 1:
+            zipTextField.text = ""
+            zipTextField.placeholder = "Enter City, ST"
+        default: break
+        }
     }
 }

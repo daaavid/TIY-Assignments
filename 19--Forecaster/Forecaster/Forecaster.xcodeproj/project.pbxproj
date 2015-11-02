@@ -90,8 +90,8 @@
 		6301B8BA1BE2EED8009D4A42 /* API Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				632B0EEE1BE262B4006EB419 /* DarkSkyAPIController.swift */,
 				632B0EF41BE26E99006EB419 /* GoogleAPIController.swift */,
+				632B0EEE1BE262B4006EB419 /* DarkSkyAPIController.swift */,
 			);
 			name = "API Controllers";
 			sourceTree = "<group>";
@@ -394,7 +394,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Forecaster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tiy.Forecaster;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiy.Forecaster2000;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -405,7 +405,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Forecaster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tiy.Forecaster;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiy.Forecaster2000;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
