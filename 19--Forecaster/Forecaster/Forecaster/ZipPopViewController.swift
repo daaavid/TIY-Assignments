@@ -21,6 +21,7 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
         if zipTextField.text! == ""
         {
             zipTextField.becomeFirstResponder()
+            zipTextField.addTarget(self, action:"startedEditing", forControlEvents:UIControlEvents.EditingChanged)
         }
         // Do any additional setup after loading the view.
     }
@@ -39,6 +40,23 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
             rc = true
         }
         return rc
+    }
+    
+    func startedEditing()
+    {
+        if zipTextField.text! == ""
+        {
+            setPlaceholderText()
+        }
+
+        if Int(zipTextField.text!) != nil
+        {
+            zipCitySegmentedControl.selectedSegmentIndex = 0
+        }
+        else if zipTextField.text!.characters.count > 0
+        {
+            zipCitySegmentedControl.selectedSegmentIndex = 1
+        }
     }
     
     @IBAction func zipCitySegmentedControl(sender: UISegmentedControl)
