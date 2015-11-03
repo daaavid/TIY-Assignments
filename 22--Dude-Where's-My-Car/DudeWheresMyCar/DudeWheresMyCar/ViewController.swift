@@ -15,10 +15,11 @@ import CoreLocation
 
 let kPinsKey = "locs"
 
-class ViewController: UIViewController, CLLocationManagerDelegate
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
 {
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var dropPinButton: UIBarButtonItem!
+    @IBOutlet weak var showDirView: UIVisualEffectView!
     
     let locationManager = CLLocationManager()
     let geocoder = CLGeocoder()
@@ -26,13 +27,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     var pins = [Pin]()
     var location1 = MKPointAnnotation()
     var location2 = MKPointAnnotation()
-//    var pins = 0
+    
+    var hidden = true
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        mapView.delegate = self
 //        dropPinButton.enabled = false
         configureLocationManager()
+        
+        showDirView.hidden = true
         
         if pins.count > 0
         {
@@ -72,8 +77,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        print("didUpdateLocations")
-        
         let location = locations.last
         geocoder.reverseGeocodeLocation(location!, completionHandler: {(placemark: [CLPlacemark]?, error: NSError?) -> Void in
             
@@ -86,7 +89,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
             {
                 self.locationManager.stopUpdatingLocation()
             
-                print("success")
+                print("reverse geocode success")
                 
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 
@@ -104,9 +107,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     
     @IBAction func clearPinButton(sender: UIBarButtonItem)
     {
+        print("cleared")
         pins.removeAll()
         mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
+        
         dropPinButton.enabled = true
+        
+        showDirView.hidden = true
     }
     
     func updateMapView(placemarks: [CLPlacemark])
@@ -130,12 +138,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate
             pins.append(pin)
             
             showLoadedPins()
+            showDirViewAnimated()
             
         default: print("error")
         }
     }
     
-    func saveCityData()
+    func saveData()
     {
         print("saveCityData")
         print("saved ")
@@ -143,7 +152,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         NSUserDefaults.standardUserDefaults().setObject(locationData, forKey: kPinsKey)
     }
     
-    func loadCityData() -> Bool
+    func loadData() -> Bool
     {
         print("loadCityData")
         print("loaded ")
@@ -173,7 +182,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
             annotation.coordinate.latitude = pin.lat
             annotation.title = pin.name
             
-            print(pin.name, pin.lng, pin.lat)
+            print(pin.name, pin.lng, pin.lat, "was loaded")
             
             annotations.append(annotation)
         }
@@ -181,10 +190,97 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         if pins.count == 2
         {
             dropPinButton.enabled = false
+            
+            showDirViewAnimated()
         }
         
         mapView.removeAnnotations(mapView.annotations)
         self.mapView.showAnnotations(annotations, animated: true)
+    }
+    
+    func showDirViewAnimated()
+    {
+        if showDirView.hidden == true
+        {
+            showDirView.hidden = false
+//            UIView.animateWithDuration(0.5, animations:
+//            {
+//                var frame = self.showDirView.frame
+//                frame.origin.y = 600
+//                
+//                self.showDirView.frame = frame
+//            })
+        }
+//        else
+//        {
+//            UIView.animateWithDuration(0.5, animations:
+//                {
+//                    var frame = self.showDirView.frame
+//                    frame.origin.y += frame.size.height
+//                    
+//                    self.showDirView.frame = frame
+//            })
+//        }
+    }
+    
+    @IBAction func showDirButton(sender: UIButton)
+    {
+        showDirView.hidden = true
+        showWalkingOverlay()
+    }
+    
+    func showWalkingOverlay()
+    {
+        var annotations = [MKPointAnnotation]()
+
+        for pin in pins
+        {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate.longitude = pin.lng
+            annotation.coordinate.latitude = pin.lat
+            annotation.title = pin.name
+            
+            print(pin.name, pin.lng, pin.lat)
+            
+            annotations.append(annotation)
+        }
+        
+        let youPlacemark = MKPlacemark(coordinate: annotations[0].coordinate, addressDictionary: nil)
+        let carPlacemark = MKPlacemark(coordinate: annotations[1].coordinate, addressDictionary: nil)
+        
+        let you = MKMapItem(placemark: youPlacemark)
+        let car = MKMapItem(placemark: carPlacemark)
+        
+        let dirReq = MKDirectionsRequest()
+        dirReq.transportType = MKDirectionsTransportType.Walking
+        dirReq.source = you
+        dirReq.destination = car
+        
+        let directions = MKDirections(request: dirReq)
+        
+        directions.calculateDirectionsWithCompletionHandler { (response: MKDirectionsResponse?, error: NSError?) -> Void in
+            
+            if error != nil
+            {
+                print(error?.localizedDescription)
+            }
+            else
+            {
+                print("direction request succes")
+                for route in response!.routes
+                {
+                    self.mapView.addOverlay((route).polyline, level: MKOverlayLevel.AboveRoads)
+                }
+            }
+        }
+    }
+    
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer
+    {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor.redColor()
+        renderer.lineWidth = 3.0
+        return renderer
     }
 }
 

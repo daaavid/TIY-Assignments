@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -20,15 +21,50 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rqX-Sh-Rb5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Arv-OS-G0W"/>
+                                </connections>
                             </mapView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJT-FI-Vtj">
+                                <rect key="frame" x="0.0" y="540" width="600" height="60"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="trh-JN-sQR">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akm-5p-y53">
+                                            <rect key="frame" x="227" y="12" width="146" height="36"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <state key="normal" title="Show Directions">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="showDirButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PM2-EM-SfH"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstItem="akm-5p-y53" firstAttribute="centerX" secondItem="trh-JN-sQR" secondAttribute="centerX" id="6Nw-pz-JLS"/>
+                                        <constraint firstItem="akm-5p-y53" firstAttribute="centerY" secondItem="trh-JN-sQR" secondAttribute="centerY" id="W6R-AA-z2j"/>
+                                    </constraints>
+                                </view>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0867253989" green="0.6970568895" blue="0.99864625929999995" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="rqX-Sh-Rb5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1l7-SR-Rhw"/>
+                            <constraint firstItem="nJT-FI-Vtj" firstAttribute="width" secondItem="rqX-Sh-Rb5" secondAttribute="width" id="4PL-45-Ue0"/>
                             <constraint firstItem="rqX-Sh-Rb5" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="4qI-UM-idr"/>
                             <constraint firstItem="rqX-Sh-Rb5" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="D3P-MQ-V82"/>
                             <constraint firstItem="rqX-Sh-Rb5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="f8p-J3-Da6"/>
+                            <constraint firstItem="nJT-FI-Vtj" firstAttribute="bottom" secondItem="rqX-Sh-Rb5" secondAttribute="bottom" id="hTx-B0-24f"/>
+                            <constraint firstItem="nJT-FI-Vtj" firstAttribute="height" secondItem="rqX-Sh-Rb5" secondAttribute="height" multiplier="0.1" id="tYW-9N-Tnn"/>
+                            <constraint firstItem="nJT-FI-Vtj" firstAttribute="centerX" secondItem="rqX-Sh-Rb5" secondAttribute="centerX" id="zV7-N1-BFV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yUQ-ey-cwf">
@@ -46,6 +82,7 @@
                     <connections>
                         <outlet property="dropPinButton" destination="g8R-9t-Ogs" id="v51-WU-B4c"/>
                         <outlet property="mapView" destination="rqX-Sh-Rb5" id="CQx-O7-ktT"/>
+                        <outlet property="showDirView" destination="nJT-FI-Vtj" id="etT-VD-U0s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

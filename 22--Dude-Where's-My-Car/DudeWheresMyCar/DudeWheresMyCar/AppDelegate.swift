@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navController = window?.rootViewController as! UINavigationController
         let locationTableVC = navController.viewControllers[0] as! ViewController
-        locationTableVC.saveCityData()
+        locationTableVC.saveData()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navController = window?.rootViewController as! UINavigationController
         let locationTableVC = navController.viewControllers[0] as! ViewController
-        locationTableVC.loadCityData()
+        locationTableVC.loadData()
     }
 
     func applicationWillTerminate(application: UIApplication) {
