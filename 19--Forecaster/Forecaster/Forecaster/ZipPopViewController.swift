@@ -52,10 +52,12 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
         if Int(zipTextField.text!) != nil
         {
             zipCitySegmentedControl.selectedSegmentIndex = 0
+            changeKeyboard(0)
         }
         else if zipTextField.text!.characters.count > 0
         {
             zipCitySegmentedControl.selectedSegmentIndex = 1
+            changeKeyboard(1)
         }
     }
     
@@ -64,22 +66,29 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
         switch zipCitySegmentedControl.selectedSegmentIndex
         {
         case 0:
-            zipTextField.resignFirstResponder()
-            zipTextField.keyboardType = UIKeyboardType.NumberPad
-            zipTextField.becomeFirstResponder()
-            
-            self.reloadInputViews()
+            changeKeyboard(0)
         case 1:
-            zipTextField.resignFirstResponder()
-            zipTextField.keyboardType = UIKeyboardType.Alphabet
-            zipTextField.becomeFirstResponder()
-            
-            self.reloadInputViews()
-
+            changeKeyboard(1)
         default: break
         }
         
         setPlaceholderText()
+    }
+    
+    func changeKeyboard(cc: Int)
+    {
+        switch cc
+        {
+        case 0:
+            zipTextField.resignFirstResponder()
+            zipTextField.keyboardType = UIKeyboardType.NumberPad
+            zipTextField.becomeFirstResponder()
+        case 1:
+            zipTextField.resignFirstResponder()
+            zipTextField.keyboardType = UIKeyboardType.Alphabet
+            zipTextField.becomeFirstResponder()
+        default: break
+        }
     }
     
 //    @IBAction func addCity(sender: UIButton)
