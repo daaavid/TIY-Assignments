@@ -14,6 +14,7 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
     @IBOutlet var zipCitySegmentedControl: UISegmentedControl!
 
     var delegate: ZipPopViewControllerDelegate?
+//    var locationArr = [Location]()
     
     override func viewDidLoad()
     {
@@ -110,6 +111,7 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
     func checkTextField(text: String) -> Bool
     {
         var rc = false
+        
         switch zipCitySegmentedControl.selectedSegmentIndex
         {
         case 0:
@@ -140,7 +142,7 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
         var rc = false
         
         let testAddress = address.componentsSeparatedByString(",")
-        if testAddress.count == 2 && testAddress[1].componentsSeparatedByString(" ")[1].characters.count == 2
+        if testAddress.count == 2// && testAddress[1].componentsSeparatedByString(" ")[1].characters.count == 2
         {
             rc = true
         }
