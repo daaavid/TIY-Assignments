@@ -18,7 +18,8 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate, CLLocationMan
 
     var delegate: ZipPopViewControllerDelegate?
     var edit = false
-//    var locationArr = [Location]()
+    var locationArr = [Location]()
+    var alreadyAdded = false
     
     let locationManager = CLLocationManager()
     let geocoder = CLGeocoder()
@@ -96,8 +97,24 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate, CLLocationMan
                 
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 
+                
 //                self.zipCitySegmentedControl.selectedSegmentIndex = 0
-                self.search(zipCode!)
+                for location in self.locationArr
+                {
+                    if cityName == location.city
+                    {
+                        self.zipTextField.text = ""
+                        self.zipTextField.placeholder = "Location already added"
+                        self.goButton.enabled = true
+                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                        self.alreadyAdded = true
+                    }
+                }
+                
+                if self.alreadyAdded == false
+                {
+                    self.search(zipCode!)
+                }
                 
 //                let lat = location?.coordinate.latitude
 //                let lng = location?.coordinate.longitude
@@ -156,6 +173,8 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate, CLLocationMan
     
     @IBAction func zipCitySegmentedControl(sender: UISegmentedControl)
     {
+        goButton.enabled = true
+        
         switch zipCitySegmentedControl.selectedSegmentIndex
         {
         case 0:
@@ -164,7 +183,6 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate, CLLocationMan
             changeKeyboard(1)
         case 2:
             zipTextField.resignFirstResponder()
-            zipTextField.enabled = false
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             locationManager.startUpdatingLocation()
         default: break
@@ -212,23 +230,11 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate, CLLocationMan
         switch zipCitySegmentedControl.selectedSegmentIndex
         {
         case 0:
-            if isZip(text)
-            {
-                rc = true
-            }
-            else
-            {
-                setPlaceholderText()
-            }
+            if isZip(text){rc = true}
+            else{setPlaceholderText()}
         case 1:
-            if isAddress(text)
-            {
-                rc = true
-            }
-            else
-            {
-                setPlaceholderText()
-            }
+            if isAddress(text){rc = true}
+            else{setPlaceholderText()}
         default: break
         }
         return rc
@@ -260,18 +266,35 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate, CLLocationMan
     
     func search(searchTerm: String)
     {
-        goButton.enabled = false
-        
-        var cc = 2
-        switch zipCitySegmentedControl.selectedSegmentIndex
+        for location in locationArr
         {
-        case 0: cc = 0
-        case 1: cc = 1
-        case 2: cc = 0
-        default: break
+            if searchTerm == location.city || searchTerm.componentsSeparatedByString(",")[0] == location.city
+            {
+                zipTextField.text = ""
+                zipTextField.placeholder = "Location already added"
+                alreadyAdded = true
+                goButton.enabled = true
+            }
         }
         
-        delegate?.zipWasChosen(searchTerm, cc: cc)
+        if alreadyAdded == false
+        {
+            zipTextField.enabled = false
+            goButton.enabled = false
+            
+            var cc = 2
+            switch zipCitySegmentedControl.selectedSegmentIndex
+            {
+            case 0: cc = 0
+            case 1: cc = 1
+            case 2: cc = 0
+            default: break
+            }
+            
+            delegate?.zipWasChosen(searchTerm, cc: cc)
+        }
+        
+        alreadyAdded = false
     }
     
     func setPlaceholderText()
@@ -284,7 +307,7 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate, CLLocationMan
 
         case 1:
             zipTextField.text = ""
-            zipTextField.placeholder = "Enter City, ST"
+            zipTextField.placeholder = "Enter City, State"
         default: break
         }
     }

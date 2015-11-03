@@ -114,7 +114,7 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
             let popVC = segue.destinationViewController as! ZipPopViewController
             popVC.popoverPresentationController?.delegate = self
             popVC.delegate = self
-//            popVC.locationArr = self.locationArr
+            popVC.locationArr = self.locationArr
             
 //            popVC.view.backgroundColor = UIColor.whiteColor()
             popVC.preferredContentSize = CGSizeMake(280, 100)

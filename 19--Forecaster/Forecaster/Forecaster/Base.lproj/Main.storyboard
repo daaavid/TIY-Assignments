@@ -150,12 +150,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STV-t6-CqD">
-                                <rect key="frame" x="540" y="263" width="40" height="34"/>
+                                <rect key="frame" x="520" y="257" width="60" height="46"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="STV-t6-CqD" secondAttribute="height" multiplier="20:20" id="PRs-Ly-OxY"/>
-                                    <constraint firstAttribute="width" constant="40" id="yFS-aB-qzl"/>
+                                    <constraint firstAttribute="width" constant="60" id="yFS-aB-qzl"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Go">
                                     <color key="titleColor" red="0.0" green="0.75294117650000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -181,7 +182,7 @@
                                 </connections>
                             </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Orlando, FL" textAlignment="center" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="pj8-ZL-Qw7">
-                                <rect key="frame" x="20" y="265" width="515" height="30"/>
+                                <rect key="frame" x="20" y="265" width="495" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="yes" returnKeyType="go"/>
@@ -202,10 +203,11 @@
                             <constraint firstItem="7fD-OK-TP1" firstAttribute="centerX" secondItem="pj8-ZL-Qw7" secondAttribute="centerX" id="K3H-4n-T3W"/>
                             <constraint firstItem="pj8-ZL-Qw7" firstAttribute="width" relation="lessThanOrEqual" secondItem="7fD-OK-TP1" secondAttribute="width" id="TIw-Ff-iVk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7fD-OK-TP1" secondAttribute="trailing" id="X4K-b0-A7k"/>
+                            <constraint firstItem="STV-t6-CqD" firstAttribute="top" secondItem="pj8-ZL-Qw7" secondAttribute="top" constant="-8" id="dXn-X6-P9L"/>
                             <constraint firstItem="STV-t6-CqD" firstAttribute="leading" secondItem="pj8-ZL-Qw7" secondAttribute="trailing" constant="5" id="eaw-Wn-rkZ"/>
                             <constraint firstItem="7fD-OK-TP1" firstAttribute="leading" secondItem="Tfo-wE-Whq" secondAttribute="leadingMargin" id="fEg-gR-jp1"/>
                             <constraint firstItem="pj8-ZL-Qw7" firstAttribute="width" secondItem="Tfo-wE-Whq" secondAttribute="width" multiplier="0.8" id="iUn-lB-Hgi"/>
-                            <constraint firstItem="7fD-OK-TP1" firstAttribute="top" secondItem="STV-t6-CqD" secondAttribute="bottom" constant="6" id="ohN-1f-xpk"/>
+                            <constraint firstItem="7fD-OK-TP1" firstAttribute="top" secondItem="STV-t6-CqD" secondAttribute="bottom" id="ohN-1f-xpk"/>
                             <constraint firstItem="STV-t6-CqD" firstAttribute="trailing" secondItem="7fD-OK-TP1" secondAttribute="trailing" id="ouU-8x-7Jp"/>
                             <constraint firstItem="pj8-ZL-Qw7" firstAttribute="centerX" secondItem="Tfo-wE-Whq" secondAttribute="centerX" id="yib-lJ-YQO"/>
                         </constraints>
