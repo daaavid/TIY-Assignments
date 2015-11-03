@@ -149,15 +149,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Orlando, FL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pj8-ZL-Qw7">
-                                <rect key="frame" x="30" y="265" width="495" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="yes" returnKeyType="go"/>
-                                <connections>
-                                    <outlet property="delegate" destination="9RI-TF-K0R" id="bSd-au-IWQ"/>
-                                </connections>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STV-t6-CqD">
                                 <rect key="frame" x="530" y="263" width="40" height="34"/>
                                 <animations/>
@@ -188,6 +179,15 @@
                                     <action selector="zipCitySegmentedControl:" destination="9RI-TF-K0R" eventType="valueChanged" id="FkS-HA-iZL"/>
                                 </connections>
                             </segmentedControl>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Orlando, FL" textAlignment="center" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="pj8-ZL-Qw7">
+                                <rect key="frame" x="30" y="265" width="495" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="yes" returnKeyType="go"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9RI-TF-K0R" id="bSd-au-IWQ"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

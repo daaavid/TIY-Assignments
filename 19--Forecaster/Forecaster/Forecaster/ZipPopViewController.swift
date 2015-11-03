@@ -14,6 +14,7 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
     @IBOutlet var zipCitySegmentedControl: UISegmentedControl!
 
     var delegate: ZipPopViewControllerDelegate?
+    var edit = false
 //    var locationArr = [Location]()
     
     override func viewDidLoad()
@@ -43,22 +44,29 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
         return rc
     }
     
+    func textFieldDidBeginEditing(textField: UITextField)
+    {
+        edit = true
+    }
+    
     func startedEditing()
     {
-        if zipTextField.text! == ""
+        if zipTextField.text!.characters.count == 1
+        {
+            if Int(zipTextField.text!) != nil
+            {
+                zipCitySegmentedControl.selectedSegmentIndex = 0
+                changeKeyboard(0)
+            }
+            else
+            {
+                zipCitySegmentedControl.selectedSegmentIndex = 1
+                changeKeyboard(1)
+            }
+        }
+        else if zipTextField.text! == ""
         {
             setPlaceholderText()
-        }
-
-        if Int(zipTextField.text!) != nil
-        {
-            zipCitySegmentedControl.selectedSegmentIndex = 0
-            changeKeyboard(0)
-        }
-        else if zipTextField.text!.characters.count > 0
-        {
-            zipCitySegmentedControl.selectedSegmentIndex = 1
-            changeKeyboard(1)
         }
     }
     
