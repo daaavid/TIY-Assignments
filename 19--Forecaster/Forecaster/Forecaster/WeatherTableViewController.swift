@@ -8,6 +8,8 @@
 
 import UIKit
 
+let kLocationKey = "location"
+
 protocol ZipPopViewControllerDelegate
 {
     func zipWasChosen(zip: String, cc: Int)
@@ -43,8 +45,10 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
 //        view.backgroundColor = UIColor(red: 0.1, green: colors[0], blue: colors[0] + 0.2, alpha: 1.0)
         view.backgroundColor = UIColor(red: 0.0, green: 0.65, blue: 0.86, alpha: 1.0)
 
-        
-        zipWasChosen(String(32801), cc: 0)
+        if locationArr.count == 0
+        {
+            zipWasChosen(String(32801), cc: 0)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -113,7 +117,7 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
 //            popVC.locationArr = self.locationArr
             
 //            popVC.view.backgroundColor = UIColor.whiteColor()
-            popVC.preferredContentSize = CGSizeMake(220, 100)
+            popVC.preferredContentSize = CGSizeMake(280, 100)
         }
     }
     
@@ -143,31 +147,8 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
     
     func assignWeatherImg(cell: WeatherCell, icon: String, location: Location)
     {
-        switch icon
-        {
-        case "clear-day": cell.img.image = UIImage(named: "clear-day")
+        cell.img.image = UIImage(named: location.weather!.icon)
         animateWeatherImg(cell, location: location)
-        case "clear-night": cell.img.image = UIImage(named: "clear-night")
-        animateWeatherImg(cell, location: location)
-        case "rain": cell.img.image = UIImage(named: "rain")
-        animateWeatherImg(cell, location: location)
-        case "snow": cell.img.image = UIImage(named: "snow")
-        animateWeatherImg(cell, location: location)
-        case "sleet": cell.img.image = UIImage(named: "sleet")
-        animateWeatherImg(cell, location: location)
-        case "wind": cell.img.image = UIImage(named: "wind")
-        animateWeatherImg(cell, location: location)
-        case "fog": cell.img.image = UIImage(named: "fog")
-        animateWeatherImg(cell, location: location)
-        case "cloudy": cell.img.image = UIImage(named: "cloudy")
-        animateWeatherImg(cell, location: location)
-        case "partly-cloudy-day": cell.img.image = UIImage(named: "partly-cloudy-day")
-        animateWeatherImg(cell, location: location)
-        case "partly-cloudy-night": cell.img.image = UIImage(named: "partly-cloudy-night")
-        animateWeatherImg(cell, location: location)
-        default: cell.img.image = UIImage(named: "na")
-        animateWeatherImg(cell, location: location)
-        }
     }
     
     func animateWeatherImg(cell: WeatherCell, location: Location)
@@ -250,5 +231,33 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
+    }
+    
+    func loadCityData() -> Bool
+    {
+        var rc = true
+        if let data = NSUserDefaults.standardUserDefaults().objectForKey(kLocationKey) as? NSData
+        {
+            if let savedLocations = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [Location]
+            {
+                locationArr = savedLocations
+                rc = false
+                tableView.reloadData()
+                
+                let darkSkyAPI = DarkSkyAPIController(delegate: self)
+                
+                for location in locationArr
+                {
+                    darkSkyAPI.search(location)
+                }
+            }
+        }
+        return rc
+    }
+    
+    func saveCityData()
+    {
+        let locationData = NSKeyedArchiver.archivedDataWithRootObject(locationArr)
+        NSUserDefaults.standardUserDefaults().setObject(locationData, forKey: kLocationKey)
     }
 }

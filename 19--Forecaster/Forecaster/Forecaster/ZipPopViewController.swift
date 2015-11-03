@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ZipPopViewController: UIViewController, UITextFieldDelegate
+class ZipPopViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate
 {
     @IBOutlet weak var zipTextField: UITextField!
     @IBOutlet var zipCitySegmentedControl: UISegmentedControl!
+//    @IBOutlet weak var useCurrentLocButton: UIButton!
+    @IBOutlet weak var goButton: UIButton!
 
     var delegate: ZipPopViewControllerDelegate?
     var edit = false
 //    var locationArr = [Location]()
+    
+    let locationManager = CLLocationManager()
+    let geocoder = CLGeocoder()
     
     override func viewDidLoad()
     {
@@ -26,11 +32,89 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
             zipTextField.addTarget(self, action:"startedEditing", forControlEvents:UIControlEvents.EditingChanged)
         }
         // Do any additional setup after loading the view.
+        
+        configureLocationManager()
+        zipCitySegmentedControl.setEnabled(false, forSegmentAtIndex: 2)
+//        useCurrentLocButton.enabled = false
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    func configureLocationManager()
+    {
+        if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.Denied && CLLocationManager.authorizationStatus() != CLAuthorizationStatus.Restricted
+        {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+            
+            if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined
+            {
+                locationManager.requestWhenInUseAuthorization()
+            }
+            else
+            {
+//                useCurrentLocButton.enabled = true
+            zipCitySegmentedControl.setEnabled(true, forSegmentAtIndex: 2)
+            }
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
+    {
+        if status == CLAuthorizationStatus.AuthorizedWhenInUse
+        {
+//            useCurrentLocButton.enabled = true
+            zipCitySegmentedControl.setEnabled(true, forSegmentAtIndex: 2)
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError)
+    {
+        print(error.localizedDescription)
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        let location = locations.last //last location in array
+        geocoder.reverseGeocodeLocation(location!, completionHandler: {(placemark: [CLPlacemark]?, error: NSError?) -> Void in
+            
+            if error != nil
+            {
+                print(error?.localizedDescription)
+            }
+            else
+            {
+                self.locationManager.stopUpdatingLocation()
+                let cityName = placemark?[0].locality
+                print(cityName!)
+                let zipCode = placemark?[0].postalCode
+                
+//                self.zipTextField.text = zipCode!
+                
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                
+//                self.zipCitySegmentedControl.selectedSegmentIndex = 0
+                self.search(zipCode!)
+                
+//                let lat = location?.coordinate.latitude
+//                let lng = location?.coordinate.longitude
+//                let aCity = City(name: cityName!, zip: zipCode!, lat: lat!, lng: lng!)
+//                self.delegate?.cityWasFound(aCity)
+            }
+        })
+    }
+    
+//    @IBAction func useLocationTapped(sender: UIButton)
+//    {
+////        locationManager.startUpdatingLocation()
+//    }
+    
+    func findLocationForZipCode(zipCode: String)
+    {
+        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool
@@ -78,6 +162,11 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
             changeKeyboard(0)
         case 1:
             changeKeyboard(1)
+        case 2:
+            zipTextField.resignFirstResponder()
+            zipTextField.enabled = false
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            locationManager.startUpdatingLocation()
         default: break
         }
         
@@ -171,11 +260,14 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
     
     func search(searchTerm: String)
     {
+        goButton.enabled = false
+        
         var cc = 2
         switch zipCitySegmentedControl.selectedSegmentIndex
         {
         case 0: cc = 0
         case 1: cc = 1
+        case 2: cc = 0
         default: break
         }
         

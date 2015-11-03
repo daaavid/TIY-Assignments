@@ -7,8 +7,13 @@
 //
 
 import Foundation
+let kCityKey = "city"
+let kStateKey = "state"
+//let kZipCodeKey = "zipCode"
+let kLatKey = "lat"
+let kLngKey = "lng"
 
-class Location
+class Location: NSObject, NSCoding
 {
     let city: String
     let lat: String
@@ -35,6 +40,33 @@ class Location
         {
             self.weather = nil
         }
+    }
+    
+    // MARK: - NSCoding
+    
+    required convenience init?(coder aDecoder: NSCoder)
+    {
+        guard
+            let city = aDecoder.decodeObjectForKey(kCityKey) as? String,
+            let state = aDecoder.decodeObjectForKey(kStateKey) as? String,
+            let lat = aDecoder.decodeObjectForKey(kLatKey) as? String,
+            let lng = aDecoder.decodeObjectForKey(kLngKey) as? String
+        else
+        {
+            return nil
+        }
+        
+        self.init(city: city, state: state, lat: lat, lng: lng, weather: nil)
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder)
+    {
+        aCoder.encodeObject(self.city, forKey: kCityKey)
+        aCoder.encodeObject(self.state, forKey: kStateKey)
+        aCoder.encodeObject(self.lng, forKey: kLngKey)
+        aCoder.encodeObject(self.lat, forKey:  kLatKey)
+//        aCoder.encodeObject(self.zipCode)
+//        aCoder.encodeDouble(<#T##realv: Double##Double#>, forKey: <#T##String#>)
     }
     
     static func locationWithJSON(results: NSArray) -> Location
