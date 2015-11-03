@@ -1,0 +1,190 @@
+//
+//  ViewController.swift
+//  DudeWheresMyCar
+//
+//  Created by david on 11/3/15.
+//  Copyright © 2015 The Iron Yard. All rights reserved.
+//
+
+import UIKit
+import MapKit
+import CoreLocation
+
+//let kLocation1Key = "loc1"
+//let kLocation2Key = "loc2"
+
+let kPinsKey = "locs"
+
+class ViewController: UIViewController, CLLocationManagerDelegate
+{
+    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var dropPinButton: UIBarButtonItem!
+    
+    let locationManager = CLLocationManager()
+    let geocoder = CLGeocoder()
+    
+    var pins = [Pin]()
+    var location1 = MKPointAnnotation()
+    var location2 = MKPointAnnotation()
+//    var pins = 0
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+//        dropPinButton.enabled = false
+        configureLocationManager()
+        
+        if pins.count > 0
+        {
+            showLoadedPins()
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func configureLocationManager()
+    {
+        let locAuthStatus = CLLocationManager.authorizationStatus()
+        
+        if locAuthStatus != CLAuthorizationStatus.Denied && locAuthStatus != CLAuthorizationStatus.Restricted
+        {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            
+            if locAuthStatus == CLAuthorizationStatus.NotDetermined
+            {
+                locationManager.requestWhenInUseAuthorization()
+            }
+            else
+            {
+                dropPinButton.enabled = true
+            }
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError)
+    {
+        print(error.localizedDescription)
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        print("didUpdateLocations")
+        
+        let location = locations.last
+        geocoder.reverseGeocodeLocation(location!, completionHandler: {(placemark: [CLPlacemark]?, error: NSError?) -> Void in
+            
+            if error != nil
+            {
+                print(error?.localizedDescription)
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            }
+            else
+            {
+                self.locationManager.stopUpdatingLocation()
+            
+                print("success")
+                
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                
+                self.updateMapView(placemark!)
+            }
+            
+        })
+    }
+    
+    @IBAction func dropPinButton(sender: UIBarButtonItem)
+    {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        locationManager.startUpdatingLocation()
+    }
+    
+    @IBAction func clearPinButton(sender: UIBarButtonItem)
+    {
+        pins.removeAll()
+        mapView.removeAnnotations(mapView.annotations)
+        dropPinButton.enabled = true
+    }
+    
+    func updateMapView(placemarks: [CLPlacemark])
+    {
+        switch pins.count
+        {
+        case 0:
+            location1.coordinate = placemarks[0].location!.coordinate
+            location1.title = "Car"
+            
+            let pin = Pin(lat: location1.coordinate.latitude, lng: location1.coordinate.longitude, name: location1.title!)
+            pins.append(pin)
+            
+            showLoadedPins()
+            
+        case 1:
+            location2.coordinate = placemarks[0].location!.coordinate
+            location2.title = "You"
+            
+            let pin = Pin(lat: location2.coordinate.latitude, lng: location2.coordinate.longitude, name: location2.title!)
+            pins.append(pin)
+            
+            showLoadedPins()
+            
+        default: print("error")
+        }
+    }
+    
+    func saveCityData()
+    {
+        print("saveCityData")
+        print("saved ")
+        let locationData = NSKeyedArchiver.archivedDataWithRootObject(pins) ; print(pins)
+        NSUserDefaults.standardUserDefaults().setObject(locationData, forKey: kPinsKey)
+    }
+    
+    func loadCityData() -> Bool
+    {
+        print("loadCityData")
+        print("loaded ")
+        
+        var rc = true
+        if let data = NSUserDefaults.standardUserDefaults().objectForKey(kPinsKey) as? NSData
+        {
+            if let savedPins = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [Pin]
+            {
+                pins = savedPins ; print(pins)
+                rc = false
+
+//                 self.reloadData()
+            }
+        }
+        return rc
+    }
+    
+    func showLoadedPins()
+    {
+        var annotations = [MKPointAnnotation]()
+        
+        for pin in pins
+        {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate.longitude = pin.lng
+            annotation.coordinate.latitude = pin.lat
+            annotation.title = pin.name
+            
+            print(pin.name, pin.lng, pin.lat)
+            
+            annotations.append(annotation)
+        }
+        
+        if pins.count == 2
+        {
+            dropPinButton.enabled = false
+        }
+        
+        mapView.removeAnnotations(mapView.annotations)
+        self.mapView.showAnnotations(annotations, animated: true)
+    }
+}
+
