@@ -22,7 +22,6 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
         {
             zipTextField.becomeFirstResponder()
         }
-
         // Do any additional setup after loading the view.
     }
 
@@ -48,12 +47,17 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
         {
         case 0:
             zipTextField.resignFirstResponder()
-            zipTextField.keyboardType = UIKeyboardType.NumbersAndPunctuation
+            zipTextField.keyboardType = UIKeyboardType.NumberPad
             zipTextField.becomeFirstResponder()
+            
+            self.reloadInputViews()
         case 1:
             zipTextField.resignFirstResponder()
             zipTextField.keyboardType = UIKeyboardType.Alphabet
             zipTextField.becomeFirstResponder()
+            
+            self.reloadInputViews()
+
         default: break
         }
         
@@ -67,6 +71,14 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate
 //            search(Int(zipTextField.text!)!)
 //        }
 //    }
+   
+    @IBAction func goButton(sender: UIButton)
+    {
+        if checkTextField(zipTextField.text!)
+        {
+            search(zipTextField.text!)
+        }
+    }
     
     func checkTextField(text: String) -> Bool
     {

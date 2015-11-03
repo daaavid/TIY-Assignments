@@ -210,7 +210,7 @@ class Weather
             summary = currently["summary"] as! String
             icon = currently["icon"] as! String
             precipIntensity = currently["precipIntensity"] as!Double
-            precipProbability = currently["precipProbability"] as! Double
+//            precipProbability = currently["precipProbability"] as! Double
             //        let humidity = currently["humidity"] as! Double
             humid = currently["dewPoint"] as! Double
             windSpeed = currently["windSpeed"] as! Double
@@ -240,6 +240,8 @@ class Weather
                     day0summary = day0["summary"] as! String
                     let tempMin = day0["temperatureMin"] as! Double
                     let tempMax = day0["temperatureMax"] as! Double
+                    
+                    precipProbability = day0["precipProbability"] as! Double
                     
                     day0tempMin = tempAsInt(tempMin)
                     day0tempMax = tempAsInt(tempMax)

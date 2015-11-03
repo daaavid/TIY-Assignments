@@ -72,7 +72,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swq-PU-LzV">
                                             <rect key="frame" x="570" y="36" width="0.0" height="0.0"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="50"/>
+                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="42"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -149,8 +149,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Orlando, FL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pj8-ZL-Qw7">
-                                <rect key="frame" x="60" y="270" width="480" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Orlando, FL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pj8-ZL-Qw7">
+                                <rect key="frame" x="30" y="270" width="495" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="yes" returnKeyType="go"/>
@@ -158,8 +158,27 @@
                                     <outlet property="delegate" destination="9RI-TF-K0R" id="bSd-au-IWQ"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STV-t6-CqD">
+                                <rect key="frame" x="530" y="268" width="40" height="34"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="STV-t6-CqD" secondAttribute="height" multiplier="20:20" id="PRs-Ly-OxY"/>
+                                    <constraint firstAttribute="width" constant="40" id="yFS-aB-qzl"/>
+                                </constraints>
+                                <state key="normal" title="Go">
+                                    <color key="titleColor" red="0.0" green="0.75294117650000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PRs-Ly-OxY"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="goButton:" destination="9RI-TF-K0R" eventType="touchUpInside" id="0Ml-XD-mrk"/>
+                                </connections>
+                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="7fD-OK-TP1">
-                                <rect key="frame" x="60" y="308" width="480" height="29"/>
+                                <rect key="frame" x="30" y="308" width="540" height="31"/>
                                 <animations/>
                                 <segments>
                                     <segment title="Zip"/>
@@ -173,13 +192,31 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="pj8-ZL-Qw7" secondAttribute="trailing" constant="10" id="0eZ-KO-2vF"/>
                             <constraint firstItem="7fD-OK-TP1" firstAttribute="top" secondItem="pj8-ZL-Qw7" secondAttribute="bottom" constant="8" id="3sO-Kb-6aw"/>
                             <constraint firstItem="7fD-OK-TP1" firstAttribute="width" secondItem="pj8-ZL-Qw7" secondAttribute="width" id="62L-Di-DMs"/>
                             <constraint firstItem="pj8-ZL-Qw7" firstAttribute="centerY" secondItem="Tfo-wE-Whq" secondAttribute="centerY" constant="-15" id="9XA-Vg-LCI"/>
+                            <constraint firstItem="pj8-ZL-Qw7" firstAttribute="leading" secondItem="Tfo-wE-Whq" secondAttribute="leadingMargin" constant="10" id="BDz-0X-JpY"/>
+                            <constraint firstItem="7fD-OK-TP1" firstAttribute="height" secondItem="pj8-ZL-Qw7" secondAttribute="height" id="Eaz-7Z-845"/>
                             <constraint firstItem="7fD-OK-TP1" firstAttribute="centerX" secondItem="pj8-ZL-Qw7" secondAttribute="centerX" id="K3H-4n-T3W"/>
+                            <constraint firstItem="pj8-ZL-Qw7" firstAttribute="width" relation="lessThanOrEqual" secondItem="7fD-OK-TP1" secondAttribute="width" id="TIw-Ff-iVk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7fD-OK-TP1" secondAttribute="trailing" constant="10" id="X4K-b0-A7k"/>
+                            <constraint firstItem="STV-t6-CqD" firstAttribute="leading" secondItem="pj8-ZL-Qw7" secondAttribute="trailing" constant="5" id="eaw-Wn-rkZ"/>
+                            <constraint firstItem="7fD-OK-TP1" firstAttribute="leading" secondItem="Tfo-wE-Whq" secondAttribute="leadingMargin" constant="10" id="fEg-gR-jp1"/>
                             <constraint firstItem="pj8-ZL-Qw7" firstAttribute="width" secondItem="Tfo-wE-Whq" secondAttribute="width" multiplier="0.8" id="iUn-lB-Hgi"/>
+                            <constraint firstItem="7fD-OK-TP1" firstAttribute="top" secondItem="STV-t6-CqD" secondAttribute="bottom" constant="6" id="ohN-1f-xpk"/>
+                            <constraint firstItem="STV-t6-CqD" firstAttribute="trailing" secondItem="7fD-OK-TP1" secondAttribute="trailing" id="ouU-8x-7Jp"/>
                             <constraint firstItem="pj8-ZL-Qw7" firstAttribute="centerX" secondItem="Tfo-wE-Whq" secondAttribute="centerX" id="yib-lJ-YQO"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0eZ-KO-2vF"/>
+                                <exclude reference="iUn-lB-Hgi"/>
+                                <exclude reference="yib-lJ-YQO"/>
+                                <exclude reference="62L-Di-DMs"/>
+                                <exclude reference="K3H-4n-T3W"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="zipCitySegmentedControl" destination="7fD-OK-TP1" id="z1C-mu-J9i"/>
@@ -220,14 +257,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTm-HB-9Jx">
-                                            <rect key="frame" x="558" y="5" width="37" height="12"/>
+                                            <rect key="frame" x="558" y="3" width="37" height="12"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="10"/>
                                             <color key="textColor" red="0.90575916229999998" green="0.90575916229999998" blue="0.90575916229999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c92-l8-jcd">
-                                            <rect key="frame" x="558" y="18" width="37" height="12"/>
+                                            <rect key="frame" x="558" y="16" width="37" height="12"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="10"/>
                                             <color key="textColor" red="0.90575916229999998" green="0.90575916229999998" blue="0.90575916229999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -238,7 +275,7 @@
                                     <constraints>
                                         <constraint firstItem="c92-l8-jcd" firstAttribute="trailing" secondItem="nTm-HB-9Jx" secondAttribute="trailing" id="7DV-av-KCh"/>
                                         <constraint firstItem="c92-l8-jcd" firstAttribute="top" secondItem="nTm-HB-9Jx" secondAttribute="bottom" constant="1" id="AdV-29-aI8"/>
-                                        <constraint firstItem="nTm-HB-9Jx" firstAttribute="top" secondItem="gp3-C8-Lso" secondAttribute="top" constant="2" id="JxQ-Dn-PLj"/>
+                                        <constraint firstItem="nTm-HB-9Jx" firstAttribute="top" secondItem="gp3-C8-Lso" secondAttribute="top" id="JxQ-Dn-PLj"/>
                                         <constraint firstAttribute="trailing" secondItem="nTm-HB-9Jx" secondAttribute="trailing" constant="5" id="ThQ-t9-kD4"/>
                                         <constraint firstItem="gp3-C8-Lso" firstAttribute="centerY" secondItem="IEz-cj-GQE" secondAttribute="centerY" id="jgA-L5-kPh"/>
                                         <constraint firstItem="gp3-C8-Lso" firstAttribute="top" secondItem="IEz-cj-GQE" secondAttribute="top" constant="3" id="juC-MH-vfu"/>
@@ -264,21 +301,21 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mostly Cloudy" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4R-mu-250">
-                                            <rect key="frame" x="39" y="0.0" width="186.5" height="36"/>
+                                            <rect key="frame" x="39" y="2" width="161.5" height="31.5"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="30"/>
+                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="26"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrK-rp-XMb">
-                                            <rect key="frame" x="8" y="32" width="47" height="36"/>
+                                            <rect key="frame" x="8" y="35" width="47" height="36"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="30"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=", but feels like 9001°" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6C0-g8-mwl">
-                                            <rect key="frame" x="49" y="38" width="206.5" height="29"/>
+                                            <rect key="frame" x="49" y="41" width="206.5" height="29"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="24"/>
                                             <color key="textColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
@@ -308,7 +345,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="windspeed" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nu7-Mm-N8i">
-                                            <rect key="frame" x="508.5" y="3.5" width="64.5" height="17"/>
+                                            <rect key="frame" x="508.5" y="4" width="64.5" height="17"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="14"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -367,7 +404,7 @@
                                         <constraint firstAttribute="bottom" secondItem="Nu7-Mm-N8i" secondAttribute="bottom" constant="8" id="nzT-s0-raB"/>
                                         <constraint firstItem="6C0-g8-mwl" firstAttribute="bottom" secondItem="xrK-rp-XMb" secondAttribute="bottom" constant="-1" id="oEu-2i-Siv"/>
                                         <constraint firstAttribute="bottom" secondItem="Nu7-Mm-N8i" secondAttribute="bottom" constant="3" id="opV-Z7-NgX"/>
-                                        <constraint firstItem="xrK-rp-XMb" firstAttribute="top" secondItem="d1q-1p-ty1" secondAttribute="bottom" constant="2" id="ori-Rk-t5q"/>
+                                        <constraint firstItem="xrK-rp-XMb" firstAttribute="top" secondItem="d1q-1p-ty1" secondAttribute="bottom" constant="5" id="ori-Rk-t5q"/>
                                         <constraint firstItem="pmH-Z5-AwN" firstAttribute="top" secondItem="MxZ-Qe-e3h" secondAttribute="top" constant="100" id="pPL-Vo-e9D"/>
                                         <constraint firstItem="xrK-rp-XMb" firstAttribute="leading" secondItem="d1q-1p-ty1" secondAttribute="leading" constant="2" id="sEZ-WP-mXH"/>
                                         <constraint firstItem="u5c-ik-JAE" firstAttribute="leading" secondItem="xrK-rp-XMb" secondAttribute="leading" id="shs-Cs-ABm"/>
@@ -451,6 +488,7 @@
                         <outlet property="blurView" destination="WeH-VV-38W" id="nHX-19-Fjw"/>
                         <outlet property="cityBlurView" destination="Kb9-kj-sce" id="TOA-yZ-Ktk"/>
                         <outlet property="cityLabel" destination="gp3-C8-Lso" id="fe1-Ah-PpG"/>
+                        <outlet property="forecastIOLabel" destination="xCz-zu-FwK" id="l8a-eG-eri"/>
                         <outlet property="humidityLabel" destination="u5c-ik-JAE" id="hkc-ZG-nKr"/>
                         <outlet property="latLabel" destination="nTm-HB-9Jx" id="4MG-0P-V5g"/>
                         <outlet property="lngLabel" destination="c92-l8-jcd" id="lmW-ua-GXK"/>
@@ -460,6 +498,7 @@
                         <outlet property="showForecastButton" destination="MD4-xo-ccu" id="BgK-Z6-jKj"/>
                         <outlet property="tempLabel" destination="xrK-rp-XMb" id="lLv-18-9k1"/>
                         <outlet property="weatherImg" destination="d1q-1p-ty1" id="YCe-i6-gAn"/>
+                        <outlet property="windImg" destination="pmH-Z5-AwN" id="are-rr-XZs"/>
                         <outlet property="windSpeedImg" destination="pmH-Z5-AwN" id="ZFX-hF-KC5"/>
                         <outlet property="windSpeedLabel" destination="Nu7-Mm-N8i" id="ffB-gU-HUu"/>
                     </connections>
@@ -477,13 +516,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="xEh-fD-PzT">
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" minimumScaleFactor="0.5" id="xEh-fD-PzT">
                             <rect key="frame" x="0.0" y="64" width="600" height="57"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <color key="backgroundColor" red="0.0" green="0.75294117650000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="18"/>
-                            <color key="textColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>

@@ -32,6 +32,9 @@ class WeatherDetailViewController: UIViewController
     @IBOutlet var latLabel: UILabel!
     @IBOutlet var lngLabel: UILabel!
     
+    @IBOutlet var windImg: UIImageView!
+    @IBOutlet var forecastIOLabel: UILabel!
+    
     @IBOutlet var showForecastButton: UIBarButtonItem!
     
     override func viewDidLoad()
@@ -41,6 +44,9 @@ class WeatherDetailViewController: UIViewController
         mapView.mapType = MKMapType.HybridFlyover
         
         animateBlurViews()
+        animateWeatherImg()
+        animateWindyStuff()
+        animateForecastIO()
 
         setLabels()
     }
@@ -152,43 +158,76 @@ class WeatherDetailViewController: UIViewController
         switch icon
         {
         case "clear-day": weatherImg.image = UIImage(named: "clear-day")
-        animateWeatherImg()
+        animateLabels()
         case "clear-night": weatherImg.image = UIImage(named: "clear-night")
-        animateWeatherImg()
+        animateLabels()
         case "rain": weatherImg.image = UIImage(named: "rain")
-        animateWeatherImg()
+        animateLabels()
         case "snow": weatherImg.image = UIImage(named: "snow")
-        animateWeatherImg()
+        animateLabels()
         case "sleet": weatherImg.image = UIImage(named: "sleet")
-        animateWeatherImg()
+        animateLabels()
         case "wind": weatherImg.image = UIImage(named: "wind")
-        animateWeatherImg()
+        animateLabels()
         case "fog": weatherImg.image = UIImage(named: "fog")
-        animateWeatherImg()
+        animateLabels()
         case "cloudy": weatherImg.image = UIImage(named: "cloudy")
-        animateWeatherImg()
+        animateLabels()
         case "partly-cloudy-day": weatherImg.image = UIImage(named: "partly-cloudy-day")
-        animateWeatherImg()
+        animateLabels()
         case "partly-cloudy-night": weatherImg.image = UIImage(named: "partly-cloudy-night")
-        animateWeatherImg()
+        animateLabels()
         default: weatherImg.image = UIImage(named: "na")
-        animateWeatherImg()
+        animateLabels()
         }
     }
     
-    func animateWeatherImg()
+    func animateLabels()
     {
-        UIView.animateWithDuration(0.5, delay: 1.0, options: [], animations:
+        UIView.animateWithDuration(0.5, delay: 0.8, options: [], animations:
         {
             var img = self.weatherImg.frame
             img.origin.x += img.size.width + 400
-            
+
             self.tempLabel.frame = img
             self.appTempLabel.frame = img
             self.rainProbabilityLabel.frame = img
             self.humidityLabel.frame = img
-            self.quickWeatherLabel.frame = img
-            self.weatherImg.frame = img
+        }, completion: nil)
+    }
+    
+    func animateWeatherImg()
+    {
+        UIView.animateWithDuration(0.5, delay: 1.2, options: [], animations:
+            {
+                var img = self.weatherImg.frame
+                img.origin.x += img.size.width + 400
+                
+                self.quickWeatherLabel.frame = img
+                self.weatherImg.frame = img
+            }, completion: nil)
+    }
+    
+    func animateWindyStuff()
+    {
+        UIView.animateWithDuration(0.5, delay: 0.8, options: [], animations:
+            {
+                var img = self.windSpeedImg.frame
+                img.origin.x += img.size.width - 600
+                
+                self.windSpeedImg.frame = img
+                self.windSpeedLabel.frame = img
+            }, completion: nil)
+    }
+
+    func animateForecastIO()
+    {
+        UIView.animateWithDuration(0.5, delay: 1.5, options: [], animations:
+        {
+            var forecastIO = self.forecastIOLabel.frame
+            forecastIO.origin.y -= forecastIO.size.height + 600
+            
+            self.forecastIOLabel.frame = forecastIO
         }, completion: nil)
     }
     
