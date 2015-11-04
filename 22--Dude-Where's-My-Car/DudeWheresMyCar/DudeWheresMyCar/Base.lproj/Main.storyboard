@@ -5,6 +5,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Lato-Light.ttf">
+            <string>Lato-Light</string>
+            <string>Lato-Light</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -50,7 +56,40 @@
                                     </constraints>
                                 </view>
                                 <animations/>
-                                <color key="backgroundColor" red="0.0867253989" green="0.6970568895" blue="0.99864625929999995" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.086274509803921567" green="0.69803921568627447" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="703-GS-VZL">
+                                <rect key="frame" x="0.0" y="510" width="600" height="90"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4SX-F1-FLE">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yx6-XK-9QK">
+                                            <rect key="frame" x="8" y="8" width="91" height="29"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="24"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wwx-Ao-eOY">
+                                            <rect key="frame" x="8" y="45" width="51.5" height="29"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="24"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstItem="Wwx-Ao-eOY" firstAttribute="top" secondItem="yx6-XK-9QK" secondAttribute="bottom" constant="8" id="1EE-Kf-rbI"/>
+                                        <constraint firstItem="yx6-XK-9QK" firstAttribute="leading" secondItem="4SX-F1-FLE" secondAttribute="leading" constant="8" id="3Ki-dA-Zla"/>
+                                        <constraint firstItem="yx6-XK-9QK" firstAttribute="top" secondItem="4SX-F1-FLE" secondAttribute="top" constant="8" id="FVb-hl-07W"/>
+                                        <constraint firstItem="Wwx-Ao-eOY" firstAttribute="leading" secondItem="yx6-XK-9QK" secondAttribute="leading" id="N2C-Wi-NOs"/>
+                                    </constraints>
+                                </view>
+                                <animations/>
+                                <color key="backgroundColor" red="0.086274509803921567" green="0.69803921568627447" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                         </subviews>
@@ -58,11 +97,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="rqX-Sh-Rb5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1l7-SR-Rhw"/>
+                            <constraint firstItem="703-GS-VZL" firstAttribute="width" secondItem="rqX-Sh-Rb5" secondAttribute="width" id="2yC-Sd-Sxs"/>
                             <constraint firstItem="nJT-FI-Vtj" firstAttribute="width" secondItem="rqX-Sh-Rb5" secondAttribute="width" id="4PL-45-Ue0"/>
                             <constraint firstItem="rqX-Sh-Rb5" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="4qI-UM-idr"/>
+                            <constraint firstItem="703-GS-VZL" firstAttribute="bottom" secondItem="rqX-Sh-Rb5" secondAttribute="bottom" id="AgY-F7-a7U"/>
                             <constraint firstItem="rqX-Sh-Rb5" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="D3P-MQ-V82"/>
+                            <constraint firstItem="703-GS-VZL" firstAttribute="height" secondItem="rqX-Sh-Rb5" secondAttribute="height" multiplier="0.15" id="Lgu-Pn-PRd"/>
                             <constraint firstItem="rqX-Sh-Rb5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="f8p-J3-Da6"/>
                             <constraint firstItem="nJT-FI-Vtj" firstAttribute="bottom" secondItem="rqX-Sh-Rb5" secondAttribute="bottom" id="hTx-B0-24f"/>
+                            <constraint firstItem="703-GS-VZL" firstAttribute="centerX" secondItem="rqX-Sh-Rb5" secondAttribute="centerX" id="nfw-Yp-uKF"/>
                             <constraint firstItem="nJT-FI-Vtj" firstAttribute="height" secondItem="rqX-Sh-Rb5" secondAttribute="height" multiplier="0.1" id="tYW-9N-Tnn"/>
                             <constraint firstItem="nJT-FI-Vtj" firstAttribute="centerX" secondItem="rqX-Sh-Rb5" secondAttribute="centerX" id="zV7-N1-BFV"/>
                         </constraints>
@@ -80,9 +123,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dirButtonBlurView" destination="nJT-FI-Vtj" id="6VQ-7a-2AL"/>
+                        <outlet property="dirDistanceLabel" destination="yx6-XK-9QK" id="hx0-Ao-IRF"/>
+                        <outlet property="dirTimeLabel" destination="Wwx-Ao-eOY" id="dYs-Tl-rBr"/>
                         <outlet property="dropPinButton" destination="g8R-9t-Ogs" id="v51-WU-B4c"/>
                         <outlet property="mapView" destination="rqX-Sh-Rb5" id="CQx-O7-ktT"/>
-                        <outlet property="showDirView" destination="nJT-FI-Vtj" id="etT-VD-U0s"/>
+                        <outlet property="showDirBlurView" destination="703-GS-VZL" id="Jcw-4v-e40"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

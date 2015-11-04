@@ -19,7 +19,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 {
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var dropPinButton: UIBarButtonItem!
-    @IBOutlet weak var showDirView: UIVisualEffectView!
+    
+    @IBOutlet weak var dirButtonBlurView: UIVisualEffectView!
+    @IBOutlet weak var showDirBlurView: UIVisualEffectView!
+    @IBOutlet var dirDistanceLabel: UILabel!
+    @IBOutlet var dirTimeLabel: UILabel!
     
     let locationManager = CLLocationManager()
     let geocoder = CLGeocoder()
@@ -28,16 +32,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var location1 = MKPointAnnotation()
     var location2 = MKPointAnnotation()
     
-    var hidden = true
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        self.mapView.camera.altitude *= 1.5
+
         mapView.delegate = self
 //        dropPinButton.enabled = false
         configureLocationManager()
         
-        showDirView.hidden = true
+        dirButtonBlurView.hidden = true
+        showDirBlurView.hidden = true
         
         if pins.count > 0
         {
@@ -114,7 +120,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         dropPinButton.enabled = true
         
-        showDirView.hidden = true
+        dirButtonBlurView.hidden = true
+        showDirBlurView.hidden = true
     }
     
     func updateMapView(placemarks: [CLPlacemark])
@@ -138,40 +145,30 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             pins.append(pin)
             
             showLoadedPins()
-            showDirViewAnimated()
+            dirButtonBlurViewAnimated()
             
         default: print("error")
         }
     }
     
-    func saveData()
-    {
-        print("saveCityData")
-        print("saved ")
-        let locationData = NSKeyedArchiver.archivedDataWithRootObject(pins) ; print(pins)
-        NSUserDefaults.standardUserDefaults().setObject(locationData, forKey: kPinsKey)
-    }
-    
-    func loadData() -> Bool
-    {
-        print("loadCityData")
-        print("loaded ")
-        
-        var rc = true
-        if let data = NSUserDefaults.standardUserDefaults().objectForKey(kPinsKey) as? NSData
-        {
-            if let savedPins = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [Pin]
-            {
-                pins = savedPins ; print(pins)
-                rc = false
-
-//                 self.reloadData()
-            }
-        }
-        return rc
-    }
-    
     func showLoadedPins()
+    {
+        let annotations = pinsToAnnotations()
+        
+        if pins.count == 2
+        {
+            dropPinButton.enabled = false
+            
+            dirButtonBlurViewAnimated()
+        }
+        
+        mapView.removeAnnotations(mapView.annotations)
+        
+        self.mapView.showAnnotations(annotations, animated: true)
+        self.mapView.camera.altitude *= 1.5
+    }
+    
+    func pinsToAnnotations() -> [MKPointAnnotation]
     {
         var annotations = [MKPointAnnotation]()
         
@@ -186,64 +183,45 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
             annotations.append(annotation)
         }
-        
-        if pins.count == 2
-        {
-            dropPinButton.enabled = false
-            
-            showDirViewAnimated()
-        }
-        
-        mapView.removeAnnotations(mapView.annotations)
-        self.mapView.showAnnotations(annotations, animated: true)
+        return annotations
     }
     
-    func showDirViewAnimated()
+    func dirButtonBlurViewAnimated()
     {
-        if showDirView.hidden == true
+        if dirButtonBlurView.hidden == true
         {
-            showDirView.hidden = false
+            dirButtonBlurView.hidden = false
 //            UIView.animateWithDuration(0.5, animations:
 //            {
-//                var frame = self.showDirView.frame
+//                var frame = self.dirButtonBlurView.frame
 //                frame.origin.y = 600
 //                
-//                self.showDirView.frame = frame
+//                self.dirButtonBlurView.frame = frame
 //            })
         }
 //        else
 //        {
 //            UIView.animateWithDuration(0.5, animations:
 //                {
-//                    var frame = self.showDirView.frame
+//                    var frame = self.dirButtonBlurView.frame
 //                    frame.origin.y += frame.size.height
 //                    
-//                    self.showDirView.frame = frame
+//                    self.dirButtonBlurView.frame = frame
 //            })
 //        }
     }
     
     @IBAction func showDirButton(sender: UIButton)
     {
-        showDirView.hidden = true
+        dirButtonBlurView.hidden = true
         showWalkingOverlay()
     }
     
+    // MARK: - Directions
+    
     func showWalkingOverlay()
     {
-        var annotations = [MKPointAnnotation]()
-
-        for pin in pins
-        {
-            let annotation = MKPointAnnotation()
-            annotation.coordinate.longitude = pin.lng
-            annotation.coordinate.latitude = pin.lat
-            annotation.title = pin.name
-            
-            print(pin.name, pin.lng, pin.lat)
-            
-            annotations.append(annotation)
-        }
+        let annotations = pinsToAnnotations()
         
         let youPlacemark = MKPlacemark(coordinate: annotations[0].coordinate, addressDictionary: nil)
         let carPlacemark = MKPlacemark(coordinate: annotations[1].coordinate, addressDictionary: nil)
@@ -266,11 +244,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
             else
             {
-                print("direction request succes")
+                print("direction request success")
+                
                 for route in response!.routes
                 {
                     self.mapView.addOverlay((route).polyline, level: MKOverlayLevel.AboveRoads)
                 }
+                
+                let distance = response!.routes.first!.distance * 0.00062137
+                let time = response!.routes.first!.expectedTravelTime
+                self.showDirectionLabels(distance, time: time)
             }
         }
     }
@@ -281,6 +264,46 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         renderer.strokeColor = UIColor.redColor()
         renderer.lineWidth = 3.0
         return renderer
+    }
+    
+    func showDirectionLabels(distance: Double, time: Double)
+    {
+        showDirBlurView.hidden = false
+        
+        let formattedDistance = String(format: "%.2f", distance)
+        let formattedTime = String(format: "%.2f" , (time / 60))
+        
+        dirDistanceLabel.text = "Distance: " + formattedDistance + " miles"
+        dirTimeLabel.text = "ETA " + formattedTime + " minutes"
+    }
+    
+    // MARK: - Save, Load
+    
+    func saveData()
+    {
+        print("saveCityData")
+        print("saved ")
+        let locationData = NSKeyedArchiver.archivedDataWithRootObject(pins) ; print(pins)
+        NSUserDefaults.standardUserDefaults().setObject(locationData, forKey: kPinsKey)
+    }
+    
+    func loadData() -> Bool
+    {
+        print("loadCityData")
+        print("loaded ")
+        
+        var rc = true
+        if let data = NSUserDefaults.standardUserDefaults().objectForKey(kPinsKey) as? NSData
+        {
+            if let savedPins = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [Pin]
+            {
+                pins = savedPins ; print(pins)
+                rc = false
+                
+                //                 self.reloadData()
+            }
+        }
+        return rc
     }
 }
 

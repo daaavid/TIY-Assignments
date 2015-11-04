@@ -14,6 +14,7 @@
 		633094E61BE9292400C34CA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 633094E51BE9292400C34CA5 /* Assets.xcassets */; };
 		633094E91BE9292400C34CA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 633094E71BE9292400C34CA5 /* LaunchScreen.storyboard */; };
 		633094F41BE94DB600C34CA5 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633094F31BE94DB600C34CA5 /* Pin.swift */; };
+		637A29621BE987DE007E9C75 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 637A29611BE987DE007E9C75 /* Lato-Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		633094E81BE9292400C34CA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		633094EA1BE9292400C34CA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		633094F31BE94DB600C34CA5 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
+		637A29611BE987DE007E9C75 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				633094E71BE9292400C34CA5 /* LaunchScreen.storyboard */,
 				633094EA1BE9292400C34CA5 /* Info.plist */,
 				633094E21BE9292400C34CA5 /* DudeWheresMyCar.xcdatamodeld */,
+				637A29611BE987DE007E9C75 /* Lato-Light.ttf */,
 			);
 			name = garbage;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 				633094E91BE9292400C34CA5 /* LaunchScreen.storyboard in Resources */,
 				633094E61BE9292400C34CA5 /* Assets.xcassets in Resources */,
 				633094E11BE9292400C34CA5 /* Main.storyboard in Resources */,
+				637A29621BE987DE007E9C75 /* Lato-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +305,7 @@
 				633094EF1BE9292400C34CA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
