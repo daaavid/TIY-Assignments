@@ -36,7 +36,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     {
         super.viewDidLoad()
         
-        self.mapView.camera.altitude *= 1.5
+//        self.mapView.camera.altitude *= 1.5
 
         mapView.delegate = self
 //        dropPinButton.enabled = false
@@ -165,7 +165,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.removeAnnotations(mapView.annotations)
         
         self.mapView.showAnnotations(annotations, animated: true)
-        self.mapView.camera.altitude *= 1.5
+//        self.mapView.camera.altitude *= 1.5
     }
     
     func pinsToAnnotations() -> [MKPointAnnotation]
@@ -191,12 +191,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         if dirButtonBlurView.hidden == true
         {
             dirButtonBlurView.hidden = false
-//            UIView.animateWithDuration(0.5, animations:
+//            UIView.animateWithDuration(1.0, animations:
 //            {
-//                var frame = self.dirButtonBlurView.frame
-//                frame.origin.y = 600
-//                
-//                self.dirButtonBlurView.frame = frame
+//                self.dirButtonBlurView.alpha = 1.0
 //            })
         }
 //        else
