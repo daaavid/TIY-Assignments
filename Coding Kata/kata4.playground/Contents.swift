@@ -18,7 +18,7 @@ func countDivisors(number: Int) -> Int
 {
     var divisors = 0
     
-    for num in 1...999
+    for num in 1...number
     {
         if divides(number, b: num)
         {
@@ -43,8 +43,8 @@ func isPrime(number: Int) -> Bool
 }
 
 isPrime(191)
-//isPrime(193)
-//isPrime(194)
+isPrime(193)
+isPrime(194)
 
 //: ## Question 2
 //: ### First Primes
