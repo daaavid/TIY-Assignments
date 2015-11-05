@@ -123,15 +123,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     {
         print("cleared")
 //        let parsePin = PFObject(className:"Pin")
-        do
-        {
-            parsePin.ACL = PFACL(user: PFUser.currentUser()!)
-            try parsePin.deleteInBackground()
-        }
-        catch
-        {
-            print("error")
-        }
+        let query = PFQuery(className:"Pin")
+        query.findObjectsInBackgroundWithBlock({ (results : [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                
+                for result in results! {
+                    result.deleteInBackground()
+                }
+            }
+        })
+//        
+//        do
+//        {
+//            parsePin.ACL = PFACL(user: PFUser.currentUser()!)
+//            try parsePin.deleteInBackground()
+//        }
+//        catch
+//        {
+//            print("error")
+//        }
         
         pins.removeAll()
         mapView.removeAnnotations(mapView.annotations)
