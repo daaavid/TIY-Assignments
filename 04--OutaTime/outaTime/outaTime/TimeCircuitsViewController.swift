@@ -29,6 +29,8 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate //we agre
     var decelerate: NSTimer?
     var presTimeBak = ""
     
+    let date = NSDate()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -82,7 +84,7 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate //we agre
     {
         let formatter = NSDateFormatter()
         formatter.dateFormat = NSDateFormatter.dateFormatFromTemplate("MMM dd YYYY", options: 0, locale: NSLocale(localeIdentifier: "en-US"))
-        let formattedTime = formatter.stringFromDate(timeToFormat).uppercaseString
+        let formattedTime = formatter.stringFromDate(timeToFormat)
         return formattedTime
     }
     
@@ -207,22 +209,22 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate //we agre
             speedLabel.text = "88 MPH"
             
             errorLabel.text = "SPEED REACHED"
-            view.backgroundColor = UIColor.blackColor()
+//            view.backgroundColor = UIColor.blackColor()
         }
         
-        if currentSpeed == 92
-        {
-            errorLabel.text = "TRAVELING"
-        }
-        
-        if currentSpeed == 100
-        {
-            presTime.text = destTime.text
-            currentSpeed = 88
-            destroyTimer()
-            decelTimer(0.005)
-            errorLabel.text = "DECELERATING"
-        }
+//        if currentSpeed == 92
+//        {
+//            errorLabel.text = "TRAVELING"
+//        }
+//        
+//        if currentSpeed == 100
+//        {
+//            presTime.text = destTime.text
+//            currentSpeed = 88
+//            destroyTimer()
+//            decelTimer(0.005)
+//            errorLabel.text = "DECELERATING"
+//        }
         
     }
 
