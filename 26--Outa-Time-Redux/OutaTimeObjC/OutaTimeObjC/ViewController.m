@@ -20,6 +20,7 @@
 //@property (nonatomic) int *currentSpeed;
 @property (nonatomic) int speed;
 
+@property (weak, nonatomic) IBOutlet UIButton *travelBackButton;
 
 @end
 
@@ -66,9 +67,11 @@
 
 - (void)travelBackPressed
 {
-    if(self.timer == nil)
+    if(![self.destTimeLabel.text isEqualToString:@"NOT SET"] && ![self.presTimeLabel.text isEqualToString:self.destTimeLabel.text])
+//  if(self.timer == nil);
     {
         [self makeTimer];
+        self.travelBackButton.enabled = false;
     }
 }
 
@@ -92,14 +95,17 @@
 - (void)updateSpeed
 {
     self.speed += 1;
-    NSString *speedString = [NSString stringWithFormat:@"%d MPH", self.speed];
-    self.speedLabel.text = speedString;
     
-    if (self.speed == 88)
+    if(self.speed == 88)
     {
         [self.timer invalidate];
         self.lastTimeLabel.text = self.presTimeLabel.text;
         self.presTimeLabel.text = self.destTimeLabel.text;
+        self.speed = 0;
+        self.travelBackButton.enabled = true;
     }
+    
+    NSString *speedString = [NSString stringWithFormat:@"%d MPH", self.speed];
+    self.speedLabel.text = speedString;
 }
 @end

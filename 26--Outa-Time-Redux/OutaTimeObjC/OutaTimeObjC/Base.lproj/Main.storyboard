@@ -136,6 +136,7 @@
                         <outlet property="lastTimeLabel" destination="fyq-2Q-Fye" id="W2b-nl-WTI"/>
                         <outlet property="presTimeLabel" destination="lB8-An-veb" id="Igt-lc-FUh"/>
                         <outlet property="speedLabel" destination="Eya-B0-rsm" id="reW-XU-1Pg"/>
+                        <outlet property="travelBackButton" destination="6U7-tn-Yn5" id="lIs-hd-EIv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
