@@ -104,7 +104,6 @@
                                     <color key="titleColor" red="0.33333333329999998" green="0.92549019610000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="setDestinationTimeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="slw-Kb-7qm"/>
                                     <segue destination="LEc-na-9Vy" kind="popoverPresentation" identifier="showPickerSegue" popoverAnchorView="23i-UW-6WV" id="HsB-NE-3Xi">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
@@ -255,10 +254,12 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Q5-EG-u0D" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XfY-VC-wNl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="XfY-VC-wNl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
+                        <color key="tintColor" red="0.33333333329999998" green="0.92549019610000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

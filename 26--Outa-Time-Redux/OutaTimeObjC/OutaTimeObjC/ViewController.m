@@ -30,11 +30,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.title = @"OUTA TIME";
     [self setup];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -65,11 +66,6 @@
 -(UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
 {
     return UIModalPresentationNone;
-}
-
-- (IBAction)setDestinationTimeButton:(UIButton *)sender
-{
-    
 }
 
 - (IBAction)travelBackButton:(UIButton *)sender
@@ -204,7 +200,7 @@
     }
 }
 
-- (void) stop
+- (void)stop
 {
     [self invalidateTimers];
     self.speed = 0;
