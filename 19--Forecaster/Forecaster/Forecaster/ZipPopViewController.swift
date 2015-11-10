@@ -201,7 +201,7 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate, CLLocationMan
             zipTextField.becomeFirstResponder()
         case 1:
             zipTextField.resignFirstResponder()
-            zipTextField.keyboardType = UIKeyboardType.Alphabet
+            zipTextField.keyboardType = UIKeyboardType.ASCIICapable
             zipTextField.becomeFirstResponder()
         default: break
         }
