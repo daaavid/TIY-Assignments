@@ -14,6 +14,7 @@ class PopoverViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var secondLocationTextField: UITextField!
     
     var delegate: PopoverViewControllerDelegate?
+    var locationArr = [String]()
     
     override func viewDidLoad()
     {
@@ -72,6 +73,7 @@ class PopoverViewController: UIViewController, UITextFieldDelegate
         {
             let firstLocation = firstLocationTextField.text!
             let secondLocation = secondLocationTextField.text!
+            locationArr.append(firstLocation); locationArr.append(secondLocation)
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             
             delegate?.search(firstLocation, secondLocation: secondLocation)
