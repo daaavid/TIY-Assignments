@@ -15,12 +15,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *presTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *speedLabel;
-@property (nonatomic) NSTimer *timer;
-//@property (nonatomic) int *baseSpeed;
-//@property (nonatomic) int *currentSpeed;
+@property (nonatomic) NSTimer *accelerate;
+@property (nonatomic) NSTimer *decelerate;
 @property (nonatomic) int speed;
 
+@property (weak, nonatomic) IBOutlet UILabel *errorLabel;
 @property (weak, nonatomic) IBOutlet UIButton *travelBackButton;
+@property (weak, nonatomic) IBOutlet UIButton *setDestTimeButton;
 
 @end
 
@@ -29,12 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.speedLabel.text = @"0 MPH";
-    self.presTimeLabel.text = [self formatTime: [NSDate date]];
-    
-//    self.baseSpeed = 0;
-//    self.currentSpeed = 0;
-    self.speed = 0;
+
+    [self setup];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,10 +39,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)setup
+{
+    self.speed = 0;
+    self.speedLabel.text = @"0 MPH";
+    self.destTimeLabel.text = @"--- -- ----";
+    self.lastTimeLabel.text = @"--- -- ----";
+    self.presTimeLabel.text = [self formatTime: [NSDate date]];
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    PickerViewController* datePickerVC = (PickerViewController *)segue.destinationViewController;
-    datePickerVC.delegate = self;
+    if([segue.identifier isEqualToString:@"showPickerSegue"])
+    {
+        PickerViewController* datePickerVC = segue.destinationViewController;
+        UIPopoverPresentationController *controller = datePickerVC.popoverPresentationController;
+        controller.delegate = self;
+        datePickerVC.delegate = self;
+        
+        datePickerVC.modalPresentationStyle = UIModalPresentationPopover;
+        datePickerVC.preferredContentSize = CGSizeMake(400, 200);
+    }
+}
+
+-(UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
+{
+    return UIModalPresentationNone;
 }
 
 - (IBAction)setDestinationTimeButton:(UIButton *)sender
@@ -67,18 +86,27 @@
 
 - (void)travelBackPressed
 {
-    if(![self.destTimeLabel.text isEqualToString:@"NOT SET"] && ![self.presTimeLabel.text isEqualToString:self.destTimeLabel.text])
+    BOOL notSet = ![self.destTimeLabel.text isEqualToString:@"--- -- ----"];
+    BOOL presAndDestNotEqual = ![self.presTimeLabel.text isEqualToString:self.destTimeLabel.text];
+    if (notSet && presAndDestNotEqual)
 //  if(self.timer == nil);
     {
-        [self makeTimer];
-        self.travelBackButton.enabled = false;
+        self.travelBackButton.enabled = NO;
+        self.setDestTimeButton.enabled = NO;
+        [self accelTimer: 0.15];
+    }
+    else if (!notSet)
+    {
+        self.errorLabel.text = @"DEST TIME NOT SET";
+    }
+    else if (!presAndDestNotEqual)
+    {
+        self.errorLabel.text = @"DEST AND PRES TIME ARE EQUAL";
     }
 }
 
 - (NSString *)formatTime:(NSDate *)timeToFormat;
 {
-//    NSDateFormatter* formatter;
-//    formatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MMM dd YYYY" options:0 locale: nil];
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"MMM dd YYYY"];
     NSString *formattedTime = [formatter stringFromDate: timeToFormat];
@@ -87,25 +115,104 @@
     return capitalizedTime;
 }
 
-- (void)makeTimer
+- (void)accelTimer:(double)tickInterval;
 {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target: self selector:@selector(updateSpeed) userInfo: nil repeats: YES];
+    self.accelerate = [NSTimer scheduledTimerWithTimeInterval: tickInterval target: self selector: @selector(updateSpeed) userInfo: nil repeats: YES];
 }
 
 - (void)updateSpeed
 {
     self.speed += 1;
+    [self accelerateSpeed:self.speed];
     
-    if(self.speed == 88)
+    if(self.speed < 88)
     {
-        [self.timer invalidate];
+        NSString *speedString = [NSString stringWithFormat:@"%d MPH", self.speed];
+        self.speedLabel.text = speedString;
+    }
+    else if(self.speed == 88)
+    {
+        self.speedLabel.text = @"88 MPH";
+        self.errorLabel.text = @"SPEED REACHED";
+    }
+    else if(self.speed == 92)
+    {
+        self.errorLabel.text = @"TRAVELING";
+    }
+    else if(self.speed == 96)
+    {
+        [self invalidateTimers];
+//        self.speed = 0;
+        self.travelBackButton.enabled = true;
+        
         self.lastTimeLabel.text = self.presTimeLabel.text;
         self.presTimeLabel.text = self.destTimeLabel.text;
-        self.speed = 0;
-        self.travelBackButton.enabled = true;
+        
+        self.decelerate = [NSTimer scheduledTimerWithTimeInterval:0.005 target:self selector:@selector(updateBrake) userInfo:nil repeats:YES];
+        
+        self.errorLabel.text = @"DECELERATING";
     }
-    
+}
+
+- (void)accelerateSpeed:(int)speed;
+{
+    switch(speed)
+    {
+        case 5:
+            [self invalidateTimers];
+            [self accelTimer:0.03];
+        case 10:
+            [self invalidateTimers];
+            [self accelTimer:0.025];
+        case 20:
+            [self invalidateTimers];
+            [self accelTimer:0.02];
+        case 30:
+            [self invalidateTimers];
+            [self accelTimer:0.0225];
+        case 50:
+            [self invalidateTimers];
+            [self accelTimer:0.03];
+        case 60:
+            [self invalidateTimers];
+            [self accelTimer:0.0345];
+        case 70:
+            [self invalidateTimers];
+            [self accelTimer:0.0585];
+        case 80:
+            [self invalidateTimers];
+            [self accelTimer:0.065];
+        default: break;
+    }
+}
+
+- (void)invalidateTimers
+{
+    [self.accelerate invalidate];
+    [self.decelerate invalidate];
+}
+
+- (void)updateBrake
+{
+    self.speed -= 1;
     NSString *speedString = [NSString stringWithFormat:@"%d MPH", self.speed];
     self.speedLabel.text = speedString;
+    
+    if(self.speed == 0)
+    {
+        [self stop];
+    }
 }
+
+- (void) stop
+{
+    [self invalidateTimers];
+    self.speed = 0;
+    
+    self.travelBackButton.enabled = YES;
+    self.setDestTimeButton.enabled = YES;
+    
+    self.errorLabel.text = @"ARRIVED";
+}
+
 @end

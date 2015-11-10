@@ -21,7 +21,7 @@
 @end
 
 
-@interface ViewController : UIViewController <DatePickerProtocol>
+@interface ViewController : UIViewController <DatePickerProtocol, UIPopoverPresentationControllerDelegate>
 
 @end
 

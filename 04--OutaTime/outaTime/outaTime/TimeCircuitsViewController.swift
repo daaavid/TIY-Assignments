@@ -209,22 +209,22 @@ class TimeCircuitsViewController: UIViewController, DatePickerDelegate //we agre
             speedLabel.text = "88 MPH"
             
             errorLabel.text = "SPEED REACHED"
-//            view.backgroundColor = UIColor.blackColor()
+            view.backgroundColor = UIColor.blackColor()
         }
         
-//        if currentSpeed == 92
-//        {
-//            errorLabel.text = "TRAVELING"
-//        }
-//        
-//        if currentSpeed == 100
-//        {
-//            presTime.text = destTime.text
-//            currentSpeed = 88
-//            destroyTimer()
-//            decelTimer(0.005)
-//            errorLabel.text = "DECELERATING"
-//        }
+        if currentSpeed == 92
+        {
+            errorLabel.text = "TRAVELING"
+        }
+        
+        if currentSpeed == 100
+        {
+            presTime.text = destTime.text
+            currentSpeed = 88
+            destroyTimer()
+            decelTimer(0.005)
+            errorLabel.text = "DECELERATING"
+        }
         
     }
 
