@@ -110,7 +110,8 @@ class LotteryTableViewController: UITableViewController, PickerDelegate
 
     func newTicket()
     {
-        ticketClassArray.append(Ticket())
+        let ticket = Ticket()
+        ticketClassArray.append(ticket)
         self.tableView.reloadData()
     }
 

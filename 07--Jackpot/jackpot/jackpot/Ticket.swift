@@ -15,7 +15,6 @@ class Ticket
     var ticketString = ""
     var ticketArray = Array<Int>()
     var winningTicket = Array<Int>()
-
     
     init()
     {
