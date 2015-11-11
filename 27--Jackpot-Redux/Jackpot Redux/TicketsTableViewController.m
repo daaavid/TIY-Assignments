@@ -25,6 +25,8 @@
     [super viewDidLoad];
     
     tickets = [[NSMutableArray alloc] init];
+    
+    [self newTicket];
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,6 +91,8 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - ticket
+
 - (void)newTicket
 {
     Ticket *aTicket = [Ticket newTicket];
@@ -121,10 +125,14 @@
 {
     [self newTicket];
 }
-- (IBAction)refreshButtonTapped:(UIBarButtonItem *)sender
+
+- (IBAction)deleteButtonTapped:(UIBarButtonItem *)sender
 {
+    [tickets removeAllObjects];
+    [winningTicket removeAllObjects];
     [self.tableView reloadData];
 }
+
 
 
 @end

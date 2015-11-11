@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TicketsTableViewController.h"
 
-@interface PickerViewController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource>
+@interface PickerViewController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
 @property (nonatomic) id<PickerProtocol> delegate;
 
