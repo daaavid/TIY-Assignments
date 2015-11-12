@@ -126,7 +126,9 @@
     if (!error) //if there was no error
     {
         NSLog(@"Download success");
-        NSArray *results = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:nil];
+        NSDictionary *results = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:nil];
+        
+        NSLog(@"%@", results);
         
 //        NSDictionary *userInfo = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:nil];
         
