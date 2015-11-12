@@ -14,12 +14,11 @@
     NSMutableArray *searchResults;
     
     NSMutableData *receivedData;
-    NSURLSessionDataTask *task;
+    
+    UIColor *bgColor;
 }
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-//@property (nonatomic) UISearchBar *searchBar;
-//@property (nonatomic) UISearchController *searchController;
 
 @end
 
@@ -28,18 +27,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    
-//    self.searchController.searchResultsUpdater = self;
-//    self.searchController.dimsBackgroundDuringPresentation = NO;
-//    self.searchController.hidesNavigationBarDuringPresentation = NO;
+    
+    bgColor = [UIColor colorWithHue:0.918 saturation:0.848 brightness:0.555 alpha:1];
+    self.view.backgroundColor = bgColor;
+
     self.searchBar.delegate = self;
     
     searchResults = [[NSMutableArray alloc] init];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -60,6 +59,7 @@
     
     cell.textLabel.text = (NSString *)dictionary[@"Title"];
     cell.detailTextLabel.text = (NSString *)dictionary[@"Year"];
+    cell.backgroundColor = bgColor;
     
     
     return cell;
@@ -72,6 +72,12 @@
 //    
 //}
 
+- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [searchResults removeAllObjects];
+    [self.tableView reloadData];
+}
+
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [self search];
@@ -80,32 +86,33 @@
 
 - (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    
+    [self search];
+    [self.tableView reloadData];
 }
 
 - (void) searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
-    [searchResults removeAllObjects];
-    
     [self search];
     [self.tableView reloadData];
 }
 
 - (void)search
 {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     NSString *searchTerm = self.searchBar.text;
-    NSString *urlString = [NSString stringWithFormat:@"https://www.omdbapi.com/?s=%@&y=&plot=short&r=json", searchTerm];
+    NSString *formattedSearchTerm = [searchTerm stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    NSString *urlString = [NSString stringWithFormat:@"https://www.omdbapi.com/?s=%@&y=&plot=short&r=json", formattedSearchTerm];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     
-    task = [session dataTaskWithURL:url];
+    NSURLSessionDataTask *task = [session dataTaskWithURL:url];
     [task resume];
 }
 
 - (void)cancel
 {
-    [task cancel];
+//    [task cancel];
 }
 
 #pragma mark - NSURLSessionDataDelegate
@@ -122,7 +129,7 @@
         receivedData = [[NSMutableData alloc] init];
         //initializing thing to store data
     }
-    [receivedData appendData: data];
+    [receivedData appendData:data];
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
@@ -130,17 +137,18 @@
     //received all data or received error
     if (!error) //if there was no error
     {
-        NSLog(@"Download success");
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         NSDictionary *results = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:nil];
-        
         
         NSArray *search = results[@"Search"];
         
+        [searchResults removeAllObjects];
         [searchResults addObjectsFromArray:search];
         
 //        NSLog(@"%@", searchResults);
         
         [self cancel];
+        receivedData = nil;
         
         [self.tableView reloadData];
     }
@@ -158,8 +166,11 @@
     DetailViewController *detailVC = (DetailViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
     
     NSDictionary *selectedMovieDictionary = searchResults[indexPath.row];
+    NSString *selectedMovieTitle = selectedMovieDictionary[@"Title"];
     
-    detailVC.selectedMovieDictionary = selectedMovieDictionary;
+    detailVC.selectedMovieTitle = selectedMovieTitle;
+    
+    [detailVC search];
     
     [self.navigationController pushViewController:detailVC animated:YES];
     

@@ -13,7 +13,6 @@
     NSDictionary *searchResults;
     NSMutableData *receivedData;
     NSURLSessionDataTask *task;
-
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *testLabel;
@@ -22,26 +21,23 @@
 
 @implementation DetailViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad{
     [super viewDidLoad];
-    
-    self.testLabel.text = self.selectedMovieDictionary[@"Title"];
-    // Do any additional setup after loading the view.
-    
-    [self search];
     searchResults = [[NSDictionary alloc]init];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+ 
 }
 
 
 -(void)search
 {
-    NSString *searchTerm = self.selectedMovieDictionary[@"Title"];
-    NSString *urlString = [NSString stringWithFormat:@"https://www.omdbapi.com/?t=%@&y=&plot=short&r=json", searchTerm];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    NSString *searchTerm = self.selectedMovieTitle;
+    NSString *formattedSearchTerm = [searchTerm stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    NSString *urlString = [NSString stringWithFormat:@"https://www.omdbapi.com/?t=%@&y=&plot=short&r=json", formattedSearchTerm];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
@@ -70,11 +66,9 @@
     //received all data or received error
     if (!error) //if there was no error
     {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         NSLog(@"Download success");
         searchResults = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:nil];
-        self.testLabel.text =  (NSString *)searchResults[@"Director"];
-        
-       
     }
 }
 /*

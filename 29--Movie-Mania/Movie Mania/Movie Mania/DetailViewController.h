@@ -10,6 +10,7 @@
 
 @interface DetailViewController : UIViewController
 
-@property (nonatomic) NSDictionary *selectedMovieDictionary;
+@property (nonatomic) NSString *selectedMovieTitle;
+-(void)search;
 
 @end
