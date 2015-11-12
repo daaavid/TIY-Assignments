@@ -7,6 +7,7 @@
 //
 
 #import "SearchTableViewController.h"
+#import "DetailViewController.h"
 
 @interface SearchTableViewController () <UISearchBarDelegate, /*UISearchResultsUpdating,*/ NSURLSessionDelegate>
 {
@@ -58,6 +59,7 @@
     NSDictionary *dictionary = searchResults[indexPath.row];
     
     cell.textLabel.text = (NSString *)dictionary[@"Title"];
+    cell.detailTextLabel.text = (NSString *)dictionary[@"Year"];
     
     
     return cell;
@@ -136,20 +138,11 @@
         
         [searchResults addObjectsFromArray:search];
         
-        NSLog(@"%@", search);
-
-        
-//        NSDictionary *userInfo = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:nil];
-        
-//        NSArray
-//        
-//        for(NSDictionary *result in results)
-//        {
-//            [searchResults addObject:result];
-//            NSLog([NSString stringWithFormat:@"%@", result]);
-//        }
+//        NSLog(@"%@", searchResults);
         
         [self cancel];
+        
+        [self.tableView reloadData];
     }
 }
 
@@ -158,6 +151,21 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DetailViewController *detailVC = (DetailViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
+    
+    NSDictionary *selectedMovieDictionary = searchResults[indexPath.row];
+    
+    detailVC.selectedMovieDictionary = selectedMovieDictionary;
+    
+    [self.navigationController pushViewController:detailVC animated:YES];
+    
+    //instantiate view controller with identifier set in storyboard
+    //make a dictionary in that view controller
+    //set the dictionary equal to the dictionary that is in the index path of the cell we just selected
 }
 
 @end

@@ -64,6 +64,41 @@
             </objects>
             <point key="canvasLocation" x="1467" y="781"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="FOU-Fv-g6C">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="e4I-Mo-E4e" customClass="DetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="i0v-Q3-A6i"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y0h-4Q-ZwM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JmO-HI-blq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Qt-vG-ekE">
+                                <rect key="frame" x="279" y="289" width="42" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7Qt-vG-ekE" firstAttribute="centerX" secondItem="JmO-HI-blq" secondAttribute="centerX" id="Asm-Ty-lJ8"/>
+                            <constraint firstItem="7Qt-vG-ekE" firstAttribute="centerY" secondItem="JmO-HI-blq" secondAttribute="centerY" id="BEI-HE-KBJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="testLabel" destination="7Qt-vG-ekE" id="fGe-68-Frc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tOS-JJ-N2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2085" y="781"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ebQ-oq-mfz">
             <objects>
