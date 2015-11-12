@@ -1,0 +1,314 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		635DAF4D1BF4FB5C00326E43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 635DAF4C1BF4FB5C00326E43 /* main.m */; };
+		635DAF501BF4FB5C00326E43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 635DAF4F1BF4FB5C00326E43 /* AppDelegate.m */; };
+		635DAF561BF4FB5C00326E43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 635DAF541BF4FB5C00326E43 /* Main.storyboard */; };
+		635DAF581BF4FB5C00326E43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 635DAF571BF4FB5C00326E43 /* Assets.xcassets */; };
+		635DAF5B1BF4FB5C00326E43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 635DAF591BF4FB5C00326E43 /* LaunchScreen.storyboard */; };
+		635DAF671BF5046200326E43 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635DAF661BF5046200326E43 /* SearchTableViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		635DAF481BF4FB5C00326E43 /* Movie Mania.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Mania.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		635DAF4C1BF4FB5C00326E43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		635DAF4E1BF4FB5C00326E43 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		635DAF4F1BF4FB5C00326E43 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		635DAF551BF4FB5C00326E43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		635DAF571BF4FB5C00326E43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		635DAF5A1BF4FB5C00326E43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		635DAF5C1BF4FB5C00326E43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		635DAF651BF5046200326E43 /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchTableViewController.h; path = ../SearchTableViewController.h; sourceTree = "<group>"; };
+		635DAF661BF5046200326E43 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchTableViewController.m; path = ../SearchTableViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		635DAF451BF4FB5C00326E43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		635DAF3F1BF4FB5C00326E43 = {
+			isa = PBXGroup;
+			children = (
+				635DAF4A1BF4FB5C00326E43 /* Movie Mania */,
+				635DAF491BF4FB5C00326E43 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		635DAF491BF4FB5C00326E43 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				635DAF481BF4FB5C00326E43 /* Movie Mania.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		635DAF4A1BF4FB5C00326E43 /* Movie Mania */ = {
+			isa = PBXGroup;
+			children = (
+				635DAF541BF4FB5C00326E43 /* Main.storyboard */,
+				635DAF651BF5046200326E43 /* SearchTableViewController.h */,
+				635DAF661BF5046200326E43 /* SearchTableViewController.m */,
+				635DAF681BF509FC00326E43 /* garbage */,
+				635DAF4B1BF4FB5C00326E43 /* Supporting Files */,
+			);
+			path = "Movie Mania";
+			sourceTree = "<group>";
+		};
+		635DAF4B1BF4FB5C00326E43 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				635DAF4C1BF4FB5C00326E43 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		635DAF681BF509FC00326E43 /* garbage */ = {
+			isa = PBXGroup;
+			children = (
+				635DAF4E1BF4FB5C00326E43 /* AppDelegate.h */,
+				635DAF4F1BF4FB5C00326E43 /* AppDelegate.m */,
+				635DAF571BF4FB5C00326E43 /* Assets.xcassets */,
+				635DAF591BF4FB5C00326E43 /* LaunchScreen.storyboard */,
+				635DAF5C1BF4FB5C00326E43 /* Info.plist */,
+			);
+			name = garbage;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		635DAF471BF4FB5C00326E43 /* Movie Mania */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 635DAF5F1BF4FB5C00326E43 /* Build configuration list for PBXNativeTarget "Movie Mania" */;
+			buildPhases = (
+				635DAF441BF4FB5C00326E43 /* Sources */,
+				635DAF451BF4FB5C00326E43 /* Frameworks */,
+				635DAF461BF4FB5C00326E43 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Movie Mania";
+			productName = "Movie Mania";
+			productReference = 635DAF481BF4FB5C00326E43 /* Movie Mania.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		635DAF401BF4FB5C00326E43 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "The Iron Yard";
+				TargetAttributes = {
+					635DAF471BF4FB5C00326E43 = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 95P55J7Q5M;
+					};
+				};
+			};
+			buildConfigurationList = 635DAF431BF4FB5C00326E43 /* Build configuration list for PBXProject "Movie Mania" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 635DAF3F1BF4FB5C00326E43;
+			productRefGroup = 635DAF491BF4FB5C00326E43 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				635DAF471BF4FB5C00326E43 /* Movie Mania */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		635DAF461BF4FB5C00326E43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				635DAF5B1BF4FB5C00326E43 /* LaunchScreen.storyboard in Resources */,
+				635DAF581BF4FB5C00326E43 /* Assets.xcassets in Resources */,
+				635DAF561BF4FB5C00326E43 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		635DAF441BF4FB5C00326E43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				635DAF671BF5046200326E43 /* SearchTableViewController.m in Sources */,
+				635DAF501BF4FB5C00326E43 /* AppDelegate.m in Sources */,
+				635DAF4D1BF4FB5C00326E43 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		635DAF541BF4FB5C00326E43 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				635DAF551BF4FB5C00326E43 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		635DAF591BF4FB5C00326E43 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				635DAF5A1BF4FB5C00326E43 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		635DAF5D1BF4FB5C00326E43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		635DAF5E1BF4FB5C00326E43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		635DAF601BF4FB5C00326E43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Movie Mania/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tiy.Movie-Mania";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		635DAF611BF4FB5C00326E43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Movie Mania/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tiy.Movie-Mania";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		635DAF431BF4FB5C00326E43 /* Build configuration list for PBXProject "Movie Mania" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				635DAF5D1BF4FB5C00326E43 /* Debug */,
+				635DAF5E1BF4FB5C00326E43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		635DAF5F1BF4FB5C00326E43 /* Build configuration list for PBXNativeTarget "Movie Mania" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				635DAF601BF4FB5C00326E43 /* Debug */,
+				635DAF611BF4FB5C00326E43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 635DAF401BF4FB5C00326E43 /* Project object */;
+}
