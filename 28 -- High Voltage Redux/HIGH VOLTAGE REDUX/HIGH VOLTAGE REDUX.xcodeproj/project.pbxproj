@@ -1,0 +1,343 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0076064C1BF3B50300E1ED48 /* PopOverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0076064B1BF3B50300E1ED48 /* PopOverTableViewController.m */; };
+		007606501BF3C37500E1ED48 /* CalcCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0076064F1BF3C37500E1ED48 /* CalcCell.m */; };
+		00FE188C1BF3B161004610D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00FE188B1BF3B161004610D9 /* main.m */; };
+		00FE188F1BF3B161004610D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00FE188E1BF3B161004610D9 /* AppDelegate.m */; };
+		00FE18951BF3B161004610D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00FE18931BF3B161004610D9 /* Main.storyboard */; };
+		00FE18971BF3B161004610D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00FE18961BF3B161004610D9 /* Assets.xcassets */; };
+		00FE189A1BF3B161004610D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00FE18981BF3B161004610D9 /* LaunchScreen.storyboard */; };
+		635091C61BF3B237009F5774 /* HighVoltageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635091C51BF3B237009F5774 /* HighVoltageTableViewController.m */; };
+		635091CA1BF3CA64009F5774 /* Brainerino.m in Sources */ = {isa = PBXBuildFile; fileRef = 635091C91BF3CA64009F5774 /* Brainerino.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0076064A1BF3B50300E1ED48 /* PopOverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopOverTableViewController.h; sourceTree = "<group>"; };
+		0076064B1BF3B50300E1ED48 /* PopOverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopOverTableViewController.m; sourceTree = "<group>"; };
+		0076064E1BF3C37500E1ED48 /* CalcCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalcCell.h; sourceTree = "<group>"; };
+		0076064F1BF3C37500E1ED48 /* CalcCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalcCell.m; sourceTree = "<group>"; };
+		00FE18871BF3B161004610D9 /* HIGH VOLTAGE REDUX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HIGH VOLTAGE REDUX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00FE188B1BF3B161004610D9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		00FE188D1BF3B161004610D9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		00FE188E1BF3B161004610D9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		00FE18941BF3B161004610D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		00FE18961BF3B161004610D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		00FE18991BF3B161004610D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		00FE189B1BF3B161004610D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		635091C41BF3B237009F5774 /* HighVoltageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighVoltageTableViewController.h; sourceTree = "<group>"; };
+		635091C51BF3B237009F5774 /* HighVoltageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighVoltageTableViewController.m; sourceTree = "<group>"; };
+		635091C81BF3CA64009F5774 /* Brainerino.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brainerino.h; sourceTree = "<group>"; };
+		635091C91BF3CA64009F5774 /* Brainerino.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Brainerino.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00FE18841BF3B161004610D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0076064D1BF3B51100E1ED48 /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				0076064A1BF3B50300E1ED48 /* PopOverTableViewController.h */,
+				635091C41BF3B237009F5774 /* HighVoltageTableViewController.h */,
+			);
+			name = headers;
+			sourceTree = "<group>";
+		};
+		00FE187E1BF3B161004610D9 = {
+			isa = PBXGroup;
+			children = (
+				00FE18891BF3B161004610D9 /* HIGH VOLTAGE REDUX */,
+				00FE18881BF3B161004610D9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		00FE18881BF3B161004610D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				00FE18871BF3B161004610D9 /* HIGH VOLTAGE REDUX.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		00FE18891BF3B161004610D9 /* HIGH VOLTAGE REDUX */ = {
+			isa = PBXGroup;
+			children = (
+				00FE18931BF3B161004610D9 /* Main.storyboard */,
+				0076064E1BF3C37500E1ED48 /* CalcCell.h */,
+				0076064F1BF3C37500E1ED48 /* CalcCell.m */,
+				0076064B1BF3B50300E1ED48 /* PopOverTableViewController.m */,
+				635091C51BF3B237009F5774 /* HighVoltageTableViewController.m */,
+				0076064D1BF3B51100E1ED48 /* headers */,
+				635091C71BF3B245009F5774 /* garbage */,
+				00FE188A1BF3B161004610D9 /* Supporting Files */,
+				635091C81BF3CA64009F5774 /* Brainerino.h */,
+				635091C91BF3CA64009F5774 /* Brainerino.m */,
+			);
+			path = "HIGH VOLTAGE REDUX";
+			sourceTree = "<group>";
+		};
+		00FE188A1BF3B161004610D9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00FE188B1BF3B161004610D9 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		635091C71BF3B245009F5774 /* garbage */ = {
+			isa = PBXGroup;
+			children = (
+				00FE188D1BF3B161004610D9 /* AppDelegate.h */,
+				00FE188E1BF3B161004610D9 /* AppDelegate.m */,
+				00FE18961BF3B161004610D9 /* Assets.xcassets */,
+				00FE18981BF3B161004610D9 /* LaunchScreen.storyboard */,
+				00FE189B1BF3B161004610D9 /* Info.plist */,
+			);
+			name = garbage;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00FE18861BF3B161004610D9 /* HIGH VOLTAGE REDUX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00FE189E1BF3B161004610D9 /* Build configuration list for PBXNativeTarget "HIGH VOLTAGE REDUX" */;
+			buildPhases = (
+				00FE18831BF3B161004610D9 /* Sources */,
+				00FE18841BF3B161004610D9 /* Frameworks */,
+				00FE18851BF3B161004610D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HIGH VOLTAGE REDUX";
+			productName = "HIGH VOLTAGE REDUX";
+			productReference = 00FE18871BF3B161004610D9 /* HIGH VOLTAGE REDUX.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		00FE187F1BF3B161004610D9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "The Iron Yard";
+				TargetAttributes = {
+					00FE18861BF3B161004610D9 = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = G9WMWPLR5N;
+					};
+				};
+			};
+			buildConfigurationList = 00FE18821BF3B161004610D9 /* Build configuration list for PBXProject "HIGH VOLTAGE REDUX" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 00FE187E1BF3B161004610D9;
+			productRefGroup = 00FE18881BF3B161004610D9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				00FE18861BF3B161004610D9 /* HIGH VOLTAGE REDUX */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00FE18851BF3B161004610D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00FE189A1BF3B161004610D9 /* LaunchScreen.storyboard in Resources */,
+				00FE18971BF3B161004610D9 /* Assets.xcassets in Resources */,
+				00FE18951BF3B161004610D9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00FE18831BF3B161004610D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				635091C61BF3B237009F5774 /* HighVoltageTableViewController.m in Sources */,
+				0076064C1BF3B50300E1ED48 /* PopOverTableViewController.m in Sources */,
+				635091CA1BF3CA64009F5774 /* Brainerino.m in Sources */,
+				007606501BF3C37500E1ED48 /* CalcCell.m in Sources */,
+				00FE188F1BF3B161004610D9 /* AppDelegate.m in Sources */,
+				00FE188C1BF3B161004610D9 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		00FE18931BF3B161004610D9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				00FE18941BF3B161004610D9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		00FE18981BF3B161004610D9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				00FE18991BF3B161004610D9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		00FE189C1BF3B161004610D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		00FE189D1BF3B161004610D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		00FE189F1BF3B161004610D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "HIGH VOLTAGE REDUX/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tiy.HIGH-VOLTAGE-REDUX";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		00FE18A01BF3B161004610D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "HIGH VOLTAGE REDUX/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tiy.HIGH-VOLTAGE-REDUX";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00FE18821BF3B161004610D9 /* Build configuration list for PBXProject "HIGH VOLTAGE REDUX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00FE189C1BF3B161004610D9 /* Debug */,
+				00FE189D1BF3B161004610D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		00FE189E1BF3B161004610D9 /* Build configuration list for PBXNativeTarget "HIGH VOLTAGE REDUX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00FE189F1BF3B161004610D9 /* Debug */,
+				00FE18A01BF3B161004610D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 00FE187F1BF3B161004610D9 /* Project object */;
+}

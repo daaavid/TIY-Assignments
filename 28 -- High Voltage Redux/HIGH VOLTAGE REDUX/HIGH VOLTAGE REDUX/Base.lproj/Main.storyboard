@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bVh-0F-AvJ">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="digital-7.ttf">
+            <string>Digital-7</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--High Voltage Table View Controller-->
+        <scene sceneID="m8m-Kx-jrT">
+            <objects>
+                <tableViewController id="4vg-s2-ZXH" customClass="HighVoltageTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="KHH-8a-RAS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Q50-WJ-e7X">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kG7-f5-lUH">
+                                    <rect key="frame" x="507" y="7" width="85" height="30"/>
+                                    <animations/>
+                                    <state key="normal" title="CALCULATE"/>
+                                    <state key="disabled" title="HOLD UP"/>
+                                    <connections>
+                                        <action selector="calculateButtonTapped:" destination="4vg-s2-ZXH" eventType="touchUpInside" id="vcS-VK-fr0"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZX-je-Jh9">
+                                    <rect key="frame" x="150" y="0.0" width="300" height="44"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <animations/>
+                            <color key="backgroundColor" red="0.90575916229999998" green="0.90575916229999998" blue="0.90575916229999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="HZX-je-Jh9" firstAttribute="centerY" secondItem="Q50-WJ-e7X" secondAttribute="centerY" id="8m2-N7-vdD"/>
+                                <constraint firstItem="kG7-f5-lUH" firstAttribute="centerY" secondItem="Q50-WJ-e7X" secondAttribute="centerY" id="B9I-0J-yg9"/>
+                                <constraint firstItem="HZX-je-Jh9" firstAttribute="width" secondItem="Q50-WJ-e7X" secondAttribute="width" multiplier="0.5" id="FSD-rb-dMi"/>
+                                <constraint firstAttribute="trailing" secondItem="kG7-f5-lUH" secondAttribute="trailing" constant="8" id="RcF-0L-7As"/>
+                                <constraint firstItem="HZX-je-Jh9" firstAttribute="height" secondItem="Q50-WJ-e7X" secondAttribute="height" id="YQl-hA-5RW"/>
+                                <constraint firstAttribute="trailing" secondItem="kG7-f5-lUH" secondAttribute="trailing" constant="8" id="esb-DG-poy"/>
+                                <constraint firstItem="HZX-je-Jh9" firstAttribute="centerX" secondItem="Q50-WJ-e7X" secondAttribute="centerX" id="fH2-yx-tfP"/>
+                                <constraint firstItem="kG7-f5-lUH" firstAttribute="centerX" secondItem="Q50-WJ-e7X" secondAttribute="centerX" id="lrX-Cc-cOv"/>
+                                <constraint firstItem="kG7-f5-lUH" firstAttribute="top" secondItem="Q50-WJ-e7X" secondAttribute="top" constant="8" id="mEg-mr-fHS"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="esb-DG-poy"/>
+                                    <exclude reference="lrX-Cc-cOv"/>
+                                    <exclude reference="mEg-mr-fHS"/>
+                                </mask>
+                            </variation>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalcCell" id="0ef-2r-rFi" customClass="CalcCell">
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0ef-2r-rFi" id="LiO-hm-foz">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T4Y-oU-pkE">
+                                            <rect key="frame" x="492" y="7" width="100" height="30"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="cSQ-zT-oxH"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Digital-7" family="Digital-7" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="4vg-s2-ZXH" id="cui-mq-D7T"/>
+                                            </connections>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ELECTRICITY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VhV-hh-1Lr">
+                                            <rect key="frame" x="28" y="11" width="304" height="21"/>
+                                            <animations/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                            </accessibility>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="T4Y-oU-pkE" secondAttribute="trailing" id="41w-C8-Gcr"/>
+                                        <constraint firstItem="T4Y-oU-pkE" firstAttribute="top" secondItem="VhV-hh-1Lr" secondAttribute="bottom" constant="-29.5" id="DOD-oL-tFq"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="VhV-hh-1Lr" secondAttribute="leading" constant="-20" id="lax-dH-zwJ"/>
+                                        <constraint firstItem="VhV-hh-1Lr" firstAttribute="centerY" secondItem="LiO-hm-foz" secondAttribute="centerY" id="rbz-45-920"/>
+                                        <constraint firstItem="T4Y-oU-pkE" firstAttribute="centerY" secondItem="LiO-hm-foz" secondAttribute="centerY" id="zPZ-kC-716"/>
+                                        <constraint firstItem="T4Y-oU-pkE" firstAttribute="leading" secondItem="VhV-hh-1Lr" secondAttribute="trailing" constant="160" id="zuR-BP-SWb"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="DOD-oL-tFq"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <outlet property="elecLabel" destination="VhV-hh-1Lr" id="HLp-ut-6lG"/>
+                                    <outlet property="elecTextField" destination="T4Y-oU-pkE" id="A4O-0t-bsf"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="4vg-s2-ZXH" id="ydg-Si-n2A"/>
+                            <outlet property="delegate" destination="4vg-s2-ZXH" id="QtQ-XY-Ghi"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="QNh-70-WNb">
+                        <barButtonItem key="leftBarButtonItem" title="Clear" id="Oo0-cY-DHK">
+                            <connections>
+                                <action selector="clearButtonTapped:" destination="4vg-s2-ZXH" id="P9K-bc-r84"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="CP1-eR-99Y">
+                            <connections>
+                                <segue destination="PAp-jo-wkF" kind="popoverPresentation" identifier="ShowPopoverSegue" popoverAnchorBarButtonItem="CP1-eR-99Y" id="ExU-y6-Hwv">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addButton" destination="CP1-eR-99Y" id="Nkh-R5-bHZ"/>
+                        <outlet property="calculateButton" destination="kG7-f5-lUH" id="qDE-HI-5QI"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OYn-ON-aXE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1405" y="288"/>
+        </scene>
+        <!--Pop Over Table View Controller-->
+        <scene sceneID="lOZ-sb-p7m">
+            <objects>
+                <tableViewController id="PAp-jo-wkF" customClass="PopOverTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="27I-Vm-MdV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ItemCell" textLabel="yXu-EE-Q9D" style="IBUITableViewCellStyleDefault" id="K2I-Yy-0Ov">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K2I-Yy-0Ov" id="2Pu-Rg-yKJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yXu-EE-Q9D">
+                                            <rect key="frame" x="15" y="0.0" width="550" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PAp-jo-wkF" id="La4-Uf-uiC"/>
+                            <outlet property="delegate" destination="PAp-jo-wkF" id="WBF-S1-ZNr"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wuy-gL-bZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2016" y="288"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Cbf-PN-LuY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bVh-0F-AvJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tyf-CU-Po8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4vg-s2-ZXH" kind="relationship" relationship="rootViewController" id="VrR-pg-Yb0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yjL-fB-qJz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="793" y="288"/>
+        </scene>
+    </scenes>
+</document>
