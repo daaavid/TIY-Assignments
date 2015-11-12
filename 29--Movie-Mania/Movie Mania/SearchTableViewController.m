@@ -11,6 +11,7 @@
 @interface SearchTableViewController () <UISearchBarDelegate, /*UISearchResultsUpdating,*/ NSURLSessionDelegate>
 {
     NSMutableArray *searchResults;
+    
     NSMutableData *receivedData;
     NSURLSessionDataTask *task;
 }
@@ -54,7 +55,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchResultCell" forIndexPath:indexPath];
     
-//    NSDictionary *result = searchResults[indexPath.row];
+    NSDictionary *dictionary = searchResults[indexPath.row];
+    
+    cell.textLabel.text = (NSString *)dictionary[@"Title"];
     
     
     return cell;
@@ -128,7 +131,13 @@
         NSLog(@"Download success");
         NSDictionary *results = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:nil];
         
-        NSLog(@"%@", results);
+        
+        NSArray *search = results[@"Search"];
+        
+        [searchResults addObjectsFromArray:search];
+        
+        NSLog(@"%@", search);
+
         
 //        NSDictionary *userInfo = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:nil];
         
