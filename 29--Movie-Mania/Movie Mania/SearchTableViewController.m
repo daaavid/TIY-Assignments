@@ -67,11 +67,6 @@
 
 #pragma mark - search
 
-//- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
-//{
-//    
-//}
-
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     [searchResults removeAllObjects];
@@ -80,8 +75,11 @@
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self search];
-    [self.tableView reloadData];
+//    [self search];
+//    [self.tableView reloadData];
+    
+    [self makeDetailVC:0];
+
 }
 
 - (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
@@ -94,6 +92,8 @@
 {
     [self search];
     [self.tableView reloadData];
+    
+    NSLog(@"Did End Editing");
 }
 
 - (void)search
@@ -163,6 +163,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self makeDetailVC:indexPath];
+    
+    //instantiate view controller with identifier set in storyboard
+    //make a dictionary in that view controller
+    //set the dictionary equal to the dictionary that is in the index path of the cell we just selected
+}
+
+- (void)makeDetailVC:(NSIndexPath *)indexPath
+{
     DetailViewController *detailVC = (DetailViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
     
     NSDictionary *selectedMovieDictionary = searchResults[indexPath.row];
@@ -173,10 +182,6 @@
     [detailVC search];
     
     [self.navigationController pushViewController:detailVC animated:YES];
-    
-    //instantiate view controller with identifier set in storyboard
-    //make a dictionary in that view controller
-    //set the dictionary equal to the dictionary that is in the index path of the cell we just selected
 }
 
 @end

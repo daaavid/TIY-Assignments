@@ -16,6 +16,9 @@
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *testLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *posterImage;
+@property (weak, nonatomic) IBOutlet UIView *fetchingResultsView;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *posterBlurView;
 
 @end
 
@@ -24,6 +27,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     searchResults = [[NSDictionary alloc]init];
+    self.posterBlurView.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,6 +35,22 @@
  
 }
 
+- (void)animatePosterImg
+{
+    [UIView animateWithDuration:1.5 animations: ^
+    {
+        CGRect topFrame = self.posterBlurView.frame;
+        topFrame.origin.y = topFrame.size.height;
+//        CGRect napkinBottomFrame = self.napkinBottom.frame;
+//        napkinBottomFrame.origin.y = self.view.bounds.size.height;
+        self.posterBlurView.hidden = NO;
+        self.posterBlurView.alpha = 0;
+        self.posterBlurView.alpha = 1;
+        self.posterBlurView.frame = topFrame;
+    }];
+}
+
+#pragma mark - detailed search
 
 -(void)search
 {
@@ -67,10 +87,58 @@
     if (!error) //if there was no error
     {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        self.fetchingResultsView.hidden = YES;
         NSLog(@"Download success");
         searchResults = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:nil];
+        
+        [self populateView];
     }
 }
+
+- (void)populateView
+{
+    NSString *urlString = (NSString *)searchResults[@"Poster"];
+    
+    if (urlString)
+    {
+        NSURL *url = [NSURL URLWithString:urlString];
+        [self loadImage:url];
+    }
+}
+
+- (void)loadImage:(NSURL *)imageURL
+{
+    NSOperationQueue *queue = [NSOperationQueue new];
+    NSInvocationOperation *operation = [[NSInvocationOperation alloc]
+                                        initWithTarget:self
+                                        selector:@selector(requestRemoteImage:)
+                                        object:imageURL];
+    [queue addOperation:operation];
+}
+
+- (void)requestRemoteImage:(NSURL *)imageURL
+{
+    NSData *imageData = [[NSData alloc] initWithContentsOfURL:imageURL];
+    UIImage *image = [[UIImage alloc] initWithData:imageData];
+    
+    [self performSelectorOnMainThread:@selector(placeImageInUI:) withObject:image waitUntilDone:YES];
+}
+
+- (void)placeImageInUI:(UIImage *)image
+{
+    if (image)
+    {
+        self.posterImage.image = image;
+//        [self.posterImage setImage:image];
+        [self animatePosterImg];
+    }
+}
+- (IBAction)showtimesNearMeButtonTapped:(UIButton *)sender
+{
+    NSString *urlString = @"https://www.google.com/movies?near=32303&rl=1&stok=ABAPP2sMrd9_PRWpVzEpf4FKA9AhYjNryA%3A1447369580919";
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+}
+
 /*
 #pragma mark - Navigation
 
