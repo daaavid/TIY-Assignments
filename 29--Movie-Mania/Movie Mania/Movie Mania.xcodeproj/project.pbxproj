@@ -15,6 +15,8 @@
 		635DAF5B1BF4FB5C00326E43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 635DAF591BF4FB5C00326E43 /* LaunchScreen.storyboard */; };
 		635DAF671BF5046200326E43 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635DAF661BF5046200326E43 /* SearchTableViewController.m */; };
 		63AD03B01BF539D600275260 /* topbar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63AD03AF1BF539D600275260 /* topbar.jpg */; };
+		63F0916F1BF573EC007C1A7D /* theater.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63F0916E1BF573EC007C1A7D /* theater.jpg */; };
+		63F091711BF57875007C1A7D /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F091701BF57875007C1A7D /* image.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		635DAF651BF5046200326E43 /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchTableViewController.h; path = ../SearchTableViewController.h; sourceTree = "<group>"; };
 		635DAF661BF5046200326E43 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchTableViewController.m; path = ../SearchTableViewController.m; sourceTree = "<group>"; };
 		63AD03AF1BF539D600275260 /* topbar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = topbar.jpg; sourceTree = "<group>"; };
+		63F0916E1BF573EC007C1A7D /* theater.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = theater.jpg; sourceTree = "<group>"; };
+		63F091701BF57875007C1A7D /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +74,9 @@
 				635DAF4B1BF4FB5C00326E43 /* Supporting Files */,
 				632964B91BF51DA200387878 /* DetailViewController.h */,
 				632964BA1BF51DA200387878 /* DetailViewController.m */,
+				63F091701BF57875007C1A7D /* image.png */,
 				63AD03AF1BF539D600275260 /* topbar.jpg */,
+				63F0916E1BF573EC007C1A7D /* theater.jpg */,
 			);
 			path = "Movie Mania";
 			sourceTree = "<group>";
@@ -156,7 +162,9 @@
 				635DAF5B1BF4FB5C00326E43 /* LaunchScreen.storyboard in Resources */,
 				63AD03B01BF539D600275260 /* topbar.jpg in Resources */,
 				635DAF581BF4FB5C00326E43 /* Assets.xcassets in Resources */,
+				63F0916F1BF573EC007C1A7D /* theater.jpg in Resources */,
 				635DAF561BF4FB5C00326E43 /* Main.storyboard in Resources */,
+				63F091711BF57875007C1A7D /* image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

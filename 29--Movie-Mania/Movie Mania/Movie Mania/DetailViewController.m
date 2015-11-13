@@ -8,7 +8,7 @@
 
 #import "DetailViewController.h"
 
-@interface DetailViewController () <NSURLSessionDelegate>
+@interface DetailViewController () <NSURLSessionDelegate, UIScrollViewDelegate>
 {
     NSDictionary *searchResults;
     NSMutableData *receivedData;
@@ -20,12 +20,20 @@
 @property (weak, nonatomic) IBOutlet UIView *fetchingResultsView;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *posterBlurView;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *background;
+@property (weak, nonatomic) IBOutlet UIScrollView *foreground;
+
+
 @end
 
 @implementation DetailViewController
 
-- (void)viewDidLoad{
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    
+    self.background.delegate = self;
+    
     searchResults = [[NSDictionary alloc]init];
     self.posterBlurView.hidden = YES;
 }
@@ -37,17 +45,21 @@
 
 - (void)animatePosterImg
 {
-    [UIView animateWithDuration:1.5 animations: ^
+    [UIView animateWithDuration:0.5 animations: ^
     {
-        CGRect topFrame = self.posterBlurView.frame;
-        topFrame.origin.y = topFrame.size.height;
-//        CGRect napkinBottomFrame = self.napkinBottom.frame;
-//        napkinBottomFrame.origin.y = self.view.bounds.size.height;
         self.posterBlurView.hidden = NO;
         self.posterBlurView.alpha = 0;
         self.posterBlurView.alpha = 1;
-        self.posterBlurView.frame = topFrame;
     }];
+}
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    double fgHeight = self.foreground.contentSize.height - CGRectGetHeight(self.foreground.bounds);
+    double percentageScroll = self.foreground.contentOffset.y / fgHeight;
+    double bgHeight = self.background.contentSize.height - CGRectGetHeight(self.background.bounds);
+    self.background.contentOffset = CGPointMake(0, bgHeight * percentageScroll);
+    
 }
 
 #pragma mark - detailed search
