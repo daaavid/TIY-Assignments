@@ -7,6 +7,9 @@
 //
 
 #import "DetailViewController.h"
+//#import "PosterCollectionViewController.h"
+#import "ActorTableViewController.h"
+#import "ReviewsTableViewController.h"
 
 @interface DetailViewController () <NSURLSessionDelegate>
 {
@@ -35,7 +38,7 @@
     self.background.delegate = self;
     self.foreground.delegate = self;
     
-//    NSLog(@"children : %@", self.childViewControllers);
+    NSLog(@"children : %@", self.childViewControllers);
     
     searchResults = [[NSDictionary alloc]init];
     self.posterBlurView.hidden = YES;
@@ -71,7 +74,7 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     NSString *searchTerm = self.selectedMovieTitle;
     NSString *formattedSearchTerm = [searchTerm stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-    NSString *urlString = [NSString stringWithFormat:@"https://www.omdbapi.com/?t=%@&y=&plot=short&r=json", formattedSearchTerm];
+    NSString *urlString = [NSString stringWithFormat:@"https://www.omdbapi.com/?t=%@&tomatoes=true&y=&plot=short&r=json", formattedSearchTerm];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
@@ -117,7 +120,28 @@
     {
         NSURL *url = [NSURL URLWithString:urlString];
         [self loadImage:url];
-    }
+    }    
+    
+    NSString *allActors = (NSString *)searchResults[@"Actors"];
+    
+    NSLog(@"%@", allActors);
+    
+    NSArray *actorArr = (NSArray *)[allActors componentsSeparatedByString:@","];
+    ActorTableViewController *actorVC = (ActorTableViewController *)self.childViewControllers[0];
+    actorVC.actors = actorArr;
+    [actorVC.tableView reloadData];
+
+    NSString *imdbRating = (NSString *)searchResults[@"imdbRating"];
+    NSString *metascore = (NSString *)searchResults[@"Metascore"];
+    NSString *tomatoRating = (NSString *)searchResults[@"tomatoRating"];
+    
+    NSArray *scoreArr = [[NSArray alloc] initWithObjects:imdbRating, metascore, tomatoRating, nil];
+    ReviewsTableViewController *reviewVC = (ReviewsTableViewController *)self.childViewControllers[1];
+    reviewVC.reviews = scoreArr;
+    [reviewVC.tableView reloadData];
+    
+    NSLog(@"%@, %@, %@", imdbRating, metascore, tomatoRating);
+    
 }
 
 - (void)loadImage:(NSURL *)imageURL
@@ -147,20 +171,10 @@
         [self animatePosterImg];
     }
 }
-- (IBAction)showtimesNearMeButtonTapped:(UIButton *)sender
-{
-    NSString *urlString = @"https://www.google.com/movies?near=32303&rl=1&stok=ABAPP2sMrd9_PRWpVzEpf4FKA9AhYjNryA%3A1447369580919";
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+//- (IBAction)showtimesNearMeButtonTapped:(UIButton *)sender
+//{
+//    NSString *urlString = @"https://www.google.com/movies?near=32303&rl=1&stok=ABAPP2sMrd9_PRWpVzEpf4FKA9AhYjNryA%3A1447369580919";
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+//}
 
 @end

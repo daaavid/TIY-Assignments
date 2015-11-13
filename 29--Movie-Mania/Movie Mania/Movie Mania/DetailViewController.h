@@ -12,5 +12,6 @@
 
 @property (nonatomic) NSString *selectedMovieTitle;
 -(void)search;
+- (void)populateView;
 
 @end

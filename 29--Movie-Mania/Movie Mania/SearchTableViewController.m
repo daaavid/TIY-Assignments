@@ -75,11 +75,7 @@
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-//    [self search];
-//    [self.tableView reloadData];
-    
     [self makeDetailVC:0];
-
 }
 
 - (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
@@ -175,8 +171,6 @@
     DetailViewController *detailVC = (DetailViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
     
     NSDictionary *selectedMovieDictionary = searchResults[indexPath.row];
-    
-    
     
     NSString *selectedMovieTitle = selectedMovieDictionary[@"Title"];
     
