@@ -18,7 +18,7 @@
 {
     [super viewDidLoad];
     
-    UIColor *bgColor = [UIColor colorWithHue:0.918 saturation:0.848 brightness:0.555 alpha:1];
+    UIColor *bgColor = [UIColor colorWithHue:0.902 saturation:0.761 brightness:0.527 alpha:1];
     self.view.backgroundColor = bgColor;
 }
 
@@ -48,17 +48,17 @@
     if(indexPath.row == 0)
     {
         cell.detailTextLabel.text = @"IMDB";
-        cell.imageView.image = [UIImage imageNamed: @"tomato.png"];
+//        cell.imageView.image = [UIImage imageNamed: @"tomato.png"];
     }
     else if(indexPath.row == 1)
     {
         cell.detailTextLabel.text = @"Metascore";
-        cell.imageView.image = [UIImage imageNamed: @"tomato.png"];
+//        cell.imageView.image = [UIImage imageNamed: @"metacritic.png"];
     }
     else if(indexPath.row == 2)
     {
         cell.detailTextLabel.text = @"Rotten Tomatoes";
-        cell.imageView.image = [UIImage imageNamed: @"tomato.png"];
+//        cell.imageView.image = [UIImage imageNamed: @"tomato.png"];
     }
     
     return cell;

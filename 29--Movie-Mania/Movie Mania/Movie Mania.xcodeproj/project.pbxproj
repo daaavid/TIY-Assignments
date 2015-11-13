@@ -20,6 +20,8 @@
 		637FA8F31BF58A1A00564CC8 /* movieMania.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 637FA8F11BF58A1A00564CC8 /* movieMania.jpg */; };
 		637FA8F41BF58A1A00564CC8 /* movieMania.png in Resources */ = {isa = PBXBuildFile; fileRef = 637FA8F21BF58A1A00564CC8 /* movieMania.png */; };
 		637FA8F61BF62A9A00564CC8 /* floral-pattern-wallpaper-black-1600x12001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 637FA8F51BF62A9A00564CC8 /* floral-pattern-wallpaper-black-1600x12001.jpg */; };
+		63857EFD1BF67233000C646F /* ZoomImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63857EFC1BF67233000C646F /* ZoomImageViewController.m */; };
+		639811C11BF66C46006C9AE0 /* metacritic.png in Resources */ = {isa = PBXBuildFile; fileRef = 639811C01BF66C46006C9AE0 /* metacritic.png */; };
 		63AD03B01BF539D600275260 /* topbar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63AD03AF1BF539D600275260 /* topbar.jpg */; };
 		63E478851BF632E90045131F /* avengers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63E478841BF632E90045131F /* avengers.jpg */; };
 		63F0916F1BF573EC007C1A7D /* theater.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63F0916E1BF573EC007C1A7D /* theater.jpg */; };
@@ -46,6 +48,9 @@
 		637FA8F11BF58A1A00564CC8 /* movieMania.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = movieMania.jpg; sourceTree = "<group>"; };
 		637FA8F21BF58A1A00564CC8 /* movieMania.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movieMania.png; sourceTree = "<group>"; };
 		637FA8F51BF62A9A00564CC8 /* floral-pattern-wallpaper-black-1600x12001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "floral-pattern-wallpaper-black-1600x12001.jpg"; sourceTree = "<group>"; };
+		63857EFB1BF67233000C646F /* ZoomImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomImageViewController.h; sourceTree = "<group>"; };
+		63857EFC1BF67233000C646F /* ZoomImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomImageViewController.m; sourceTree = "<group>"; };
+		639811C01BF66C46006C9AE0 /* metacritic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metacritic.png; sourceTree = "<group>"; };
 		63AD03AF1BF539D600275260 /* topbar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = topbar.jpg; sourceTree = "<group>"; };
 		63E478841BF632E90045131F /* avengers.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avengers.jpg; sourceTree = "<group>"; };
 		63F0916E1BF573EC007C1A7D /* theater.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = theater.jpg; sourceTree = "<group>"; };
@@ -69,6 +74,8 @@
 				632964BA1BF51DA200387878 /* DetailViewController.m */,
 				6336955F1BF6614900F897A0 /* E - ActorVC */,
 				633695631BF6618F00F897A0 /* E - ReviewVC */,
+				63857EFB1BF67233000C646F /* ZoomImageViewController.h */,
+				63857EFC1BF67233000C646F /* ZoomImageViewController.m */,
 			);
 			name = DetailVC;
 			sourceTree = "<group>";
@@ -131,7 +138,7 @@
 		635DAF681BF509FC00326E43 /* garbage */ = {
 			isa = PBXGroup;
 			children = (
-				633695641BF66AD500F897A0 /* tomato.png */,
+				639811C21BF66C51006C9AE0 /* review img */,
 				63AD03AF1BF539D600275260 /* topbar.jpg */,
 				63F0916E1BF573EC007C1A7D /* theater.jpg */,
 				635DAF4E1BF4FB5C00326E43 /* AppDelegate.h */,
@@ -145,6 +152,15 @@
 				63E478841BF632E90045131F /* avengers.jpg */,
 			);
 			name = garbage;
+			sourceTree = "<group>";
+		};
+		639811C21BF66C51006C9AE0 /* review img */ = {
+			isa = PBXGroup;
+			children = (
+				633695641BF66AD500F897A0 /* tomato.png */,
+				639811C01BF66C46006C9AE0 /* metacritic.png */,
+			);
+			name = "review img";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +229,7 @@
 				635DAF581BF4FB5C00326E43 /* Assets.xcassets in Resources */,
 				63F0916F1BF573EC007C1A7D /* theater.jpg in Resources */,
 				635DAF561BF4FB5C00326E43 /* Main.storyboard in Resources */,
+				639811C11BF66C46006C9AE0 /* metacritic.png in Resources */,
 				637FA8F41BF58A1A00564CC8 /* movieMania.png in Resources */,
 				633695651BF66AD500F897A0 /* tomato.png in Resources */,
 			);
@@ -227,6 +244,7 @@
 			files = (
 				635DAF671BF5046200326E43 /* SearchTableViewController.m in Sources */,
 				635DAF501BF4FB5C00326E43 /* AppDelegate.m in Sources */,
+				63857EFD1BF67233000C646F /* ZoomImageViewController.m in Sources */,
 				635DAF4D1BF4FB5C00326E43 /* main.m in Sources */,
 				632964BB1BF51DA200387878 /* DetailViewController.m in Sources */,
 				6336955D1BF6441100F897A0 /* ActorTableViewController.m in Sources */,

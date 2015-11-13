@@ -10,6 +10,7 @@
 //#import "PosterCollectionViewController.h"
 #import "ActorTableViewController.h"
 #import "ReviewsTableViewController.h"
+#import "ZoomImageViewController.h"
 
 @interface DetailViewController () <NSURLSessionDelegate>
 {
@@ -169,8 +170,28 @@
         self.posterImage.image = image;
 //        [self.posterImage setImage:image];
         [self animatePosterImg];
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedImage)];
+        tapGesture.numberOfTapsRequired = 2;
+        //    tapGestureRecognizer.delegate = self;
+        [self.posterImage addGestureRecognizer:tapGesture];
+        self.posterImage.userInteractionEnabled = YES; // default is no for UIImageView
     }
 }
+
+- (void)tappedImage
+{
+    NSLog(@"image tapped");
+    ZoomImageViewController *zoomVC = (ZoomImageViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ZoomImageViewController"];
+//    zoomVC.img.image = self.posterImage.image;
+    
+    [zoomVC.img setImage:[UIImage imageNamed:@"avengers.jpg"]];
+    
+    [self presentViewController:zoomVC animated:YES completion:nil];
+    
+//    [self.navigationController pushViewController:zoomVC animated:YES];
+}
+
 //- (IBAction)showtimesNearMeButtonTapped:(UIButton *)sender
 //{
 //    NSString *urlString = @"https://www.google.com/movies?near=32303&rl=1&stok=ABAPP2sMrd9_PRWpVzEpf4FKA9AhYjNryA%3A1447369580919";

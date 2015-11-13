@@ -20,16 +20,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    actors = @[@"Robert Downey Jr.", @"Chris Evans", @"Mark Ruffalo", @"Chris Hemsworth"];
     
-    UIColor *bgColor = [UIColor colorWithHue:0.918 saturation:0.848 brightness:0.555 alpha:1];
+    UIColor *bgColor = [UIColor colorWithHue:0.902 saturation:0.761 brightness:0.527 alpha:1];
     self.view.backgroundColor = bgColor;
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [UITableView beginAnimations:@"scrollAnimation" context:nil];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [UITableView setAnimationDuration:2.0];
+    
+    [self.tableView setContentOffset:CGPointMake(0, 100)];
+    
+    [UITableView commitAnimations];
 }
 
 - (void)didReceiveMemoryWarning {

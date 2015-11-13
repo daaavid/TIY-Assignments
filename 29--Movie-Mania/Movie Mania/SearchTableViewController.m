@@ -75,7 +75,10 @@
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self makeDetailVC:0];
+    if(searchResults)
+    {
+        [self makeDetailVC:0];
+    }
 }
 
 - (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
