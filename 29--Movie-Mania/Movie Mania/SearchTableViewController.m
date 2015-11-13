@@ -175,6 +175,9 @@
     DetailViewController *detailVC = (DetailViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
     
     NSDictionary *selectedMovieDictionary = searchResults[indexPath.row];
+    
+    
+    
     NSString *selectedMovieTitle = selectedMovieDictionary[@"Title"];
     
     detailVC.selectedMovieTitle = selectedMovieTitle;

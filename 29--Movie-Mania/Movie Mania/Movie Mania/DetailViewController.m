@@ -8,7 +8,7 @@
 
 #import "DetailViewController.h"
 
-@interface DetailViewController () <NSURLSessionDelegate, UIScrollViewDelegate>
+@interface DetailViewController () <NSURLSessionDelegate>
 {
     NSDictionary *searchResults;
     NSMutableData *receivedData;
@@ -33,6 +33,9 @@
     [super viewDidLoad];
     
     self.background.delegate = self;
+    self.foreground.delegate = self;
+    
+//    NSLog(@"children : %@", self.childViewControllers);
     
     searchResults = [[NSDictionary alloc]init];
     self.posterBlurView.hidden = YES;
@@ -59,7 +62,6 @@
     double percentageScroll = self.foreground.contentOffset.y / fgHeight;
     double bgHeight = self.background.contentSize.height - CGRectGetHeight(self.background.bounds);
     self.background.contentOffset = CGPointMake(0, bgHeight * percentageScroll);
-    
 }
 
 #pragma mark - detailed search

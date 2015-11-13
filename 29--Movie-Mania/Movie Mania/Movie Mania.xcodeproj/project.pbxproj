@@ -14,7 +14,11 @@
 		635DAF581BF4FB5C00326E43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 635DAF571BF4FB5C00326E43 /* Assets.xcassets */; };
 		635DAF5B1BF4FB5C00326E43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 635DAF591BF4FB5C00326E43 /* LaunchScreen.storyboard */; };
 		635DAF671BF5046200326E43 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635DAF661BF5046200326E43 /* SearchTableViewController.m */; };
+		637FA8F31BF58A1A00564CC8 /* movieMania.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 637FA8F11BF58A1A00564CC8 /* movieMania.jpg */; };
+		637FA8F41BF58A1A00564CC8 /* movieMania.png in Resources */ = {isa = PBXBuildFile; fileRef = 637FA8F21BF58A1A00564CC8 /* movieMania.png */; };
+		637FA8F61BF62A9A00564CC8 /* floral-pattern-wallpaper-black-1600x12001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 637FA8F51BF62A9A00564CC8 /* floral-pattern-wallpaper-black-1600x12001.jpg */; };
 		63AD03B01BF539D600275260 /* topbar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63AD03AF1BF539D600275260 /* topbar.jpg */; };
+		63E478851BF632E90045131F /* avengers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63E478841BF632E90045131F /* avengers.jpg */; };
 		63F0916F1BF573EC007C1A7D /* theater.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63F0916E1BF573EC007C1A7D /* theater.jpg */; };
 		63F091711BF57875007C1A7D /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F091701BF57875007C1A7D /* image.png */; };
 /* End PBXBuildFile section */
@@ -32,7 +36,11 @@
 		635DAF5C1BF4FB5C00326E43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		635DAF651BF5046200326E43 /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchTableViewController.h; path = ../SearchTableViewController.h; sourceTree = "<group>"; };
 		635DAF661BF5046200326E43 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchTableViewController.m; path = ../SearchTableViewController.m; sourceTree = "<group>"; };
+		637FA8F11BF58A1A00564CC8 /* movieMania.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = movieMania.jpg; sourceTree = "<group>"; };
+		637FA8F21BF58A1A00564CC8 /* movieMania.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movieMania.png; sourceTree = "<group>"; };
+		637FA8F51BF62A9A00564CC8 /* floral-pattern-wallpaper-black-1600x12001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "floral-pattern-wallpaper-black-1600x12001.jpg"; sourceTree = "<group>"; };
 		63AD03AF1BF539D600275260 /* topbar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = topbar.jpg; sourceTree = "<group>"; };
+		63E478841BF632E90045131F /* avengers.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avengers.jpg; sourceTree = "<group>"; };
 		63F0916E1BF573EC007C1A7D /* theater.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = theater.jpg; sourceTree = "<group>"; };
 		63F091701BF57875007C1A7D /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +105,10 @@
 				635DAF571BF4FB5C00326E43 /* Assets.xcassets */,
 				635DAF591BF4FB5C00326E43 /* LaunchScreen.storyboard */,
 				635DAF5C1BF4FB5C00326E43 /* Info.plist */,
+				637FA8F11BF58A1A00564CC8 /* movieMania.jpg */,
+				637FA8F21BF58A1A00564CC8 /* movieMania.png */,
+				637FA8F51BF62A9A00564CC8 /* floral-pattern-wallpaper-black-1600x12001.jpg */,
+				63E478841BF632E90045131F /* avengers.jpg */,
 			);
 			name = garbage;
 			sourceTree = "<group>";
@@ -159,12 +171,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				637FA8F61BF62A9A00564CC8 /* floral-pattern-wallpaper-black-1600x12001.jpg in Resources */,
 				635DAF5B1BF4FB5C00326E43 /* LaunchScreen.storyboard in Resources */,
+				63E478851BF632E90045131F /* avengers.jpg in Resources */,
 				63AD03B01BF539D600275260 /* topbar.jpg in Resources */,
+				637FA8F31BF58A1A00564CC8 /* movieMania.jpg in Resources */,
 				635DAF581BF4FB5C00326E43 /* Assets.xcassets in Resources */,
 				63F0916F1BF573EC007C1A7D /* theater.jpg in Resources */,
 				635DAF561BF4FB5C00326E43 /* Main.storyboard in Resources */,
 				63F091711BF57875007C1A7D /* image.png in Resources */,
+				637FA8F41BF58A1A00564CC8 /* movieMania.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
