@@ -75,7 +75,9 @@
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    if(searchResults)
+    NSArray *visibleCells = self.tableView.visibleCells;
+    
+    if(visibleCells.count > 0)
     {
         [self makeDetailVC:0];
     }

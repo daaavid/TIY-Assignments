@@ -27,6 +27,9 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *background;
 @property (weak, nonatomic) IBOutlet UIScrollView *foreground;
 
+@property (weak, nonatomic) IBOutlet UILabel *movieTitleLabel;
+@property (weak, nonatomic) IBOutlet UITextView *moviePlotLabel;
+
 
 @end
 
@@ -75,7 +78,7 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     NSString *searchTerm = self.selectedMovieTitle;
     NSString *formattedSearchTerm = [searchTerm stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-    NSString *urlString = [NSString stringWithFormat:@"https://www.omdbapi.com/?t=%@&tomatoes=true&y=&plot=short&r=json", formattedSearchTerm];
+    NSString *urlString = [NSString stringWithFormat:@"https://www.omdbapi.com/?t=%@&tomatoes=true&y=&plot=long&r=json", formattedSearchTerm];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
@@ -141,8 +144,11 @@
     reviewVC.reviews = scoreArr;
     [reviewVC.tableView reloadData];
     
-    NSLog(@"%@, %@, %@", imdbRating, metascore, tomatoRating);
+    NSString *movieTitle = (NSString *)searchResults[@"Title"];
+    self.movieTitleLabel.text = [movieTitle uppercaseString];
     
+    NSString *moviePlot = (NSString *)searchResults[@"Plot"];
+    self.moviePlotLabel.text = moviePlot;
 }
 
 - (void)loadImage:(NSURL *)imageURL
