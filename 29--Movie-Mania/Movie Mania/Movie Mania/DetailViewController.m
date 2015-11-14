@@ -17,7 +17,7 @@
 #import "WebController.h"
 #import "Movie.h"
 
-@interface DetailViewController () /*<UIScrollViewDelegate>*/
+@interface DetailViewController () <UIPopoverPresentationControllerDelegate>/*<UIScrollViewDelegate>*/
 {
     NSDictionary *searchResults;
     NSMutableData *receivedData;
@@ -164,13 +164,31 @@
 - (void)tappedImage
 {
     NSLog(@"image tapped");
-    PosterZoomViewController *zoomVC = (PosterZoomViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"PosterZoomViewController"];
-//    zoomVC.img.image = self.posterImage.image;
-    zoomVC.posterImg = self.posterImage;
     
-//    [zoomVC.posterImg setImage:[UIImage imageNamed:@"avengers.jpg"]];
-    
-    [self presentViewController:zoomVC animated:YES completion:nil];    
+    [self performSegueWithIdentifier:@"zoomPopoverSegue" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString: @"zoomPopoverSegue"])
+    {
+        PosterZoomViewController *posterVC = segue.destinationViewController;
+        UIPopoverPresentationController *popover = posterVC.popoverPresentationController;
+        popover.delegate = self;
+        
+        posterVC.imageURL = movie.posterURL;
+        
+        UIColor *bgColor = [UIColor colorWithHue:0.902 saturation:0.761 brightness:0.527 alpha:1];
+        posterVC.view.backgroundColor = bgColor;
+        
+        posterVC.modalPresentationStyle = UIModalPresentationPopover;
+        posterVC.preferredContentSize = CGSizeMake(360, 528);
+    }
+}
+
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
+{
+    return UIModalPresentationNone;
 }
 
 - (IBAction)showtimesNearMeButtonTapped:(UIButton *)sender

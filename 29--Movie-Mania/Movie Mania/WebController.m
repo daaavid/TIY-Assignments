@@ -87,6 +87,7 @@
 - (void)foundImage:(UIImage *)image
 {
     [self.delegate imageWasFound:image];
+    [self.posterdelegate imageWasFound:image];
 }
 
 @end

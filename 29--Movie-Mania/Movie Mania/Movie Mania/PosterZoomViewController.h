@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PosterZoomViewController : UIViewController
+@protocol ImageProtocol
+
+- (void)imageWasFound:(UIImage *) image;
+
+@end
+
+@interface PosterZoomViewController : UIViewController <ImageProtocol>
+
+@property (weak, nonatomic) NSString *imageURL;
 @property (weak, nonatomic) IBOutlet UIImageView *posterImg;
 
 @end

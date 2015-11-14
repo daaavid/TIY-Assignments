@@ -7,21 +7,39 @@
 //
 
 #import "PosterZoomViewController.h"
+#import "WebController.h"
 
 @interface PosterZoomViewController ()
+{
+    WebController *webController;
+}
 
 @end
 
 @implementation PosterZoomViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    webController = [[WebController alloc] init];
+    webController.posterdelegate = self;
+    NSString *urlString = self.imageURL;
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSLog(@"Searching within posterzoomVC");
+    
+    [webController findImage:url];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)imageWasFound:(UIImage *) image;
+{
+    self.posterImg.image = image;
 }
 
 /*

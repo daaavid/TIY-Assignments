@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "DetailViewController.h"
+#import "PosterZoomViewController.h"
 
 @interface WebController : NSObject <NSURLSessionDelegate>
 
 @property (nonatomic) id <WebProtocol> delegate;
+@property (nonatomic) id <ImageProtocol> posterdelegate;
 
 - (void)search:(NSString *)selectedMovieTitle;
 - (void)findImage:(NSURL *)imageURL;
