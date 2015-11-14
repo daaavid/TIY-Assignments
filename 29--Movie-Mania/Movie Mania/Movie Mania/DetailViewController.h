@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailViewController : UIViewController <UIScrollViewDelegate>
+@protocol WebProtocol
+
+- (void)searchWasCompleted:(NSDictionary *)results;
+- (void)imageWasFound:(UIImage *) image;
+
+@end
+
+@interface DetailViewController : UIViewController <UIScrollViewDelegate, WebProtocol>
 
 @property (nonatomic) NSString *selectedMovieTitle;
 -(void)search;

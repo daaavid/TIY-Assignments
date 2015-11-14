@@ -1,26 +1,21 @@
 //
-//  ActorTableViewController.m
+//  GenreTableViewController.m
 //  Movie Mania
 //
-//  Created by david on 11/13/15.
+//  Created by david on 11/14/15.
 //  Copyright © 2015 The Iron Yard. All rights reserved.
 //
 
-#import "ActorTableViewController.h"
+#import "GenreTableViewController.h"
 
-@interface ActorTableViewController ()
-{
-//    NSArray *actors;
-}
+@interface GenreTableViewController ()
 
 @end
 
-@implementation ActorTableViewController
+@implementation GenreTableViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
-    
     UIColor *bgColor = [UIColor colorWithHue:0.902 saturation:0.761 brightness:0.527 alpha:1];
     self.view.backgroundColor = bgColor;
     
@@ -29,7 +24,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)animateTableView
@@ -42,21 +36,19 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.actors.count;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.genres.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActorCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GenreCell" forIndexPath:indexPath];
     
-    NSString *actor = self.actors[indexPath.row];
-    cell.textLabel.text = actor;
+    NSString *genre = self.genres[indexPath.row];
+    cell.textLabel.text = genre;
     
     return cell;
 }

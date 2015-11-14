@@ -1,0 +1,32 @@
+//
+//  Movie.h
+//  Movie Mania
+//
+//  Created by david on 11/13/15.
+//  Copyright © 2015 The Iron Yard. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface Movie : NSObject
+
+@property (nonatomic) NSString *title;
+@property (nonatomic) NSString *year;
+
+@property (nonatomic) NSString *rating;
+@property (nonatomic) NSString *runtime;
+@property (nonatomic) NSString *country;
+
+@property (nonatomic) NSArray *genre;
+@property (nonatomic) NSArray *actors;
+
+@property (nonatomic) NSString *plot;
+@property (nonatomic) NSString *posterURL;
+
+@property (nonatomic) NSArray *ratings;
+@property (nonatomic) NSString *boxOffice;
+
+- (instancetype)initWithDictionary: (NSDictionary *)movieDictionary;
+
+
+@end

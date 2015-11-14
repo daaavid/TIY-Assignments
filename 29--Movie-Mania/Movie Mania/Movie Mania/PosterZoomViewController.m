@@ -1,18 +1,18 @@
 //
-//  ZoomImageViewController.m
+//  PosterZoomViewController.m
 //  Movie Mania
 //
-//  Created by david on 11/13/15.
+//  Created by david on 11/14/15.
 //  Copyright © 2015 The Iron Yard. All rights reserved.
 //
 
-#import "ZoomImageViewController.h"
+#import "PosterZoomViewController.h"
 
-@interface ZoomImageViewController ()
+@interface PosterZoomViewController ()
 
 @end
 
-@implementation ZoomImageViewController
+@implementation PosterZoomViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
