@@ -18,7 +18,9 @@
 @interface DetailViewController : UIViewController <UIScrollViewDelegate, WebProtocol>
 
 @property (nonatomic) NSString *selectedMovieTitle;
--(void)search;
+@property (nonatomic) NSString *selectedMovieYear;
+
+- (void)search;
 - (void)populateView;
 
 @end

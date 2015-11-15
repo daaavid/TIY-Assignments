@@ -34,11 +34,14 @@
         
         _ratings = [[NSArray alloc] initWithObjects:imdbRating, metascore, tomatoRating, nil];
         
-        _boxOffice = (NSString *)searchResults[@"BoxOffice"];
-        
         _runtime = (NSString *)searchResults[@"Runtime"];
         _rating = (NSString *)searchResults[@"Rated"];
         _country = (NSString *)searchResults[@"Country"];
+        
+        _boxOffice = (NSString *)searchResults[@"BoxOffice"];
+        _production = (NSString *)searchResults[@"Production"];
+        _awards = (NSString *)searchResults[@"Awards"];
+        _consensus = (NSString *)searchResults[@"tomatoConsensus"];
     }
     return self;
 }

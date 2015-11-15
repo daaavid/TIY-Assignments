@@ -17,14 +17,14 @@
 
 #pragma mark - movie search
 
--(void)search:(NSString *)selectedMovieTitle
+- (void)search:(NSString *)selectedMovieTitle year:(NSString *)year;
 {
     NSLog(@"searching");
     
     NSString *searchTerm = selectedMovieTitle;
     NSString *formattedSearchTerm = [searchTerm stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     NSString *urlString = [NSString
-                           stringWithFormat:@"https://www.omdbapi.com/?t=%@&tomatoes=true&y=&plot=long&r=json", formattedSearchTerm];
+                           stringWithFormat:@"https://www.omdbapi.com/?t=%@&tomatoes=true&y=%@&plot=long&r=json", formattedSearchTerm, year];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration
                                                 defaultSessionConfiguration];

@@ -8,23 +8,25 @@
 
 #import "SearchTableViewController.h"
 #import "DetailViewController.h"
+#import "HistoryTableViewController.h"
 
-@interface SearchTableViewController () <UISearchBarDelegate, /*UISearchResultsUpdating,*/ NSURLSessionDelegate>
+@interface SearchTableViewController () <UISearchBarDelegate, NSURLSessionDelegate, UIPopoverPresentationControllerDelegate>
 {
     NSMutableArray *searchResults;
+    
+    NSMutableArray *searchHistory;
     
     NSMutableData *receivedData;
     
     NSURLSessionDataTask *task;
     
-    UIColor *bgColor;
-    
     NSTimer *searchTimer;
     
-    int searchTime;
+    BOOL searchTime;
 }
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *historyButton;
 
 @end
 
@@ -33,17 +35,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    bgColor = [UIColor colorWithHue:0.918 saturation:0.848 brightness:0.555 alpha:1];
-    self.view.backgroundColor = bgColor;
+    self.view.backgroundColor = [UIColor colorWithHue:0.918 saturation:0.848 brightness:0.555 alpha:1];
 
     self.searchBar.delegate = self; //we are now intercepting data and functions that the search bar is sending to the system
+    self.historyButton.enabled = NO; //there aren't any history items yet
+    
+    UITextField *searchBarTextField = (UITextField *)[self.searchBar valueForKey:@"searchField"];
+    searchBarTextField.textColor = [UIColor whiteColor];
     
     searchResults = [[NSMutableArray alloc] init];
+    searchHistory = [[NSMutableArray alloc] init];
     
-    //trying to cut down on network activity
+    //trying to cut down on network activity. search will only work when searchTime is YES, which happens every .5s
     searchTime = 0;
-    searchTimer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self selector: @selector(incrementSearchTime) userInfo: nil repeats: YES];
+    searchTimer = [NSTimer scheduledTimerWithTimeInterval: 0.5 target: self selector: @selector(incrementSearchTime) userInfo: nil repeats: YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,7 +79,7 @@
     
     cell.textLabel.text = (NSString *)dictionary[@"Title"];
     cell.detailTextLabel.text = (NSString *)dictionary[@"Year"];
-    cell.backgroundColor = bgColor;
+    cell.backgroundColor = [UIColor colorWithHue:0.918 saturation:0.848 brightness:0.555 alpha:1];;
 
     return cell;
 }
@@ -78,12 +88,8 @@
 
 - (void)incrementSearchTime
 {
-    searchTime += 1;
-
-    if(searchTime > 50)
-    {
-        searchTime = 0;
-    }
+    searchTime = !searchTime;
+    //flipping the YES/NO value of saerchTime
 }
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -94,6 +100,10 @@
     {
         [self makeDetailVC:0]; //because if we don't, this <<< function will cause a crash.
     }
+    else
+    {
+        [self search];
+    }
 }
 
 - (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
@@ -102,9 +112,15 @@
 //    [self.tableView reloadData]; //reload the view to display the search.
 }
 
+- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [searchResults removeAllObjects];
+    [self.tableView reloadData];
+}
+
 - (void)search
 {
-    if(searchTime % 2 == 0)
+    if(searchTime) //if searchTime is yes
     {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES]; //show the network activity thing in the status bar
         
@@ -162,11 +178,33 @@
         [self.tableView reloadData];
         
         receivedData = nil;
-
     }
 }
 
 #pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowHistoryPopover"])
+    {
+        HistoryTableViewController *historyVC = segue.destinationViewController;
+        UIPopoverPresentationController *popover = historyVC.popoverPresentationController;
+        popover.delegate = self;
+        historyVC.delegate = self;
+        
+        historyVC.history = searchHistory;
+        
+        historyVC.modalPresentationStyle = UIModalPresentationPopover;
+        float contentSize = searchHistory.count * 44;
+        
+        historyVC.preferredContentSize = CGSizeMake(200, contentSize);
+    }
+}
+
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
+{
+    return UIModalPresentationNone;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -175,19 +213,38 @@
 
 - (void)makeDetailVC:(NSIndexPath *)indexPath
 {
+    self.historyButton.enabled = YES; //we know we have search results now
+
     //instantiate view controller with identifier set in storyboard
     //make a dictionary in that view controller
     //set the dictionary equal to the dictionary that is in the index path of the cell we just selected
     
     DetailViewController *detailVC = (DetailViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
-    
     NSDictionary *selectedMovieDictionary = searchResults[indexPath.row];
     
+    [searchHistory addObject: selectedMovieDictionary];
+    
     NSString *selectedMovieTitle = selectedMovieDictionary[@"Title"];
+    NSString *selectedMovieYear = selectedMovieDictionary[@"Year"];
     
     detailVC.selectedMovieTitle = selectedMovieTitle;
+    detailVC.selectedMovieYear = selectedMovieYear;
     
     [detailVC search];
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
+
+- (void)historySearchResultWasChosen:(NSDictionary *)result;
+{
+    DetailViewController *detailVC = (DetailViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
+    NSDictionary *selectedSearchHistoryResult = result;
+    NSString *selectedMovieTitle = selectedSearchHistoryResult[@"Title"];
+    NSString *selectedMovieYear = selectedSearchHistoryResult[@"Year"];
+    
+    NSLog(@"history search result was chosen");
+    
+    detailVC.selectedMovieTitle = selectedMovieTitle;
+    detailVC.selectedMovieYear = selectedMovieYear;
     
     [self.navigationController pushViewController:detailVC animated:YES];
 }

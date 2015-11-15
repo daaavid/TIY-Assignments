@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SearchTableViewController : UITableViewController
+@protocol HistoryProtocol
+
+- (void)historySearchResultWasChosen:(NSDictionary *)result;
+
+@end
+
+@interface SearchTableViewController : UITableViewController <HistoryProtocol>
 
 @end

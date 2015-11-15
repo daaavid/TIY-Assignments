@@ -15,7 +15,7 @@
 @property (nonatomic) id <WebProtocol> delegate;
 @property (nonatomic) id <ImageProtocol> posterdelegate;
 
-- (void)search:(NSString *)selectedMovieTitle;
+- (void)search:(NSString *)selectedMovieTitle year:(NSString *)year;
 - (void)findImage:(NSURL *)imageURL;
 
 @end

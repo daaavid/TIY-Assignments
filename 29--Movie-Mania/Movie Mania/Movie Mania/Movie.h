@@ -24,7 +24,11 @@
 @property (nonatomic) NSString *posterURL;
 
 @property (nonatomic) NSArray *ratings;
+
 @property (nonatomic) NSString *boxOffice;
+@property (nonatomic) NSString *production;
+@property (nonatomic) NSString *awards;
+@property (nonatomic) NSString *consensus;
 
 - (instancetype)initWithDictionary: (NSDictionary *)movieDictionary;
 

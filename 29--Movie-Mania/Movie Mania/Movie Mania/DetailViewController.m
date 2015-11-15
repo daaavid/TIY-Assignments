@@ -28,7 +28,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *posterImage;
-//@property (weak, nonatomic) IBOutlet UIView *fetchingResultsView;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *fetchingResultsView;
 @property (weak, nonatomic) IBOutlet UIView *posterBlurView;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *background;
@@ -38,10 +38,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *movieRatingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *movieRuntimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *movieReleaseLabel;
-@property (weak, nonatomic) IBOutlet UILabel *movieCountryLabel;
+@property (weak, nonatomic) IBOutlet UITextView *movieCountryLabel;
 
-@property (weak, nonatomic) IBOutlet UITextView *moviePlotTextView;
+@property (weak, nonatomic) IBOutlet UILabel *moviePlotTextView;
+@property (weak, nonatomic) IBOutlet UILabel *movieProductionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *movieBoxOfficeLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *movieAwardsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *movieConsensusLabel;
 
 @end
 
@@ -51,14 +55,12 @@
 {
     [super viewDidLoad];
     
+    [self search];
+    
 //    self.background.delegate = self;
+    
+    self.fetchingResultsView.hidden = NO;
     self.posterBlurView.hidden = YES;
-    self.movieTitleLabel.text = @"";
-    self.moviePlotTextView.text = @"";
-    self.movieRatingLabel.text = @"";
-    self.movieRuntimeLabel.text = @"";
-    self.movieReleaseLabel.text = @"";
-    self.movieCountryLabel.text = @"";
 }
 
 - (void)didReceiveMemoryWarning
@@ -80,9 +82,10 @@
 
 -(void)search
 {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     webController = [[WebController alloc] init];
     webController.delegate = self;
-    [webController search: self.selectedMovieTitle];
+    [webController search:self.selectedMovieTitle year:self.selectedMovieYear];
 }
 
 #pragma mark - function called when web controller retrieves movie dictionary
@@ -90,6 +93,9 @@
 - (void)searchWasCompleted:(NSDictionary *)results;
 {
     searchResults = results;
+    
+    self.fetchingResultsView.hidden = YES;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
     [self populateView];
     
@@ -100,11 +106,12 @@
 
 - (void)imageWasFound:(UIImage *)image;
 {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    
     if (image) //if we have an image. prevent crashes
     {
         self.posterImage.image = image;
         [self animatePosterImg];
-        
         [self setupPosterTap];
     }
 }
@@ -120,10 +127,33 @@
     self.movieRatingLabel.text = movie.rating;
     self.movieReleaseLabel.text = movie.year;
     self.movieRuntimeLabel.text = movie.runtime;
-    self.movieCountryLabel.text = movie.country;
+    
+    NSString *formattedCountry = [NSString stringWithFormat:@"(%@)", movie.country];
+    
+    self.movieCountryLabel.text = formattedCountry;
+    self.movieCountryLabel.selectable = NO;
+    
+    NSString *formattedBoxOffice = [movie.boxOffice stringByReplacingOccurrencesOfString:@"M" withString:@" Million."];
+    
+    self.movieBoxOfficeLabel.text = [NSString
+                                     stringWithFormat:@"Box Office: %@", formattedBoxOffice];
+    
+    NSString *formattedProduction = [NSString
+                                     stringWithFormat:@"%@.", movie.production];
+    self.movieProductionLabel.text = formattedProduction;
+    
+    NSString *formattedAwards = [NSString
+                                 stringWithFormat:@"Awards: %@", movie.awards];
+    
+    self.movieAwardsLabel.text = formattedAwards;
+    
+    NSString *formattedConsensus = [NSString
+                                    stringWithFormat:@"Consensus: \n%@", movie.consensus];
+    self.movieConsensusLabel.text = formattedConsensus;
     
     if (movie.posterURL) //if we have a url for the image
     {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         NSURL *url = [NSURL URLWithString:movie.posterURL];
         [webController findImage:url];
     }
@@ -140,7 +170,7 @@
     reviewVC.reviews = movie.ratings;
     [reviewVC.tableView reloadData];
     
-//  genre embedded tableview
+    //genre embedded tableview
     GenreTableViewController *genreVC = (GenreTableViewController *)self.childViewControllers[1];
     genreVC.genres = movie.genre;
     [genreVC.tableView reloadData];
