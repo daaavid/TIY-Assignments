@@ -1,5 +1,6 @@
 ## Movie Mania
 [App Demonstration](http://webmshare.com/yQgw1) (webm -- doesn't work in safari. Try chrome or firefox.)
+<p>
 App Screens:
 
 <p>
