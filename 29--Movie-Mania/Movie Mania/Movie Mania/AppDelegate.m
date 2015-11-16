@@ -30,7 +30,6 @@
     UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
     SearchTableViewController *searchTableVC = (SearchTableViewController *)[navController viewControllers][0];
     [searchTableVC saveHistory];
-    [searchTableVC.searchHistory removeAllObjects];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

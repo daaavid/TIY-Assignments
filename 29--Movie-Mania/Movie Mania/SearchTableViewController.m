@@ -16,7 +16,7 @@ NSString *kHistoryKey = @"history";
 @interface SearchTableViewController () <UISearchBarDelegate, UIPopoverPresentationControllerDelegate>
 {
     NSMutableArray *searchResults;
-//    NSMutableArray *searchHistory;
+    NSMutableArray *searchHistory;
     WebController *webController;
 }
 
@@ -38,7 +38,7 @@ NSString *kHistoryKey = @"history";
     searchBarTextField.textColor = [UIColor whiteColor];
     
     searchResults = [[NSMutableArray alloc] init];
-    self.searchHistory = [[NSMutableArray alloc] init];
+    searchHistory = [[NSMutableArray alloc] init];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -51,7 +51,7 @@ NSString *kHistoryKey = @"history";
 {
     [super didReceiveMemoryWarning];
     [searchResults removeAllObjects];
-    [self.searchHistory removeAllObjects];
+    [searchHistory removeAllObjects];
 }
 
 #pragma mark - Table view data source
@@ -130,10 +130,10 @@ NSString *kHistoryKey = @"history";
         popover.delegate = self;
         historyVC.delegate = self;
         
-        historyVC.history = self.searchHistory;
+        historyVC.history = searchHistory;
         
         historyVC.modalPresentationStyle = UIModalPresentationPopover;
-        float contentSize = self.searchHistory.count * 44;
+        float contentSize = searchHistory.count * 44;
         
         historyVC.preferredContentSize = CGSizeMake(200, contentSize);
     }
@@ -150,7 +150,7 @@ NSString *kHistoryKey = @"history";
 {
     Movie *selectedMovie = searchResults[indexPath.row];
     
-    [self.searchHistory insertObject:selectedMovie atIndex:0];
+    [searchHistory insertObject:selectedMovie atIndex:0];
     
     [self makeDetailVC:selectedMovie];
 }
@@ -173,35 +173,32 @@ NSString *kHistoryKey = @"history";
 
 - (void)saveHistory
 {
-    NSData *historyData = [NSKeyedArchiver archivedDataWithRootObject:self.searchHistory];
+    NSData *historyData = [NSKeyedArchiver archivedDataWithRootObject:searchHistory];
     [[NSUserDefaults standardUserDefaults] setObject:historyData forKey:kHistoryKey];
-    NSLog(@"saved %@", self.searchHistory);
+    NSLog(@"saved %@", searchHistory);
 }
 
 - (void)loadHistory
 {
     NSData *data = (NSData *)[[NSUserDefaults standardUserDefaults] objectForKey:kHistoryKey];
-    if (data)
+    NSArray *savedHistory = (NSArray *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
+    if (savedHistory)
     {
-        NSArray *savedHistory = (NSArray *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
-        
-        if (savedHistory)
-        {
-            [self.searchHistory addObjectsFromArray:savedHistory];
-            NSLog(@"loaded %@", self.searchHistory);
-        }
+        [searchHistory removeAllObjects];
+        [searchHistory addObjectsFromArray:savedHistory];
+        NSLog(@"loaded %@", searchHistory);
     }
 }
 
 - (void)manageHistory
 {
-    if (self.searchHistory.count > 0)
+    if (searchHistory.count > 0)
     {
         self.historyButton.enabled = YES;
         
-        if (self.searchHistory.count > 5)
+        if (searchHistory.count > 5)
         {
-            [self.searchHistory removeObjectAtIndex:4];
+            [searchHistory removeObjectAtIndex:4];
         }
     }
     else
@@ -209,7 +206,5 @@ NSString *kHistoryKey = @"history";
         self.historyButton.enabled = NO;
     }
 }
-
-
 
 @end
