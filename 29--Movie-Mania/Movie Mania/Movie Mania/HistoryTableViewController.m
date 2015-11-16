@@ -7,6 +7,7 @@
 //
 
 #import "HistoryTableViewController.h"
+#import "Movie.h"
 
 @interface HistoryTableViewController ()
 
@@ -55,10 +56,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *chosenHistoryResult = self.history[indexPath.row];
+    Movie *chosenHistoryMovie = self.history[indexPath.row];
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.delegate historySearchResultWasChosen:chosenHistoryResult];
+    [self.delegate historySearchResultWasChosen:chosenHistoryMovie];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

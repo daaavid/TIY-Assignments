@@ -7,13 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Movie.h"
 
-@protocol HistoryProtocol
+@protocol SearchProtocol
 
-- (void)historySearchResultWasChosen:(NSDictionary *)result;
+- (void)searchResultsWereFound:(NSArray *)results;
 
 @end
 
-@interface SearchTableViewController : UITableViewController <HistoryProtocol>
+@protocol HistoryProtocol
+
+- (void)historySearchResultWasChosen:(Movie *)movie;
+
+@end
+
+@interface SearchTableViewController : UITableViewController <HistoryProtocol, SearchProtocol>
 
 @end

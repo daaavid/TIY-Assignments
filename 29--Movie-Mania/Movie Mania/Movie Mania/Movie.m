@@ -10,6 +10,16 @@
 
 @implementation Movie
 
+- (instancetype)initSearchResultsWithDictionary: (NSDictionary *)searchResults;
+{
+    if (self = [super init])
+    {
+        _title = (NSString *)searchResults[@"Title"];
+        _year = (NSString *)searchResults[@"Year"];
+    }
+    return self;
+}
+
 - (instancetype)initWithDictionary: (NSDictionary *)searchResults;
 {
     if (self = [super init])

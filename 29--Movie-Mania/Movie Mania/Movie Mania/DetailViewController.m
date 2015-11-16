@@ -57,7 +57,8 @@
     
     [self search];
     
-//    self.background.delegate = self;
+    self.background.delegate = self;
+    self.foreground.delegate = self;
     
     self.fetchingResultsView.hidden = NO;
     self.posterBlurView.hidden = YES;
@@ -98,8 +99,6 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
     [self populateView];
-    
-    NSLog(@"searchWasCompleted <<<<<<<<<<<");
 }
 
 #pragma mark - function called when web controller finds poster image for movie
@@ -162,9 +161,7 @@
 }
 
 - (void)populateChildViews
-{
-    NSLog(@"%@", self.childViewControllers);
-    
+{    
     //review embedded tableview
     ReviewsTableViewController *reviewVC = (ReviewsTableViewController *)self.childViewControllers[0];
     reviewVC.reviews = movie.ratings;
@@ -193,8 +190,6 @@
 
 - (void)tappedImage
 {
-    NSLog(@"image tapped");
-    
     [self performSegueWithIdentifier:@"zoomPopoverSegue" sender:self];
 }
 
@@ -221,22 +216,12 @@
     return UIModalPresentationNone;
 }
 
-- (IBAction)showtimesNearMeButtonTapped:(UIButton *)sender
-{
-    NSString *urlString = @"https://www.google.com/movies?near=32303&rl=1&stok=ABAPP2sMrd9_PRWpVzEpf4FKA9AhYjNryA%3A1447369580919";
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
-}
- 
- 
- 
-/*
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
     double fgHeight = self.foreground.contentSize.height - CGRectGetHeight(self.foreground.bounds);
     double percentageScroll = self.foreground.contentOffset.y / fgHeight;
     double bgHeight = self.background.contentSize.height - CGRectGetHeight(self.background.bounds);
-    self.background.contentOffset = CGPointMake(0, bgHeight * percentageScroll);
+    self.background.contentOffset = CGPointMake(0, bgHeight * (percentageScroll * 1.5));
 }
-*/
 
 @end

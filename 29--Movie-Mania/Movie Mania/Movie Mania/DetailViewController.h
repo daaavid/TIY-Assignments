@@ -20,7 +20,4 @@
 @property (nonatomic) NSString *selectedMovieTitle;
 @property (nonatomic) NSString *selectedMovieYear;
 
-- (void)search;
-- (void)populateView;
-
 @end

@@ -17,7 +17,6 @@
 		635DAF581BF4FB5C00326E43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 635DAF571BF4FB5C00326E43 /* Assets.xcassets */; };
 		635DAF5B1BF4FB5C00326E43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 635DAF591BF4FB5C00326E43 /* LaunchScreen.storyboard */; };
 		635DAF671BF5046200326E43 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635DAF661BF5046200326E43 /* SearchTableViewController.m */; };
-		637FA8F31BF58A1A00564CC8 /* movieMania.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 637FA8F11BF58A1A00564CC8 /* movieMania.jpg */; };
 		637FA8F41BF58A1A00564CC8 /* movieMania.png in Resources */ = {isa = PBXBuildFile; fileRef = 637FA8F21BF58A1A00564CC8 /* movieMania.png */; };
 		63876E9A1BF7943600106EB6 /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63876E991BF7943600106EB6 /* HistoryTableViewController.m */; };
 		639811C11BF66C46006C9AE0 /* metacritic.png in Resources */ = {isa = PBXBuildFile; fileRef = 639811C01BF66C46006C9AE0 /* metacritic.png */; };
@@ -47,7 +46,6 @@
 		635DAF5C1BF4FB5C00326E43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		635DAF651BF5046200326E43 /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchTableViewController.h; path = ../SearchTableViewController.h; sourceTree = "<group>"; };
 		635DAF661BF5046200326E43 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchTableViewController.m; path = ../SearchTableViewController.m; sourceTree = "<group>"; };
-		637FA8F11BF58A1A00564CC8 /* movieMania.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = movieMania.jpg; sourceTree = "<group>"; };
 		637FA8F21BF58A1A00564CC8 /* movieMania.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movieMania.png; sourceTree = "<group>"; };
 		63876E981BF7943600106EB6 /* HistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
 		63876E991BF7943600106EB6 /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 			children = (
 				632964B91BF51DA200387878 /* DetailViewController.h */,
 				632964BA1BF51DA200387878 /* DetailViewController.m */,
-				63A6191A1BF710B50073435C /* movies and how to get them */,
 				63876E971BF7935900106EB6 /* Poster Zoom Popover */,
 				63A619191BF7109A0073435C /* E - GenreVC */,
 				6336955F1BF6614900F897A0 /* E - ActorVC */,
@@ -131,6 +128,7 @@
 				635DAF661BF5046200326E43 /* SearchTableViewController.m */,
 				63876E981BF7943600106EB6 /* HistoryTableViewController.h */,
 				63876E991BF7943600106EB6 /* HistoryTableViewController.m */,
+				63A6191A1BF710B50073435C /* movies and how to get them */,
 				6336955E1BF6613D00F897A0 /* DetailVC */,
 				63A6191B1BF710E60073435C /* img resources */,
 				635DAF681BF509FC00326E43 /* other */,
@@ -203,7 +201,6 @@
 			children = (
 				63F1E07C1BF68AC90018933F /* movieManiaWheel2.png */,
 				63F1E07A1BF689C40018933F /* movieManiaWheel.png */,
-				637FA8F11BF58A1A00564CC8 /* movieMania.jpg */,
 				637FA8F21BF58A1A00564CC8 /* movieMania.png */,
 			);
 			name = "img resources";
@@ -269,7 +266,6 @@
 			files = (
 				635DAF5B1BF4FB5C00326E43 /* LaunchScreen.storyboard in Resources */,
 				63F1E07D1BF68AC90018933F /* movieManiaWheel2.png in Resources */,
-				637FA8F31BF58A1A00564CC8 /* movieMania.jpg in Resources */,
 				635DAF581BF4FB5C00326E43 /* Assets.xcassets in Resources */,
 				635DAF561BF4FB5C00326E43 /* Main.storyboard in Resources */,
 				639811C11BF66C46006C9AE0 /* metacritic.png in Resources */,

@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "DetailViewController.h"
 #import "PosterZoomViewController.h"
+#import "SearchTableViewController.h"
 
 @interface WebController : NSObject <NSURLSessionDelegate>
 
+@property (nonatomic) id <SearchProtocol> searchdelegate;
 @property (nonatomic) id <WebProtocol> delegate;
 @property (nonatomic) id <ImageProtocol> posterdelegate;
 

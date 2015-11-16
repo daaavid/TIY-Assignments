@@ -30,7 +30,7 @@
 @property (nonatomic) NSString *awards;
 @property (nonatomic) NSString *consensus;
 
+- (instancetype)initSearchResultsWithDictionary: (NSDictionary *)searchResults;
 - (instancetype)initWithDictionary: (NSDictionary *)movieDictionary;
-
 
 @end

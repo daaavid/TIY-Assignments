@@ -11,8 +11,8 @@
 @implementation WebController
 {
     NSMutableData *receivedData;
-    NSURLSessionDataTask *task;
     NSDictionary *searchResults;
+    NSString *yearStor;
 }
 
 #pragma mark - movie search
@@ -23,15 +23,26 @@
     
     NSString *searchTerm = selectedMovieTitle;
     NSString *formattedSearchTerm = [searchTerm stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-    NSString *urlString = [NSString
-                           stringWithFormat:@"https://www.omdbapi.com/?t=%@&tomatoes=true&y=%@&plot=long&r=json", formattedSearchTerm, year];
+    
+    yearStor = year;
+    
+    NSString *urlString;
+    if (yearStor == nil)
+    {
+        urlString = [NSString stringWithFormat:@"https://www.omdbapi.com/?s=%@&y=&plot=short&r=json", formattedSearchTerm];
+    }
+    else
+    {
+        urlString = [NSString
+                     stringWithFormat:@"https://www.omdbapi.com/?t=%@&tomatoes=true&y=%@&plot=long&r=json", formattedSearchTerm, year];
+    }
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration
                                                 defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession
                              sessionWithConfiguration:configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     
-    task = [session dataTaskWithURL:url];
+    NSURLSessionDataTask *task = [session dataTaskWithURL:url];
     [task resume];
 }
 
@@ -59,7 +70,17 @@
         NSLog(@"Download success");
         searchResults = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:nil];
         
-        [self.delegate searchWasCompleted: searchResults];
+        if (yearStor == nil)
+        {
+            NSArray *searchArr = searchResults[@"Search"];
+
+            [self.searchdelegate searchResultsWereFound:searchArr];
+        }
+        else
+        {
+            [self.delegate searchWasCompleted: searchResults];
+        }
+        [task cancel];
     }
 }
 
