@@ -12,7 +12,6 @@
 {
     NSMutableData *receivedData;
     NSDictionary *searchResults;
-    NSString *yearStor;
 }
 
 #pragma mark - movie search
@@ -22,10 +21,8 @@
     NSString *searchTerm = selectedMovieTitle;
     NSString *formattedSearchTerm = [searchTerm stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     
-    yearStor = year;
-    
     NSString *urlString;
-    if (yearStor == nil)
+    if (year == nil)
     {
         urlString = [NSString stringWithFormat:@"https://www.omdbapi.com/?s=%@&y=&plot=short&r=json", formattedSearchTerm];
     }
@@ -71,10 +68,9 @@
     {
         searchResults = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:nil];
         
-        if (yearStor == nil)
+        NSArray *searchArr = searchResults[@"Search"];
+        if (searchArr)
         {
-            NSArray *searchArr = searchResults[@"Search"];
-
             [self.searchdelegate searchResultsWereFound:searchArr];
         }
         else
