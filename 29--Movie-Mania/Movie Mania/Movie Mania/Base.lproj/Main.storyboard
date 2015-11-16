@@ -901,13 +901,17 @@
                                     <constraint firstItem="JAA-ci-b6X" firstAttribute="top" secondItem="6d3-iC-bq4" secondAttribute="bottom" constant="8" id="Esg-9r-rhz"/>
                                     <constraint firstItem="plb-GK-XSl" firstAttribute="top" secondItem="t7v-QK-UHJ" secondAttribute="bottom" constant="8" id="FCc-f2-1u2"/>
                                     <constraint firstItem="hVk-Pu-rhg" firstAttribute="centerX" secondItem="LaZ-Ys-4gW" secondAttribute="centerX" id="Gb3-Fs-pt5"/>
-                                    <constraint firstItem="JRy-PY-z8E" firstAttribute="leading" secondItem="zdJ-k5-c4h" secondAttribute="leading" id="Hck-9d-0AV"/>
+                                    <constraint firstItem="JRy-PY-z8E" firstAttribute="leading" secondItem="zdJ-k5-c4h" secondAttribute="leading" id="Hck-9d-0AV">
+                                        <variation key="widthClass=compact" constant="-5"/>
+                                    </constraint>
                                     <constraint firstItem="oFn-S8-R5K" firstAttribute="leading" secondItem="NpI-82-hR7" secondAttribute="trailing" constant="60" id="LTa-VV-WAx">
                                         <variation key="widthClass=compact" constant="26"/>
                                     </constraint>
                                     <constraint firstItem="plb-GK-XSl" firstAttribute="leading" secondItem="t7v-QK-UHJ" secondAttribute="leading" id="Mha-Bp-QU9"/>
                                     <constraint firstItem="Flm-mz-Qwe" firstAttribute="centerY" secondItem="csV-pr-Uro" secondAttribute="centerY" id="NRy-3g-AKW"/>
-                                    <constraint firstItem="qnS-Dt-cyl" firstAttribute="centerX" secondItem="LaZ-Ys-4gW" secondAttribute="centerX" id="Njd-wU-Qdd"/>
+                                    <constraint firstItem="qnS-Dt-cyl" firstAttribute="centerX" secondItem="LaZ-Ys-4gW" secondAttribute="centerX" id="Njd-wU-Qdd">
+                                        <variation key="widthClass=compact" constant="0.0"/>
+                                    </constraint>
                                     <constraint firstItem="NpI-82-hR7" firstAttribute="leading" secondItem="zdJ-k5-c4h" secondAttribute="trailing" constant="27.5" id="R28-78-iie">
                                         <variation key="widthClass=compact" constant="26"/>
                                     </constraint>
@@ -941,7 +945,9 @@
                                         <variation key="widthClass=compact" constant="26"/>
                                     </constraint>
                                     <constraint firstItem="NpI-82-hR7" firstAttribute="centerY" secondItem="zdJ-k5-c4h" secondAttribute="centerY" id="mdS-iC-gML"/>
+                                    <constraint firstItem="plb-GK-XSl" firstAttribute="leading" secondItem="JRy-PY-z8E" secondAttribute="leading" id="nVZ-TQ-GeF"/>
                                     <constraint firstItem="WGb-WJ-mdN" firstAttribute="top" secondItem="LaZ-Ys-4gW" secondAttribute="top" constant="70" id="oIm-ZP-69U"/>
+                                    <constraint firstItem="6d3-iC-bq4" firstAttribute="leading" secondItem="zdJ-k5-c4h" secondAttribute="leading" id="rlK-aQ-bx9"/>
                                     <constraint firstItem="yUZ-C3-Cpu" firstAttribute="top" secondItem="plb-GK-XSl" secondAttribute="bottom" constant="49" id="tP3-cm-mQc">
                                         <variation key="widthClass=compact" constant="8"/>
                                     </constraint>
@@ -1011,6 +1017,7 @@
                                         <exclude reference="mVa-sH-FRF"/>
                                         <exclude reference="8WF-Ox-N2r"/>
                                         <exclude reference="VbQ-J4-mo6"/>
+                                        <exclude reference="rlK-aQ-bx9"/>
                                         <exclude reference="5fd-oI-hAq"/>
                                         <exclude reference="Esg-9r-rhz"/>
                                         <exclude reference="RGa-BN-MNE"/>
@@ -1020,6 +1027,7 @@
                                         <exclude reference="bxM-em-ePq"/>
                                         <exclude reference="eHg-LH-rTe"/>
                                         <exclude reference="4Br-id-OYu"/>
+                                        <exclude reference="tP3-cm-mQc"/>
                                         <exclude reference="9kF-K1-YME"/>
                                         <exclude reference="Gb3-Fs-pt5"/>
                                         <exclude reference="WYC-eW-L4d"/>
@@ -1028,7 +1036,7 @@
                                         <exclude reference="T3W-Ib-q1C"/>
                                         <exclude reference="ZAF-bL-Mhc"/>
                                         <exclude reference="4oc-6C-4Xy"/>
-                                        <exclude reference="tP3-cm-mQc"/>
+                                        <exclude reference="nVZ-TQ-GeF"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -1085,16 +1093,18 @@
                                         <include reference="iZr-a0-3NW"/>
                                         <include reference="mVa-sH-FRF"/>
                                         <include reference="8WF-Ox-N2r"/>
-                                        <include reference="VbQ-J4-mo6"/>
+                                        <exclude reference="VbQ-J4-mo6"/>
+                                        <include reference="rlK-aQ-bx9"/>
                                         <include reference="5fd-oI-hAq"/>
                                         <include reference="Esg-9r-rhz"/>
                                         <include reference="RGa-BN-MNE"/>
                                         <include reference="vnR-sH-j8c"/>
                                         <include reference="FCc-f2-1u2"/>
-                                        <include reference="Mha-Bp-QU9"/>
+                                        <exclude reference="Mha-Bp-QU9"/>
                                         <include reference="bxM-em-ePq"/>
                                         <exclude reference="eHg-LH-rTe"/>
                                         <include reference="4Br-id-OYu"/>
+                                        <include reference="tP3-cm-mQc"/>
                                         <include reference="9kF-K1-YME"/>
                                         <include reference="Gb3-Fs-pt5"/>
                                         <include reference="WYC-eW-L4d"/>
@@ -1103,7 +1113,7 @@
                                         <include reference="T3W-Ib-q1C"/>
                                         <include reference="ZAF-bL-Mhc"/>
                                         <include reference="4oc-6C-4Xy"/>
-                                        <include reference="tP3-cm-mQc"/>
+                                        <include reference="nVZ-TQ-GeF"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -1296,11 +1306,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="200" height="200"/>
+                    <size key="freeformSize" width="200" height="1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lEo-LP-6Hq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2934" y="505"/>
+            <point key="canvasLocation" x="3285" y="405.5"/>
         </scene>
         <!--Reviews Table View Controller-->
         <scene sceneID="wkA-6R-XQ4">
@@ -1458,11 +1468,11 @@
                         <color key="backgroundColor" red="0.45212757587432861" green="0.043177045881748199" blue="0.29159015417098999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="400" height="600"/>
+                    <size key="freeformSize" width="400" height="460"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wzl-2o-gpH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2448" y="1509"/>
+            <point key="canvasLocation" x="2448" y="1451"/>
         </scene>
     </scenes>
     <resources>

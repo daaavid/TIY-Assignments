@@ -46,10 +46,10 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryCell" forIndexPath:indexPath];
     
-    NSDictionary *historyResult = self.history[indexPath.row];
+    Movie *movie = self.history[indexPath.row];
     
-    cell.textLabel.text = (NSString *)historyResult[@"Title"];
-    cell.detailTextLabel.text = (NSString *)historyResult[@"Year"];
+    cell.textLabel.text = movie.title;
+    cell.detailTextLabel.text = movie.year;
     
     return cell;
 }

@@ -9,13 +9,14 @@
 #import "SearchTableViewController.h"
 #import "DetailViewController.h"
 #import "HistoryTableViewController.h"
-#import "Movie.h"
 #import "WebController.h"
+
+NSString *kHistoryKey = @"history";
 
 @interface SearchTableViewController () <UISearchBarDelegate, UIPopoverPresentationControllerDelegate>
 {
     NSMutableArray *searchResults;
-    NSMutableArray *searchHistory;
+//    NSMutableArray *searchHistory;
     WebController *webController;
 }
 
@@ -32,25 +33,25 @@
     self.view.backgroundColor = [UIColor colorWithHue:0.918 saturation:0.848 brightness:0.555 alpha:1];
 
     self.searchBar.delegate = self;
-    self.historyButton.enabled = NO;
     
     UITextField *searchBarTextField = (UITextField *)[self.searchBar valueForKey:@"searchField"];
     searchBarTextField.textColor = [UIColor whiteColor];
     
     searchResults = [[NSMutableArray alloc] init];
-    searchHistory = [[NSMutableArray alloc] init];
+    self.searchHistory = [[NSMutableArray alloc] init];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [self manageHistory];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     [searchResults removeAllObjects];
-    [searchHistory removeAllObjects];
+    [self.searchHistory removeAllObjects];
 }
 
 #pragma mark - Table view data source
@@ -129,10 +130,10 @@
         popover.delegate = self;
         historyVC.delegate = self;
         
-        historyVC.history = searchHistory;
+        historyVC.history = self.searchHistory;
         
         historyVC.modalPresentationStyle = UIModalPresentationPopover;
-        float contentSize = searchHistory.count * 44;
+        float contentSize = self.searchHistory.count * 44;
         
         historyVC.preferredContentSize = CGSizeMake(200, contentSize);
     }
@@ -149,8 +150,7 @@
 {
     Movie *selectedMovie = searchResults[indexPath.row];
     
-    self.historyButton.enabled = YES;
-    [searchHistory addObject: selectedMovie];
+    [self.searchHistory insertObject:selectedMovie atIndex:0];
     
     [self makeDetailVC:selectedMovie];
 }
@@ -162,12 +162,54 @@
 
 - (void)makeDetailVC:(Movie *)selectedMovie
 {
-    DetailViewController *detailVC = (DetailViewController *)[self.storyboard
-                                                              instantiateViewControllerWithIdentifier:@"DetailViewController"];
+    DetailViewController *detailVC = (DetailViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
     
     detailVC.selectedMovie = selectedMovie;
     
     [self.navigationController pushViewController:detailVC animated:YES];
 }
+
+#pragma mark - search history management
+
+- (void)saveHistory
+{
+    NSData *historyData = [NSKeyedArchiver archivedDataWithRootObject:self.searchHistory];
+    [[NSUserDefaults standardUserDefaults] setObject:historyData forKey:kHistoryKey];
+    NSLog(@"saved %@", self.searchHistory);
+}
+
+- (void)loadHistory
+{
+    NSData *data = (NSData *)[[NSUserDefaults standardUserDefaults] objectForKey:kHistoryKey];
+    if (data)
+    {
+        NSArray *savedHistory = (NSArray *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
+        
+        if (savedHistory)
+        {
+            [self.searchHistory addObjectsFromArray:savedHistory];
+            NSLog(@"loaded %@", self.searchHistory);
+        }
+    }
+}
+
+- (void)manageHistory
+{
+    if (self.searchHistory.count > 0)
+    {
+        self.historyButton.enabled = YES;
+        
+        if (self.searchHistory.count > 5)
+        {
+            [self.searchHistory removeObjectAtIndex:4];
+        }
+    }
+    else
+    {
+        self.historyButton.enabled = NO;
+    }
+}
+
+
 
 @end

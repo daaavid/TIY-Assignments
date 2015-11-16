@@ -18,9 +18,7 @@
 #pragma mark - movie search
 
 - (void)search:(NSString *)selectedMovieTitle year:(NSString *)year;
-{
-    NSLog(@"searching");
-    
+{    
     NSString *searchTerm = selectedMovieTitle;
     NSString *formattedSearchTerm = [searchTerm stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     
@@ -66,8 +64,6 @@
     //received all data or received error
     if (!error) //if there was no error
     {
-        //        self.fetchingResultsView.hidden = YES;
-        NSLog(@"Download success");
         searchResults = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:nil];
         
         if (yearStor == nil)

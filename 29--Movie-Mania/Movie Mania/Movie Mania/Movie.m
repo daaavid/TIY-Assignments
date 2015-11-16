@@ -8,6 +8,9 @@
 
 #import "Movie.h"
 
+NSString *kTitleKey = @"title";
+NSString *kYearKey = @"year";
+
 @implementation Movie
 
 - (instancetype)initSearchResultsWithDictionary: (NSDictionary *)searchResults;
@@ -20,14 +23,30 @@
     return self;
 }
 
-- (instancetype)initWithDictionary: (NSDictionary *)searchResults;
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    if (self = [super init])
+    {
+        _title = [decoder decodeObjectForKey:@"title"];
+        _year = [decoder decodeObjectForKey:@"year"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:_title forKey:@"title"];
+    [encoder encodeObject:_year forKey:@"year"];
+}
+
+- (instancetype)initDetailWithDictionary: (NSDictionary *)searchResults;
 {
     if (self = [super init])
     {
         _title = [(NSString *)searchResults[@"Title"] uppercaseString];
         _year = (NSString *)searchResults[@"Released"];
         
-        NSString *genres = searchResults[@"Genre"];
+        NSString *genres = (NSString *)searchResults[@"Genre"];
         NSArray *genreArr = [genres componentsSeparatedByString:@","];
         _genre = genreArr;
         

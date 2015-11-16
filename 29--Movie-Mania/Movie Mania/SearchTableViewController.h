@@ -23,4 +23,9 @@
 
 @interface SearchTableViewController : UITableViewController <HistoryProtocol, SearchProtocol>
 
+@property (nonatomic) NSMutableArray *searchHistory;
+
+- (void)saveHistory;
+- (void)loadHistory;
+
 @end

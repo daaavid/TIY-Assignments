@@ -118,7 +118,7 @@
 
 - (void)populateView
 {
-    movie = [[Movie alloc] initWithDictionary:searchResults];
+    movie = [[Movie alloc] initDetailWithDictionary:searchResults];
     
     self.movieTitleLabel.text = movie.title;
     

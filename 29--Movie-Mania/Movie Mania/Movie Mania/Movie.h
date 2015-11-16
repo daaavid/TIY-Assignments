@@ -10,27 +10,25 @@
 
 @interface Movie : NSObject
 
+@property (nonatomic) NSString *posterURL;
 @property (nonatomic) NSString *title;
-@property (nonatomic) NSString *year;
 
+@property (nonatomic) NSString *year;
 @property (nonatomic) NSString *rating;
 @property (nonatomic) NSString *runtime;
 @property (nonatomic) NSString *country;
 
 @property (nonatomic) NSArray *genre;
 @property (nonatomic) NSArray *actors;
-
-@property (nonatomic) NSString *plot;
-@property (nonatomic) NSString *posterURL;
-
 @property (nonatomic) NSArray *ratings;
 
-@property (nonatomic) NSString *boxOffice;
+@property (nonatomic) NSString *plot;
 @property (nonatomic) NSString *production;
+@property (nonatomic) NSString *boxOffice;
 @property (nonatomic) NSString *awards;
 @property (nonatomic) NSString *consensus;
 
 - (instancetype)initSearchResultsWithDictionary: (NSDictionary *)searchResults;
-- (instancetype)initWithDictionary: (NSDictionary *)movieDictionary;
+- (instancetype)initDetailWithDictionary: (NSDictionary *)movieDictionary;
 
 @end
