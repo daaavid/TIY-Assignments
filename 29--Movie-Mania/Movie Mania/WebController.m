@@ -36,6 +36,7 @@
         urlString = [NSString
                      stringWithFormat:@"https://www.omdbapi.com/?t=%@&tomatoes=true&y=%@&plot=long&r=json", formattedSearchTerm, year];
     }
+    
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration
                                                 defaultSessionConfiguration];

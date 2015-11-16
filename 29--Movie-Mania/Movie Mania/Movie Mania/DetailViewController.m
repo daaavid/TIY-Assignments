@@ -226,7 +226,23 @@
     double fgHeight = self.foreground.contentSize.height - CGRectGetHeight(self.foreground.bounds);
     double percentageScroll = self.foreground.contentOffset.y / fgHeight;
     double bgHeight = self.background.contentSize.height - CGRectGetHeight(self.background.bounds);
+    
     self.background.contentOffset = CGPointMake(0, bgHeight * (percentageScroll * 1.5));
+    
+    CGPoint contentOffset = CGPointMake(0, bgHeight * (percentageScroll * 0.2));
+    
+    //review embedded tableview
+    ReviewsTableViewController *reviewVC = (ReviewsTableViewController *)self.childViewControllers[0];
+    
+    //genre embedded tableview
+    GenreTableViewController *genreVC = (GenreTableViewController *)self.childViewControllers[1];
+    
+    //actor embedded tableview
+    ActorTableViewController *actorVC = (ActorTableViewController *)self.childViewControllers[2];
+    
+    reviewVC.tableView.contentOffset = contentOffset;
+    genreVC.tableView.contentOffset = contentOffset;
+    actorVC.tableView.contentOffset = contentOffset;
 }
 
 @end
