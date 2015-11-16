@@ -162,10 +162,10 @@
 
 - (void)makeDetailVC:(Movie *)selectedMovie
 {
-    DetailViewController *detailVC = (DetailViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
+    DetailViewController *detailVC = (DetailViewController *)[self.storyboard
+                                                              instantiateViewControllerWithIdentifier:@"DetailViewController"];
     
-    detailVC.selectedMovieTitle = selectedMovie.title;
-    detailVC.selectedMovieYear = selectedMovie.year;
+    detailVC.selectedMovie = selectedMovie;
     
     [self.navigationController pushViewController:detailVC animated:YES];
 }

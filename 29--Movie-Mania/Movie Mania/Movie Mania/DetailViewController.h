@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Movie.h"
 
 @protocol WebProtocol
 
@@ -17,7 +18,6 @@
 
 @interface DetailViewController : UIViewController <UIScrollViewDelegate, WebProtocol>
 
-@property (nonatomic) NSString *selectedMovieTitle;
-@property (nonatomic) NSString *selectedMovieYear;
+@property (nonatomic) Movie *selectedMovie;
 
 @end

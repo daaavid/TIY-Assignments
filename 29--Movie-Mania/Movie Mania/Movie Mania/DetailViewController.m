@@ -8,16 +8,15 @@
 
 #import "DetailViewController.h"
 
+#import "WebController.h"
+
 #import "ActorTableViewController.h"
 #import "ReviewsTableViewController.h"
 #import "GenreTableViewController.h"
-
 #import "PosterZoomViewController.h"
 
-#import "WebController.h"
-#import "Movie.h"
 
-@interface DetailViewController () <UIPopoverPresentationControllerDelegate>/*<UIScrollViewDelegate>*/
+@interface DetailViewController () <UIPopoverPresentationControllerDelegate, UIScrollViewDelegate>
 {
     NSDictionary *searchResults;
     NSMutableData *receivedData;
@@ -40,12 +39,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *movieReleaseLabel;
 @property (weak, nonatomic) IBOutlet UITextView *movieCountryLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *moviePlotTextView;
+@property (weak, nonatomic) IBOutlet UITextView *moviePlotTextView;
 @property (weak, nonatomic) IBOutlet UILabel *movieProductionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *movieBoxOfficeLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *movieAwardsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *movieConsensusLabel;
+@property (weak, nonatomic) IBOutlet UITextView *movieConsensusTextView;
 
 @end
 
@@ -86,7 +85,7 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     webController = [[WebController alloc] init];
     webController.delegate = self;
-    [webController search:self.selectedMovieTitle year:self.selectedMovieYear];
+    [webController search:self.selectedMovie.title year:self.selectedMovie.year];
 }
 
 #pragma mark - function called when web controller retrieves movie dictionary
@@ -122,7 +121,10 @@
     movie = [[Movie alloc] initWithDictionary:searchResults];
     
     self.movieTitleLabel.text = movie.title;
+    
     self.moviePlotTextView.text = movie.plot;
+    self.moviePlotTextView.selectable = NO;
+    
     self.movieRatingLabel.text = movie.rating;
     self.movieReleaseLabel.text = movie.year;
     self.movieRuntimeLabel.text = movie.runtime;
@@ -148,7 +150,8 @@
     
     NSString *formattedConsensus = [NSString
                                     stringWithFormat:@"Consensus: \n%@", movie.consensus];
-    self.movieConsensusLabel.text = formattedConsensus;
+    self.movieConsensusTextView.text = formattedConsensus;
+    self.movieConsensusTextView.selectable = NO;
     
     if (movie.posterURL) //if we have a url for the image
     {
