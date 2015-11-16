@@ -31,6 +31,11 @@
     }
     else
     {
+        if ([year containsString:@"–"])
+        {
+            year = [year componentsSeparatedByString:@"–"][0];
+        }
+        
         urlString = [NSString
                      stringWithFormat:@"https://www.omdbapi.com/?t=%@&tomatoes=true&y=%@&plot=long&r=json", formattedSearchTerm, year];
     }

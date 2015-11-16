@@ -80,17 +80,17 @@ NSString *kHistoryKey = @"history";
 
 #pragma mark - search
 
-- (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [self search];
 }
 
-- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     [self search];
 }
 
-- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     [searchResults removeAllObjects];
     [self.tableView reloadData];
@@ -171,6 +171,23 @@ NSString *kHistoryKey = @"history";
 
 #pragma mark - search history management
 
+- (void)manageHistory
+{
+    if (searchHistory.count > 0)
+    {
+        self.historyButton.enabled = YES;
+        
+        if (searchHistory.count > 5)
+        {
+            [searchHistory removeObjectAtIndex:4];
+        }
+    }
+    else
+    {
+        self.historyButton.enabled = NO;
+    }
+}
+
 - (void)saveHistory
 {
     NSData *historyData = [NSKeyedArchiver archivedDataWithRootObject:searchHistory];
@@ -190,21 +207,5 @@ NSString *kHistoryKey = @"history";
     }
 }
 
-- (void)manageHistory
-{
-    if (searchHistory.count > 0)
-    {
-        self.historyButton.enabled = YES;
-        
-        if (searchHistory.count > 5)
-        {
-            [searchHistory removeObjectAtIndex:4];
-        }
-    }
-    else
-    {
-        self.historyButton.enabled = NO;
-    }
-}
 
 @end

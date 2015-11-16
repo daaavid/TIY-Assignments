@@ -15,13 +15,9 @@
 #import "GenreTableViewController.h"
 #import "PosterZoomViewController.h"
 
-
 @interface DetailViewController () <UIPopoverPresentationControllerDelegate, UIScrollViewDelegate>
 {
-    NSDictionary *searchResults;
-    NSMutableData *receivedData;
-    NSURLSessionDataTask *task;
-    
+    NSDictionary *searchResults;    
     WebController *webController;
     Movie *movie;
 }
@@ -29,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *posterImage;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *fetchingResultsView;
 @property (weak, nonatomic) IBOutlet UIView *posterBlurView;
+@property (weak, nonatomic) IBOutlet UILabel *posterNALabel;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *background;
 @property (weak, nonatomic) IBOutlet UIScrollView *foreground;
@@ -60,22 +57,12 @@
     self.foreground.delegate = self;
     
     self.fetchingResultsView.hidden = NO;
-    self.posterBlurView.hidden = YES;
+    self.posterImage.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-}
-
-- (void)animatePosterImg
-{
-    [UIView animateWithDuration:0.5 animations: ^
-    {
-        self.posterBlurView.hidden = NO;
-        self.posterBlurView.alpha = 0;
-        self.posterBlurView.alpha = 1;
-    }];
 }
 
 #pragma mark - search called in saerch view controller
@@ -112,7 +99,22 @@
         [self animatePosterImg];
         [self setupPosterTap];
     }
+    else
+    {
+        self.posterNALabel.hidden = NO;
+    }
 }
+
+- (void)animatePosterImg
+{
+    [UIView animateWithDuration:0.5 animations: ^
+     {
+         self.posterImage.hidden = NO;
+         self.posterImage.alpha = 0;
+         self.posterImage.alpha = 1;
+     }];
+}
+
 
 #pragma mark - view population
 
