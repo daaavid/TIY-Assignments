@@ -31,19 +31,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     var login = false
     
-    
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        if PFUser.currentUser() == nil
+        {
+            //            let VC = self.storyboard?.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
+            //            self.navigationController?.presentViewController(VC, animated: true, completion: nil)
+            //            login = true
+            navigationController?.performSegueWithIdentifier("ShowLoginSegue", sender: self)
+        }
+    }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        if login == false
-        {
-            let VC = self.storyboard?.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
-            //                    todoVC.account = account
-            self.navigationController?.presentViewController(VC, animated: true, completion: nil)
-            login = true
-        }
+
 //        self.mapView.camera.altitude *= 1.5
 
         mapView.delegate = self

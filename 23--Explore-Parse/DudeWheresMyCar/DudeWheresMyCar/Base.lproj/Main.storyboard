@@ -65,14 +65,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yx6-XK-9QK">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yx6-XK-9QK">
                                             <rect key="frame" x="8" y="8" width="91" height="29"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="24"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wwx-Ao-eOY">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wwx-Ao-eOY">
                                             <rect key="frame" x="8" y="45" width="51.5" height="29"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="24"/>
@@ -133,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1050" y="461"/>
+            <point key="canvasLocation" x="1070" y="461"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xD7-vr-Vk9">
@@ -148,6 +148,7 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ToU-FW-OdY"/>
+                        <segue destination="W1I-eZ-e3w" kind="presentation" identifier="ShowLoginSegue" id="5RD-1v-ipB"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctg-am-tmv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -224,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bMC-kb-t9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-233" y="461"/>
+            <point key="canvasLocation" x="1075" y="1119"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="lOT-AD-BAN">
@@ -287,7 +288,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38m-BQ-9dI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-233" y="1130"/>
+            <point key="canvasLocation" x="1706" y="1119"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Pqv-ih-Ldl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W1I-eZ-e3w" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JE7-5r-m0q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="awx-Aa-dtg" kind="relationship" relationship="rootViewController" id="tZE-t1-3bT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OxD-eb-gQq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="437" y="1119"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.0" green="0.75294117650000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
