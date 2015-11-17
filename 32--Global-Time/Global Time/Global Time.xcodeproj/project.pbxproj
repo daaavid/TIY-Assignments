@@ -15,7 +15,6 @@
 		634F4E701BFB9026004272CE /* ClockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F4E6F1BFB9026004272CE /* ClockCell.swift */; };
 		634F4E721BFB903D004272CE /* GlobalTimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F4E711BFB903D004272CE /* GlobalTimeTableViewController.swift */; };
 		634F4E741BFB9333004272CE /* TimezonePopoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F4E731BFB9333004272CE /* TimezonePopoverTableViewController.swift */; };
-		634F4E761BFBA0B6004272CE /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F4E751BFBA0B6004272CE /* Time.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +28,6 @@
 		634F4E6F1BFB9026004272CE /* ClockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockCell.swift; sourceTree = "<group>"; };
 		634F4E711BFB903D004272CE /* GlobalTimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalTimeTableViewController.swift; sourceTree = "<group>"; };
 		634F4E731BFB9333004272CE /* TimezonePopoverTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimezonePopoverTableViewController.swift; sourceTree = "<group>"; };
-		634F4E751BFBA0B6004272CE /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +65,6 @@
 				634F4E731BFB9333004272CE /* TimezonePopoverTableViewController.swift */,
 				634F4E6C1BFB8F47004272CE /* ClockView.swift */,
 				634F4E6F1BFB9026004272CE /* ClockCell.swift */,
-				634F4E751BFBA0B6004272CE /* Time.swift */,
 				634F4E6E1BFB8F4E004272CE /* not garbage */,
 			);
 			path = "Global Time";
@@ -156,7 +153,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				634F4E761BFBA0B6004272CE /* Time.swift in Sources */,
 				634F4E6D1BFB8F47004272CE /* ClockView.swift in Sources */,
 				634F4E741BFB9333004272CE /* TimezonePopoverTableViewController.swift in Sources */,
 				634F4E721BFB903D004272CE /* GlobalTimeTableViewController.swift in Sources */,
@@ -309,6 +305,7 @@
 				634F4E6B1BFB8F2B004272CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -3,9 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Global Time Table View Controller-->
@@ -13,41 +11,18 @@
             <objects>
                 <tableViewController id="Dwb-HH-ipI" customClass="GlobalTimeTableViewController" customModule="Global_Time" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" id="cnB-rO-tfk">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClockCell" id="MkJ-va-hxD" customClass="ClockCell" customModule="Global_Time" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="400" height="110"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MkJ-va-hxD" id="BAp-v9-tiT">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="109.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MWQ-tr-JM7" customClass="ClockView" customModule="Global_Time" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                            <animations/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="240" id="C2N-Xb-hgR">
-                                                    <variation key="widthClass=compact" constant="100"/>
-                                                </constraint>
-                                                <constraint firstAttribute="width" secondItem="MWQ-tr-JM7" secondAttribute="height" multiplier="1:1" id="tph-wk-u7h"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="C2N-Xb-hgR"/>
-                                                    <exclude reference="tph-wk-u7h"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="widthClass=compact">
-                                                <mask key="constraints">
-                                                    <exclude reference="C2N-Xb-hgR"/>
-                                                    <include reference="tph-wk-u7h"/>
-                                                </mask>
-                                            </variation>
-                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time zone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JN-KH-2Qx">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                             <animations/>
@@ -58,44 +33,30 @@
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstItem="MWQ-tr-JM7" firstAttribute="centerY" secondItem="BAp-v9-tiT" secondAttribute="centerY" id="MdR-Kv-7jU"/>
-                                        <constraint firstItem="MWQ-tr-JM7" firstAttribute="height" secondItem="BAp-v9-tiT" secondAttribute="height" multiplier="0.9" id="Qtg-Dx-bGq"/>
-                                        <constraint firstItem="8JN-KH-2Qx" firstAttribute="centerY" secondItem="MWQ-tr-JM7" secondAttribute="centerY" id="WSz-tu-lDK"/>
-                                        <constraint firstItem="8JN-KH-2Qx" firstAttribute="leading" secondItem="MWQ-tr-JM7" secondAttribute="trailing" constant="14" id="aOm-Vp-9yM"/>
-                                        <constraint firstItem="MWQ-tr-JM7" firstAttribute="leading" secondItem="BAp-v9-tiT" secondAttribute="leadingMargin" constant="20" id="fKA-Bo-PLK">
-                                            <variation key="widthClass=compact" constant="0.0"/>
-                                        </constraint>
+                                        <constraint firstItem="8JN-KH-2Qx" firstAttribute="centerY" secondItem="BAp-v9-tiT" secondAttribute="centerY" id="CPv-4L-IbF"/>
+                                        <constraint firstItem="8JN-KH-2Qx" firstAttribute="leading" secondItem="BAp-v9-tiT" secondAttribute="leadingMargin" constant="112.5" id="FzN-wF-0S8"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="subviews">
-                                            <exclude reference="MWQ-tr-JM7"/>
                                             <exclude reference="8JN-KH-2Qx"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="MdR-Kv-7jU"/>
-                                            <exclude reference="Qtg-Dx-bGq"/>
-                                            <exclude reference="fKA-Bo-PLK"/>
-                                            <exclude reference="WSz-tu-lDK"/>
-                                            <exclude reference="aOm-Vp-9yM"/>
+                                            <exclude reference="CPv-4L-IbF"/>
+                                            <exclude reference="FzN-wF-0S8"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
                                         <mask key="subviews">
-                                            <include reference="MWQ-tr-JM7"/>
                                             <include reference="8JN-KH-2Qx"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="MdR-Kv-7jU"/>
-                                            <include reference="Qtg-Dx-bGq"/>
-                                            <include reference="fKA-Bo-PLK"/>
-                                            <include reference="WSz-tu-lDK"/>
-                                            <include reference="aOm-Vp-9yM"/>
+                                            <include reference="CPv-4L-IbF"/>
+                                            <include reference="FzN-wF-0S8"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <outlet property="clockView" destination="MWQ-tr-JM7" id="kjX-Dw-JkR"/>
                                     <outlet property="timeZoneLabel" destination="8JN-KH-2Qx" id="sHc-bm-tHW"/>
                                 </connections>
                             </tableViewCell>
@@ -108,7 +69,7 @@
                     <navigationItem key="navigationItem" id="H7h-Rm-KCd">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="e70-lN-l3I">
                             <connections>
-                                <segue destination="uwq-OE-Kjj" kind="popoverPresentation" identifier="popover" popoverAnchorBarButtonItem="e70-lN-l3I" id="fbc-Ou-c8H">
+                                <segue destination="uwq-OE-Kjj" kind="popoverPresentation" identifier="popover" popoverAnchorBarButtonItem="e70-lN-l3I" id="Ci6-dd-RQq">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
@@ -133,6 +94,7 @@
                         <viewControllerLayoutGuide type="bottom" id="IrR-yG-4F7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VB2-eW-13u">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -149,16 +111,20 @@
             <objects>
                 <tableViewController id="uwq-OE-Kjj" customClass="TimezonePopoverTableViewController" customModule="Global_Time" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sai-bn-5xD">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimezoneCell" textLabel="LqW-Iv-7J9" style="IBUITableViewCellStyleDefault" id="Dfp-8c-cgr">
+                                <rect key="frame" x="0.0" y="28" width="200" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dfp-8c-cgr" id="3iH-us-YCx">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LqW-Iv-7J9">
+                                            <rect key="frame" x="15" y="0.0" width="170" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>

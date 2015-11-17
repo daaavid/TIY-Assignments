@@ -12,24 +12,21 @@ class TimezonePopoverTableViewController: UITableViewController
 {
     var timezones = [String]()
     var delegate: TimezonePopoverTableViewControllerDelegate?
-    
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-    }
+
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         return timezones.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
         let cell = tableView.dequeueReusableCellWithIdentifier("TimezoneCell", forIndexPath: indexPath)
 
         let timezone = timezones[indexPath.row]

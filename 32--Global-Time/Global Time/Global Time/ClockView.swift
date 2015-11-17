@@ -21,7 +21,7 @@ class ClockView: UIView
     var borderColor = UIColor.blackColor()
     var digitColor = UIColor.blackColor()
     
-    var colorHasBeenSet = false
+    var colorHasNotBeenSet = true
     
     var timezone: NSTimeZone?
         {
@@ -63,7 +63,7 @@ class ClockView: UIView
         
         super.init(coder: aDecoder)
         
-        let fontSize = 6 + frame.size.width/50
+        let fontSize = 8 + frame.size.width/50
         digitFont = UIFont.systemFontOfSize(fontSize)
         boundsCenter = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
         self.backgroundColor = UIColor.clearColor()
@@ -78,8 +78,8 @@ class ClockView: UIView
         CGContextFillPath(cxt)
         
         //clock center
-        var radius: CGFloat = 6
-        let center2 = CGRect(x: boundsCenter.x - radius, y: boundsCenter.y - radius, width: radius * 2, height: radius * 2)
+        var radius: CGFloat = 6.0
+        let center2 = CGRect(x: boundsCenter.x - radius, y: boundsCenter.y - radius, width: 2 * radius, height: 2 * radius)
         CGContextAddEllipseInRect(cxt, center2)
         CGContextSetFillColorWithColor(cxt, digitColor.CGColor)
         CGContextFillPath(cxt)
@@ -91,7 +91,7 @@ class ClockView: UIView
         CGContextStrokePath(cxt)
         
         //numerals
-        let center = CGPoint(x: rect.size.width / 2, y: rect.size.height / 2)
+        let center = CGPoint(x: rect.size.width / 2.0, y: rect.size.height / 2.0)
         let markingDistanceFromCenter = rect.size.width / 2.0 - digitFont.lineHeight / 4.0 - 15 + digitOffset
         let offset = 4
         
@@ -111,6 +111,16 @@ class ClockView: UIView
             hourString.drawInRect(CGRect(x: labelX - digitFont.lineHeight / 2.0, y: labelY - digitFont.lineHeight / 2.0, width: digitFont.lineHeight, height: digitFont.lineHeight), withAttributes: [NSForegroundColorAttributeName: digitColor, NSFontAttributeName: digitFont])
         }
         
+        
+        //second hand
+        let secHandPos = secondsHandPosition()
+        CGContextSetStrokeColorWithColor(cxt, UIColor.redColor().CGColor)
+        CGContextBeginPath(cxt)
+        CGContextMoveToPoint(cxt, boundsCenter.x, boundsCenter.y)
+        CGContextSetLineWidth(cxt, 1.0)
+        CGContextAddLineToPoint(cxt, secHandPos.x, secHandPos.y)
+        CGContextStrokePath(cxt)
+        
         //minute hand
         let minHandPos = minutesHandPosition()
         CGContextSetStrokeColorWithColor(cxt, digitColor.CGColor)
@@ -129,43 +139,35 @@ class ClockView: UIView
         CGContextAddLineToPoint(cxt, hourHandPos.x, hourHandPos.y)
         CGContextStrokePath(cxt)
         
-        //second hand
-        let secHandPos = secondsHandPosition()
-        CGContextSetStrokeColorWithColor(cxt, UIColor.redColor().CGColor)
-        CGContextBeginPath(cxt)
-        CGContextMoveToPoint(cxt, boundsCenter.x, boundsCenter.y)
-        CGContextSetLineWidth(cxt, 1.0)
-        CGContextAddLineToPoint(cxt, secHandPos.x, secHandPos.y)
-        CGContextStrokePath(cxt)
-        
-        //second hand center
-        radius = 3
-        let center3 = CGRect(x: boundsCenter.x - radius, y: boundsCenter.y - radius, width: radius * 2, height: radius * 2)
+        // second hand's center
+        radius = 3.0
+        let center3 = CGRect(x: boundsCenter.x - radius, y: boundsCenter.y - radius, width: 2 * radius, height: 2 * radius)
         CGContextAddEllipseInRect(cxt, center3)
         CGContextSetFillColorWithColor(cxt, UIColor.redColor().CGColor)
         CGContextFillPath(cxt)
         
     }
     
-    func hoursHandPosition() -> CGPoint
+    func secondsHandPosition() -> CGPoint
     {
-        let hoursAsRadians = Float(Double(hours) / 60 * 2 * M_PI - M_PI_2)
-        let handRadius = CGFloat(frame.size.width / 4.2)
-        return CGPoint(x: handRadius * CGFloat(cosf(hoursAsRadians)) + boundsCenter.x, y: handRadius * CGFloat(sinf(hoursAsRadians)) + boundsCenter.y)
+        let secondsAsRadians = Float(Double(seconds) / 60.0 * 2.0 * M_PI - M_PI_2)
+        let handRadius = CGFloat(frame.size.width / 3.2)
+        return CGPoint(x: handRadius*CGFloat(cosf(secondsAsRadians)) + boundsCenter.x, y: handRadius*CGFloat(sinf(secondsAsRadians)) + boundsCenter.y)
     }
     
     func minutesHandPosition() -> CGPoint
     {
-        let minutesAsRadians = Float(Double(minutes) / 60 * 2 * M_PI - M_PI_2)
+        let minutesAsRadians = Float(Double(minutes) / 60.0 * 2.0 * M_PI - M_PI_2)
         let handRadius = CGFloat(frame.size.width / 3.6)
-        return CGPoint(x: handRadius * CGFloat(cosf(minutesAsRadians)) + boundsCenter.x, y: handRadius * CGFloat(sinf(minutesAsRadians)) + boundsCenter.y)
+        return CGPoint(x: handRadius*CGFloat(cosf(minutesAsRadians)) + boundsCenter.x, y: handRadius*CGFloat(sinf(minutesAsRadians)) + boundsCenter.y)
     }
     
-    func secondsHandPosition() -> CGPoint
+    func hoursHandPosition() -> CGPoint
     {
-        let secondsAsRadians = Float(Double(seconds) / 60 * 2 * M_PI - M_PI_2)
-        let handRadius = CGFloat(frame.size.width / 3.2)
-        return CGPoint(x: handRadius * CGFloat(cosf(secondsAsRadians)) + boundsCenter.x, y: handRadius * CGFloat(sinf(secondsAsRadians)) + boundsCenter.y)
+        let halfClock = Double(hours) + Double(minutes) / 60.0
+        let hoursAsRadians = Float(halfClock / 12.0 * 2.0 * M_PI - M_PI_2)
+        let handRadius = CGFloat(frame.size.width / 4.2)
+        return CGPoint(x: handRadius*CGFloat(cosf(hoursAsRadians)) + boundsCenter.x, y: handRadius*CGFloat(sinf(hoursAsRadians)) + boundsCenter.y)
     }
     
     func timerFired(sender: AnyObject)
@@ -179,9 +181,10 @@ class ClockView: UIView
         minutes = timeComponents.minute
         seconds = timeComponents.second
         
-        if colorHasBeenSet == false
+        if colorHasNotBeenSet
         {
             setBGColors()
+            colorHasNotBeenSet = false
         }
         
         setNeedsDisplay() //reload view data
@@ -189,14 +192,27 @@ class ClockView: UIView
         
     func setBGColors()
     {
-        let isDay = Time().isDay(hours)
-        print(hours)
-        if !isDay
+        print("color set.")
+        let day = isDay(hours)
+        if !day
         {
             clockBGColor = UIColor.blackColor()
             borderColor = UIColor.whiteColor()
             digitColor = UIColor.whiteColor()
         }
-        colorHasBeenSet = true
+    }
+    
+    func isDay(hour: Int) -> Bool
+    {
+        var isDay: Bool
+        print(hour)
+        switch hour
+        {
+        case 5...19:
+            isDay = true
+        default:
+            isDay = false
+        }
+        return isDay
     }
 }

@@ -25,21 +25,10 @@ class GlobalTimeTableViewController: UITableViewController, UIPopoverPresentatio
     {
         super.viewDidLoad()
         
+        shownTimezones.append("America/New_York")
         remainingTimezones = allTimezones()
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-    override func viewDidAppear(animated: Bool)
-    {
-        super.viewDidAppear(animated)
-        if remainingTimezones.count == 0
-        {
-            addButton.enabled = false
-        }
-        else
-        {
-            addButton.enabled = true
-        }
     }
 
     // MARK: - Table view data source
@@ -60,8 +49,14 @@ class GlobalTimeTableViewController: UITableViewController, UIPopoverPresentatio
         
         let timezone = shownTimezones[indexPath.row]
         cell.timeZoneLabel.text = timezone
-        cell.clockView.timezone = NSTimeZone(name: timezone)
         
+        let frame = CGRect(x: 10, y: 10, width: 80, height: 80)
+        let cellClock = ClockView(frame: frame)
+        cellClock.timezone = NSTimeZone(name: timezone)
+        
+        cellClock.tag = 1
+        cell.addSubview(cellClock)
+
         return cell
     }
 
@@ -72,7 +67,8 @@ class GlobalTimeTableViewController: UITableViewController, UIPopoverPresentatio
         {
             shownTimezones.removeAtIndex(indexPath.row)
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! ClockCell
-            cell.clockView.animationTimer?.invalidate()
+            let cellClock = cell.viewWithTag(1) as! ClockView
+            cellClock.animationTimer!.invalidate()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
