@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ocd-pN-Awp">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Table View Controller-->
+        <scene sceneID="oeo-LJ-WGm">
+            <objects>
+                <tableViewController id="Dwb-HH-ipI" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" id="cnB-rO-tfk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClockCell" id="MkJ-va-hxD" customClass="ClockCell" customModule="Global_Time" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MkJ-va-hxD" id="BAp-v9-tiT">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MWQ-tr-JM7" customClass="ClockView" customModule="Global_Time" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="240" id="C2N-Xb-hgR">
+                                                    <variation key="widthClass=compact" constant="100"/>
+                                                </constraint>
+                                                <constraint firstAttribute="width" secondItem="MWQ-tr-JM7" secondAttribute="height" multiplier="1:1" id="tph-wk-u7h"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="C2N-Xb-hgR"/>
+                                                    <exclude reference="tph-wk-u7h"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <exclude reference="C2N-Xb-hgR"/>
+                                                    <include reference="tph-wk-u7h"/>
+                                                </mask>
+                                            </variation>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time zone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JN-KH-2Qx">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                            <color key="textColor" red="0.46323078870773315" green="0.12278983741998672" blue="0.8523063063621521" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstItem="MWQ-tr-JM7" firstAttribute="centerY" secondItem="BAp-v9-tiT" secondAttribute="centerY" id="MdR-Kv-7jU"/>
+                                        <constraint firstItem="MWQ-tr-JM7" firstAttribute="height" secondItem="BAp-v9-tiT" secondAttribute="height" multiplier="0.9" id="Qtg-Dx-bGq"/>
+                                        <constraint firstItem="8JN-KH-2Qx" firstAttribute="centerY" secondItem="MWQ-tr-JM7" secondAttribute="centerY" id="WSz-tu-lDK"/>
+                                        <constraint firstItem="8JN-KH-2Qx" firstAttribute="leading" secondItem="MWQ-tr-JM7" secondAttribute="trailing" constant="14" id="aOm-Vp-9yM"/>
+                                        <constraint firstItem="MWQ-tr-JM7" firstAttribute="leading" secondItem="BAp-v9-tiT" secondAttribute="leadingMargin" constant="20" id="fKA-Bo-PLK">
+                                            <variation key="widthClass=compact" constant="0.0"/>
+                                        </constraint>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="MWQ-tr-JM7"/>
+                                            <exclude reference="8JN-KH-2Qx"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="MdR-Kv-7jU"/>
+                                            <exclude reference="Qtg-Dx-bGq"/>
+                                            <exclude reference="fKA-Bo-PLK"/>
+                                            <exclude reference="WSz-tu-lDK"/>
+                                            <exclude reference="aOm-Vp-9yM"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="MWQ-tr-JM7"/>
+                                            <include reference="8JN-KH-2Qx"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="MdR-Kv-7jU"/>
+                                            <include reference="Qtg-Dx-bGq"/>
+                                            <include reference="fKA-Bo-PLK"/>
+                                            <include reference="WSz-tu-lDK"/>
+                                            <include reference="aOm-Vp-9yM"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <outlet property="clockView" destination="MWQ-tr-JM7" id="kjX-Dw-JkR"/>
+                                    <outlet property="timeZoneLabel" destination="8JN-KH-2Qx" id="sHc-bm-tHW"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Dwb-HH-ipI" id="fH4-qO-Jzn"/>
+                            <outlet property="delegate" destination="Dwb-HH-ipI" id="2n3-uR-hR3"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="H7h-Rm-KCd">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="e70-lN-l3I">
+                            <connections>
+                                <segue destination="uwq-OE-Kjj" kind="popoverPresentation" identifier="TimeZonePopover" popoverAnchorBarButtonItem="e70-lN-l3I" id="fbc-Ou-c8H">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="600"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J7v-xd-TaG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1180.5" y="425"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="hzE-jh-SRp">
+            <objects>
+                <viewController storyboardIdentifier="bumperright" id="mcX-v9-ErR" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZhC-d1-B3a"/>
+                        <viewControllerLayoutGuide type="bottom" id="IrR-yG-4F7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VB2-eW-13u">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="40"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bgW-IT-gd5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2494.5" y="67"/>
+        </scene>
+        <!--Timezone Popover Table View Controller-->
+        <scene sceneID="rm9-Jk-zBt">
+            <objects>
+                <tableViewController id="uwq-OE-Kjj" customClass="TimezonePopoverTableViewController" customModule="Global_Time" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sai-bn-5xD">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Dfp-8c-cgr">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dfp-8c-cgr" id="3iH-us-YCx">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="uwq-OE-Kjj" id="Grn-Z9-Bb5"/>
+                            <outlet property="delegate" destination="uwq-OE-Kjj" id="v73-Ol-994"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kXr-Di-vi3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1815" y="425"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="AJs-gN-0yq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ocd-pN-Awp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="40"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="B7z-i5-pAZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.26225829124450684" green="0.027831424027681351" blue="0.49326407909393311" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Dwb-HH-ipI" kind="relationship" relationship="rootViewController" id="pqv-Wy-lVF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9b1-hW-qEh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1180.5" y="67"/>
+        </scene>
+    </scenes>
+</document>
