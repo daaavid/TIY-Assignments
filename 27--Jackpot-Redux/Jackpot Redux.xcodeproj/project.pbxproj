@@ -1,0 +1,337 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C45D6981BF266E3001BDA49 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C45D6971BF266E3001BDA49 /* main.m */; };
+		4C45D69B1BF266E3001BDA49 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C45D69A1BF266E3001BDA49 /* AppDelegate.m */; };
+		4C45D6A11BF266E3001BDA49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C45D69F1BF266E3001BDA49 /* Main.storyboard */; };
+		4C45D6A31BF266E3001BDA49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C45D6A21BF266E3001BDA49 /* Assets.xcassets */; };
+		4C45D6A61BF266E3001BDA49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C45D6A41BF266E3001BDA49 /* LaunchScreen.storyboard */; };
+		4C45D6AF1BF269FC001BDA49 /* TicketsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C45D6AE1BF269FC001BDA49 /* TicketsTableViewController.m */; };
+		4C45D6B51BF26B30001BDA49 /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C45D6B41BF26B30001BDA49 /* Ticket.m */; };
+		4C823F931BF284360082B2EC /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C823F921BF284360082B2EC /* PickerViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4C45D6931BF266E3001BDA49 /* Jackpot Redux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jackpot Redux.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C45D6971BF266E3001BDA49 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4C45D6991BF266E3001BDA49 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4C45D69A1BF266E3001BDA49 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4C45D6A01BF266E3001BDA49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4C45D6A21BF266E3001BDA49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4C45D6A51BF266E3001BDA49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4C45D6A71BF266E3001BDA49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C45D6AD1BF269FC001BDA49 /* TicketsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketsTableViewController.h; sourceTree = "<group>"; };
+		4C45D6AE1BF269FC001BDA49 /* TicketsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketsTableViewController.m; sourceTree = "<group>"; };
+		4C45D6B31BF26B30001BDA49 /* Ticket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ticket.h; sourceTree = "<group>"; };
+		4C45D6B41BF26B30001BDA49 /* Ticket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ticket.m; sourceTree = "<group>"; };
+		4C823F911BF284360082B2EC /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
+		4C823F921BF284360082B2EC /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4C45D6901BF266E3001BDA49 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4C45D68A1BF266E3001BDA49 = {
+			isa = PBXGroup;
+			children = (
+				4C45D6951BF266E3001BDA49 /* Jackpot Redux */,
+				4C45D6941BF266E3001BDA49 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4C45D6941BF266E3001BDA49 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C45D6931BF266E3001BDA49 /* Jackpot Redux.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4C45D6951BF266E3001BDA49 /* Jackpot Redux */ = {
+			isa = PBXGroup;
+			children = (
+				4C45D69A1BF266E3001BDA49 /* AppDelegate.m */,
+				4C45D6AE1BF269FC001BDA49 /* TicketsTableViewController.m */,
+				4C45D6B41BF26B30001BDA49 /* Ticket.m */,
+				4C823F921BF284360082B2EC /* PickerViewController.m */,
+				4C45D69F1BF266E3001BDA49 /* Main.storyboard */,
+				63F7EF7B1BF2683200921E6B /* headers */,
+				63F7EF7A1BF2682800921E6B /* other */,
+				4C45D6961BF266E3001BDA49 /* Supporting Files */,
+			);
+			path = "Jackpot Redux";
+			sourceTree = "<group>";
+		};
+		4C45D6961BF266E3001BDA49 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4C45D6971BF266E3001BDA49 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		63F7EF7A1BF2682800921E6B /* other */ = {
+			isa = PBXGroup;
+			children = (
+				4C45D6A21BF266E3001BDA49 /* Assets.xcassets */,
+				4C45D6A41BF266E3001BDA49 /* LaunchScreen.storyboard */,
+				4C45D6A71BF266E3001BDA49 /* Info.plist */,
+			);
+			name = other;
+			sourceTree = "<group>";
+		};
+		63F7EF7B1BF2683200921E6B /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				4C45D6991BF266E3001BDA49 /* AppDelegate.h */,
+				4C45D6AD1BF269FC001BDA49 /* TicketsTableViewController.h */,
+				4C45D6B31BF26B30001BDA49 /* Ticket.h */,
+				4C823F911BF284360082B2EC /* PickerViewController.h */,
+			);
+			name = headers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4C45D6921BF266E3001BDA49 /* Jackpot Redux */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C45D6AA1BF266E3001BDA49 /* Build configuration list for PBXNativeTarget "Jackpot Redux" */;
+			buildPhases = (
+				4C45D68F1BF266E3001BDA49 /* Sources */,
+				4C45D6901BF266E3001BDA49 /* Frameworks */,
+				4C45D6911BF266E3001BDA49 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Jackpot Redux";
+			productName = "Jackpot Redux";
+			productReference = 4C45D6931BF266E3001BDA49 /* Jackpot Redux.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4C45D68B1BF266E3001BDA49 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "The Iron Yard";
+				TargetAttributes = {
+					4C45D6921BF266E3001BDA49 = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = 32355P55NQ;
+					};
+				};
+			};
+			buildConfigurationList = 4C45D68E1BF266E3001BDA49 /* Build configuration list for PBXProject "Jackpot Redux" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4C45D68A1BF266E3001BDA49;
+			productRefGroup = 4C45D6941BF266E3001BDA49 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4C45D6921BF266E3001BDA49 /* Jackpot Redux */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4C45D6911BF266E3001BDA49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C45D6A61BF266E3001BDA49 /* LaunchScreen.storyboard in Resources */,
+				4C45D6A31BF266E3001BDA49 /* Assets.xcassets in Resources */,
+				4C45D6A11BF266E3001BDA49 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4C45D68F1BF266E3001BDA49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C45D69B1BF266E3001BDA49 /* AppDelegate.m in Sources */,
+				4C45D6981BF266E3001BDA49 /* main.m in Sources */,
+				4C823F931BF284360082B2EC /* PickerViewController.m in Sources */,
+				4C45D6AF1BF269FC001BDA49 /* TicketsTableViewController.m in Sources */,
+				4C45D6B51BF26B30001BDA49 /* Ticket.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4C45D69F1BF266E3001BDA49 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C45D6A01BF266E3001BDA49 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4C45D6A41BF266E3001BDA49 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C45D6A51BF266E3001BDA49 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4C45D6A81BF266E3001BDA49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4C45D6A91BF266E3001BDA49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4C45D6AB1BF266E3001BDA49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Jackpot Redux/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tiy.Jackpot-Redux";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4C45D6AC1BF266E3001BDA49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Jackpot Redux/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tiy.Jackpot-Redux";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4C45D68E1BF266E3001BDA49 /* Build configuration list for PBXProject "Jackpot Redux" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C45D6A81BF266E3001BDA49 /* Debug */,
+				4C45D6A91BF266E3001BDA49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C45D6AA1BF266E3001BDA49 /* Build configuration list for PBXNativeTarget "Jackpot Redux" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C45D6AB1BF266E3001BDA49 /* Debug */,
+				4C45D6AC1BF266E3001BDA49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4C45D68B1BF266E3001BDA49 /* Project object */;
+}
