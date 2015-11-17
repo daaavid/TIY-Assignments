@@ -10,15 +10,21 @@ import UIKit
 
 let borderWidth: CGFloat = 2
 let borderAlpha: CGFloat = 1
-let digitOffset: CGFloat = 10
+let digitOffset: CGFloat = 16
 
 @IBDesignable
 class ClockView: UIView
 {
     var animationTimer: CADisplayLink? //core animation display link
     //timer object that allows your application to synchronize its drawing to the refresh rate of the display
+    var clockBGColor = UIColor.whiteColor()
+    var borderColor = UIColor.blackColor()
+    var digitColor = UIColor.blackColor()
+    
+    var colorHasBeenSet = false
+    
     var timezone: NSTimeZone?
-    {
+        {
         didSet //anytime timezone has been set (also can willSet)
         {
             animationTimer = CADisplayLink(target: self, selector: "timerFired:")
@@ -34,9 +40,6 @@ class ClockView: UIView
     var hours = 0
     
     var boundsCenter: CGPoint
-    let clockBGColor = UIColor.blackColor()
-    let borderColor = UIColor.whiteColor()
-    let digitColor = UIColor.whiteColor()
     
     var digitFont: UIFont
     
@@ -60,7 +63,7 @@ class ClockView: UIView
         
         super.init(coder: aDecoder)
         
-        let fontSize = 8 + frame.size.width/50
+        let fontSize = 6 + frame.size.width/50
         digitFont = UIFont.systemFontOfSize(fontSize)
         boundsCenter = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
         self.backgroundColor = UIColor.clearColor()
@@ -108,7 +111,7 @@ class ClockView: UIView
             hourString.drawInRect(CGRect(x: labelX - digitFont.lineHeight / 2.0, y: labelY - digitFont.lineHeight / 2.0, width: digitFont.lineHeight, height: digitFont.lineHeight), withAttributes: [NSForegroundColorAttributeName: digitColor, NSFontAttributeName: digitFont])
         }
         
-        //minute hand 
+        //minute hand
         let minHandPos = minutesHandPosition()
         CGContextSetStrokeColorWithColor(cxt, digitColor.CGColor)
         CGContextBeginPath(cxt)
@@ -157,7 +160,7 @@ class ClockView: UIView
         let handRadius = CGFloat(frame.size.width / 3.6)
         return CGPoint(x: handRadius * CGFloat(cosf(minutesAsRadians)) + boundsCenter.x, y: handRadius * CGFloat(sinf(minutesAsRadians)) + boundsCenter.y)
     }
-
+    
     func secondsHandPosition() -> CGPoint
     {
         let secondsAsRadians = Float(Double(seconds) / 60 * 2 * M_PI - M_PI_2)
@@ -176,6 +179,24 @@ class ClockView: UIView
         minutes = timeComponents.minute
         seconds = timeComponents.second
         
+        if colorHasBeenSet == false
+        {
+            setBGColors()
+        }
+        
         setNeedsDisplay() //reload view data
+    }
+        
+    func setBGColors()
+    {
+        let isDay = Time().isDay(hours)
+        print(hours)
+        if !isDay
+        {
+            clockBGColor = UIColor.blackColor()
+            borderColor = UIColor.whiteColor()
+            digitColor = UIColor.whiteColor()
+        }
+        colorHasBeenSet = true
     }
 }

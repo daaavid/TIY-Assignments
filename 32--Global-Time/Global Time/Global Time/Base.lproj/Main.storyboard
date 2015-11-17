@@ -8,11 +8,11 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Global Time Table View Controller-->
         <scene sceneID="oeo-LJ-WGm">
             <objects>
-                <tableViewController id="Dwb-HH-ipI" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" id="cnB-rO-tfk">
+                <tableViewController id="Dwb-HH-ipI" customClass="GlobalTimeTableViewController" customModule="Global_Time" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" id="cnB-rO-tfk">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -108,7 +108,7 @@
                     <navigationItem key="navigationItem" id="H7h-Rm-KCd">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="e70-lN-l3I">
                             <connections>
-                                <segue destination="uwq-OE-Kjj" kind="popoverPresentation" identifier="TimeZonePopover" popoverAnchorBarButtonItem="e70-lN-l3I" id="fbc-Ou-c8H">
+                                <segue destination="uwq-OE-Kjj" kind="popoverPresentation" identifier="popover" popoverAnchorBarButtonItem="e70-lN-l3I" id="fbc-Ou-c8H">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
@@ -116,6 +116,9 @@
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="400" height="600"/>
+                    <connections>
+                        <outlet property="addButton" destination="e70-lN-l3I" id="o2k-6Y-acP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J7v-xd-TaG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -150,10 +153,22 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Dfp-8c-cgr">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimezoneCell" textLabel="LqW-Iv-7J9" style="IBUITableViewCellStyleDefault" id="Dfp-8c-cgr">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dfp-8c-cgr" id="3iH-us-YCx">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LqW-Iv-7J9">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.46323078870773315" green="0.12278983741998672" blue="0.8523063063621521" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact">
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
@@ -164,10 +179,12 @@
                             <outlet property="delegate" destination="uwq-OE-Kjj" id="v73-Ol-994"/>
                         </connections>
                     </tableView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="400"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kXr-Di-vi3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1815" y="425"/>
+            <point key="canvasLocation" x="1644" y="325"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AJs-gN-0yq">

@@ -15,20 +15,31 @@ protocol TimezonePopoverTableViewControllerDelegate
 
 class GlobalTimeTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, TimezonePopoverTableViewControllerDelegate
 {
-    var allTimezones = [String]()
+    @IBOutlet weak var addButton: UIBarButtonItem!
+
+    let allTimezones = NSTimeZone.knownTimeZoneNames
     var shownTimezones = [String]()
     var remainingTimezones = [String]()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        remainingTimezones = allTimezones()
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        if remainingTimezones.count == 0
+        {
+            addButton.enabled = false
+        }
+        else
+        {
+            addButton.enabled = true
+        }
     }
 
     // MARK: - Table view data source
@@ -45,33 +56,35 @@ class GlobalTimeTableViewController: UITableViewController, UIPopoverPresentatio
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ClockCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("ClockCell", forIndexPath: indexPath) as! ClockCell
         
+        let timezone = shownTimezones[indexPath.row]
+        cell.timeZoneLabel.text = timezone
+        cell.clockView.timezone = NSTimeZone(name: timezone)
         
-
         return cell
     }
 
-    /*
+
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
+        if editingStyle == .Delete
+        {
+            shownTimezones.removeAtIndex(indexPath.row)
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! ClockCell
+            cell.clockView.animationTimer?.invalidate()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
 
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        if segue.identifier == "TimezonePopover"
+        if segue.identifier == "popover"
         {
-            let popover = segue.destinationViewController as!TimezonePopoverTableViewController
-            popover.timezones = self.remainingTimezones
+            let popover = segue.destinationViewController as! TimezonePopoverTableViewController
+            popover.timezones = remainingTimezones
             popover.delegate = self
             popover.popoverPresentationController?.delegate = self
             
@@ -80,8 +93,22 @@ class GlobalTimeTableViewController: UITableViewController, UIPopoverPresentatio
         }
     }
     
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle
+    {
+        //        return UIModalPresentationStyle.None
+        return .None
+    }
+    
     func timezoneWasChosen(chosenTimezone: String)
     {
         shownTimezones.append(chosenTimezone)
+        
+        let rowToRemove = (remainingTimezones as NSArray).indexOfObject(chosenTimezone)
+        remainingTimezones.removeAtIndex(rowToRemove)
+        
+        tableView.reloadData()
+        
+
     }
 }
