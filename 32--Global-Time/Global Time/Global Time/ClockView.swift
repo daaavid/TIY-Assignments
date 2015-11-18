@@ -20,6 +20,7 @@ class ClockView: UIView
     var clockBGColor = UIColor.whiteColor()
     var borderColor = UIColor.blackColor()
     var digitColor = UIColor.blackColor()
+    var secondHandColor = UIColor.redColor()
     
     var colorHasNotBeenSet = true
     
@@ -131,7 +132,7 @@ class ClockView: UIView
         
         //second hand
         let secHandPos = secondsHandPosition()
-        CGContextSetStrokeColorWithColor(cxt, UIColor.redColor().CGColor)
+        CGContextSetStrokeColorWithColor(cxt, secondHandColor.CGColor)
         CGContextBeginPath(cxt)
         CGContextMoveToPoint(cxt, boundsCenter.x, boundsCenter.y)
         CGContextSetLineWidth(cxt, 1.0)
@@ -142,7 +143,7 @@ class ClockView: UIView
         radius = 3.0
         let center3 = CGRect(x: boundsCenter.x - radius, y: boundsCenter.y - radius, width: 2 * radius, height: 2 * radius)
         CGContextAddEllipseInRect(cxt, center3)
-        CGContextSetFillColorWithColor(cxt, UIColor.redColor().CGColor)
+        CGContextSetFillColorWithColor(cxt, secondHandColor.CGColor)
         CGContextFillPath(cxt)
         
     }
@@ -198,6 +199,7 @@ class ClockView: UIView
             clockBGColor = UIColor.blackColor()
             borderColor = UIColor.whiteColor()
             digitColor = UIColor.whiteColor()
+            secondHandColor = UIColor.cyanColor()
         }
     }
     
