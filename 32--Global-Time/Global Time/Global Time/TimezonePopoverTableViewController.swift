@@ -113,14 +113,13 @@ class TimezonePopoverTableViewController: UITableViewController, UISearchBarDele
                 {
                     if skipFirst >= 2
                     {
-                        formattedTimezone = formattedTimezone + "/" + component
+                        formattedTimezone = formattedTimezone + ", " + component
                     }
                     skipFirst += 1
                 }
             }
             
             formattedTimezone = formattedTimezone
-                .stringByReplacingOccurrencesOfString("/", withString: ", ")
                 .stringByReplacingOccurrencesOfString("_", withString: " ")
 
             cell.textLabel!.text = formattedTimezone
@@ -135,6 +134,8 @@ class TimezonePopoverTableViewController: UITableViewController, UISearchBarDele
         
         if !narrowed
         {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            
             shownTimezones.removeAll()
             
             for timezone in timezones

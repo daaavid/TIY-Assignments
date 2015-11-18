@@ -24,7 +24,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="109.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time zone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JN-KH-2Qx">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time zone" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JN-KH-2Qx">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
@@ -34,6 +34,9 @@
                                     </subviews>
                                     <animations/>
                                     <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="8JN-KH-2Qx" secondAttribute="trailing" constant="195.5" id="7Zg-dw-klg">
+                                            <variation key="widthClass=compact" constant="16"/>
+                                        </constraint>
                                         <constraint firstItem="8JN-KH-2Qx" firstAttribute="centerY" secondItem="BAp-v9-tiT" secondAttribute="centerY" id="CPv-4L-IbF"/>
                                         <constraint firstItem="8JN-KH-2Qx" firstAttribute="leading" secondItem="BAp-v9-tiT" secondAttribute="leadingMargin" constant="112.5" id="FzN-wF-0S8"/>
                                     </constraints>
@@ -42,6 +45,7 @@
                                             <exclude reference="8JN-KH-2Qx"/>
                                         </mask>
                                         <mask key="constraints">
+                                            <exclude reference="7Zg-dw-klg"/>
                                             <exclude reference="CPv-4L-IbF"/>
                                             <exclude reference="FzN-wF-0S8"/>
                                         </mask>
@@ -51,6 +55,7 @@
                                             <include reference="8JN-KH-2Qx"/>
                                         </mask>
                                         <mask key="constraints">
+                                            <include reference="7Zg-dw-klg"/>
                                             <include reference="CPv-4L-IbF"/>
                                             <include reference="FzN-wF-0S8"/>
                                         </mask>
