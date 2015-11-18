@@ -156,6 +156,7 @@ class TimezonePopoverTableViewController: UITableViewController, UISearchBarDele
             self.tableView.reloadData()
             narrowed = true
             
+            searchBar.text = ""
             searchBar.becomeFirstResponder()
         }
             
