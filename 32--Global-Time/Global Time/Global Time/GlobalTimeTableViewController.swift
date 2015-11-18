@@ -27,8 +27,8 @@ class GlobalTimeTableViewController: UITableViewController, UIPopoverPresentatio
         
         shownTimezones.append("America/New_York")
         remainingTimezones = allTimezones()
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
 
     // MARK: - Table view data source
@@ -48,7 +48,10 @@ class GlobalTimeTableViewController: UITableViewController, UIPopoverPresentatio
         let cell = tableView.dequeueReusableCellWithIdentifier("ClockCell", forIndexPath: indexPath) as! ClockCell
         
         let timezone = shownTimezones[indexPath.row]
-        cell.timeZoneLabel.text = timezone
+        let formattedTimezone = timezone
+                .stringByReplacingOccurrencesOfString("/", withString: ", ")
+                .stringByReplacingOccurrencesOfString("_", withString: " ")
+        cell.timeZoneLabel.text = formattedTimezone
         
         let frame = CGRect(x: 10, y: 10, width: 80, height: 80)
         let cellClock = ClockView(frame: frame)
@@ -59,7 +62,6 @@ class GlobalTimeTableViewController: UITableViewController, UIPopoverPresentatio
 
         return cell
     }
-
 
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -84,7 +86,7 @@ class GlobalTimeTableViewController: UITableViewController, UIPopoverPresentatio
             popover.popoverPresentationController?.delegate = self
             popover.timezones = remainingTimezones
             
-            popover.preferredContentSize = CGSizeMake(100, 300)
+            popover.preferredContentSize = CGSizeMake(150, 300)
         }
     }
     
@@ -99,8 +101,8 @@ class GlobalTimeTableViewController: UITableViewController, UIPopoverPresentatio
     {
         shownTimezones.append(chosenTimezone)
         
-        let rowToRemove = (remainingTimezones as NSArray).indexOfObject(chosenTimezone)
-        remainingTimezones.removeAtIndex(rowToRemove)
+//        let rowToRemove = (remainingTimezones as NSArray).indexOfObject(chosenTimezone)
+//        remainingTimezones.removeAtIndex(rowToRemove)
         
         tableView.reloadData()
         

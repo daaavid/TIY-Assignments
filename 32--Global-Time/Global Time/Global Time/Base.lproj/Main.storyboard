@@ -28,7 +28,7 @@
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                            <color key="textColor" red="0.46323078870773315" green="0.12278983741998672" blue="0.8523063063621521" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.46425241231918335" green="0.0094701824709773064" blue="0.86592906713485718" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -80,9 +80,6 @@
                     <size key="freeformSize" width="400" height="600"/>
                     <connections>
                         <outlet property="addButton" destination="e70-lN-l3I" id="o2k-6Y-acP"/>
-                        <segue destination="Rtg-30-fWG" kind="popoverPresentation" identifier="narrowedPopover" popoverAnchorBarButtonItem="e70-lN-l3I" id="nMY-ys-xaA">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J7v-xd-TaG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -114,21 +111,28 @@
         <scene sceneID="rm9-Jk-zBt">
             <objects>
                 <tableViewController id="uwq-OE-Kjj" customClass="TimezonePopoverTableViewController" customModule="Global_Time" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sai-bn-5xD">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sai-bn-5xD">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" id="n7O-S1-apB">
+                            <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <color key="barTintColor" red="0.46323078870773315" green="0.12278983741998672" blue="0.8523063063621521" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimezoneCell" textLabel="LqW-Iv-7J9" style="IBUITableViewCellStyleDefault" id="Dfp-8c-cgr">
-                                <rect key="frame" x="0.0" y="28" width="200" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="200" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dfp-8c-cgr" id="3iH-us-YCx">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LqW-Iv-7J9">
-                                            <rect key="frame" x="15" y="0.0" width="170" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="170" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -151,10 +155,13 @@
                     </tableView>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="200" height="400"/>
+                    <connections>
+                        <outlet property="searchBar" destination="n7O-S1-apB" id="FmJ-Uf-kep"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kXr-Di-vi3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1650" y="158"/>
+            <point key="canvasLocation" x="1663.5" y="247"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AJs-gN-0yq">
@@ -178,52 +185,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9b1-hW-qEh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1180.5" y="67"/>
-        </scene>
-        <!--Narrowed Timezone Popover Table View Controller-->
-        <scene sceneID="yBU-MR-90e">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zba-BH-0lU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController storyboardIdentifier="NarrowedTimezonePopoverTableViewController" id="Rtg-30-fWG" customClass="NarrowedTimezonePopoverTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="D6C-oH-n0k">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="400"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimezoneCell" textLabel="omX-Wh-b6F" style="IBUITableViewCellStyleDefault" id="ZQj-Kk-Hrj">
-                                <rect key="frame" x="0.0" y="28" width="200" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZQj-Kk-Hrj" id="CLX-m3-QQN">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="omX-Wh-b6F">
-                                            <rect key="frame" x="15" y="0.0" width="170" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.46323078870000001" green="0.1227898374" blue="0.85230630640000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact">
-                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                            </variation>
-                                        </label>
-                                    </subviews>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Rtg-30-fWG" id="MpG-kB-l4o"/>
-                            <outlet property="delegate" destination="Rtg-30-fWG" id="ZNE-iL-RGu"/>
-                        </connections>
-                    </tableView>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="200" height="400"/>
-                </tableViewController>
-            </objects>
-            <point key="canvasLocation" x="1650" y="595"/>
         </scene>
     </scenes>
 </document>
