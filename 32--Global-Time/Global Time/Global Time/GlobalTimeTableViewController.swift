@@ -80,12 +80,11 @@ class GlobalTimeTableViewController: UITableViewController, UIPopoverPresentatio
         if segue.identifier == "popover"
         {
             let popover = segue.destinationViewController as! TimezonePopoverTableViewController
-            popover.timezones = remainingTimezones
             popover.delegate = self
             popover.popoverPresentationController?.delegate = self
+            popover.timezones = remainingTimezones
             
-            let contentHeight = 44 * CGFloat(remainingTimezones.count)
-            popover.preferredContentSize = CGSizeMake(200, contentHeight)
+            popover.preferredContentSize = CGSizeMake(100, 300)
         }
     }
     
