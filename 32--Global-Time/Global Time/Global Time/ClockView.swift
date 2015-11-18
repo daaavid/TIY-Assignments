@@ -22,7 +22,7 @@ class ClockView: UIView
     var digitColor = UIColor.blackColor()
     var secondHandColor = UIColor.redColor()
     
-    var colorHasNotBeenSet = true
+    var colorHasBeenSet = false
     
     var timezone: NSTimeZone?
         {
@@ -181,10 +181,10 @@ class ClockView: UIView
         minutes = timeComponents.minute
         seconds = timeComponents.second
         
-        if colorHasNotBeenSet
+        if !colorHasBeenSet
         {
             setBGColors()
-            colorHasNotBeenSet = false
+            colorHasBeenSet = true
         }
         
         setNeedsDisplay() //reload view data

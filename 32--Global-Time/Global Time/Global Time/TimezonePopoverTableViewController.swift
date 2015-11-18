@@ -96,10 +96,35 @@ class TimezonePopoverTableViewController: UITableViewController, UISearchBarDele
             .dequeueReusableCellWithIdentifier("TimezoneCell", forIndexPath: indexPath)
 
         let timezone = shownTimezones[indexPath.row]
-        let formattedTimezone = timezone
-            .stringByReplacingOccurrencesOfString("/", withString: ", ")
-            .stringByReplacingOccurrencesOfString("_", withString: " ")
-        cell.textLabel!.text = formattedTimezone
+        
+        if !narrowed
+        {
+            cell.textLabel!.text = timezone
+        }
+        else
+        {
+            let fullTimezone = timezone.componentsSeparatedByString("/")
+            var formattedTimezone = fullTimezone[1]
+            var skipFirst = 0
+
+            if fullTimezone.count > 1
+            {
+                for component in fullTimezone
+                {
+                    if skipFirst >= 2
+                    {
+                        formattedTimezone = formattedTimezone + "/" + component
+                    }
+                    skipFirst += 1
+                }
+            }
+            
+            formattedTimezone = formattedTimezone
+                .stringByReplacingOccurrencesOfString("/", withString: ", ")
+                .stringByReplacingOccurrencesOfString("_", withString: " ")
+
+            cell.textLabel!.text = formattedTimezone
+        }
 
         return cell
     }
@@ -129,6 +154,8 @@ class TimezonePopoverTableViewController: UITableViewController, UISearchBarDele
             setIndexTitles()
             self.tableView.reloadData()
             narrowed = true
+            
+            searchBar.becomeFirstResponder()
         }
             
         else
