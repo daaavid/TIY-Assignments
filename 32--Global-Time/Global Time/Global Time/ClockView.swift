@@ -10,7 +10,7 @@ import UIKit
 
 let borderWidth: CGFloat = 2
 let borderAlpha: CGFloat = 1
-let digitOffset: CGFloat = 16
+let digitOffset: CGFloat = 15
 
 @IBDesignable
 class ClockView: UIView
@@ -111,22 +111,12 @@ class ClockView: UIView
             hourString.drawInRect(CGRect(x: labelX - digitFont.lineHeight / 2.0, y: labelY - digitFont.lineHeight / 2.0, width: digitFont.lineHeight, height: digitFont.lineHeight), withAttributes: [NSForegroundColorAttributeName: digitColor, NSFontAttributeName: digitFont])
         }
         
-        
-        //second hand
-        let secHandPos = secondsHandPosition()
-        CGContextSetStrokeColorWithColor(cxt, UIColor.redColor().CGColor)
-        CGContextBeginPath(cxt)
-        CGContextMoveToPoint(cxt, boundsCenter.x, boundsCenter.y)
-        CGContextSetLineWidth(cxt, 1.0)
-        CGContextAddLineToPoint(cxt, secHandPos.x, secHandPos.y)
-        CGContextStrokePath(cxt)
-        
         //minute hand
         let minHandPos = minutesHandPosition()
         CGContextSetStrokeColorWithColor(cxt, digitColor.CGColor)
         CGContextBeginPath(cxt)
         CGContextMoveToPoint(cxt, boundsCenter.x, boundsCenter.y)
-        CGContextSetLineWidth(cxt, 4.0)
+        CGContextSetLineWidth(cxt, 3.0)
         CGContextAddLineToPoint(cxt, minHandPos.x, minHandPos.y)
         CGContextStrokePath(cxt)
         
@@ -135,8 +125,17 @@ class ClockView: UIView
         CGContextSetStrokeColorWithColor(cxt, digitColor.CGColor)
         CGContextBeginPath(cxt)
         CGContextMoveToPoint(cxt, boundsCenter.x, boundsCenter.y)
-        CGContextSetLineWidth(cxt, 4.0)
+        CGContextSetLineWidth(cxt, 3.0)
         CGContextAddLineToPoint(cxt, hourHandPos.x, hourHandPos.y)
+        CGContextStrokePath(cxt)
+        
+        //second hand
+        let secHandPos = secondsHandPosition()
+        CGContextSetStrokeColorWithColor(cxt, UIColor.redColor().CGColor)
+        CGContextBeginPath(cxt)
+        CGContextMoveToPoint(cxt, boundsCenter.x, boundsCenter.y)
+        CGContextSetLineWidth(cxt, 1.0)
+        CGContextAddLineToPoint(cxt, secHandPos.x, secHandPos.y)
         CGContextStrokePath(cxt)
         
         // second hand's center
@@ -158,7 +157,7 @@ class ClockView: UIView
     func minutesHandPosition() -> CGPoint
     {
         let minutesAsRadians = Float(Double(minutes) / 60.0 * 2.0 * M_PI - M_PI_2)
-        let handRadius = CGFloat(frame.size.width / 3.6)
+        let handRadius = CGFloat(frame.size.width / 3.4)
         return CGPoint(x: handRadius*CGFloat(cosf(minutesAsRadians)) + boundsCenter.x, y: handRadius*CGFloat(sinf(minutesAsRadians)) + boundsCenter.y)
     }
     
@@ -166,7 +165,7 @@ class ClockView: UIView
     {
         let halfClock = Double(hours) + Double(minutes) / 60.0
         let hoursAsRadians = Float(halfClock / 12.0 * 2.0 * M_PI - M_PI_2)
-        let handRadius = CGFloat(frame.size.width / 4.2)
+        let handRadius = CGFloat(frame.size.width / 3.8)
         return CGPoint(x: handRadius*CGFloat(cosf(hoursAsRadians)) + boundsCenter.x, y: handRadius*CGFloat(sinf(hoursAsRadians)) + boundsCenter.y)
     }
     

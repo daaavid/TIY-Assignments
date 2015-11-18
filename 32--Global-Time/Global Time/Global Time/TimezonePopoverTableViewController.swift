@@ -37,18 +37,6 @@ class TimezonePopoverTableViewController: UITableViewController, UISearchBarDele
         }
     }
     
-    override func viewDidAppear(animated: Bool)
-    {
-        for timezone in timezones
-        {
-            let firstLetter = String([Character](timezone.characters)[0])
-            if !indexTitles.contains(firstLetter)
-            {
-                indexTitles.append(firstLetter)
-            }
-        }
-    }
-    
     // MARK: - search bar
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar)
@@ -74,6 +62,7 @@ class TimezonePopoverTableViewController: UITableViewController, UISearchBarDele
         let contentHeight = CGFloat(shownTimezones.count * 44 + 44)
         if narrowed
         {
+            setIndexTitles()
             self.preferredContentSize = CGSizeMake(contentWidth * 10.5, contentHeight)
         }
         else
@@ -137,7 +126,7 @@ class TimezonePopoverTableViewController: UITableViewController, UISearchBarDele
             }
             
             self.preferredContentSize = CGSizeMake(contentWidth * 10.5, 300)
-            searchBar.hidden = false
+            setIndexTitles()
             self.tableView.reloadData()
             narrowed = true
         }
@@ -148,6 +137,21 @@ class TimezonePopoverTableViewController: UITableViewController, UISearchBarDele
             delegate?.timezoneWasChosen(timezone)
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
+    func setIndexTitles()
+    {
+        indexTitles.removeAll()
+        
+        for timezone in shownTimezones
+        {
+            let secondWord = timezone.componentsSeparatedByString("/")[1]
+            let firstLetter = String([Character](secondWord.characters)[0])
+            if !indexTitles.contains(firstLetter)
+            {
+                indexTitles.append(firstLetter)
+            }
         }
     }
 }
