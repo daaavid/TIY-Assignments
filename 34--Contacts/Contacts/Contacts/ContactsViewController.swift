@@ -9,6 +9,8 @@
 import UIKit
 import RealmSwift
 
+var youName = "David"
+
 class ContactsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet weak var tableView: UITableView!

@@ -9,15 +9,21 @@
 /* Begin PBXBuildFile section */
 		637946DA1BFFCFB6009F28C2 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637946D91BFFCFB6009F28C2 /* ContactsViewController.swift */; };
 		637946DC1BFFCFF5009F28C2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637946DB1BFFCFF5009F28C2 /* ProfileViewController.swift */; };
+		63AD24351C002F77008DA3E9 /* Phone_alt2.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD24341C002F77008DA3E9 /* Phone_alt2.png */; };
+		63AD243C1C00E0EF008DA3E9 /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD24371C00E0EF008DA3E9 /* book.png */; };
+		63AD243D1C00E0EF008DA3E9 /* contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD24381C00E0EF008DA3E9 /* contact.png */; };
+		63AD243E1C00E0EF008DA3E9 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD24391C00E0EF008DA3E9 /* edit.png */; };
+		63AD243F1C00E0EF008DA3E9 /* family.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD243A1C00E0EF008DA3E9 /* family.png */; };
+		63AD24401C00E0EF008DA3E9 /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD243B1C00E0EF008DA3E9 /* phone.png */; };
+		63AD24421C00ED23008DA3E9 /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD24411C00ED23008DA3E9 /* mail.png */; };
+		63AD24441C00EF04008DA3E9 /* editing.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD24431C00EF04008DA3E9 /* editing.png */; };
 		63B0F5C71BFFB640005459FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B0F5C61BFFB640005459FF /* AppDelegate.swift */; };
 		63B0F5C91BFFB640005459FF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B0F5C81BFFB640005459FF /* MainViewController.swift */; };
 		63B0F5CC1BFFB640005459FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B0F5CA1BFFB640005459FF /* Main.storyboard */; };
 		63B0F5CE1BFFB640005459FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B0F5CD1BFFB640005459FF /* Assets.xcassets */; };
 		63B0F5D11BFFB641005459FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B0F5CF1BFFB641005459FF /* LaunchScreen.storyboard */; };
 		63B0F5DA1BFFBB5F005459FF /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B0F5D91BFFBB5F005459FF /* Contact.swift */; };
-		63B0F5DC1BFFC24D005459FF /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B0F5DB1BFFC24D005459FF /* phone.png */; };
 		63B0F5DE1BFFC29C005459FF /* favourites.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B0F5DD1BFFC29C005459FF /* favourites.png */; };
-		63B0F5E01BFFC2B2005459FF /* app draw.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B0F5DF1BFFC2B2005459FF /* app draw.png */; };
 		63B0F5E21BFFC30F005459FF /* ID Card.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B0F5E11BFFC30F005459FF /* ID Card.png */; };
 		63B0F5E41BFFC366005459FF /* people_alt2.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B0F5E31BFFC366005459FF /* people_alt2.png */; };
 		63B0F5E61BFFC53B005459FF /* Viber.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B0F5E51BFFC53B005459FF /* Viber.png */; };
@@ -28,6 +34,14 @@
 		386CF61BC7B8A647FF979414 /* Pods_Contacts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Contacts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		637946D91BFFCFB6009F28C2 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		637946DB1BFFCFF5009F28C2 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		63AD24341C002F77008DA3E9 /* Phone_alt2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Phone_alt2.png; sourceTree = "<group>"; };
+		63AD24371C00E0EF008DA3E9 /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
+		63AD24381C00E0EF008DA3E9 /* contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact.png; sourceTree = "<group>"; };
+		63AD24391C00E0EF008DA3E9 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
+		63AD243A1C00E0EF008DA3E9 /* family.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = family.png; sourceTree = "<group>"; };
+		63AD243B1C00E0EF008DA3E9 /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
+		63AD24411C00ED23008DA3E9 /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail.png; sourceTree = "<group>"; };
+		63AD24431C00EF04008DA3E9 /* editing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editing.png; sourceTree = "<group>"; };
 		63B0F5C31BFFB640005459FF /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B0F5C61BFFB640005459FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63B0F5C81BFFB640005459FF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -36,9 +50,7 @@
 		63B0F5D01BFFB641005459FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63B0F5D21BFFB641005459FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63B0F5D91BFFBB5F005459FF /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
-		63B0F5DB1BFFC24D005459FF /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
 		63B0F5DD1BFFC29C005459FF /* favourites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favourites.png; sourceTree = "<group>"; };
-		63B0F5DF1BFFC2B2005459FF /* app draw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app draw.png"; sourceTree = "<group>"; };
 		63B0F5E11BFFC30F005459FF /* ID Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ID Card.png"; sourceTree = "<group>"; };
 		63B0F5E31BFFC366005459FF /* people_alt2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = people_alt2.png; sourceTree = "<group>"; };
 		63B0F5E51BFFC53B005459FF /* Viber.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Viber.png; sourceTree = "<group>"; };
@@ -64,6 +76,20 @@
 				386CF61BC7B8A647FF979414 /* Pods_Contacts.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		63AD24361C00E0EF008DA3E9 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				63AD24411C00ED23008DA3E9 /* mail.png */,
+				63AD24431C00EF04008DA3E9 /* editing.png */,
+				63AD24371C00E0EF008DA3E9 /* book.png */,
+				63AD24381C00E0EF008DA3E9 /* contact.png */,
+				63AD24391C00E0EF008DA3E9 /* edit.png */,
+				63AD243A1C00E0EF008DA3E9 /* family.png */,
+				63AD243B1C00E0EF008DA3E9 /* phone.png */,
+			);
+			path = icons;
 			sourceTree = "<group>";
 		};
 		63B0F5BA1BFFB640005459FF = {
@@ -112,9 +138,9 @@
 		63B0F5E71BFFC543005459FF /* img */ = {
 			isa = PBXGroup;
 			children = (
-				63B0F5DB1BFFC24D005459FF /* phone.png */,
+				63AD24361C00E0EF008DA3E9 /* icons */,
+				63AD24341C002F77008DA3E9 /* Phone_alt2.png */,
 				63B0F5DD1BFFC29C005459FF /* favourites.png */,
-				63B0F5DF1BFFC2B2005459FF /* app draw.png */,
 				63B0F5E11BFFC30F005459FF /* ID Card.png */,
 				63B0F5E31BFFC366005459FF /* people_alt2.png */,
 				63B0F5E51BFFC53B005459FF /* Viber.png */,
@@ -193,15 +219,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63AD24421C00ED23008DA3E9 /* mail.png in Resources */,
+				63AD243F1C00E0EF008DA3E9 /* family.png in Resources */,
+				63AD243D1C00E0EF008DA3E9 /* contact.png in Resources */,
 				63B0F5D11BFFB641005459FF /* LaunchScreen.storyboard in Resources */,
+				63AD24441C00EF04008DA3E9 /* editing.png in Resources */,
 				63B0F5E41BFFC366005459FF /* people_alt2.png in Resources */,
 				63B0F5E61BFFC53B005459FF /* Viber.png in Resources */,
 				63B0F5E21BFFC30F005459FF /* ID Card.png in Resources */,
+				63AD243E1C00E0EF008DA3E9 /* edit.png in Resources */,
 				63B0F5CE1BFFB640005459FF /* Assets.xcassets in Resources */,
-				63B0F5E01BFFC2B2005459FF /* app draw.png in Resources */,
-				63B0F5DC1BFFC24D005459FF /* phone.png in Resources */,
+				63AD243C1C00E0EF008DA3E9 /* book.png in Resources */,
+				63AD24401C00E0EF008DA3E9 /* phone.png in Resources */,
 				63B0F5DE1BFFC29C005459FF /* favourites.png in Resources */,
 				63B0F5CC1BFFB640005459FF /* Main.storyboard in Resources */,
+				63AD24351C002F77008DA3E9 /* Phone_alt2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
