@@ -11,89 +11,64 @@ import RealmSwift
 
 class MainViewController: UIViewController, UISearchBarDelegate
 {
-//    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var addContactButton: UIButton!
     
-    weak var currentViewController: UIViewController?
-
+    @IBOutlet weak var addContactButtonView: UIView!
+    @IBOutlet weak var navLabel: UILabel!
+    
     let realm = try! Realm()
     var contacts: Results <Contact>!
     
     var currentCreateAction: UIAlertAction!
+    weak var currentViewController: UIViewController?
     
     override func viewDidLoad()
     {
-        searchBar.delegate = self
         super.viewDidLoad()
+        
         contacts = realm.objects(Contact).sorted("name")
-        
-        cycleViewController("Contacts")
-    }
-    
-    func addSubview(subView: UIView, toView parentView: UIView)
-    {
-        parentView.addSubview(subView)
-        
-        var viewBindingsDict = [String: AnyObject]()
-        viewBindingsDict["subView"] = subView
-        parentView
-            .addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[subView]|",
-            options: [], metrics: nil, views: viewBindingsDict))
-        parentView
-            .addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[subView]|",
-            options: [], metrics: nil, views: viewBindingsDict))
+
+        segmentChanged(segmentedControl)
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String)
     {
-        print("textDidChange")
-        
-        let contactsVC = self.childViewControllers[0] as! ContactsViewController
-        contactsVC.shownContacts.removeAll()
-        
-        for contact in self.contacts
-        {
-            if contact.name.lowercaseString.containsString(searchBar.text!.lowercaseString)
-            {
-                contactsVC.shownContacts.append(contact)
-            }
-        }
+        manageChildContents(true)
     }
+    
+    //MARK: - Action Handlers
     
     @IBAction func segmentChanged(sender: UISegmentedControl)
     {
-        print(childViewControllers)
-        
         switch sender.selectedSegmentIndex
         {
-        case 0: cycleViewController("Contacts")
-        case 1: cycleViewController("Favorites")
-        case 2: cycleViewController("Profile")
+        case 0:
+            manageNavLabelAndSearchBar("Contacts")
+            cycleViewController("Contacts")
+        case 1:
+            manageNavLabelAndSearchBar("Family")
+            cycleViewController("Contacts")
+        case 2:
+            manageNavLabelAndSearchBar("Profile")
+            cycleViewController("Profile")
         default: print("nothing to see here")
         }
     }
     
+    @IBAction func addButtonTapped(sender: UIButton)
+    {
+        addFriend()
+    }
+    
+    //MARK: - Child VCs and subviews
+    
     func cycleViewController(identifier: String)
     {
+        manageAddButtonView(identifier)
+
         let newVC = storyboard!.instantiateViewControllerWithIdentifier(identifier)
-        
-        if identifier != "Profile"
-        {
-            self.addContactButton.hidden = false
-            self.addContactButton.alpha = 0
-            UIView.animateWithDuration(0.4, animations:
-                { () -> Void in
-                    self.addContactButton.alpha = 1
-            } )
-        }
-        else
-        {
-            self.addContactButton.hidden = true
-        }
-        
         newVC.view.translatesAutoresizingMaskIntoConstraints = false
         addChildViewController(newVC)
         
@@ -107,24 +82,143 @@ class MainViewController: UIViewController, UISearchBarDelegate
             if let currentVC = self.currentViewController
             {
                 currentVC.view.alpha = 0
+                currentVC.view.removeFromSuperview()
+                currentVC.removeFromParentViewController()
             }
-    
         } )
-        
-        if let currentVC = currentViewController
-        {
-            currentVC.view.removeFromSuperview()
-            currentViewController?.removeFromParentViewController()
-        }
 
         currentViewController = newVC
+        
+        manageChildContents(false)
     }
     
-    
-    @IBAction func addButtonTapped(sender: UIButton)
+    func addSubview(subView: UIView, toView parentView: UIView)
     {
-        addFriend()
+        parentView.addSubview(subView)
+        
+        var viewBindingsDict = [String: AnyObject]()
+        viewBindingsDict["subView"] = subView
+        parentView
+            .addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[subView]|",
+                options: [], metrics: nil, views: viewBindingsDict))
+        parentView
+            .addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[subView]|",
+                options: [], metrics: nil, views: viewBindingsDict))
     }
+    
+    //MARK: - Manage Content
+    
+    func manageChildContents(isSearch: Bool)
+    {
+        if let contactsVC = self.childViewControllers[0] as? ContactsViewController
+        {
+            contactsVC.shownContacts.removeAll()
+            switch segmentedControl.selectedSegmentIndex
+            {
+            case 0:
+                //Contacts
+                if isSearch
+                {
+                    for contact in self.contacts
+                    {
+                        if searchBar.text != "" && contact.name.lowercaseString.containsString(searchBar.text!.lowercaseString)
+                        {
+                            contactsVC.shownContacts.append(contact)
+                        }
+                        else if searchBar.text == ""
+                        {
+                            contactsVC.shownContacts.append(contact)
+                        }
+                    }
+                }
+                else
+                {
+                    for contact in self.contacts
+                    {
+                        contactsVC.shownContacts.append(contact)
+                    }
+                }
+            case 1:
+                //Family
+                if isSearch
+                {
+                    for contact in self.contacts
+                    {
+                        if searchBar.text != "" && contact.favorite && contact.name.lowercaseString.containsString(searchBar.text!.lowercaseString)
+                        {
+                            contactsVC.shownContacts.append(contact)
+                        }
+                        else if searchBar.text == "" && contact.favorite
+                        {
+                            contactsVC.shownContacts.append(contact)
+                        }
+                    }
+                }
+                else
+                {
+                    for contact in self.contacts
+                    {
+                        if contact.favorite
+                        {
+                            contactsVC.shownContacts.append(contact)
+                        }
+                    }
+                }
+                default: print("wrong vc.")
+            }
+            
+            contactsVC.tableView.reloadData()
+        }
+        else if let profileVC = self.childViewControllers[0] as? ProfileViewController
+        {
+//            let selectedContact = contacts.valueForKey(<#T##key: String##String#>)
+//            profileVC.contact = selectedContact
+        }
+    }
+    
+    func manageAddButtonView(identifier: String)
+    {
+        if identifier != "Profile"
+        {
+            self.addContactButtonView.hidden = false
+            self.addContactButtonView.alpha = 0
+            UIView.animateWithDuration(0.4, animations:
+                { () -> Void in
+                    self.addContactButtonView.alpha = 1
+            } )
+        }
+        else
+        {
+            self.addContactButtonView.hidden = true
+        }
+    }
+    
+    func manageNavLabelAndSearchBar(text: String)
+    {
+        navLabel.alpha = 0
+        UIView.animateWithDuration(0.4, animations:
+        { () -> Void in
+                self.navLabel.text = text
+                self.navLabel.alpha = 1
+        } )
+        
+        let searchTextField = searchBar.valueForKey("searchField") as! UITextField
+        searchBar.resignFirstResponder()
+        
+        if text == "Profile"
+        {
+            searchBar.text = ""
+            searchBar.alpha = 0.8
+            searchTextField.enabled = false
+        }
+        else
+        {
+            searchTextField.enabled = true
+            searchBar.alpha = 1
+        }
+    }
+    
+    //MARK: - Add Friend
     
     func addFriend()
     {
@@ -132,17 +226,20 @@ class MainViewController: UIViewController, UISearchBarDelegate
         // .Alert and .ActionSheet
         currentCreateAction = UIAlertAction(title: "Create", style: .Default)
         { (action) -> Void in
-                let newContact = Contact()
-                let name = alertController.textFields?.first?.text
-                let number = alertController.textFields?[1].text
+            let newContact = Contact()
+            let name = alertController.textFields?.first?.text
+            let number = alertController.textFields?[1].text
 
-                newContact.name = name!
-                newContact.number = number!
-                
-                try! self.realm.write(
-                    { () -> Void in
-                        self.realm.add(newContact)
-                })
+            newContact.name = name!
+            newContact.number = number!
+            
+            try! self.realm.write(
+            { () -> Void in
+                self.realm.add(newContact)
+                self.cycleViewController("Contacts")
+
+            })
+
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
@@ -163,6 +260,12 @@ class MainViewController: UIViewController, UISearchBarDelegate
                 textField.addTarget(self, action: "ContactNumberFieldDidChange:", forControlEvents: .EditingChanged)
         }
         
+        alertController.addTextFieldWithConfigurationHandler
+            { (textField) -> Void in
+                textField.placeholder = "Email"
+                textField.addTarget(self, action: "ContactEmailFieldDidChange:", forControlEvents: .EditingChanged)
+        }
+        
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
@@ -172,6 +275,11 @@ class MainViewController: UIViewController, UISearchBarDelegate
     }
     
     func ContactNumberFieldDidChange(sender: UITextField)
+    {
+        self.currentCreateAction.enabled = sender.text?.characters.count > 0
+    }
+    
+    func ContactEmailFieldDidChange(sender: UITextField)
     {
         self.currentCreateAction.enabled = sender.text?.characters.count > 0
     }

@@ -15,7 +15,7 @@ class Contact: Object
     dynamic var number = ""
     dynamic var birthday = ""
     dynamic var email = ""
-    dynamic var favorite = "no"
+    dynamic var favorite = false
     
     let contacts = List<Contact>()
 }

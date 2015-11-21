@@ -9,16 +9,10 @@
 import UIKit
 import RealmSwift
 
-protocol SearchProtocol
-{
-    func didSearch(results: [Contact])
-}
-
-class ContactsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SearchProtocol
+class ContactsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet weak var tableView: UITableView!
     
-    var you: Contact?
     var contacts: Results <Contact>!
     var filterString: String?
     var shownContacts = [Contact]()
@@ -27,34 +21,6 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        contacts = realm.objects(Contact)
-//            .filter("name != %@", you!.name)
-            .sorted("name")
-        
-        for contact in contacts
-        {
-            shownContacts.append(contact)
-        }
-        
-        if let _ = filterString
-        {
-            for contact in contacts
-            {
-                contacts = contacts.filter(filterString!, contact.favorite)
-            }
-        }
-
-//        for contact in contacts
-//        {
-//            shownContacts.append(contact)
-//        }
-
-        // Do any additional setup after loading the view.
-    }
-    
-    func didSearch(results: [Contact])
-    {
-        shownContacts = results
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
@@ -81,23 +47,10 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    /*
-    let ContactDetailVC = storyboard?.instantiateViewControllerWithIdentifier("ContactDetailViewController") as! ContactDetailViewController
-    let selectedContact = contacts[indexPath.row]
-    ContactDetailVC.Contact = selectedContact
-    
-    navigationController?.pushViewController(ContactDetailVC, animated: true)
-    */
+        let selectedContact = shownContacts[indexPath.row]
+        let profileVC = storyboard?.instantiateViewControllerWithIdentifier("Profile") as! ProfileViewController
+        profileVC.contact = selectedContact
+        
+        navigationController?.pushViewController(profileVC, animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

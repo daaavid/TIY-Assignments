@@ -10,9 +10,15 @@ import UIKit
 
 class ProfileViewController: UIViewController
 {
+    var contact: Contact?
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        if let _ = contact
+        {
+            print(contact)
+        }
     }
 
     override func didReceiveMemoryWarning()
