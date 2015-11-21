@@ -9,16 +9,14 @@
 import UIKit
 import RealmSwift
 
-var youName = "David"
-
 class ContactsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet weak var tableView: UITableView!
     
-    var contacts: Results <Contact>!
-    var filterString: String?
+//    var contacts: Results <Contact>!
     var shownContacts = [Contact]()
     let realm = try! Realm()
+    var delegate: ContactsProtocol?
     
     override func viewDidLoad()
     {
@@ -49,10 +47,25 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let selectedContact = shownContacts[indexPath.row]
+        let chosenContact = shownContacts[indexPath.row]
+        delegate?.profileWasChosen(chosenContact)
+        
+        /*
         let profileVC = storyboard?.instantiateViewControllerWithIdentifier("Profile") as! ProfileViewController
         profileVC.contact = selectedContact
         
         navigationController?.pushViewController(profileVC, animated: true)
+        */
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if editingStyle == .Delete
+        {
+            let chosenContact = shownContacts[indexPath.row]
+            let contactIndex = contacts.indexOf(chosenContact)
+            let contactToDelete = contacts[contactIndex!]
+            delegate?.profileWasChosenForDeletion(contactToDelete)
+        }
     }
 }

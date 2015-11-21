@@ -9,17 +9,27 @@
 import UIKit
 import RealmSwift
 
-class MainViewController: UIViewController, UISearchBarDelegate
+protocol ContactsProtocol
+{
+    func profileWasChosen(chosenProfile: Contact)
+    func profileWasChosenForDeletion(chosenProfile: Contact)
+}
+
+var youName = "David"
+var contacts: Results <Contact>!
+
+class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtocol
 {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var containerView: UIView!
     
     @IBOutlet weak var addContactButtonView: UIView!
+    @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var navLabel: UILabel!
     
     let realm = try! Realm()
-    var contacts: Results <Contact>!
+    var chosenContact: Contact?
     
     var currentCreateAction: UIAlertAction!
     weak var currentViewController: UIViewController?
@@ -42,6 +52,13 @@ class MainViewController: UIViewController, UISearchBarDelegate
     
     @IBAction func segmentChanged(sender: UISegmentedControl)
     {
+        sender.setTitle("You", forSegmentAtIndex: 2)
+        editButton.hidden = false
+        
+        UIView.animateWithDuration(0.5) { () -> Void in
+            <#code#>
+        }
+        
         switch sender.selectedSegmentIndex
         {
         case 0:
@@ -53,6 +70,7 @@ class MainViewController: UIViewController, UISearchBarDelegate
         case 2:
             manageNavLabelAndSearchBar("Profile")
             cycleViewController("Profile")
+            editButton.hidden = true
         default: print("nothing to see here")
         }
     }
@@ -60,6 +78,46 @@ class MainViewController: UIViewController, UISearchBarDelegate
     @IBAction func addButtonTapped(sender: UIButton)
     {
         addFriend()
+    }
+    
+    //MARK: - Editing
+    
+    @IBAction func editButtonTapped(sender: UIButton)
+    {
+        if let contactsVC = self.childViewControllers[0] as? ContactsViewController
+        {
+            contactsVC.delegate = self
+            let tableView = contactsVC.tableView
+            
+            let edit = !tableView.editing
+            tableView.editing = edit
+            
+            tableView.alpha = 0.4
+            UIView.animateWithDuration(0.4, animations: { () -> Void in
+                tableView.alpha = 1
+            })
+            
+            if edit
+            {
+                editButton.setImage(UIImage(named: "editing"), forState: .Normal)
+            }
+            else
+            {
+                editButton.setImage(UIImage(named: "edit"), forState: .Normal)
+            }
+        }
+    }
+    
+    func profileWasChosenForDeletion(chosenProfile: Contact)
+    {
+        if chosenProfile.name != youName
+        {
+            try! realm.write { () -> Void in
+                self.realm.delete(chosenProfile)
+            }
+        }
+        editButtonTapped(editButton)
+        cycleViewController("Contacts")
     }
     
     //MARK: - Child VCs and subviews
@@ -108,10 +166,20 @@ class MainViewController: UIViewController, UISearchBarDelegate
     
     //MARK: - Manage Content
     
+    func profileWasChosen(chosenProfile: Contact)
+    {
+        print("profileWasChosen")
+        chosenContact = chosenProfile
+        segmentedControl.selectedSegmentIndex = 2
+        segmentChanged(segmentedControl)
+//        cycleViewController("Profile")
+    }
+    
     func manageChildContents(isSearch: Bool)
     {
         if let contactsVC = self.childViewControllers[0] as? ContactsViewController
         {
+            contactsVC.delegate = self
             contactsVC.shownContacts.removeAll()
             switch segmentedControl.selectedSegmentIndex
             {
@@ -119,7 +187,7 @@ class MainViewController: UIViewController, UISearchBarDelegate
                 //Contacts
                 if isSearch
                 {
-                    for contact in self.contacts
+                    for contact in contacts
                     {
                         if searchBar.text != "" && contact.name.lowercaseString.containsString(searchBar.text!.lowercaseString)
                         {
@@ -133,7 +201,7 @@ class MainViewController: UIViewController, UISearchBarDelegate
                 }
                 else
                 {
-                    for contact in self.contacts
+                    for contact in contacts
                     {
                         contactsVC.shownContacts.append(contact)
                     }
@@ -142,7 +210,7 @@ class MainViewController: UIViewController, UISearchBarDelegate
                 //Family
                 if isSearch
                 {
-                    for contact in self.contacts
+                    for contact in contacts
                     {
                         if searchBar.text != "" && contact.favorite && contact.name.lowercaseString.containsString(searchBar.text!.lowercaseString)
                         {
@@ -156,7 +224,7 @@ class MainViewController: UIViewController, UISearchBarDelegate
                 }
                 else
                 {
-                    for contact in self.contacts
+                    for contact in contacts
                     {
                         if contact.favorite
                         {
@@ -171,8 +239,18 @@ class MainViewController: UIViewController, UISearchBarDelegate
         }
         else if let profileVC = self.childViewControllers[0] as? ProfileViewController
         {
-//            let selectedContact = contacts.valueForKey(<#T##key: String##String#>)
-//            profileVC.contact = selectedContact
+            if let _ = chosenContact
+            {
+                profileVC.contact = chosenContact
+                let title = chosenContact!.name.componentsSeparatedByString(" ")[0]
+                if title != youName
+                {
+                    segmentedControl.setTitle(title, forSegmentAtIndex: 2)
+                }
+            }
+            profileVC.setContact()
+
+            self.chosenContact = nil
         }
     }
     
@@ -233,11 +311,9 @@ class MainViewController: UIViewController, UISearchBarDelegate
             newContact.name = name!
             newContact.number = number!
             
-            try! self.realm.write(
-            { () -> Void in
+            try! self.realm.write({ () -> Void in
                 self.realm.add(newContact)
                 self.cycleViewController("Contacts")
-
             })
 
         }
@@ -255,15 +331,9 @@ class MainViewController: UIViewController, UISearchBarDelegate
         }
         
         alertController.addTextFieldWithConfigurationHandler
-            { (textField) -> Void in
+        { (textField) -> Void in
                 textField.placeholder = "Number"
                 textField.addTarget(self, action: "ContactNumberFieldDidChange:", forControlEvents: .EditingChanged)
-        }
-        
-        alertController.addTextFieldWithConfigurationHandler
-            { (textField) -> Void in
-                textField.placeholder = "Email"
-                textField.addTarget(self, action: "ContactEmailFieldDidChange:", forControlEvents: .EditingChanged)
         }
         
         self.presentViewController(alertController, animated: true, completion: nil)
@@ -275,11 +345,6 @@ class MainViewController: UIViewController, UISearchBarDelegate
     }
     
     func ContactNumberFieldDidChange(sender: UITextField)
-    {
-        self.currentCreateAction.enabled = sender.text?.characters.count > 0
-    }
-    
-    func ContactEmailFieldDidChange(sender: UITextField)
     {
         self.currentCreateAction.enabled = sender.text?.characters.count > 0
     }
