@@ -25,7 +25,9 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
     @IBOutlet weak var containerView: UIView!
     
     @IBOutlet weak var addContactButtonView: UIView!
+    @IBOutlet weak var editContactButtonView: UIView!
     @IBOutlet weak var editButton: UIButton!
+    
     @IBOutlet weak var navLabel: UILabel!
     
     let realm = try! Realm()
@@ -56,7 +58,6 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
     @IBAction func segmentChanged(sender: UISegmentedControl)
     {
         sender.setTitle("You", forSegmentAtIndex: 2)
-        editButton.hidden = false
         
         switch sender.selectedSegmentIndex
         {
@@ -69,14 +70,13 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
         case 2:
             manageNavLabelAndSearchBar("Profile")
             cycleViewController("Profile")
-            editButton.hidden = true
         default: print("nothing to see here")
         }
     }
     
     @IBAction func addButtonTapped(sender: UIButton)
     {
-        addFriend()
+        addContact()
     }
     
     //MARK: - Editing
@@ -91,19 +91,21 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
             let edit = !tableView.editing
             tableView.editing = edit
             
+            let spinView = self.editContactButtonView
+            spinView.rotate360Degrees()
             tableView.alpha = 0.4
             UIView.animateWithDuration(0.4, animations: { () -> Void in
                 tableView.alpha = 1
             })
             
-            if edit
-            {
-                editButton.setImage(UIImage(named: "editing"), forState: .Normal)
-            }
-            else
-            {
-                editButton.setImage(UIImage(named: "edit"), forState: .Normal)
-            }
+//            if edit
+//            {
+//                editButton.setImage(UIImage(named: "editing"), forState: .Normal)
+//            }
+//            else
+//            {
+//                editButton.setImage(UIImage(named: "edit"), forState: .Normal)
+//            }
         }
     }
     
@@ -150,7 +152,6 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
         {
             manageChildContents(false)
         }
-        newContact = false
     }
     
     func addSubview(subView: UIView, toView parentView: UIView)
@@ -270,15 +271,20 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
             if addContactButtonView.hidden
             {
                 self.addContactButtonView.hidden = false
+                self.editContactButtonView.hidden = false
+                
                 self.addContactButtonView.alpha = 0
+                self.editContactButtonView.alpha = 0
                 UIView.animateWithDuration(0.4, animations: { () -> Void in
-                        self.addContactButtonView.alpha = 1
+                    self.addContactButtonView.alpha = 1
+                    self.editContactButtonView.alpha = 1
                 } )
             }
         }
         else
         {
             self.addContactButtonView.hidden = true
+            self.editContactButtonView.hidden = true
         }
     }
     
@@ -311,47 +317,8 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
     
     //MARK: - Add Friend
     
-    func addFriend()
+    func addContact()
     {
-        /*
-        let alertController = UIAlertController(title: "Add Contact", message: "Add some info for this contact.", preferredStyle: .Alert)
-        // .Alert and .ActionSheet
-        currentCreateAction = UIAlertAction(title: "Create", style: .Default)
-        { (action) -> Void in
-            let newContact = Contact()
-            let name = alertController.textFields?.first?.text
-            let number = alertController.textFields?[1].text
-
-            newContact.name = name!
-            newContact.number = number!
-            
-            try! self.realm.write({ () -> Void in
-                self.realm.add(newContact)
-                self.cycleViewController("Contacts")
-                self.validName = false
-            })
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        
-        alertController.addAction(currentCreateAction)
-        currentCreateAction.enabled = false
-        
-        alertController.addTextFieldWithConfigurationHandler{ (textField) -> Void in
-            textField.placeholder = "Name"
-            textField.tag = 1
-            textField.addTarget(self, action: "ContactNameFieldDidChange:", forControlEvents: .EditingChanged)
-        }
-        
-        alertController.addTextFieldWithConfigurationHandler{ (textField) -> Void in
-            textField.placeholder = "Number"
-            textField.tag = 2
-            textField.delegate = self
-        }
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
-        */
         newContact = true
         cycleViewController("Profile")
         if let profileVC = self.childViewControllers[0] as? ProfileViewController
@@ -361,10 +328,15 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
             segmentedControl.selectedSegmentIndex = 2
             segmentedControl.setTitle("New", forSegmentAtIndex: 2)
         }
+        newContact = false
      }
+    
+    
+    //MARK: - Deprecated
     
     func ContactNameFieldDidChange(sender: UITextField)
     {
+        /*
         let validator = Validator()
         if validator.validate("name", string: sender.text!)
         {
@@ -374,8 +346,10 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
         {
             validName = false
         }
+        */
     }
-    
+
+    /*
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
     {
         //http://stackoverflow.com/questions/27609104/xcode-swift-formatting-text-as-phone-number
@@ -434,6 +408,50 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
 
             return true
         }
+    }
+    */
+    
+    func alertController()
+    {
+        /*
+        let alertController = UIAlertController(title: "Add Contact", message: "Add some info for this contact.", preferredStyle: .Alert)
+        // .Alert and .ActionSheet
+        currentCreateAction = UIAlertAction(title: "Create", style: .Default)
+        { (action) -> Void in
+        let newContact = Contact()
+        let name = alertController.textFields?.first?.text
+        let number = alertController.textFields?[1].text
+        
+        newContact.name = name!
+        newContact.number = number!
+        
+        try! self.realm.write({ () -> Void in
+        self.realm.add(newContact)
+        self.cycleViewController("Contacts")
+        self.validName = false
+        })
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        alertController.addAction(currentCreateAction)
+        currentCreateAction.enabled = false
+        
+        alertController.addTextFieldWithConfigurationHandler{ (textField) -> Void in
+        textField.placeholder = "Name"
+        textField.tag = 1
+        textField.addTarget(self, action: "ContactNameFieldDidChange:", forControlEvents: .EditingChanged)
+        }
+        
+        alertController.addTextFieldWithConfigurationHandler{ (textField) -> Void in
+        textField.placeholder = "Number"
+        textField.tag = 2
+        textField.delegate = self
+        }
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+        */
     }
 }
 

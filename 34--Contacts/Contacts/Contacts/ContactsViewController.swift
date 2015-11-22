@@ -17,11 +17,6 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     let realm = try! Realm()
     var delegate: ContactsProtocol?
     
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-    }
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return 1

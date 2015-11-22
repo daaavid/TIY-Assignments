@@ -16,7 +16,8 @@ class Validator
         {
         case "phone": regEx = "^\\(\\d{3}\\) \\d{3}-\\d{4}$"
         case "email": regEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
-        case "name":  regEx = "^[A-Za-z]{1,10}$"
+        case "name": regEx = "^[A-Za-z]{1,10}$"
+        case "birthday": regEx = "^(0[1-9]|1[012])[/](0[1-9]|[12][0-9]|3[01])[/](19|20)\\d\\d$"
         default: print("unknown regEx: " + regEx)
         }
         

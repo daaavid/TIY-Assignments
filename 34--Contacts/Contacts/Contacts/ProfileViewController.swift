@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var numberTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var birthdayTextField: UITextField!
     
     @IBOutlet weak var familyButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
@@ -30,7 +31,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        allTextFields = [nameTextField, numberTextField, emailTextField]
+        allTextFields = [nameTextField, numberTextField, emailTextField, birthdayTextField]
     }
     
     func setContact()
@@ -42,7 +43,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
                 familyButton.hidden = true
             }
 
-            print(contact)
+            print("found contact: ") ; print(contact)
             setTextFields(contact)
         }
         else
@@ -56,13 +57,14 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
         toggleTextFields()
     }
     
+    //MARK: - TextFields
+    
     func setTextFields(contact: Contact)
     {
         nameTextField.text = contact.name
         numberTextField.text = contact.number
-        
         emailTextField.text = contact.email
-        emailTextField.placeholder = "Email"
+        birthdayTextField.text = contact.birthday
 
         if contact.favorite
         {
@@ -106,146 +108,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
             rc = true
         }
         return rc
-    }
-
-    @IBAction func familyButtonPressed(sender: UIButton)
-    {
-        try! realm.write({ () -> Void in
-            self.contact.favorite = !self.contact.favorite
-        })
-        
-        if contact.favorite
-        {
-            familyButton.setImage(UIImage(named: "isFamily"), forState: .Normal)
-        }
-        else
-        {
-            familyButton.setImage(UIImage(named: "family"), forState: .Normal)
-        }
-    }
-    
-    @IBAction func editButtonPressed(sender: UIButton)
-    {
-        editContact()
-    }
-    
-    func editContact()
-    {
-        edit = !edit
-        
-        if edit
-        {
-            self.view.alpha = 0.8
-            UIView.animateWithDuration(0.4) { () -> Void in
-                self.view.alpha = 1
-            }
-            
-            toggleTextFields()
-            editButton.setImage(UIImage(named: "editing"), forState: .Normal)
-            nameTextField.becomeFirstResponder()
-        }
-        else
-        {
-            if checkEntry()
-            {
-                self.view.alpha = 0.8
-                UIView.animateWithDuration(0.4) { () -> Void in
-                    self.view.alpha = 1
-                }
-                
-                toggleTextFields()
-                
-                if !newContact
-                {
-                    try! realm.write({ () -> Void in
-                        self.contact.name = self.nameTextField.text!
-                        self.contact.number = self.numberTextField.text!
-                        self.contact.email = self.emailTextField.text!
-                        print("realmWrite: Edit")
-                        self.validEntry()
-                    })
-                }
-                else
-                {
-                    try! realm.write({ () -> Void in
-                        let newContact = Contact()
-                        
-                        newContact.name = self.nameTextField.text!
-                        newContact.number = self.numberTextField.text!
-                        
-                        if self.emailTextField.text != ""
-                        {
-                            newContact.email = self.emailTextField.text!
-                        }
-                        
-                        self.realm.add(newContact)
-                        self.validEntry()
-                    })
-                }
-            }
-            else
-            {
-                edit = !edit
-            }
-        }
-    }
-    
-    func checkEntry() -> Bool
-    {
-        var rc = false
-        let validator = Validator()
-        var validEdit = [false, false, false]
-        
-        if validator.validate("name", string: nameTextField.text!)
-        {
-            validEdit[0] = true
-        }
-        else
-        {
-            invalidEntry(nameTextField)
-        }
-        
-        if validator.validate("phone", string: numberTextField.text!)
-        {
-            validEdit[1] = true
-        }
-        else
-        {
-            invalidEntry(numberTextField)
-        }
-        
-        if emailTextField.text == ""
-        {
-            validEdit[2] = true
-        }
-        else if validator.validate("email", string: emailTextField.text!)
-        {
-            validEdit[2] = true
-        }
-        else
-        {
-            invalidEntry(emailTextField)
-        }
-        
-        if validEdit[0] && validEdit[1] && validEdit[2]
-        {
-            rc = true
-        }
-        return rc
-    }
-    
-    func invalidEntry(textField: UITextField)
-    {
-        textField.backgroundColor = UIColor.redColor()
-    }
-    
-    func validEntry()
-    {
-        editButton.setImage(UIImage(named: "edit"), forState: .Normal)
-        for textField in allTextFields
-        {
-            textField.backgroundColor = UIColor.clearColor()
-        }
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
@@ -300,4 +162,189 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
         }
     }
 
+    //MARK: - Action Handlers
+    
+    @IBAction func phoneButtonPressed(sender: UIButton)
+    {
+        var number = numberTextField.text!.stringByReplacingOccurrencesOfString("(", withString: "")
+        number = number.stringByReplacingOccurrencesOfString(")", withString: "")
+        number = number.stringByReplacingOccurrencesOfString(" ", withString: "")
+        number = number.stringByReplacingOccurrencesOfString("-", withString: "")
+        let url = NSURL(string: "tel://\(number)")
+        UIApplication.sharedApplication().openURL(url!)
+    }
+    
+    @IBAction func emailButtonPressed(sender: UIButton)
+    {
+        let url = NSURL(string: "mailto:\(emailTextField.text!)")
+        UIApplication.sharedApplication().openURL(url!)
+    }
+    
+    @IBAction func familyButtonPressed(sender: UIButton)
+    {
+        try! realm.write({ () -> Void in
+            self.contact.favorite = !self.contact.favorite
+        })
+        
+        if contact.favorite
+        {
+            familyButton.setImage(UIImage(named: "isFamily"), forState: .Normal)
+        }
+        else
+        {
+            familyButton.setImage(UIImage(named: "family"), forState: .Normal)
+        }
+    }
+    
+    @IBAction func editButtonPressed(sender: UIButton)
+    {
+        editContact()
+    }
+    
+    //MARK: - Contact & Entry
+    
+    func editContact()
+    {
+        edit = !edit
+        
+        if edit
+        {
+            self.view.alpha = 0.8
+            UIView.animateWithDuration(0.4) { () -> Void in
+                self.view.alpha = 1
+            }
+            
+            toggleTextFields()
+            editButton.setImage(UIImage(named: "editing"), forState: .Normal)
+            nameTextField.becomeFirstResponder()
+        }
+        else
+        {
+            if checkEntry()
+            {
+                self.view.alpha = 0.8
+                UIView.animateWithDuration(0.4) { () -> Void in
+                    self.view.alpha = 1
+                }
+                
+                toggleTextFields()
+                
+                if !newContact
+                {
+                    try! realm.write({ () -> Void in
+                        self.contact.name = self.nameTextField.text!
+                        self.contact.number = self.numberTextField.text!
+                        self.contact.email = self.emailTextField.text!
+                        self.contact.birthday = self.birthdayTextField.text!
+                        print("realmWrite: Edit")
+                        self.validEntry()
+                    })
+                }
+                else
+                {
+                    try! realm.write({ () -> Void in
+                        let newContact = Contact()
+                        
+                        newContact.name = self.nameTextField.text!
+                        newContact.number = self.numberTextField.text!
+                        
+                        if self.emailTextField.text != ""
+                        {
+                            newContact.email = self.emailTextField.text!
+                        }
+                        
+                        if self.birthdayTextField.text != ""
+                        {
+                            newContact.birthday = self.birthdayTextField.text!
+                        }
+                        
+                        self.realm.add(newContact)
+                        self.validEntry()
+                    })
+                }
+            }
+            else
+            {
+                edit = !edit
+            }
+        }
+    }
+    
+    func checkEntry() -> Bool
+    {
+        var rc = false
+        let validator = Validator()
+        var validEdit = [false, false, false, false]
+        
+        if validator.validate("name", string: nameTextField.text!)
+        {
+            validEdit[0] = true
+        }
+        else
+        {
+            invalidEntry(nameTextField)
+        }
+        
+        if validator.validate("phone", string: numberTextField.text!)
+        {
+            validEdit[1] = true
+        }
+        else
+        {
+            invalidEntry(numberTextField)
+        }
+        
+        if emailTextField.text == ""
+        {
+            validEdit[2] = true
+        }
+        else if validator.validate("email", string: emailTextField.text!)
+        {
+            validEdit[2] = true
+        }
+        else
+        {
+            invalidEntry(emailTextField)
+        }
+        
+        if let formattedBirthday = self.birthdayTextField.text?
+            .stringByReplacingOccurrencesOfString(".", withString: "/")
+            .stringByReplacingOccurrencesOfString(" ", withString: "/")
+        {
+            self.birthdayTextField.text = formattedBirthday
+        }
+        
+        if birthdayTextField.text == ""
+        {
+            validEdit[3] = true
+        }
+        else if validator.validate("birthday", string: birthdayTextField.text!)
+        {
+            validEdit[3] = true
+        }
+        else
+        {
+            invalidEntry(birthdayTextField)
+        }
+        
+        if validEdit[0] && validEdit[1] && validEdit[2] && validEdit[3]
+        {
+            rc = true
+        }
+        return rc
+    }
+    
+    func invalidEntry(textField: UITextField)
+    {
+        textField.backgroundColor = UIColor.redColor()
+    }
+    
+    func validEntry()
+    {
+        editButton.setImage(UIImage(named: "edit"), forState: .Normal)
+        for textField in allTextFields
+        {
+            textField.backgroundColor = UIColor.clearColor()
+        }
+    }
 }
