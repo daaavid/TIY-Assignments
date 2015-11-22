@@ -13,7 +13,6 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
 {
     @IBOutlet weak var tableView: UITableView!
     
-//    var contacts: Results <Contact>!
     var shownContacts = [Contact]()
     let realm = try! Realm()
     var delegate: ContactsProtocol?
@@ -49,13 +48,6 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let chosenContact = shownContacts[indexPath.row]
         delegate?.profileWasChosen(chosenContact)
-        
-        /*
-        let profileVC = storyboard?.instantiateViewControllerWithIdentifier("Profile") as! ProfileViewController
-        profileVC.contact = selectedContact
-        
-        navigationController?.pushViewController(profileVC, animated: true)
-        */
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)

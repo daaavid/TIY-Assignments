@@ -22,8 +22,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
     let realm = try! Realm()
     
     var edit = false
+    var phoneEdit = 0
     
     var allTextFields: [UITextField]!
+    let textFieldBG = UIColor(red: 0.25, green: 0.7, blue: 0.71, alpha: 1)
 
     override func viewDidLoad()
     {
@@ -32,24 +34,25 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
     
     func setContact()
     {
-        allTextFields = [nameTextField, numberTextField, emailTextField]
-        
         if let _ = contact
         {
+            if contact.name == youName
+            {
+                familyButton.hidden = true
+            }
+
             print(contact)
             setTextFields(contact)
         }
         else
         {
-            //bad way to do this
             familyButton.hidden = true
             let contacts = realm.objects(Contact).filter("name == %@", youName)
-            for contact in contacts
-            {
-                self.contact = contact
-                setTextFields(self.contact)
-            }
+            contact = contacts.first
+            setTextFields(contact)
         }
+        
+        allTextFields = [nameTextField, numberTextField, emailTextField]
         toggleTextFields()
     }
     
@@ -57,8 +60,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
     {
         nameTextField.text = contact.name
         numberTextField.text = contact.number
-        emailTextField.text = contact.email
         
+        emailTextField.text = contact.email
+        emailTextField.placeholder = "email"
+
         if contact.favorite
         {
             familyButton.setImage(UIImage(named: "isFamily"), forState: .Normal)
@@ -73,11 +78,12 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
             if edit
             {
                 textField.borderStyle = .RoundedRect
-                textField.backgroundColor = UIColor.clearColor()
+                textField.backgroundColor = textFieldBG
             }
             else
             {
                 textField.borderStyle = .None
+                textField.backgroundColor = UIColor.clearColor()
             }
         }
     }
@@ -121,41 +127,153 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
     @IBAction func editButtonPressed(sender: UIButton)
     {
         edit = !edit
-        toggleTextFields()
-        
-        self.view.alpha = 0.4
-        UIView.animateWithDuration(0.4) { () -> Void in
-            self.view.alpha = 1
-        }
         
         if edit
         {
+            self.view.alpha = 0.8
+            UIView.animateWithDuration(0.4) { () -> Void in
+                self.view.alpha = 1
+            }
+            
+            toggleTextFields()
             editButton.setImage(UIImage(named: "editing"), forState: .Normal)
             nameTextField.becomeFirstResponder()
         }
         else
         {
-            editButton.setImage(UIImage(named: "edit"), forState: .Normal)
-            var validEdit = 0
-            
-            for textField in allTextFields
+            if checkEntry()
             {
-                if textField.text != ""
-                {
-                    validEdit++
+                self.view.alpha = 0.8
+                UIView.animateWithDuration(0.4) { () -> Void in
+                    self.view.alpha = 1
                 }
-            }
-            
-            if validEdit == 3
-            {
+                
+                toggleTextFields()
                 try! realm.write({ () -> Void in
                     self.contact.name = self.nameTextField.text!
                     self.contact.number = self.numberTextField.text!
                     self.contact.email = self.emailTextField.text!
-                    
                     print("realmWrite: Edit")
+                    self.validEntry()
                 })
+            }
+            else
+            {
+                edit = !edit
             }
         }
     }
+    
+    func checkEntry() -> Bool
+    {
+        var rc = false
+        let validator = Validator()
+        var validEdit = [false, false, false]
+        
+        if validator.validate(nameTextField.text!, cc: "name")
+        {
+            validEdit[0] = true
+        }
+        else
+        {
+            invalidEntry(nameTextField)
+        }
+        
+        if validator.validate(numberTextField.text!, cc: "phone")
+        {
+            validEdit[1] = true
+        }
+        else
+        {
+            invalidEntry(numberTextField)
+        }
+        
+        if emailTextField.text == ""
+        {
+            validEdit[2] = true
+        }
+        else if validator.validate(emailTextField.text!, cc: "email")
+        {
+            validEdit[2] = true
+        }
+        else
+        {
+            invalidEntry(emailTextField)
+        }
+        
+        if validEdit[0] && validEdit[1] && validEdit[2]
+        {
+            rc = true
+        }
+        return rc
+    }
+    
+    func invalidEntry(textField: UITextField)
+    {
+        textField.backgroundColor = UIColor.redColor()
+    }
+    
+    func validEntry()
+    {
+        editButton.setImage(UIImage(named: "edit"), forState: .Normal)
+        for textField in allTextFields
+        {
+            textField.backgroundColor = UIColor.clearColor()
+        }
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
+    {
+        //http://stackoverflow.com/questions/27609104/xcode-swift-formatting-text-as-phone-number
+        if textField == numberTextField
+        {
+            let newString = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
+            let components = newString.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet)
+            
+            let decimalString = components.joinWithSeparator("") as NSString
+            
+            let length = decimalString.length
+            let hasLeadingOne = length > 0 && decimalString.characterAtIndex(0) == (1 as unichar)
+            
+            if length == 0 || (length > 10 && !hasLeadingOne) || length > 11
+            {
+                let newLength = (textField.text! as NSString).length + (string as NSString).length - range.length as Int
+                
+                return (newLength > 10) ? false : true
+            }
+            var index = 0
+            let formattedString = NSMutableString()
+            
+            if hasLeadingOne
+            {
+                formattedString.appendString("1 ")
+                index += 1
+            }
+            if (length - index) > 3
+            {
+                let areaCode = decimalString.substringWithRange(NSMakeRange(index, 3))
+                formattedString.appendFormat("(%@) ", areaCode)
+                index += 3
+            }
+            if length - index > 3
+            {
+                let prefix = decimalString.substringWithRange(NSMakeRange(index, 3))
+                formattedString.appendFormat("%@-", prefix)
+                index += 3
+            }
+            
+            let remainder = decimalString.substringFromIndex(index)
+            formattedString.appendString(remainder)
+            textField.text = formattedString as String
+            
+            return false
+        }
+        else
+        {
+            print("else")
+            
+            return true
+        }
+    }
+
 }

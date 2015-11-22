@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		637946DA1BFFCFB6009F28C2 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637946D91BFFCFB6009F28C2 /* ContactsViewController.swift */; };
 		637946DC1BFFCFF5009F28C2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637946DB1BFFCFF5009F28C2 /* ProfileViewController.swift */; };
+		63A88CA71C0135B500B372E6 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A88CA61C0135B500B372E6 /* Validator.swift */; };
 		63AD24351C002F77008DA3E9 /* Phone_alt2.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD24341C002F77008DA3E9 /* Phone_alt2.png */; };
 		63AD243C1C00E0EF008DA3E9 /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD24371C00E0EF008DA3E9 /* book.png */; };
 		63AD243D1C00E0EF008DA3E9 /* contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD24381C00E0EF008DA3E9 /* contact.png */; };
@@ -35,6 +36,7 @@
 		386CF61BC7B8A647FF979414 /* Pods_Contacts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Contacts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		637946D91BFFCFB6009F28C2 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		637946DB1BFFCFF5009F28C2 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		63A88CA61C0135B500B372E6 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		63AD24341C002F77008DA3E9 /* Phone_alt2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Phone_alt2.png; sourceTree = "<group>"; };
 		63AD24371C00E0EF008DA3E9 /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
 		63AD24381C00E0EF008DA3E9 /* contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact.png; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				637946D91BFFCFB6009F28C2 /* ContactsViewController.swift */,
 				637946DB1BFFCFF5009F28C2 /* ProfileViewController.swift */,
 				63B0F5D91BFFBB5F005459FF /* Contact.swift */,
+				63A88CA61C0135B500B372E6 /* Validator.swift */,
 				63B0F5E71BFFC543005459FF /* img */,
 				63B0F5D81BFFB654005459FF /* other */,
 			);
@@ -300,6 +303,7 @@
 				637946DA1BFFCFB6009F28C2 /* ContactsViewController.swift in Sources */,
 				637946DC1BFFCFF5009F28C2 /* ProfileViewController.swift in Sources */,
 				63B0F5C91BFFB640005459FF /* MainViewController.swift in Sources */,
+				63A88CA71C0135B500B372E6 /* Validator.swift in Sources */,
 				63B0F5C71BFFB640005459FF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

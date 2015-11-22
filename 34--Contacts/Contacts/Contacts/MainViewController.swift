@@ -18,7 +18,7 @@ protocol ContactsProtocol
 var youName = "David"
 var contacts: Results <Contact>!
 
-class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtocol
+class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtocol, UITextFieldDelegate
 {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -32,6 +32,8 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
     var chosenContact: Contact?
     
     var currentCreateAction: UIAlertAction!
+    var validName = false
+    
     weak var currentViewController: UIViewController?
     
     override func viewDidLoad()
@@ -55,17 +57,13 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
         sender.setTitle("You", forSegmentAtIndex: 2)
         editButton.hidden = false
         
-        UIView.animateWithDuration(0.5) { () -> Void in
-            <#code#>
-        }
-        
         switch sender.selectedSegmentIndex
         {
         case 0:
             manageNavLabelAndSearchBar("Contacts")
             cycleViewController("Contacts")
         case 1:
-            manageNavLabelAndSearchBar("Family")
+            manageNavLabelAndSearchBar("Favorites")
             cycleViewController("Contacts")
         case 2:
             manageNavLabelAndSearchBar("Profile")
@@ -207,7 +205,7 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
                     }
                 }
             case 1:
-                //Family
+                //Favorites
                 if isSearch
                 {
                     for contact in contacts
@@ -239,6 +237,7 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
         }
         else if let profileVC = self.childViewControllers[0] as? ProfileViewController
         {
+            //this code sucks
             if let _ = chosenContact
             {
                 profileVC.contact = chosenContact
@@ -248,8 +247,13 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
                     segmentedControl.setTitle(title, forSegmentAtIndex: 2)
                 }
             }
+            else
+            {
+                let contacts = realm.objects(Contact).filter("name == %@", youName)
+                profileVC.contact = contacts.first
+            }
+            
             profileVC.setContact()
-
             self.chosenContact = nil
         }
     }
@@ -258,12 +262,14 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
     {
         if identifier != "Profile"
         {
-            self.addContactButtonView.hidden = false
-            self.addContactButtonView.alpha = 0
-            UIView.animateWithDuration(0.4, animations:
-                { () -> Void in
-                    self.addContactButtonView.alpha = 1
-            } )
+            if addContactButtonView.hidden
+            {
+                self.addContactButtonView.hidden = false
+                self.addContactButtonView.alpha = 0
+                UIView.animateWithDuration(0.4, animations: { () -> Void in
+                        self.addContactButtonView.alpha = 1
+                } )
+            }
         }
         else
         {
@@ -273,15 +279,17 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
     
     func manageNavLabelAndSearchBar(text: String)
     {
-        navLabel.alpha = 0
-        UIView.animateWithDuration(0.4, animations:
-        { () -> Void in
-                self.navLabel.text = text
-                self.navLabel.alpha = 1
-        } )
+        self.navLabel.text = text
+        self.navLabel.alpha = 0
+        self.navLabel.center.x -= self.navLabel.frame.width
         
-        let searchTextField = searchBar.valueForKey("searchField") as! UITextField
+        UIView.animateWithDuration(0.25) { () -> Void in
+            self.navLabel.alpha = 1
+            self.navLabel.center.x += self.navLabel.frame.width
+        }
+
         searchBar.resignFirstResponder()
+        let searchTextField = searchBar.valueForKey("searchField") as! UITextField
         
         if text == "Profile"
         {
@@ -314,8 +322,8 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
             try! self.realm.write({ () -> Void in
                 self.realm.add(newContact)
                 self.cycleViewController("Contacts")
+                self.validName = false
             })
-
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
@@ -324,16 +332,16 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
         alertController.addAction(currentCreateAction)
         currentCreateAction.enabled = false
         
-        alertController.addTextFieldWithConfigurationHandler
-        { (textField) -> Void in
-                textField.placeholder = "Name"
-                textField.addTarget(self, action: "ContactNameFieldDidChange:", forControlEvents: .EditingChanged)
+        alertController.addTextFieldWithConfigurationHandler{ (textField) -> Void in
+            textField.placeholder = "Name"
+            textField.tag = 1
+            textField.addTarget(self, action: "ContactNameFieldDidChange:", forControlEvents: .EditingChanged)
         }
         
-        alertController.addTextFieldWithConfigurationHandler
-        { (textField) -> Void in
-                textField.placeholder = "Number"
-                textField.addTarget(self, action: "ContactNumberFieldDidChange:", forControlEvents: .EditingChanged)
+        alertController.addTextFieldWithConfigurationHandler{ (textField) -> Void in
+            textField.placeholder = "Number"
+            textField.tag = 2
+            textField.delegate = self
         }
         
         self.presentViewController(alertController, animated: true, completion: nil)
@@ -341,12 +349,75 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
     
     func ContactNameFieldDidChange(sender: UITextField)
     {
-        self.currentCreateAction.enabled = sender.text?.characters.count > 0
+        let validator = Validator()
+        if validator.validate(sender.text!, cc: "name")
+        {
+            validName = true
+        }
+        else
+        {
+            validName = false
+        }
     }
     
-    func ContactNumberFieldDidChange(sender: UITextField)
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
     {
-        self.currentCreateAction.enabled = sender.text?.characters.count > 0
+        //http://stackoverflow.com/questions/27609104/xcode-swift-formatting-text-as-phone-number
+        if textField == textField.viewWithTag(2) as! UITextField
+        {
+            let newString = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
+            let components = newString.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet)
+            
+            let decimalString = components.joinWithSeparator("") as NSString
+            
+            let length = decimalString.length
+            let hasLeadingOne = length > 0 && decimalString.characterAtIndex(0) == (1 as unichar)
+            
+            if length == 0 || (length > 10 && !hasLeadingOne) || length > 11
+            {
+                let newLength = (textField.text! as NSString).length + (string as NSString).length - range.length as Int
+                
+                return (newLength > 10) ? false : true
+            }
+            var index = 0
+            let formattedString = NSMutableString()
+            
+            if hasLeadingOne
+            {
+                formattedString.appendString("1 ")
+                index += 1
+            }
+            if (length - index) > 3
+            {
+                let areaCode = decimalString.substringWithRange(NSMakeRange(index, 3))
+                formattedString.appendFormat("(%@) ", areaCode)
+                index += 3
+            }
+            if length - index > 3
+            {
+                let prefix = decimalString.substringWithRange(NSMakeRange(index, 3))
+                formattedString.appendFormat("%@-", prefix)
+                index += 3
+            }
+            
+            let remainder = decimalString.substringFromIndex(index)
+            formattedString.appendString(remainder)
+            textField.text = formattedString as String
+            
+            let validator = Validator()
+            if validator.validate(textField.text!, cc: "phone") && validName
+            {
+                self.currentCreateAction.enabled = true
+            }
+            
+            return false
+        }
+        else
+        {
+            print("else")
+
+            return true
+        }
     }
 }
 
