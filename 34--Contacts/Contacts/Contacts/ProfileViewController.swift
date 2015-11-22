@@ -31,6 +31,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
+
         allTextFields = [nameTextField, numberTextField, emailTextField, birthdayTextField]
     }
     
@@ -186,6 +187,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
             self.contact.favorite = !self.contact.favorite
         })
         
+        familyButton.rotate360Degrees()
+        
         if contact.favorite
         {
             familyButton.setImage(UIImage(named: "isFamily"), forState: .Normal)
@@ -198,6 +201,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
     
     @IBAction func editButtonPressed(sender: UIButton)
     {
+        editButton.rotate360Degrees()
         editContact()
     }
     
@@ -205,6 +209,11 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
     
     func editContact()
     {
+        if newContact
+        {
+            self.familyButton.hidden = true
+        }
+        
         edit = !edit
         
         if edit
