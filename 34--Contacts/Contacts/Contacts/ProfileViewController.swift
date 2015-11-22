@@ -44,7 +44,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
                 familyButton.hidden = true
             }
 
-            print("found contact: ") ; print(contact)
+            print("found contact: ", contact.name)
             setTextFields(contact)
         }
         else
@@ -69,7 +69,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
 
         if contact.favorite
         {
-            familyButton.setImage(UIImage(named: "isFamily"), forState: .Normal)
+            familyButton.setImage(UIImage(named: "redHeart"), forState: .Normal)
         }
     }
     
@@ -191,11 +191,11 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
         
         if contact.favorite
         {
-            familyButton.setImage(UIImage(named: "isFamily"), forState: .Normal)
+            familyButton.setImage(UIImage(named: "redheart"), forState: .Normal)
         }
         else
         {
-            familyButton.setImage(UIImage(named: "family"), forState: .Normal)
+            familyButton.setImage(UIImage(named: "heart"), forState: .Normal)
         }
     }
     
@@ -247,6 +247,15 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
                         self.contact.birthday = self.birthdayTextField.text!
                         print("realmWrite: Edit")
                         self.validEntry()
+                        
+                        if firstContact
+                        {
+                            youName = self.nameTextField.text!
+                            firstContact = false
+                            
+                            let mainVC = self.parentViewController as! MainViewController
+                            mainVC.segmentedControl.hidden = false
+                        }
                     })
                 }
                 else

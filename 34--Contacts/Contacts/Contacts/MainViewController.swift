@@ -16,6 +16,7 @@ protocol ContactsProtocol
 }
 
 var youName = "David"
+var firstContact = false
 var contacts: Results <Contact>!
 
 class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtocol, UITextFieldDelegate
@@ -45,7 +46,16 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
         
         contacts = realm.objects(Contact).sorted("name")
 
-        segmentChanged(segmentedControl)
+        if contacts.first != nil
+        {
+            segmentChanged(segmentedControl)
+        }
+        else
+        {
+            firstContact = true
+            segmentedControl.hidden = true
+            addContact()
+        }
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String)
@@ -97,15 +107,6 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
             UIView.animateWithDuration(0.4, animations: { () -> Void in
                 tableView.alpha = 1
             })
-            
-//            if edit
-//            {
-//                editButton.setImage(UIImage(named: "editing"), forState: .Normal)
-//            }
-//            else
-//            {
-//                editButton.setImage(UIImage(named: "edit"), forState: .Normal)
-//            }
         }
     }
     

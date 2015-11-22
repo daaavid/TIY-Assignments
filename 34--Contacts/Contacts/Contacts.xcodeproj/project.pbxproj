@@ -16,11 +16,11 @@
 		63AD243C1C00E0EF008DA3E9 /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD24371C00E0EF008DA3E9 /* book.png */; };
 		63AD243D1C00E0EF008DA3E9 /* contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD24381C00E0EF008DA3E9 /* contact.png */; };
 		63AD243E1C00E0EF008DA3E9 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD24391C00E0EF008DA3E9 /* edit.png */; };
-		63AD243F1C00E0EF008DA3E9 /* family.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD243A1C00E0EF008DA3E9 /* family.png */; };
+		63AD243F1C00E0EF008DA3E9 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD243A1C00E0EF008DA3E9 /* heart.png */; };
 		63AD24401C00E0EF008DA3E9 /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD243B1C00E0EF008DA3E9 /* phone.png */; };
 		63AD24421C00ED23008DA3E9 /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD24411C00ED23008DA3E9 /* mail.png */; };
 		63AD24441C00EF04008DA3E9 /* editing.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD24431C00EF04008DA3E9 /* editing.png */; };
-		63AD24461C00F4F5008DA3E9 /* isfamily.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD24451C00F4F5008DA3E9 /* isfamily.png */; };
+		63AD24461C00F4F5008DA3E9 /* redheart.png in Resources */ = {isa = PBXBuildFile; fileRef = 63AD24451C00F4F5008DA3E9 /* redheart.png */; };
 		63B0F5C71BFFB640005459FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B0F5C61BFFB640005459FF /* AppDelegate.swift */; };
 		63B0F5C91BFFB640005459FF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B0F5C81BFFB640005459FF /* MainViewController.swift */; };
 		63B0F5CC1BFFB640005459FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B0F5CA1BFFB640005459FF /* Main.storyboard */; };
@@ -42,11 +42,11 @@
 		63AD24371C00E0EF008DA3E9 /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
 		63AD24381C00E0EF008DA3E9 /* contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact.png; sourceTree = "<group>"; };
 		63AD24391C00E0EF008DA3E9 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
-		63AD243A1C00E0EF008DA3E9 /* family.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = family.png; sourceTree = "<group>"; };
+		63AD243A1C00E0EF008DA3E9 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		63AD243B1C00E0EF008DA3E9 /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
 		63AD24411C00ED23008DA3E9 /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail.png; sourceTree = "<group>"; };
 		63AD24431C00EF04008DA3E9 /* editing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editing.png; sourceTree = "<group>"; };
-		63AD24451C00F4F5008DA3E9 /* isfamily.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = isfamily.png; sourceTree = "<group>"; };
+		63AD24451C00F4F5008DA3E9 /* redheart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redheart.png; sourceTree = "<group>"; };
 		63B0F5C31BFFB640005459FF /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B0F5C61BFFB640005459FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63B0F5C81BFFB640005459FF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -89,9 +89,9 @@
 				63AD24371C00E0EF008DA3E9 /* book.png */,
 				63AD24381C00E0EF008DA3E9 /* contact.png */,
 				63AD24391C00E0EF008DA3E9 /* edit.png */,
-				63AD243A1C00E0EF008DA3E9 /* family.png */,
+				63AD243A1C00E0EF008DA3E9 /* heart.png */,
 				63AD243B1C00E0EF008DA3E9 /* phone.png */,
-				63AD24451C00F4F5008DA3E9 /* isfamily.png */,
+				63AD24451C00F4F5008DA3E9 /* redheart.png */,
 				63A88CAA1C02471600B372E6 /* Trash.png */,
 			);
 			path = icons;
@@ -224,7 +224,7 @@
 			files = (
 				63A88CAB1C02471600B372E6 /* Trash.png in Resources */,
 				63AD24421C00ED23008DA3E9 /* mail.png in Resources */,
-				63AD243F1C00E0EF008DA3E9 /* family.png in Resources */,
+				63AD243F1C00E0EF008DA3E9 /* heart.png in Resources */,
 				63AD243D1C00E0EF008DA3E9 /* contact.png in Resources */,
 				63B0F5D11BFFB641005459FF /* LaunchScreen.storyboard in Resources */,
 				63AD24441C00EF04008DA3E9 /* editing.png in Resources */,
@@ -234,7 +234,7 @@
 				63B0F5CE1BFFB640005459FF /* Assets.xcassets in Resources */,
 				63AD243C1C00E0EF008DA3E9 /* book.png in Resources */,
 				63AD24401C00E0EF008DA3E9 /* phone.png in Resources */,
-				63AD24461C00F4F5008DA3E9 /* isfamily.png in Resources */,
+				63AD24461C00F4F5008DA3E9 /* redheart.png in Resources */,
 				63B0F5CC1BFFB640005459FF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,7 +414,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Contacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tiy.Contacts;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiy.FancyContacts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -426,7 +426,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Contacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tiy.Contacts;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiy.FancyContacts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
