@@ -33,6 +33,7 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
     
     var currentCreateAction: UIAlertAction!
     var validName = false
+    var newContact = false
     
     weak var currentViewController: UIViewController?
     
@@ -145,7 +146,11 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
 
         currentViewController = newVC
         
-        manageChildContents(false)
+        if !newContact
+        {
+            manageChildContents(false)
+        }
+        newContact = false
     }
     
     func addSubview(subView: UIView, toView parentView: UIView)
@@ -170,7 +175,6 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
         chosenContact = chosenProfile
         segmentedControl.selectedSegmentIndex = 2
         segmentChanged(segmentedControl)
-//        cycleViewController("Profile")
     }
     
     func manageChildContents(isSearch: Bool)
@@ -246,14 +250,15 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
                 {
                     segmentedControl.setTitle(title, forSegmentAtIndex: 2)
                 }
+                profileVC.setContact()
             }
-            else
+            else if !profileVC.newContact
             {
                 let contacts = realm.objects(Contact).filter("name == %@", youName)
                 profileVC.contact = contacts.first
+                profileVC.setContact()
             }
             
-            profileVC.setContact()
             self.chosenContact = nil
         }
     }
@@ -308,6 +313,7 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
     
     func addFriend()
     {
+        /*
         let alertController = UIAlertController(title: "Add Contact", message: "Add some info for this contact.", preferredStyle: .Alert)
         // .Alert and .ActionSheet
         currentCreateAction = UIAlertAction(title: "Create", style: .Default)
@@ -345,12 +351,22 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
         }
         
         self.presentViewController(alertController, animated: true, completion: nil)
-    }
+        */
+        newContact = true
+        cycleViewController("Profile")
+        if let profileVC = self.childViewControllers[0] as? ProfileViewController
+        {
+            profileVC.newContact = true
+            profileVC.editContact()
+            segmentedControl.selectedSegmentIndex = 2
+            segmentedControl.setTitle("New", forSegmentAtIndex: 2)
+        }
+     }
     
     func ContactNameFieldDidChange(sender: UITextField)
     {
         let validator = Validator()
-        if validator.validate(sender.text!, cc: "name")
+        if validator.validate("name", string: sender.text!)
         {
             validName = true
         }
@@ -405,7 +421,7 @@ class MainViewController: UIViewController, UISearchBarDelegate, ContactsProtoco
             textField.text = formattedString as String
             
             let validator = Validator()
-            if validator.validate(textField.text!, cc: "phone") && validName
+            if validator.validate("phone", string: textField.text!) && validName
             {
                 self.currentCreateAction.enabled = true
             }

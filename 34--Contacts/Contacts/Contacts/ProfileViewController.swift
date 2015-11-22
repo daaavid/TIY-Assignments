@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
     let realm = try! Realm()
     
     var edit = false
-    var phoneEdit = 0
+    var newContact = false
     
     var allTextFields: [UITextField]!
     let textFieldBG = UIColor(red: 0.25, green: 0.7, blue: 0.71, alpha: 1)
@@ -30,6 +30,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        allTextFields = [nameTextField, numberTextField, emailTextField]
     }
     
     func setContact()
@@ -52,7 +53,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
             setTextFields(contact)
         }
         
-        allTextFields = [nameTextField, numberTextField, emailTextField]
         toggleTextFields()
     }
     
@@ -62,7 +62,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
         numberTextField.text = contact.number
         
         emailTextField.text = contact.email
-        emailTextField.placeholder = "email"
+        emailTextField.placeholder = "Email"
 
         if contact.favorite
         {
@@ -126,6 +126,11 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
     
     @IBAction func editButtonPressed(sender: UIButton)
     {
+        editContact()
+    }
+    
+    func editContact()
+    {
         edit = !edit
         
         if edit
@@ -149,13 +154,34 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
                 }
                 
                 toggleTextFields()
-                try! realm.write({ () -> Void in
-                    self.contact.name = self.nameTextField.text!
-                    self.contact.number = self.numberTextField.text!
-                    self.contact.email = self.emailTextField.text!
-                    print("realmWrite: Edit")
-                    self.validEntry()
-                })
+                
+                if !newContact
+                {
+                    try! realm.write({ () -> Void in
+                        self.contact.name = self.nameTextField.text!
+                        self.contact.number = self.numberTextField.text!
+                        self.contact.email = self.emailTextField.text!
+                        print("realmWrite: Edit")
+                        self.validEntry()
+                    })
+                }
+                else
+                {
+                    try! realm.write({ () -> Void in
+                        let newContact = Contact()
+                        
+                        newContact.name = self.nameTextField.text!
+                        newContact.number = self.numberTextField.text!
+                        
+                        if self.emailTextField.text != ""
+                        {
+                            newContact.email = self.emailTextField.text!
+                        }
+                        
+                        self.realm.add(newContact)
+                        self.validEntry()
+                    })
+                }
             }
             else
             {
@@ -170,7 +196,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
         let validator = Validator()
         var validEdit = [false, false, false]
         
-        if validator.validate(nameTextField.text!, cc: "name")
+        if validator.validate("name", string: nameTextField.text!)
         {
             validEdit[0] = true
         }
@@ -179,7 +205,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
             invalidEntry(nameTextField)
         }
         
-        if validator.validate(numberTextField.text!, cc: "phone")
+        if validator.validate("phone", string: numberTextField.text!)
         {
             validEdit[1] = true
         }
@@ -192,7 +218,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
         {
             validEdit[2] = true
         }
-        else if validator.validate(emailTextField.text!, cc: "email")
+        else if validator.validate("email", string: emailTextField.text!)
         {
             validEdit[2] = true
         }
@@ -270,8 +296,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate
         }
         else
         {
-            print("else")
-            
             return true
         }
     }

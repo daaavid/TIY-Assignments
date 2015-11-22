@@ -10,16 +10,14 @@ import Foundation
 
 class Validator
 {
-    func validate(string: String, cc: String) -> Bool
+    func validate(var regEx: String, string: String) -> Bool
     {
-        var regEx = ""
-        
-        switch cc
+        switch regEx
         {
         case "phone": regEx = "^\\(\\d{3}\\) \\d{3}-\\d{4}$"
         case "email": regEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
         case "name":  regEx = "^[A-Za-z]{1,10}$"
-        default: print("nope")
+        default: print("unknown regEx: " + regEx)
         }
         
         let test = NSPredicate(format: "SELF MATCHES %@", regEx)
