@@ -11,7 +11,8 @@ import UIKit
 extension UIView
 {
     //https://www.andrewcbancroft.com/2014/10/15/rotate-animation-in-swift/
-    func rotate360Degrees(duration: CFTimeInterval = 0.3, completionDelegate: AnyObject? = nil) {
+    func rotate360Degrees(duration: CFTimeInterval = 0.3, completionDelegate: AnyObject? = nil)
+    {
         let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotateAnimation.fromValue = 0.0
         rotateAnimation.toValue = CGFloat(M_PI * 2.0)
