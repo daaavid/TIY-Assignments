@@ -24,6 +24,10 @@
 		6384024F1C04D54F00964413 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6384024D1C04D54F00964413 /* LaunchScreen.storyboard */; };
 		63E6D73C1C0B72F60087D16D /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E6D73B1C0B72F60087D16D /* search.png */; };
 		63E6D73E1C0B731A0087D16D /* magglass.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E6D73D1C0B731A0087D16D /* magglass.png */; };
+		63E6D7421C0B7C630087D16D /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E6D7401C0B7C630087D16D /* Venue.swift */; };
+		63E6D7461C0BE5D50087D16D /* Venue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E6D7451C0BE5D50087D16D /* Venue+CoreDataProperties.swift */; };
+		63E6D74C1C0BEF440087D16D /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E6D74B1C0BEF440087D16D /* heart.png */; };
+		63E6D7501C0BF39E0087D16D /* filledheart.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E6D74F1C0BF39E0087D16D /* filledheart.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		638402501C04D54F00964413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63E6D73B1C0B72F60087D16D /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		63E6D73D1C0B731A0087D16D /* magglass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magglass.png; sourceTree = "<group>"; };
+		63E6D7401C0B7C630087D16D /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		63E6D7451C0BE5D50087D16D /* Venue+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Venue+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		63E6D74B1C0BEF440087D16D /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		63E6D74F1C0BF39E0087D16D /* filledheart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filledheart.png; sourceTree = "<group>"; };
 		C594D085CE7B85D0B8C3B01E /* Pods-Venue-Menu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Venue-Menu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Venue-Menu/Pods-Venue-Menu.debug.xcconfig"; sourceTree = "<group>"; };
 		C9F5AD50521DB9356A92B834 /* Pods-Venue-Menu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Venue-Menu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Venue-Menu/Pods-Venue-Menu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,16 +91,17 @@
 		638402401C04D54F00964413 /* Venue-Menu */ = {
 			isa = PBXGroup;
 			children = (
+				63E6D7401C0B7C630087D16D /* Venue.swift */,
+				63E6D7451C0BE5D50087D16D /* Venue+CoreDataProperties.swift */,
 				638402451C04D54F00964413 /* Main.storyboard */,
 				6322AE7A1C07E00F00B45B32 /* VenueCell.swift */,
 				636D90A91C08F8CC0091C149 /* APIController.swift */,
 				636D90B91C0913480091C149 /* Extensions.swift */,
+				638402431C04D54F00964413 /* MainViewController.swift */,
 				6322AE761C07DF4C00B45B32 /* SearchTableViewController.swift */,
 				6322AE781C07DFBD00B45B32 /* DetailViewController.swift */,
-				638402431C04D54F00964413 /* MainViewController.swift */,
 				636D90B31C08FD5F0091C149 /* Location.swift */,
 				636D90B41C08FD5F0091C149 /* LocationManager.swift */,
-				636D90B71C0900280091C149 /* Venue2.swift */,
 				63E6D73B1C0B72F60087D16D /* search.png */,
 				63E6D73D1C0B731A0087D16D /* magglass.png */,
 				638402561C04D90700964413 /* other */,
@@ -103,6 +112,9 @@
 		638402561C04D90700964413 /* other */ = {
 			isa = PBXGroup;
 			children = (
+				63E6D74B1C0BEF440087D16D /* heart.png */,
+				63E6D74F1C0BF39E0087D16D /* filledheart.png */,
+				636D90B71C0900280091C149 /* Venue2.swift */,
 				638402411C04D54F00964413 /* AppDelegate.swift */,
 				6384024B1C04D54F00964413 /* Assets.xcassets */,
 				6384024D1C04D54F00964413 /* LaunchScreen.storyboard */,
@@ -194,6 +206,8 @@
 				6384024F1C04D54F00964413 /* LaunchScreen.storyboard in Resources */,
 				6384024C1C04D54F00964413 /* Assets.xcassets in Resources */,
 				63E6D73E1C0B731A0087D16D /* magglass.png in Resources */,
+				63E6D7501C0BF39E0087D16D /* filledheart.png in Resources */,
+				63E6D74C1C0BEF440087D16D /* heart.png in Resources */,
 				638402471C04D54F00964413 /* Main.storyboard in Resources */,
 				63E6D73C1C0B72F60087D16D /* search.png in Resources */,
 			);
@@ -263,8 +277,10 @@
 				6322AE791C07DFBD00B45B32 /* DetailViewController.swift in Sources */,
 				6322AE7B1C07E00F00B45B32 /* VenueCell.swift in Sources */,
 				6384024A1C04D54F00964413 /* Venue_Menu.xcdatamodeld in Sources */,
+				63E6D7461C0BE5D50087D16D /* Venue+CoreDataProperties.swift in Sources */,
 				636D90BA1C0913480091C149 /* Extensions.swift in Sources */,
 				6322AE771C07DF4C00B45B32 /* SearchTableViewController.swift in Sources */,
+				63E6D7421C0B7C630087D16D /* Venue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

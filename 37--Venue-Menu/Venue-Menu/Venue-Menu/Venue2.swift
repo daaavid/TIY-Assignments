@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+/*
 class Venue
 {
     let name: String
@@ -168,3 +168,4 @@ class Venue
         return venue
     }
 }
+*/

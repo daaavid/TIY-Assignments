@@ -8,23 +8,19 @@
 
 import UIKit
 import QuartzCore
-
-protocol LocationManagerDelegate
-{
-    func locationWasFound(location: Location)
-}
+import CoreData
 
 protocol APIControllerProtocol
 {
     func venuesWereFound(venues: [NSDictionary])
 }
 
-class SearchTableViewController: UITableViewController, LocationManagerDelegate, APIControllerProtocol, UISearchBarDelegate
+class SearchTableViewController: UITableViewController, APIControllerProtocol, UISearchBarDelegate
 {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    var searchResults = [Venue]()
+    var searchResults = [NSManagedObject]()
     var location: Location!
     
     let locationManager = LocationManager()
@@ -35,9 +31,10 @@ class SearchTableViewController: UITableViewController, LocationManagerDelegate,
         super.viewDidLoad()
         
         searchBar.delegate = self
+        location = USER_LOCATION
         
-        locationManager.delegate = self
-        locationManager.configureLocationManager()
+//        locationManager.delegate = self
+//        locationManager.configureLocationManager()
         apiController = APIController(delegate: self)
     }
     // MARK: - Table view data source
@@ -74,20 +71,23 @@ class SearchTableViewController: UITableViewController, LocationManagerDelegate,
     
     func search()
     {
-        print("searching")
-        print(location)
-        
-        if let term = searchBar.text
+        if let _ = location
         {
-            switch segmentedControl.selectedSegmentIndex
+            print("searching")
+            print(location)
+            
+            if let term = searchBar.text
             {
-            case 0: apiController.search(term, location: location, searchOption: "explore")
-            case 1: apiController.search(term, location: location, searchOption: "search")
-            default: print("segmentedControl unknown segmentIndex")
+                switch segmentedControl.selectedSegmentIndex
+                {
+                case 0: apiController.search(term, location: location, searchOption: "explore")
+                case 1: apiController.search(term, location: location, searchOption: "search")
+                default: print("segmentedControl unknown segmentIndex")
+                }
             }
+            
+            searchBar.resignFirstResponder()
         }
-        
-        searchBar.resignFirstResponder()
     }
     
     func venuesWereFound(venues: [NSDictionary])
@@ -97,7 +97,7 @@ class SearchTableViewController: UITableViewController, LocationManagerDelegate,
             
             for eachVenueDict in venues
             {
-                if let venue = Venue.venueDictWithJSON(eachVenueDict)
+                if let venue = Venue.venueWithJSON(eachVenueDict)
                 {
                     self.searchResults.append(venue)
                 }
@@ -110,13 +110,16 @@ class SearchTableViewController: UITableViewController, LocationManagerDelegate,
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SearchCell", forIndexPath: indexPath) as! VenueCell
 
-        let venue: Venue = searchResults[indexPath.row]
-        cell.venueLabel.text = venue.name
-        cell.typeLabel.text = venue.type
-        cell.addressLabel.text = venue.address
+        let venue = searchResults[indexPath.row]
+        cell.venueLabel.text = venue.valueForKey("name") as? String
+        cell.typeLabel.text = venue.valueForKey("type") as? String
+        cell.addressLabel.text = venue.valueForKey("address") as? String
         
-        let imageView = makeCellImage(venue.icon)
-        cell.addSubview(imageView)
+        if let imageURL = venue.valueForKey("icon") as? String
+        {
+            let imageView = makeCellImage(imageURL)
+            cell.addSubview(imageView)
+        }
         
         return cell
     }
@@ -134,9 +137,21 @@ class SearchTableViewController: UITableViewController, LocationManagerDelegate,
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
+        let mainVC = navigationController?.viewControllers[0] as! MainViewController
         let detailVC = storyboard?.instantiateViewControllerWithIdentifier("detailVC") as! DetailViewController
         let chosenVenue = searchResults[indexPath.row]
         detailVC.venue = chosenVenue
+        detailVC.location = USER_LOCATION
+        detailVC.delegate = mainVC
         navigationController?.pushViewController(detailVC, animated: true)
     }
+    
+//    override func viewDidDisappear(animated: Bool)
+//    {
+//        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+//        for venue in searchResults
+//        {
+//            managedObjectContext.deleteObject(venue)
+//        }
+//    }
 }
