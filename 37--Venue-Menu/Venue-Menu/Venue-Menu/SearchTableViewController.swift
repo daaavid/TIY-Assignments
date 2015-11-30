@@ -30,6 +30,8 @@ class SearchTableViewController: UITableViewController, APIControllerProtocol, U
     {
         super.viewDidLoad()
         
+        segmentedControl.hidden = true
+        
         searchBar.delegate = self
         location = USER_LOCATION
         

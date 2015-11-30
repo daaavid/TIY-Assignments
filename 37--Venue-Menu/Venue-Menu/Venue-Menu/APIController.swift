@@ -18,9 +18,11 @@ class APIController
         self.delegate = delegate
     }
 
-    func search(term: String, location: Location, searchOption: String)
+    func search(term: String, location: Location, var searchOption: String)
     {
         print("api search")
+        
+        searchOption = "search"
         
         let client_id = "3CTEMHPNFURJSSCYEJTXIBDWG4UKD30NTL0QNPKMB331L2T0"
         let client_secret = "EQSMTQTYTWUUGI5SKE5UA3OCYHL2C3HJJC20ZTY1OEHC4ABM"
