@@ -14,18 +14,32 @@ extension String
             let firstChar = String(characters.first!)
             characters.removeFirst()
             
-            var ay = "ay"
-            if self.isCaps()
+            if self.checkCase("lowercase")
             {
-                ay = "AY"
+                self = String(characters) + firstChar + "ay"
             }
-            self = String(characters) + firstChar + ay
+            else
+            {
+                self = String(characters) + firstChar + "AY"
+            }
         }
     }
     
     mutating func decodePigLatin()
     {
-        
+        var characters = self.characters
+        if characters.count > 0
+        {
+            characters.removeLast()
+            characters.removeLast()
+            
+            let firstChar = String(characters.first!)
+            characters.removeFirst()
+            let secondChar = String(characters.last!)
+            characters.removeLast()
+            
+            self = secondChar + firstChar + String(characters)
+        }
     }
     
     mutating func pigLatinSentence()
@@ -104,13 +118,20 @@ extension String
         }
     }
     
-    func isCaps() -> Bool
+    func checkCase(var regex: String) -> Bool
     {
-        let test = NSPredicate(format: "SELF MATCHES %@", "[A-Z]+")
+        switch regex
+        {
+        case "uppercase": regex = "[A-Z]+"
+        case "lowercase": regex = "[a-z]+"
+        default: regex = ""
+        }
+        
+        let test = NSPredicate(format: "SELF MATCHES %@", regex)
         return test.evaluateWithObject(self)
     }
-    
-    func isNumber() -> Bool
+
+    func isPhoneNumber() -> Bool
     {
         let regex = "^\\(\\d{3}\\) \\d{3}-\\d{4}$"
         let test = NSPredicate(format: "SELF MATCHES %@", regex)
@@ -122,12 +143,18 @@ var string = "There is always money in the banana stand"
 string.pigLatinSentence()
 string.decodePigLatinSentence()
 string.alternatingCaps()
+
 var capString = "BANANA"
-capString.isCaps()
+capString.checkCase("uppercase")
 capString.pigLatin()
+capString.decodePigLatin()
+capString.lowercaseString.checkCase("lowercase")
+
+
+
 
 let number = "(920) 285-6700"
-number.isNumber()
+number.isPhoneNumber()
 
 
 
