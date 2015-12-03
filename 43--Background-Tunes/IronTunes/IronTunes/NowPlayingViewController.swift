@@ -12,7 +12,6 @@ import MediaPlayer
 
 class NowPlayingViewController: UIViewController
 {
-
     @IBOutlet var songTitleLabel: UILabel!
     @IBOutlet var artistLabel: UILabel!
     @IBOutlet var albumArtwork: UIImageView!
@@ -39,7 +38,12 @@ class NowPlayingViewController: UIViewController
         avQueuePlayer
             .addObserver(self, forKeyPath: "currentItem", options: [.New, .Initial], context: nil)
         
-//        controlCenter.nowPlayingInfo = ["]
+        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+    }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
     }
     
     // MARK: - Action handlers
@@ -50,6 +54,18 @@ class NowPlayingViewController: UIViewController
     }
     
     @IBAction func skipForwardTapped(sender: UIButton)
+    {
+        skipForward()
+    }
+    
+    @IBAction func skipBackTapped(sender: UIButton)
+    {
+        skipBack()
+    }
+    
+    // MARK: - Private methods
+    
+    func skipForward()
     {
         let currentSongIndex = (songs as NSArray).indexOfObject(currentSong!)
         let nextSong: Int
@@ -67,7 +83,7 @@ class NowPlayingViewController: UIViewController
         togglePlayback(true)
     }
     
-    @IBAction func skipBackTapped(sender: UIButton)
+    func skipBack()
     {
         avQueuePlayer.seekToTime(CMTimeMakeWithSeconds(0.0, 1))
         if !nowPlaying
@@ -75,8 +91,6 @@ class NowPlayingViewController: UIViewController
             togglePlayback(true)
         }
     }
-    
-    // MARK: - Private methods
     
     func configurePlaylist()
     {
@@ -107,6 +121,8 @@ class NowPlayingViewController: UIViewController
             songTitleLabel.text = song.title
             artistLabel.text = song.artist
             albumArtwork.image = UIImage(named: song.albumArtworkName)
+            
+            configureNowPlayingInfo(nil, songDuration: nil)
         }
     }
     
@@ -161,31 +177,89 @@ class NowPlayingViewController: UIViewController
                 let seconds = CMTimeGetSeconds(time)
                 let duration = CMTimeGetSeconds(currentItem.duration)
                 
-                let timeString = String(format: "%02.2f", seconds)
-                
-                print(seconds, duration)
-                
                 let progress = Float(seconds / duration)
                 self.progressBar.setProgress(progress, animated: false)
-                print(progress)
                 
+                let infoCenterProgress = NSNumber(double: seconds)
+                let infoCenterDuration = NSNumber(double: CMTimeGetSeconds(currentItem.duration))
+                
+                self.configureNowPlayingInfo(infoCenterProgress, songDuration: infoCenterDuration)
+                
+                /*
+                let timeString = String(format: "%02.2f", seconds)
+                print(progress, seconds, duration)
+
                 if UIApplication.sharedApplication().applicationState == .Active
                 {
-                    print("Foreground: \(timeString)")
+                    if progress % 2 == 0
+                    {
+                        print("Foreground: \(timeString)")
+                    }
                 }
                 else
                 {
-                    let timeRemaining = UIApplication.sharedApplication().backgroundTimeRemaining
+                    if progress % 2 == 0
+                    {
+                        let timeRemaining = UIApplication.sharedApplication().backgroundTimeRemaining
                 
-                    print("Background: \(timeString), time remaining: \(timeRemaining)")
+                        print("Background: \(timeString), time remaining: \(timeRemaining)")
+                    }
                 }
+                */
             }
         }
     }
     
+    override func remoteControlReceivedWithEvent(event: UIEvent?)
+    {
+        print("received remote event main")
+        
+        if event?.type == .RemoteControl
+        {
+//            let mpCenter = MPRemoteCommandCenter.sharedCommandCenter()
+            
+            //weirdo error when trying to do this as a switch-case
+            if event?.subtype == .RemoteControlPlay
+            {
+                togglePlayback(!nowPlaying)
+            }
+            else if event?.subtype == .RemoteControlPause
+            {
+                togglePlayback(!nowPlaying)
+            }
+            else if event?.subtype == .RemoteControlNextTrack
+            {
+                skipForward()
+            }
+            else if event?.subtype == .RemoteControlPreviousTrack
+            {
+                skipBack()
+            }
+        }
+    }
     
-    
-    
+    func configureNowPlayingInfo(elapsedTime: NSNumber?, songDuration: NSNumber?)
+    {
+        print("configure now playing info")
+        
+        let infoCenter = MPNowPlayingInfoCenter.defaultCenter()
+        
+        var newInfo = [
+            MPMediaItemPropertyArtist : currentSong!.artist,
+            MPMediaItemPropertyTitle : currentSong!.title,
+            MPNowPlayingInfoPropertyElapsedPlaybackTime : NSNumber(integer: 0),
+            MPNowPlayingInfoPropertyDefaultPlaybackRate : NSNumber(integer: 1),
+            MPMediaItemPropertyPlaybackDuration : NSNumber(integer: 0)
+        ]
+        
+        if elapsedTime != nil && songDuration != nil
+        {
+            newInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = elapsedTime
+            newInfo[MPMediaItemPropertyPlaybackDuration] = songDuration
+        }
+        
+        infoCenter.nowPlayingInfo = newInfo
+    }
     
     
     

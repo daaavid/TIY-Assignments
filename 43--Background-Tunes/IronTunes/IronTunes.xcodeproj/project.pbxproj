@@ -49,6 +49,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63FA66931C0FC226006E2C58 /* other */ = {
+			isa = PBXGroup;
+			children = (
+				DF4B789B1BA736940087FEA1 /* Images.xcassets */,
+				DF4B78C21BA766EE0087FEA1 /* Songs */,
+				DF4B789D1BA736940087FEA1 /* LaunchScreen.xib */,
+				DF4B78921BA736940087FEA1 /* Supporting Files */,
+				DF4B78B41BA74C7B0087FEA1 /* README.txt */,
+			);
+			name = other;
+			sourceTree = "<group>";
+		};
 		DF4B78861BA736940087FEA1 = {
 			isa = PBXGroup;
 			children = (
@@ -72,11 +84,7 @@
 				DF4B78961BA736940087FEA1 /* NowPlayingViewController.swift */,
 				DF4B78C01BA75C620087FEA1 /* Song.swift */,
 				DF4B78981BA736940087FEA1 /* Main.storyboard */,
-				DF4B789B1BA736940087FEA1 /* Images.xcassets */,
-				DF4B78C21BA766EE0087FEA1 /* Songs */,
-				DF4B789D1BA736940087FEA1 /* LaunchScreen.xib */,
-				DF4B78921BA736940087FEA1 /* Supporting Files */,
-				DF4B78B41BA74C7B0087FEA1 /* README.txt */,
+				63FA66931C0FC226006E2C58 /* other */,
 			);
 			path = IronTunes;
 			sourceTree = "<group>";
