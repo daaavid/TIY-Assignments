@@ -12,6 +12,8 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
 {
     @IBOutlet weak var hourLabel: UILabel!
     
+    var delegate: SettingsChangedDelegate!
+    
     var presses = 1
     var hours = [
         6,
@@ -24,6 +26,9 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        let mainVC = navigationController?.viewControllers[0] as! MainViewController
+        delegate = mainVC
     }
     
     @IBAction func categoriesButtonTapped(sender: UIButton)
@@ -41,9 +46,12 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
         var hour = hours[presses]
         var suffix = " A.M."
         
-        if hour > 12
+        if hour >= 12
         {
-            hour -= 12
+            if hour > 12
+            {
+                hour -= 12
+            }
             suffix = " P.M."
         }
         
@@ -51,6 +59,8 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
         
         GLOBAL_SETTINGS?.hour = hours[presses]
         print("set hour \(hours[presses])")
+        
+        delegate.settingsDidChange()
         
         presses++
     }

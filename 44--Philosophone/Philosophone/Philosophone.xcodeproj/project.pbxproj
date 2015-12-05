@@ -134,6 +134,11 @@
 					635F5B321C11EDEF00E34B24 = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = 95P55J7Q5M;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -329,6 +334,7 @@
 				635F5B471C11EDEF00E34B24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
