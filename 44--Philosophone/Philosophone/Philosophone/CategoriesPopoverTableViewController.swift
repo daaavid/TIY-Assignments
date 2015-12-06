@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class CategoriesPopoverTableViewController: UITableViewController
 {
@@ -65,6 +66,15 @@ class CategoriesPopoverTableViewController: UITableViewController
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        if GLOBAL_SETTINGS?.sound == true
+        {
+            if let soundURL = NSBundle.mainBundle().URLForResource("typewriter", withExtension: "wav") {
+                var mySound: SystemSoundID = 0
+                AudioServicesCreateSystemSoundID(soundURL, &mySound)
+                AudioServicesPlaySystemSound(mySound);
+            }
+        }
         
         let category = categories[indexPath.row]
         

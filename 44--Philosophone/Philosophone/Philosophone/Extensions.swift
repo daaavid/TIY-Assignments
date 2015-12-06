@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 import UIKit
 
 extension UIView
@@ -30,11 +31,28 @@ extension UIView
             }
         }
     }
+    
+    func slideVerticallyToOriginAndSpin(duration: Double, fromPointY: CGFloat, spin: Bool)
+    {
+        let originalY = self.frame.origin.y
+        self.frame.origin.y += fromPointY
+        self.alpha = 0
+        
+        UIView.animateWithDuration(duration, animations: { () -> Void in
+            self.frame.origin.y = originalY
+            self.alpha = 1
+            }) { (_) -> Void in
+                if spin
+                {
+                    self.spin()
+                }
+        }
+    }
 }
 
 extension UILabel
 {
-    func typeText(quote: String, delegate: TypedCharacterTextDelegate?)
+    func typeText(quote: String, interval: Double, delegate: TypedCharacterTextDelegate?)
     {
         if self.text != ""
         {
@@ -47,15 +65,20 @@ extension UILabel
             
             for character in quote.characters
             {
+                if delegate == nil
+                {
+                    let sound = TypewriterClack()
+                    sound.playSound()
+                }
+                
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     self.text = self.text! + String(character)
                 }
                 
-                NSThread.sleepForTimeInterval(0.025)
+                NSThread.sleepForTimeInterval(interval)
             }
             
             delegate?.quoteFinishedTyping()
-            
         }
     }
 }

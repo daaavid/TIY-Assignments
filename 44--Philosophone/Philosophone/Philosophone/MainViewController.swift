@@ -11,7 +11,7 @@ import UIKit
 var GLOBAL_SETTINGS = Settings?()
 var GLOBAL_QUOTE = Quote?()
 
-let kNotificationKey = "Notification"
+let kSettingsKey = "Settings"
 
 protocol APIControllerProtocol
 {
@@ -26,6 +26,7 @@ protocol TypedCharacterTextDelegate
 protocol SettingsChangedDelegate
 {
     func settingsDidChange()
+    func typeQuoteAgain()
 }
 
 class MainViewController: UIViewController, APIControllerProtocol, TypedCharacterTextDelegate, SettingsChangedDelegate
@@ -35,23 +36,24 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
     @IBOutlet weak var wordDivider: UILabel!
     
     @IBOutlet weak var settingsButton: UIButton!
+    var settingsButtonPosition: CGRect?
     
     var apiController: APIController?
+    
+    let sound = TypewriterClack()
+    
+    var typeAgain = false
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-//        let quote = "The only thing necessary for the triumph of evil is for good men to do nothing."
-//        let author = "Edmund Burke"
-//        
-//        GLOBAL_QUOTE = Quote(quote: quote, author: author)
+        settingsButton.alpha = 0
+        
+        makeTestQuote()
         
         performSetup()
-    }
-    
-    func performSetup()
-    {
+        
         if GLOBAL_SETTINGS == nil
         {
             let categories = [
@@ -64,9 +66,50 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
                 "art"
             ]
             
-            GLOBAL_SETTINGS = Settings(hour: 6, categories: categories)
+            GLOBAL_SETTINGS = Settings(hour: 6, categories: categories, sound: true)
         }
+    }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
         
+        settingsButton.slideVerticallyToOriginAndSpin(1, fromPointY: settingsButton.frame.height * 2, spin: true)
+        
+        if settingsButtonPosition != nil
+        {
+            settingsButton.frame = settingsButtonPosition!
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        if typeAgain
+        {
+            performSetup()
+            typeAgain = false
+        }
+    }
+    
+    override func viewDidDisappear(animated: Bool)
+    {
+        super.viewDidDisappear(animated)
+        
+        settingsButton.alpha = 0
+    }
+    
+    func makeTestQuote()
+    {
+        let quote = "The only thing necessary for the triumph of evil is for good men to do nothing."
+        let author = "Edmund Burke"
+        
+        GLOBAL_QUOTE = Quote(quote: quote, author: author)
+    }
+    
+    func performSetup()
+    {
         // quote
         
         quoteLabel.text = ""
@@ -75,26 +118,22 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         
         if GLOBAL_QUOTE != nil
         {
-            quoteLabel.typeText(GLOBAL_QUOTE!.quote, delegate: self)
+            quoteLabel.typeText(GLOBAL_QUOTE!.quote, interval: 0.035, delegate: self)
             
             setNotification()
         }
         else if GLOBAL_SETTINGS?.categories.count > 0
         {
+            print("get quote")
+            
             apiController = APIController(delegate: self)
             apiController?.getQuote(GLOBAL_SETTINGS!.categories)
         }
         else
         {
-            quoteLabel.typeText("Select at least one quote category from the settings.", delegate: nil)
+            quoteLabel.typeText("Select at least one quote category from the settings.", interval: 0.35, delegate: nil)
             authorLabel.text = ""
         }
-    }
-    
-    func quoteFinishedTyping()
-    {
-        wordDivider.appearWithFade(0.2)
-        authorLabel.typeText(GLOBAL_QUOTE!.author, delegate: nil)
     }
     
     func quoteWasFound(quoteDict: NSDictionary)
@@ -109,6 +148,18 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         }
     }
     
+    func quoteFinishedTyping()
+    {
+        wordDivider.appearWithFade(0.25)
+        
+        let global_queue = dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)
+        dispatch_async(global_queue) { () -> Void in
+            NSThread.sleepForTimeInterval(0.75)
+            
+            self.authorLabel.typeText(GLOBAL_QUOTE!.author, interval: 0.35, delegate: nil)
+        }
+    }
+    
     func setNotification()
     {
         //notification already exists
@@ -120,28 +171,32 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
             }
         }
         
-        let newNotification = UILocalNotification()
-        newNotification.fireDate = getFireDate()
-        newNotification.timeZone = NSTimeZone.localTimeZone()
-        newNotification.alertBody = GLOBAL_QUOTE!.quote + " - " + GLOBAL_QUOTE!.author
-        newNotification.alertTitle = "Philosophone"
-        let uuid = NSUUID()
-        let userInfo = ["objectUUID" : uuid.UUIDString]
-        newNotification.userInfo = userInfo
-        
-        newNotification.repeatInterval = NSCalendarUnit.Day
-        print(newNotification)
-        
-//        newNotification.addObserver(<#T##observer: NSObject##NSObject#>, forKeyPath: <#T##String#>, options: <#T##NSKeyValueObservingOptions#>, context: <#T##UnsafeMutablePointer<Void>#>)
-        
-        UIApplication.sharedApplication().scheduleLocalNotification(newNotification)
-        
-        print("\(UIApplication.sharedApplication().scheduledLocalNotifications?.count) notification(s) scheduled")
-    }
+        if GLOBAL_QUOTE != nil
+        {
+            //new notification
+            let newNotification = UILocalNotification()
+            newNotification.timeZone = NSTimeZone.localTimeZone()
+            
+            newNotification.alertBody = "\(GLOBAL_QUOTE!.quote) - \n\(GLOBAL_QUOTE!.author) \n\nTap to schedule tomorrow's quote."
+            
+            newNotification.alertTitle = "Philosophone"
+            let uuid = NSUUID()
+            let userInfo = ["objectUUID" : uuid.UUIDString]
+            newNotification.userInfo = userInfo
+            
+            newNotification.fireDate = getFireDate() //<<<<<<
+            newNotification.repeatInterval = .Day
+//            newNotification.fireDate = NSDate(timeInterval: 20, sinceDate: NSDate())
     
-    func settingsDidChange()
-    {
-        setNotification()
+            print("notification scheduled \(newNotification) -- ")
+            
+            UIApplication.sharedApplication().scheduleLocalNotification(newNotification)
+            print("\(UIApplication.sharedApplication().scheduledLocalNotifications?.count) notification(s) scheduled")
+        }
+        else
+        {
+            performSetup()
+        }
     }
     
     func getFireDate() -> NSDate?
@@ -156,9 +211,56 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         return fireDate
     }
     
+    func notificationPopped()
+    {
+        //clear out old quote and get a new one
+        print("notificationPopped")
+        
+//        GLOBAL_QUOTE = nil
+        setNotification()
+    }
+    
+    // MARK: - Settings
+    
     @IBAction func settingsButtonTapped(sender: UIButton)
     {
         settingsButton.spin()
+        settingsButtonPosition = settingsButton.frame
+        
+        sound.playSound()
+        
+        performSegueWithIdentifier("showSettingsSegue", sender: self)
+    }
+    
+    func settingsDidChange()
+    {
+        setNotification()
+    }
+    
+    func typeQuoteAgain()
+    {
+        typeAgain = true
+    }
+    
+    func saveSettings()
+    {
+        let data = NSKeyedArchiver.archivedDataWithRootObject(GLOBAL_SETTINGS!)
+        NSUserDefaults.standardUserDefaults().setObject(data, forKey: kSettingsKey)
+        
+        print("saved settings: ", GLOBAL_SETTINGS!)
+    }
+    
+    func loadSettings()
+    {
+        let standardUserDefaults = NSUserDefaults.standardUserDefaults()
+        if let data = standardUserDefaults.objectForKey(kSettingsKey) as? NSData
+        {
+            if let savedSettings = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? Settings
+            {
+                GLOBAL_SETTINGS = savedSettings
+                print("loaded settings: ", savedSettings)
+            }
+        }
     }
 }
 

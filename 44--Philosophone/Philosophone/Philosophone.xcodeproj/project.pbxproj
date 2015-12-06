@@ -19,6 +19,8 @@
 		635F5B791C125D2500E34B24 /* CategoriesPopoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F5B781C125D2500E34B24 /* CategoriesPopoverTableViewController.swift */; };
 		635F5B7D1C127EB700E34B24 /* disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 635F5B7C1C127EB700E34B24 /* disclosure.png */; };
 		635F5B7F1C127F3200E34B24 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F5B7E1C127F3200E34B24 /* SettingsViewController.swift */; };
+		63D729711C13B7870061615C /* typewriter.wav in Resources */ = {isa = PBXBuildFile; fileRef = 63D729701C13B7870061615C /* typewriter.wav */; };
+		63D729731C13CB5A0061615C /* TypewriterClack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D729721C13CB5A0061615C /* TypewriterClack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		635F5B781C125D2500E34B24 /* CategoriesPopoverTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesPopoverTableViewController.swift; sourceTree = "<group>"; };
 		635F5B7C1C127EB700E34B24 /* disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclosure.png; sourceTree = "<group>"; };
 		635F5B7E1C127F3200E34B24 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		63D729701C13B7870061615C /* typewriter.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = typewriter.wav; sourceTree = "<group>"; };
+		63D729721C13CB5A0061615C /* TypewriterClack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypewriterClack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,7 @@
 				635F5B481C11EE5E00E34B24 /* Quote.swift */,
 				635F5B4A1C11F02700E34B24 /* APIController.swift */,
 				635F5B761C1257B000E34B24 /* Extensions.swift */,
+				63D729721C13CB5A0061615C /* TypewriterClack.swift */,
 				635F5B801C12802F00E34B24 /* Settings */,
 				635F5B4C1C11F0F700E34B24 /* other */,
 			);
@@ -82,6 +87,7 @@
 		635F5B4C1C11F0F700E34B24 /* other */ = {
 			isa = PBXGroup;
 			children = (
+				63D729701C13B7870061615C /* typewriter.wav */,
 				635F5B7C1C127EB700E34B24 /* disclosure.png */,
 				635F5B361C11EDEF00E34B24 /* AppDelegate.swift */,
 				635F5B3D1C11EDEF00E34B24 /* Assets.xcassets */,
@@ -167,6 +173,7 @@
 			files = (
 				635F5B411C11EDEF00E34B24 /* LaunchScreen.storyboard in Resources */,
 				635F5B3E1C11EDEF00E34B24 /* Assets.xcassets in Resources */,
+				63D729711C13B7870061615C /* typewriter.wav in Resources */,
 				635F5B3C1C11EDEF00E34B24 /* Main.storyboard in Resources */,
 				635F5B7D1C127EB700E34B24 /* disclosure.png in Resources */,
 			);
@@ -184,6 +191,7 @@
 				635F5B491C11EE5E00E34B24 /* Quote.swift in Sources */,
 				635F5B521C12043F00E34B24 /* Settings.swift in Sources */,
 				635F5B791C125D2500E34B24 /* CategoriesPopoverTableViewController.swift in Sources */,
+				63D729731C13CB5A0061615C /* TypewriterClack.swift in Sources */,
 				635F5B371C11EDEF00E34B24 /* AppDelegate.swift in Sources */,
 				635F5B771C1257B000E34B24 /* Extensions.swift in Sources */,
 				635F5B7F1C127F3200E34B24 /* SettingsViewController.swift in Sources */,
