@@ -99,7 +99,6 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
     override func viewDidDisappear(animated: Bool)
     {
         super.viewDidDisappear(animated)
-        
         settingsButton.alpha = 0
     }
     
@@ -119,7 +118,7 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         
         if TODAY_QUOTE != nil && typeAgain == true
         {
-            let quote = " “" + TODAY_QUOTE!.quote + "” "
+            let quote = "“" + TODAY_QUOTE!.quote + "”"
             quoteLabel.typeText(quote, interval: 0.035, delegate: self)
             
             typeAgain = false
@@ -147,15 +146,15 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
                 {
                     TOMORROW_QUOTE = Quote.quoteFromAPIResults(quoteDict!)
                     print(TOMORROW_QUOTE)
+                    self.setNotification()
                 }
                 else
                 {
                     TODAY_QUOTE = Quote.quoteFromAPIResults(quoteDict!)
                     print(TODAY_QUOTE)
                     self.getNewQuoteForToday = false
+                    self.performSetup()
                 }
-                
-                self.performSetup()
             }
         }
         else
@@ -219,7 +218,7 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
                 
                 newNotification.fireDate = self.getFireDate() //<<<<<<
                 newNotification.repeatInterval = .Day
-//                newNotification.fireDate = NSDate(timeInterval: 20, sinceDate: NSDate())
+//                newNotification.fireDate = NSDate(timeInterval: 20, sinceDate: NSDate()) //<<<<<<<<<<<<<<<<<<<<<
                 
                 print("notification scheduled \(newNotification) -- ")
                 

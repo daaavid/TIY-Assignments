@@ -76,7 +76,7 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
     {
         super.viewWillDisappear(animated)
         
-        sound.playSound("harsh")
+        sound.playSound("ding")
     }
     
     @IBAction func categoriesButtonTapped(sender: UIButton)
