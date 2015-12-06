@@ -43,7 +43,7 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
     
     let sound = TypewriterClack()
     
-    var typeAgain = false
+    var typeAgain = true
     var getNewQuoteForToday = false
 
     override func viewDidLoad()
@@ -53,8 +53,6 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         settingsButton.alpha = 0
         
         makeTestQuote()
-        
-        performSetup()
         
         if GLOBAL_SETTINGS == nil
         {
@@ -94,8 +92,7 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
             authorLabel.text = ""
             wordDivider.alpha = 0
             
-            NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "performSetup", userInfo: nil, repeats: false)
-            typeAgain = false
+            NSTimer.scheduledTimerWithTimeInterval(1.25, target: self, selector: "performSetup", userInfo: nil, repeats: false)
         }
     }
     
@@ -120,19 +117,12 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         authorLabel.text = ""
         wordDivider.alpha = 0
         
-        if TOMORROW_QUOTE == nil
+        if TODAY_QUOTE != nil && typeAgain == true
         {
-            print("get quote")
-            
-            apiController = APIController(delegate: self)
-            apiController?.getQuote(GLOBAL_SETTINGS!.categories)
-        }
-        else if TODAY_QUOTE != nil
-        {
-            let quote = "“" + TODAY_QUOTE!.quote + "”"
+            let quote = " “" + TODAY_QUOTE!.quote + "” "
             quoteLabel.typeText(quote, interval: 0.035, delegate: self)
             
-            setNotification()
+            typeAgain = false
         }
         else if TODAY_QUOTE == nil
         {
@@ -141,21 +131,19 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
             apiController = APIController(delegate: self)
             apiController?.getQuote(GLOBAL_SETTINGS!.categories)
         }
-//        else
-//        {
-//            quoteLabel.typeText("Select at least one quote category from the settings.", interval: 0.035, delegate: nil)
-//            authorLabel.text = ""
-//        }
+        
+        setNotification()
     }
     
     func quoteWasFound(quoteDict: NSDictionary?)
     {
+        print("quote was found")
+        
         if quoteDict != nil
         {
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
-//                TODAY_QUOTE = Quote.quoteFromAPIResults(quoteDict!)
-//                print(TODAY_QUOTE)
-                if !self.getNewQuoteForToday
+
+                if self.getNewQuoteForToday == false
                 {
                     TOMORROW_QUOTE = Quote.quoteFromAPIResults(quoteDict!)
                     print(TOMORROW_QUOTE)
@@ -189,8 +177,6 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
                 
                 self.authorLabel.typeText(TODAY_QUOTE!.author, interval: 0.15, delegate: self)
             }
-            
-
         }
         else
         {
@@ -209,32 +195,37 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
             }
         }
         
-        if TOMORROW_QUOTE != nil
+        if TOMORROW_QUOTE == nil
         {
-            //new notification
-            let newNotification = UILocalNotification()
-            newNotification.timeZone = NSTimeZone.localTimeZone()
+            print("TOMORROW_QUOTE == nil")
             
-            newNotification.alertBody = "\(TOMORROW_QUOTE!.quote) - \n\(TOMORROW_QUOTE!.author) \n\nTap to schedule tomorrow's quote."
-            print(newNotification.alertBody)
-            
-            newNotification.alertTitle = "Philosophone"
-            let uuid = NSUUID()
-            let userInfo = ["objectUUID" : uuid.UUIDString]
-            newNotification.userInfo = userInfo
-            
-            newNotification.fireDate = getFireDate() //<<<<<<
-            newNotification.repeatInterval = .Day
-//            newNotification.fireDate = NSDate(timeInterval: 20, sinceDate: NSDate())
-    
-            print("notification scheduled \(newNotification) -- ")
-            
-            UIApplication.sharedApplication().scheduleLocalNotification(newNotification)
-            print("\(UIApplication.sharedApplication().scheduledLocalNotifications?.count) notification(s) scheduled")
+            apiController = APIController(delegate: self)
+            apiController?.getQuote(GLOBAL_SETTINGS!.categories)
         }
         else
         {
-            performSetup()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                //new notification
+                let newNotification = UILocalNotification()
+                newNotification.timeZone = NSTimeZone.localTimeZone()
+                
+                newNotification.alertBody = "\(TOMORROW_QUOTE!.quote) - \n\(TOMORROW_QUOTE!.author) \n\nTap to schedule tomorrow's quote."
+                print(newNotification.alertBody)
+                
+                newNotification.alertTitle = "Philosophone"
+                let uuid = NSUUID()
+                let userInfo = ["objectUUID" : uuid.UUIDString]
+                newNotification.userInfo = userInfo
+                
+                newNotification.fireDate = self.getFireDate() //<<<<<<
+                newNotification.repeatInterval = .Day
+//                newNotification.fireDate = NSDate(timeInterval: 20, sinceDate: NSDate())
+                
+                print("notification scheduled \(newNotification) -- ")
+                
+                UIApplication.sharedApplication().scheduleLocalNotification(newNotification)
+                print("\(UIApplication.sharedApplication().scheduledLocalNotifications?.count) notification(s) scheduled")
+            })
         }
     }
     
@@ -258,7 +249,8 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         TODAY_QUOTE = TOMORROW_QUOTE
         TOMORROW_QUOTE = nil
         
-        setNotification()
+        typeAgain = true
+        NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "performSetup", userInfo: nil, repeats: false)
     }
     
     // MARK: - Settings
