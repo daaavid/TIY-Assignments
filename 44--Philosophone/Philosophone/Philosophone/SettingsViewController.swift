@@ -70,6 +70,8 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
         getNewQuoteButton.enabled = false
         typeQuoteAgainButton.enabled = true
         
+        creditLabel.text = "Powered by api.theysaidso.com\nfreesound.org/people/soundslikewillem"
+        
         NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: "enableGetQuoteButton", userInfo: nil, repeats: false)
     }
     
@@ -89,8 +91,6 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
 
     @IBAction func hourButtonTapped(sender: UIButton)
     {
-        sound.playSound("harsh")
-        
         presses = presses + 1
         
         if presses >= hours.count
@@ -103,6 +103,8 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
         setHourLabel()
         
         delegate.settingsDidChange()
+        
+        sound.playSound("harsh")
     }
     
     @IBAction func soundButtonTapped(sender: UIButton)
@@ -178,10 +180,7 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
         if hour == 0
         {
             hourLabel.text = "Never"
-            
             UIApplication.sharedApplication().cancelAllLocalNotifications()
-            
-            print(UIApplication.sharedApplication().scheduledLocalNotifications)
         }
     }
     

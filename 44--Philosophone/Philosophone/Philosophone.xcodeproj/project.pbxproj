@@ -107,6 +107,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		630AE1DF1C14BFC8006B3349 /* objects */ = {
+			isa = PBXGroup;
+			children = (
+				635F5B511C12043F00E34B24 /* Settings.swift */,
+				635F5B481C11EE5E00E34B24 /* Quote.swift */,
+				63D729721C13CB5A0061615C /* TypewriterClack.swift */,
+			);
+			name = objects;
+			sourceTree = "<group>";
+		};
 		635F5B2A1C11EDEF00E34B24 = {
 			isa = PBXGroup;
 			children = (
@@ -128,7 +138,8 @@
 			children = (
 				635F5B3A1C11EDEF00E34B24 /* Main.storyboard */,
 				635F5B381C11EDEF00E34B24 /* MainViewController.swift */,
-				635F5B801C12802F00E34B24 /* Settings */,
+				630AE1DF1C14BFC8006B3349 /* objects */,
+				635F5B801C12802F00E34B24 /* settings */,
 				63D729741C13E55E0061615C /* other stuff */,
 				635F5B4C1C11F0F700E34B24 /* not looking at this again */,
 			);
@@ -150,24 +161,21 @@
 			name = "not looking at this again";
 			sourceTree = "<group>";
 		};
-		635F5B801C12802F00E34B24 /* Settings */ = {
+		635F5B801C12802F00E34B24 /* settings */ = {
 			isa = PBXGroup;
 			children = (
-				635F5B511C12043F00E34B24 /* Settings.swift */,
 				635F5B7E1C127F3200E34B24 /* SettingsViewController.swift */,
 				635F5B781C125D2500E34B24 /* CategoriesPopoverTableViewController.swift */,
 			);
-			name = Settings;
+			name = settings;
 			sourceTree = "<group>";
 		};
 		63D729741C13E55E0061615C /* other stuff */ = {
 			isa = PBXGroup;
 			children = (
-				635F5B481C11EE5E00E34B24 /* Quote.swift */,
+				635F5B361C11EDEF00E34B24 /* AppDelegate.swift */,
 				635F5B4A1C11F02700E34B24 /* APIController.swift */,
 				635F5B761C1257B000E34B24 /* Extensions.swift */,
-				63D729721C13CB5A0061615C /* TypewriterClack.swift */,
-				635F5B361C11EDEF00E34B24 /* AppDelegate.swift */,
 			);
 			name = "other stuff";
 			sourceTree = "<group>";
@@ -190,6 +198,7 @@
 				63D729861C13F0650061615C /* 13.wav */,
 				63D729871C13F0650061615C /* 14.wav */,
 				63D729881C13F0650061615C /* 15.wav */,
+				63D729931C13F0650061615C /* 16.wav */,
 				63D7298A1C13F0650061615C /* 17.wav */,
 				63D7298B1C13F0650061615C /* 18.wav */,
 				63D7298C1C13F0650061615C /* 19.wav */,
@@ -199,7 +208,6 @@
 				63D729901C13F0650061615C /* 23.wav */,
 				63D729911C13F0650061615C /* 24.wav */,
 				63D729921C13F0650061615C /* 25.wav */,
-				63D729931C13F0650061615C /* 16.wav */,
 			);
 			name = clacks;
 			sourceTree = "<group>";
