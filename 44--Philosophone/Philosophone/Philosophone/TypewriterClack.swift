@@ -11,15 +11,23 @@ import AVFoundation
 
 class TypewriterClack
 {
-    func playSound()
+    func playSound(identifier: String)
     {
         if GLOBAL_SETTINGS?.sound == true
         {
-            if let soundURL = NSBundle.mainBundle().URLForResource("typewriter", withExtension: "wav") {
-                var mySound: SystemSoundID = 0
-                AudioServicesCreateSystemSoundID(soundURL, &mySound)
-                AudioServicesPlaySystemSound(mySound);
+            var soundURL = NSURL()
+            let randomClack = String(Int(arc4random() % 25) + 1)
+            switch identifier
+            {
+            case "soft"    : soundURL = NSBundle.mainBundle().URLForResource(randomClack, withExtension: "wav")!
+            case "ding"    : soundURL = NSBundle.mainBundle().URLForResource("ding", withExtension: "wav")!
+//            case "harsh"   : soundURL = NSBundle.mainBundle().URLForResource("typewriter_harsh", withExtension: "wav")!
+            default        : soundURL = NSBundle.mainBundle().URLForResource(randomClack, withExtension: "wav")!
             }
+            
+            var mySound: SystemSoundID = 0
+            AudioServicesCreateSystemSoundID(soundURL, &mySound)
+            AudioServicesPlaySystemSound(mySound);
         }
     }
 }

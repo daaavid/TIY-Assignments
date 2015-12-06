@@ -52,12 +52,13 @@ class CategoriesPopoverTableViewController: UITableViewController
 
         cell.textLabel?.text = categoryDescription
         
-        for category: String in GLOBAL_SETTINGS!.categories
+        if GLOBAL_SETTINGS!.categories.contains(categoryStr)
         {
-            if categoryStr == category
-            {
-                cell.accessoryType = .Checkmark
-            }
+            cell.accessoryType = .Checkmark
+        }
+        else
+        {
+            cell.accessoryType = .None
         }
         
         return cell
@@ -67,14 +68,8 @@ class CategoriesPopoverTableViewController: UITableViewController
     {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if GLOBAL_SETTINGS?.sound == true
-        {
-            if let soundURL = NSBundle.mainBundle().URLForResource("typewriter", withExtension: "wav") {
-                var mySound: SystemSoundID = 0
-                AudioServicesCreateSystemSoundID(soundURL, &mySound)
-                AudioServicesPlaySystemSound(mySound);
-            }
-        }
+        let sound = TypewriterClack()
+        sound.playSound("soft")
         
         let category = categories[indexPath.row]
         
@@ -92,6 +87,6 @@ class CategoriesPopoverTableViewController: UITableViewController
             }
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        tableView.reloadData()
     }
 }

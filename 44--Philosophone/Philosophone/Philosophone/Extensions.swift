@@ -65,10 +65,10 @@ extension UILabel
             
             for character in quote.characters
             {
-                if delegate == nil
+                if String(character) != " "
                 {
                     let sound = TypewriterClack()
-                    sound.playSound()
+                    sound.playSound("soft")
                 }
                 
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in

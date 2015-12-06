@@ -9,13 +9,14 @@
 import UIKit
 
 var GLOBAL_SETTINGS = Settings?()
-var GLOBAL_QUOTE = Quote?()
+var TODAY_QUOTE = Quote?()
+var TOMORROW_QUOTE = Quote?()
 
 let kSettingsKey = "Settings"
 
 protocol APIControllerProtocol
 {
-    func quoteWasFound(quoteDict: NSDictionary)
+    func quoteWasFound(quoteDict: NSDictionary?)
 }
 
 protocol TypedCharacterTextDelegate
@@ -43,6 +44,7 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
     let sound = TypewriterClack()
     
     var typeAgain = false
+    var getNewQuoteForToday = false
 
     override func viewDidLoad()
     {
@@ -74,7 +76,7 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
     {
         super.viewDidAppear(animated)
         
-        settingsButton.slideVerticallyToOriginAndSpin(1, fromPointY: settingsButton.frame.height * 2, spin: true)
+        settingsButton.slideVerticallyToOriginAndSpin(0.75, fromPointY: settingsButton.frame.height * 2, spin: true)
         
         if settingsButtonPosition != nil
         {
@@ -88,7 +90,11 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         
         if typeAgain
         {
-            performSetup()
+            quoteLabel.text = ""
+            authorLabel.text = ""
+            wordDivider.alpha = 0
+            
+            NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "performSetup", userInfo: nil, repeats: false)
             typeAgain = false
         }
     }
@@ -105,58 +111,90 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         let quote = "The only thing necessary for the triumph of evil is for good men to do nothing."
         let author = "Edmund Burke"
         
-        GLOBAL_QUOTE = Quote(quote: quote, author: author)
+        TODAY_QUOTE = Quote(quote: quote, author: author)
     }
     
     func performSetup()
     {
-        // quote
-        
         quoteLabel.text = ""
         authorLabel.text = ""
         wordDivider.alpha = 0
         
-        if GLOBAL_QUOTE != nil
-        {
-            quoteLabel.typeText(GLOBAL_QUOTE!.quote, interval: 0.035, delegate: self)
-            
-            setNotification()
-        }
-        else if GLOBAL_SETTINGS?.categories.count > 0
+        if TOMORROW_QUOTE == nil
         {
             print("get quote")
             
             apiController = APIController(delegate: self)
             apiController?.getQuote(GLOBAL_SETTINGS!.categories)
         }
-        else
+        else if TODAY_QUOTE != nil
         {
-            quoteLabel.typeText("Select at least one quote category from the settings.", interval: 0.35, delegate: nil)
-            authorLabel.text = ""
+            let quote = "“" + TODAY_QUOTE!.quote + "”"
+            quoteLabel.typeText(quote, interval: 0.035, delegate: self)
+            
+            setNotification()
         }
+        else if TODAY_QUOTE == nil
+        {
+            getNewQuoteForToday = true
+            
+            apiController = APIController(delegate: self)
+            apiController?.getQuote(GLOBAL_SETTINGS!.categories)
+        }
+//        else
+//        {
+//            quoteLabel.typeText("Select at least one quote category from the settings.", interval: 0.035, delegate: nil)
+//            authorLabel.text = ""
+//        }
     }
     
-    func quoteWasFound(quoteDict: NSDictionary)
+    func quoteWasFound(quoteDict: NSDictionary?)
     {
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            if let quote = Quote.quoteFromAPIResults(quoteDict)
-            {
-                print(quote)
-                GLOBAL_QUOTE = quote
+        if quoteDict != nil
+        {
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+//                TODAY_QUOTE = Quote.quoteFromAPIResults(quoteDict!)
+//                print(TODAY_QUOTE)
+                if !self.getNewQuoteForToday
+                {
+                    TOMORROW_QUOTE = Quote.quoteFromAPIResults(quoteDict!)
+                    print(TOMORROW_QUOTE)
+                }
+                else
+                {
+                    TODAY_QUOTE = Quote.quoteFromAPIResults(quoteDict!)
+                    print(TODAY_QUOTE)
+                    self.getNewQuoteForToday = false
+                }
+                
                 self.performSetup()
             }
+        }
+        else
+        {
+            let errorMessage = "“Could not pull quote from server. Please try again later. Apologies.”"
+            quoteLabel.typeText(errorMessage, interval: 0.035, delegate: nil)
         }
     }
     
     func quoteFinishedTyping()
     {
-        wordDivider.appearWithFade(0.25)
-        
-        let global_queue = dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)
-        dispatch_async(global_queue) { () -> Void in
-            NSThread.sleepForTimeInterval(0.75)
+        if authorLabel.text == ""
+        {
+            wordDivider.appearWithFade(0.25)
             
-            self.authorLabel.typeText(GLOBAL_QUOTE!.author, interval: 0.35, delegate: nil)
+            let global_queue = dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)
+            dispatch_async(global_queue) { () -> Void in
+                NSThread.sleepForTimeInterval(0.75)
+                
+                self.authorLabel.typeText(TODAY_QUOTE!.author, interval: 0.15, delegate: self)
+            }
+            
+
+        }
+        else
+        {
+            sound.playSound("ding")
         }
     }
     
@@ -171,13 +209,14 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
             }
         }
         
-        if GLOBAL_QUOTE != nil
+        if TOMORROW_QUOTE != nil
         {
             //new notification
             let newNotification = UILocalNotification()
             newNotification.timeZone = NSTimeZone.localTimeZone()
             
-            newNotification.alertBody = "\(GLOBAL_QUOTE!.quote) - \n\(GLOBAL_QUOTE!.author) \n\nTap to schedule tomorrow's quote."
+            newNotification.alertBody = "\(TOMORROW_QUOTE!.quote) - \n\(TOMORROW_QUOTE!.author) \n\nTap to schedule tomorrow's quote."
+            print(newNotification.alertBody)
             
             newNotification.alertTitle = "Philosophone"
             let uuid = NSUUID()
@@ -216,7 +255,9 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         //clear out old quote and get a new one
         print("notificationPopped")
         
-//        GLOBAL_QUOTE = nil
+        TODAY_QUOTE = TOMORROW_QUOTE
+        TOMORROW_QUOTE = nil
+        
         setNotification()
     }
     
@@ -227,7 +268,7 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         settingsButton.spin()
         settingsButtonPosition = settingsButton.frame
         
-        sound.playSound()
+        sound.playSound("harsh")
         
         performSegueWithIdentifier("showSettingsSegue", sender: self)
     }

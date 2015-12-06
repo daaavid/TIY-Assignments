@@ -9,12 +9,24 @@
 import UIKit
 import AVFoundation
 
-class SettingsViewController: UIViewController, UIPopoverPresentationControllerDelegate
+protocol QuoteDidCompleteTypingDelegate
+{
+    func enableGetQuoteButton()
+}
+
+class SettingsViewController: UIViewController, UIPopoverPresentationControllerDelegate, QuoteDidCompleteTypingDelegate
 {
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var soundOnOffLabel: UILabel!
     @IBOutlet weak var typeQuoteAgainLabel: UILabel!
+    @IBOutlet weak var getNewQuoteLabel: UILabel!
+
+    @IBOutlet weak var warningLabel: UILabel!
+    @IBOutlet weak var creditLabel: UILabel!
     
+    @IBOutlet weak var typeQuoteAgainButton: UIButton!
+    @IBOutlet weak var getNewQuoteButton: UIButton!
+
     let sound = TypewriterClack()
     
     var delegate: SettingsChangedDelegate!
@@ -45,31 +57,38 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
         print(presses)
         
         setHourLabel()
+        
+        setSoundLabel()
     }
 
-    override func viewDidAppear(animated: Bool)
+    override func viewWillAppear(animated: Bool)
     {
-        super.viewDidAppear(animated)
+        super.viewWillAppear(animated)
         typeQuoteAgainLabel.alpha = 0
+        getNewQuoteLabel.alpha = 0
+        getNewQuoteButton.enabled = false
+        typeQuoteAgainButton.enabled = true
+        
+        NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: "enableGetQuoteButton", userInfo: nil, repeats: false)
     }
     
     override func viewWillDisappear(animated: Bool)
     {
         super.viewWillDisappear(animated)
         
-        sound.playSound()
+        sound.playSound("harsh")
     }
     
     @IBAction func categoriesButtonTapped(sender: UIButton)
     {
-        sound.playSound()
+        sound.playSound("harsh")
         
         performSegueWithIdentifier("categoriesPopover", sender: nil)
     }
 
     @IBAction func hourButtonTapped(sender: UIButton)
     {
-        sound.playSound()
+        sound.playSound("harsh")
         
         presses = presses + 1
         
@@ -98,25 +117,37 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
             GLOBAL_SETTINGS?.sound = true
         }
         
-        sound.playSound()
+        sound.playSound("harsh")
     }
     
     @IBAction func typeQuoteAgainButtonTapped(sender: UIButton)
     {
-        if typeQuoteAgainLabel.alpha == 0
-        {
-            UIView.animateWithDuration(0.25, animations: { () -> Void in
-                self.typeQuoteAgainLabel.alpha = 1
-            })
-            
-            delegate.typeQuoteAgain()
-        }
-        else
-        {
-            UIView.animateWithDuration(0.25, animations: { () -> Void in
-                self.typeQuoteAgainLabel.alpha = 0
-            })
-        }
+        typeQuoteAgainButton.enabled = false
+        
+        UIView.animateWithDuration(0.25, animations: { () -> Void in
+            self.typeQuoteAgainLabel.alpha = 1
+        })
+        
+        delegate.typeQuoteAgain()
+        
+        sound.playSound("harsh")
+    }
+    
+    @IBAction func getNewQuoteButtonTapped(sender: UIButton)
+    {
+        getNewQuoteButton.enabled = false
+        
+        UIView.animateWithDuration(0.25, animations: { () -> Void in
+            self.getNewQuoteLabel.alpha = 1
+            self.creditLabel.alpha = 0
+            self.warningLabel.alpha = 1
+        })
+        
+        TODAY_QUOTE = nil
+        
+        delegate.typeQuoteAgain()
+        
+        sound.playSound("harsh")
     }
     
     
@@ -128,14 +159,35 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
         
         if hour >= 12
         {
+            suffix = " P.M."
+            
+            if hour == 24
+            {
+                suffix = " A.M."
+            }
+            
             if hour > 12
             {
                 hour -= 12
             }
-            suffix = " P.M."
         }
         
         hourLabel.text = String(hour) + suffix
+    }
+    
+    func setSoundLabel()
+    {
+        switch GLOBAL_SETTINGS!.sound
+        {
+        case true   : soundOnOffLabel.text = "On"
+        case false  : soundOnOffLabel.text = "Off"
+        }
+    }
+    
+    func enableGetQuoteButton()
+    {
+        print("enabled quote button")
+        getNewQuoteButton.enabled = true
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)

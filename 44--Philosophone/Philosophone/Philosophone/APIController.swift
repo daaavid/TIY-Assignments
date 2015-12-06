@@ -44,6 +44,8 @@ class APIController
                 else
                 {
                     print(error?.localizedDescription)
+                    
+                    self.delegate?.quoteWasFound(nil)
                 }
                 
             }).resume()
