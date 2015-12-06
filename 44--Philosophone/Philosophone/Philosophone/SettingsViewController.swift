@@ -43,7 +43,8 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
         18,
         20,
         22,
-        24
+        24,
+        0
     ]
     
     override func viewDidLoad()
@@ -173,6 +174,15 @@ class SettingsViewController: UIViewController, UIPopoverPresentationControllerD
         }
         
         hourLabel.text = String(hour) + suffix
+        
+        if hour == 0
+        {
+            hourLabel.text = "Never"
+            
+            UIApplication.sharedApplication().cancelAllLocalNotifications()
+            
+            print(UIApplication.sharedApplication().scheduledLocalNotifications)
+        }
     }
     
     func setSoundLabel()

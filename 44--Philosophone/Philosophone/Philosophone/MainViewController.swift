@@ -12,6 +12,8 @@ var GLOBAL_SETTINGS = Settings?()
 var TODAY_QUOTE = Quote?()
 var TOMORROW_QUOTE = Quote?()
 
+var TEST_MODE = true
+
 let kSettingsKey = "Settings"
 
 protocol APIControllerProtocol
@@ -36,6 +38,8 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var wordDivider: UILabel!
     
+    @IBOutlet weak var notificationSetLabel: UILabel!
+    
     @IBOutlet weak var settingsButton: UIButton!
     var settingsButtonPosition: CGRect?
     
@@ -52,7 +56,10 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         
         settingsButton.alpha = 0
         
-        makeTestQuote()
+        if TEST_MODE
+        {
+            makeTestQuote()
+        }
         
         if GLOBAL_SETTINGS == nil
         {
@@ -118,8 +125,8 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         
         if TODAY_QUOTE != nil && typeAgain == true
         {
-            let quote = "“" + TODAY_QUOTE!.quote + "”"
-            quoteLabel.typeText(quote, interval: 0.035, delegate: self)
+            let text = "“" + TODAY_QUOTE!.quote + "”"
+            quoteLabel.typeText(text, interval: 0.035, delegate: self)
             
             typeAgain = false
         }
@@ -186,13 +193,7 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
     func setNotification()
     {
         //notification already exists
-        if let existingNotifications = UIApplication.sharedApplication().scheduledLocalNotifications
-        {
-            for notification in existingNotifications
-            {
-                UIApplication.sharedApplication().cancelLocalNotification(notification)
-            }
-        }
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
         
         if TOMORROW_QUOTE == nil
         {
@@ -201,7 +202,7 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
             apiController = APIController(delegate: self)
             apiController?.getQuote(GLOBAL_SETTINGS!.categories)
         }
-        else
+        else if GLOBAL_SETTINGS!.hour != 0
         {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 //new notification
@@ -218,12 +219,21 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
                 
                 newNotification.fireDate = self.getFireDate() //<<<<<<
                 newNotification.repeatInterval = .Day
-//                newNotification.fireDate = NSDate(timeInterval: 20, sinceDate: NSDate()) //<<<<<<<<<<<<<<<<<<<<<
+                
+                if TEST_MODE
+                {
+                    newNotification.fireDate = NSDate(timeInterval: 10, sinceDate: NSDate()) //<<<<<<<<<<<<<<<<<<<<<
+                }
                 
                 print("notification scheduled \(newNotification) -- ")
                 
                 UIApplication.sharedApplication().scheduleLocalNotification(newNotification)
-                print("\(UIApplication.sharedApplication().scheduledLocalNotifications?.count) notification(s) scheduled")
+                
+                if let count = UIApplication.sharedApplication().scheduledLocalNotifications?.count
+                {
+                    print("\(count) notification(s) scheduled")
+                    self.showNotificationSetLabel()
+                }
             })
         }
     }
@@ -249,7 +259,20 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         TOMORROW_QUOTE = nil
         
         typeAgain = true
-        NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "performSetup", userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "performSetup", userInfo: nil, repeats: false)
+    }
+    
+    func showNotificationSetLabel()
+    {
+        print("showNotificationSetLabel")
+        self.notificationSetLabel.alpha = 0
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.notificationSetLabel.alpha = 1
+            }) { (_) -> Void in
+                UIView.animateWithDuration(0.5, delay: 3.0, options: [], animations: { () -> Void in
+                    self.notificationSetLabel.alpha = 0
+                    }, completion: nil)
+        }
     }
     
     // MARK: - Settings
@@ -295,4 +318,3 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         }
     }
 }
-
