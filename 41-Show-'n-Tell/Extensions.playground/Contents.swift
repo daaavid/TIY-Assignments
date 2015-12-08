@@ -1,8 +1,6 @@
-//: Playground - noun: a place where people can play
+//: Playground - noun: a place where people can learn to do rad flips
 
 import UIKit
-
-var str = "Hello, playground"
 
 extension String
 {
@@ -41,8 +39,9 @@ extension String
             self = secondChar + firstChar + String(characters)
         }
     }
-    
-    mutating func pigLatinSentence()
+
+    /*
+    mutating func pigLatin()
     {
         let components = self.componentsSeparatedByString(" ")
         self = ""
@@ -68,7 +67,7 @@ extension String
         }
     }
     
-    mutating func decodePigLatinSentence()
+    mutating func decodePigLatin()
     {
         let components = self.componentsSeparatedByString(" ")
         self = ""
@@ -96,7 +95,8 @@ extension String
             self = self + component + " "
         }
     }
-    
+    */
+
     mutating func alternatingCaps()
     {
         let characters = self.characters
@@ -137,25 +137,100 @@ extension String
         let test = NSPredicate(format: "SELF MATCHES %@", regex)
         return test.evaluateWithObject(self)
     }
+    
+    func isEmail() -> Bool
+    {
+        let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        let test = NSPredicate(format: "SELF MATCHES %@", regex)
+        return test.evaluateWithObject(self)
+    }
+    
+    func validate(var regex: String) -> Bool
+    {
+        switch regex
+        {
+        case "uppercase": regex = "[A-Z]+"
+        case "lowercase": regex = "[a-z]+"
+        case "phone": regex = "^\\(\\d{3}\\) \\d{3}-\\d{4}$"
+        case "email": regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        default: regex = ""
+        }
+        
+        let test = NSPredicate(format: "SELF MATCHES %@", regex)
+        return test.evaluateWithObject(self)
+    }
 }
 
-var string = "There is always money in the banana stand"
-string.pigLatinSentence()
-string.decodePigLatinSentence()
-string.alternatingCaps()
+var reference = "There is always money in the banana stand"
+var banana = "banana"
+banana.checkCase("lowercase")
+/*:
+Fancy Comment
+*/
 
-var capString = "BANANA"
-capString.checkCase("uppercase")
-capString.pigLatin()
-capString.decodePigLatin()
-capString.lowercaseString.checkCase("lowercase")
+extension UIImageView
+{
+    func downloadImgFrom(imageURL: String, contentMode: UIViewContentMode)
+    {
+        if let url = NSURL(string: imageURL)
+        {
+            var task: NSURLSessionDataTask!
+            task = NSURLSession.sharedSession().dataTaskWithURL(url,
+                completionHandler: { (data, response, error) -> Void in
+                    if data != nil
+                    {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            let image = UIImage(data: data!)
+                            self.image = image
+                            self.contentMode = contentMode
+                            task.cancel()
+                        })
+                    }
+            })
+            
+            task.resume()
+        }
+        else
+        {
+            print("url \(imageURL) was invalid")
+        }
+    }
+}
 
-
-
-
-let number = "(920) 285-6700"
-number.isPhoneNumber()
-
-
-
+extension UIView
+{
+    func appearWithFade(duration: Double)
+    {
+        self.alpha = 0
+        UIView.animateWithDuration(duration) { () -> Void in
+            self.alpha = 1
+        }
+    }
+    
+    func hideWithFade(duration: Double)
+    {
+        self.alpha = 1
+        UIView.animateWithDuration(duration) { () -> Void in
+            self.alpha = 0
+        }
+    }
+    
+    func slideHorizontally(duration: Double, fromPointX: CGFloat)
+    {
+        let originalX = self.frame.origin.x
+        self.frame.origin.x += fromPointX
+        UIView.animateWithDuration(duration) { () -> Void in
+            self.frame.origin.x = originalX
+        }
+    }
+    
+    func slideVertically(duration: Double, fromPointY: CGFloat)
+    {
+        let originalY = self.frame.origin.y
+        self.frame.origin.y += fromPointY
+        UIView.animateWithDuration(duration) { () -> Void in
+            self.frame.origin.y = originalY
+        }
+    }
+}
 
