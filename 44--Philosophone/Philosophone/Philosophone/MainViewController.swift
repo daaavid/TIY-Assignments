@@ -13,7 +13,7 @@ var GLOBAL_SETTINGS = Settings?()
 var TODAY_QUOTE = Quote?()
 var TOMORROW_QUOTE = Quote?()
 
-var TEST_MODE = true
+var TEST_MODE = false //<<<<<<
 
 var shouldPlayTypingSound = true
 
