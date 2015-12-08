@@ -212,7 +212,7 @@
         posterVC.view.backgroundColor = bgColor;
         
         posterVC.modalPresentationStyle = UIModalPresentationPopover;
-        posterVC.preferredContentSize = CGSizeMake(360, 528);
+        posterVC.preferredContentSize = CGSizeMake(self.view.frame.size.width * .9, self.view.frame.size.height * .8);
     }
 }
 
