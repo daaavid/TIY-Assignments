@@ -139,7 +139,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     {
         let imageView = UIImageView()
         imageView.frame = CGRect(x: 8, y: 8, width: 64, height: 64)
-        imageView.downloadedFrom(link: iconURL, contentMode: .ScaleToFill)
+        imageView.downloadedFrom(iconURL, contentMode: .ScaleToFill)
         imageView.round()
         imageView.backgroundColor = UIColor(hue:0.625, saturation:0.8, brightness:0.886, alpha:1)
         

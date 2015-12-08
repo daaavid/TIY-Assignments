@@ -13,19 +13,4 @@ class VenueCell: UITableViewCell
     @IBOutlet weak var venueLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    
-    override func awakeFromNib()
-    {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(selected: Bool, animated: Bool)
-    {
-        super.setSelected(selected, animated: animated)
-    }
-    
-    override func layoutSubviews()
-    {
-        super.layoutSubviews()
-    }
 }

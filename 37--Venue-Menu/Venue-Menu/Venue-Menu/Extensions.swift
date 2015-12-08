@@ -10,36 +10,58 @@ import UIKit
 
 extension UIImageView
 {
-    func downloadedFrom(var link link: String, contentMode mode: UIViewContentMode)
+    func downloadedFrom(var imageURL: String, contentMode: UIViewContentMode)
     {
-        if link != ""
+        imageURL = imageURL.stringByReplacingOccurrencesOfString("\\", withString: "")
+        var task = NSURLSessionDataTask()
+        
+        if let url = NSURL(string: imageURL)
         {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-            
-            link = link.stringByReplacingOccurrencesOfString("\\", withString: "")
-            
-            guard
-                let url = NSURL(string: link)
-                else { return }
-            contentMode = mode
-            NSURLSession.sharedSession().dataTaskWithURL(url,
-                completionHandler: { (data, _, error) -> Void in
-                guard
-                    let data = data where error == nil,
-                    let image = UIImage(data: data)
-                    else { return }
-                dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                    self.image = image
+            task = NSURLSession.sharedSession().dataTaskWithURL(url,
+                completionHandler: { (data, response, error) -> Void in
+                
+                    if data != nil
+                    {
+                        let image = UIImage(data: data!)
+                        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                            self.image = image
+                            self.contentMode = contentMode
+                            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                            task.cancel()
+                        }
+                    }
+                    else
+                    {
+                        print(error?.localizedDescription)
+                    }
                     
-                    UIApplication.sharedApplication()
-                        .networkActivityIndicatorVisible = false
-                }
-            }).resume()
+            })
+            
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            task.resume()
         }
         else
         {
-            print(link)
+            print("imageURL: \(imageURL) was invalid")
         }
+    }
+}
+
+extension String
+{
+    func pigLatin(var string: String)
+    {
+        var characters = string.characters
+        let firstChar = characters.first
+        characters.removeFirst()
+        
+        string = ""
+        for character in characters
+        {
+            string = string + String(character)
+        }
+        
+        string = string + String(firstChar) + "ay"
     }
 }
 

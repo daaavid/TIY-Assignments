@@ -52,6 +52,9 @@
                                                             <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="22"/>
                                                             <color key="textColor" red="0.1764705882" green="0.35686274509999999" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="80" y="0.0" width="119" height="31"/>
+                                                            </variation>
                                                         </label>
                                                     </subviews>
                                                     <animations/>
@@ -94,7 +97,8 @@
                                                             <exclude reference="XES-oY-ncL"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="87.5"/>
                                                         <mask key="subviews">
                                                             <include reference="RRQ-JZ-XDA"/>
                                                             <include reference="H3n-Nh-q9Y"/>
@@ -166,7 +170,7 @@
                                             <constraint firstAttribute="width" secondItem="zfz-Eu-82e" secondAttribute="height" multiplier="1:1" id="TPp-uh-cSO"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="18" minY="18" maxX="18" maxY="18"/>
-                                        <state key="normal" image="magglass.png"/>
+                                        <state key="normal" image="whitesearch.png"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="TPp-uh-cSO"/>
@@ -700,7 +704,7 @@
     </scenes>
     <resources>
         <image name="heart.png" width="410" height="410"/>
-        <image name="magglass.png" width="128" height="128"/>
+        <image name="whitesearch.png" width="128" height="128"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

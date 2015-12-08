@@ -19,14 +19,13 @@ class APIController
     }
 
     func search(term: String, location: Location, var searchOption: String)
-    {
-        print("api search")
-        
+    {        
         searchOption = "search"
         
         let client_id = "3CTEMHPNFURJSSCYEJTXIBDWG4UKD30NTL0QNPKMB331L2T0"
         let client_secret = "EQSMTQTYTWUUGI5SKE5UA3OCYHL2C3HJJC20ZTY1OEHC4ABM"
-        let baseURL = "https://api.foursquare.com/v2/venues/\(searchOption)?client_id=\(client_id)&client_secret=\(client_secret)&v=20130815%20"
+        
+        let baseURL = "https://api.foursquare.com/v2/venues/search?client_id=\(client_id)&client_secret=\(client_secret)&v=20130815%20"
         let locationAndTerm = "&ll=\(location.lat),\(location.lng)&query=\(term)"
 
         let urlString = baseURL + locationAndTerm
@@ -42,12 +41,9 @@ class APIController
                 {
                     if let results = self.parseJSON(data!)
                     {
-//                        print(results)
                         let response = results["response"] as! NSDictionary
                         let venues = response["venues"] as! [NSDictionary]
                         self.delegate.venuesWereFound(venues)
-//                        print(venues)
-//                        self.task.cancel()
                     }
                 }
                 else
