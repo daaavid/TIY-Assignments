@@ -22,16 +22,11 @@ class WeekForecastTableViewController: UITableViewController
 
         view.backgroundColor = UIColor(red: 0.0, green: 0.65, blue: 0.86, alpha: 1.0)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
         return 1
     }
 
@@ -43,7 +38,7 @@ class WeekForecastTableViewController: UITableViewController
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ForecastCell", forIndexPath: indexPath) as! ForecastCell
-        cell.backgroundColor = UIColor(white: 0.0, alpha: 0.0)
+        cell.backgroundColor = UIColor.clearColor()
         
         let day = getDayOfWeek()
         
@@ -99,32 +94,8 @@ class WeekForecastTableViewController: UITableViewController
     
     func assignWeatherImg(cell: ForecastCell, icon: String, location: Location)
     {
-        switch icon
-        {
-        case "clear-day": cell.img.image = UIImage(named: "clear-day")
+        cell.img.image = UIImage(named: icon)
         animateWeatherImg(cell, location: location)
-        case "clear-night": cell.img.image = UIImage(named: "clear-night")
-        animateWeatherImg(cell, location: location)
-        case "rain": cell.img.image = UIImage(named: "rain")
-        animateWeatherImg(cell, location: location)
-        case "snow": cell.img.image = UIImage(named: "snow")
-        animateWeatherImg(cell, location: location)
-        case "sleet": cell.img.image = UIImage(named: "sleet")
-        animateWeatherImg(cell, location: location)
-        case "wind": cell.img.image = UIImage(named: "wind")
-        animateWeatherImg(cell, location: location)
-        case "fog": cell.img.image = UIImage(named: "fog")
-        animateWeatherImg(cell, location: location)
-        case "cloudy": cell.img.image = UIImage(named: "cloudy")
-        animateWeatherImg(cell, location: location)
-        case "partly-cloudy-day": cell.img.image = UIImage(named: "partly-cloudy-day")
-        animateWeatherImg(cell, location: location)
-        case "partly-cloudy-night": cell.img.image = UIImage(named: "partly-cloudy-night")
-        animateWeatherImg(cell, location: location)
-        
-        default: cell.img.image = UIImage(named: "na")
-        animateWeatherImg(cell, location: location)
-        }
     }
 
     func animateWeatherImg(cell: ForecastCell, location: Location)
@@ -144,7 +115,6 @@ class WeekForecastTableViewController: UITableViewController
     
     func getDayOfWeek() -> Int
     {
-        
         let formatter  = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         

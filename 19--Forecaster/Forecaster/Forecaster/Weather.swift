@@ -205,13 +205,9 @@ class Weather
         
         if let currently = results["currently"] as? NSDictionary
         {
-//            var weather = Weather?()
-            
             summary = currently["summary"] as! String
             icon = currently["icon"] as! String
             precipIntensity = currently["precipIntensity"] as!Double
-//            precipProbability = currently["precipProbability"] as! Double
-            //        let humidity = currently["humidity"] as! Double
             humid = currently["dewPoint"] as! Double
             windSpeed = currently["windSpeed"] as! Double
             if let _ = currently["visibility"]
@@ -308,24 +304,49 @@ class Weather
                 }
             }
         }
-
-//        weather = Weather(
-//            summary: summary,
-//            icon: icon,
-//            precipIntensity: precipIntensity,
-//            precipProbability: precipProbability,
-//            temperature: temperature,
-//            apparentTemp: apparentTemperature,
-//            humidity: humid,
-//            windSpeed: windSpeed,
-//            visibility: visibility,
-//            cloudCover: cloudCover
-//            
-//            
-//            
-//        )
         
-        weather = Weather(summary: summary, icon: icon, precipIntensity: precipIntensity, precipProbability: precipProbability, temperature: temperature, apparentTemp: apparentTemperature, humidity: humid, windSpeed: windSpeed, visibility: visibility, cloudCover: cloudCover, weeksummary: weeksummary, day0summary: day0summary, day1summary: day1summary, day2summary: day2summary, day3summary: day3summary, day4summary: day4summary, day5summary: day5summary, day6summary: day6summary, day0icon: day0icon, day1icon: day1icon, day2icon: day2icon, day3icon: day3icon, day4icon: day4icon, day5icon: day5icon, day6icon: day6icon, day0tempMin: day0tempMin, day1tempMin: day1tempMin, day2tempMin: day2tempMin, day3tempMin: day3tempMin, day4tempMin: day4tempMin, day5tempMin: day5tempMin, day6tempMin: day6tempMin, day0tempMax: day0tempMax, day1tempMax: day1tempMax, day2tempMax: day2tempMax, day3tempMax: day3tempMax, day4tempMax: day4tempMax, day5tempMax: day5tempMax, day6tempMax: day6tempMax)
+        weather = Weather(
+            summary: summary,
+            icon: icon,
+            precipIntensity: precipIntensity,
+            precipProbability: precipProbability,
+            temperature: temperature,
+            apparentTemp: apparentTemperature,
+            humidity: humid,
+            windSpeed: windSpeed,
+            visibility: visibility,
+            cloudCover: cloudCover,
+            
+            weeksummary: weeksummary,
+            day0summary: day0summary,
+            day1summary: day1summary,
+            day2summary: day2summary,
+            day3summary: day3summary,
+            day4summary: day4summary,
+            day5summary: day5summary,
+            day6summary: day6summary,
+            day0icon: day0icon,
+            day1icon: day1icon,
+            day2icon: day2icon,
+            day3icon: day3icon,
+            day4icon: day4icon,
+            day5icon: day5icon,
+            day6icon: day6icon,
+            day0tempMin: day0tempMin,
+            day1tempMin: day1tempMin,
+            day2tempMin: day2tempMin,
+            day3tempMin: day3tempMin,
+            day4tempMin: day4tempMin,
+            day5tempMin: day5tempMin,
+            day6tempMin: day6tempMin,
+            day0tempMax: day0tempMax,
+            day1tempMax: day1tempMax,
+            day2tempMax: day2tempMax,
+            day3tempMax: day3tempMax,
+            day4tempMax: day4tempMax,
+            day5tempMax: day5tempMax,
+            day6tempMax: day6tempMax
+        )
         
         return weather!
 
