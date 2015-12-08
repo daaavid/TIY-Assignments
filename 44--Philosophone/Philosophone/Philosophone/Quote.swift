@@ -27,7 +27,7 @@ class Quote
             let contentDict = quotesArr.firstObject as? NSDictionary ?? NSDictionary()
             
             let quote = contentDict["quote"] as? String ?? ""
-            let author = contentDict["author"] as? String ?? ""
+            let author = contentDict["author"] as? String ?? "Unknown"
             
             let quoteObject = Quote(quote: quote, author: author)
             

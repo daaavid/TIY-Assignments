@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import AVFoundation
 
 var GLOBAL_SETTINGS = Settings?()
 var TODAY_QUOTE = Quote?()
 var TOMORROW_QUOTE = Quote?()
 
 var TEST_MODE = true
+
+var shouldPlayTypingSound = true
 
 let kSettingsKey = "Settings"
 
@@ -41,13 +44,12 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
     @IBOutlet weak var notificationSetLabel: UILabel!
     
     @IBOutlet weak var settingsButton: UIButton!
-    var settingsButtonPosition: CGRect?
     
     var apiController: APIController?
     
     let sound = TypewriterClack()
     
-    var typeAgain = true
+    var shouldTypeQuote = true
     var getNewQuoteForToday = false
 
     override func viewDidLoad()
@@ -82,18 +84,15 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         super.viewDidAppear(animated)
         
         settingsButton.slideVerticallyToOriginAndSpin(0.75, fromPointY: settingsButton.frame.height * 2, spin: true)
-        
-        if settingsButtonPosition != nil
-        {
-            settingsButton.frame = settingsButtonPosition!
-        }
     }
     
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
         
-        if typeAgain
+        shouldPlayTypingSound = true
+        
+        if shouldTypeQuote
         {
             quoteLabel.text = ""
             authorLabel.text = ""
@@ -103,10 +102,13 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         }
     }
     
-    override func viewDidDisappear(animated: Bool)
+    override func viewWillDisappear(animated: Bool)
     {
-        super.viewDidDisappear(animated)
+        super.viewWillDisappear(animated)
+        
         settingsButton.alpha = 0
+        
+        shouldPlayTypingSound = false
     }
     
     func makeTestQuote()
@@ -123,12 +125,12 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         authorLabel.text = ""
         wordDivider.alpha = 0
         
-        if TODAY_QUOTE != nil && typeAgain == true
+        if TODAY_QUOTE != nil && shouldTypeQuote == true
         {
             let text = "“" + TODAY_QUOTE!.quote + "”"
             quoteLabel.typeText(text, interval: 0.035, delegate: self)
             
-            typeAgain = false
+            shouldTypeQuote = false
         }
         else if TODAY_QUOTE == nil
         {
@@ -184,7 +186,7 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
                 self.authorLabel.typeText(TODAY_QUOTE!.author, interval: 0.15, delegate: self)
             }
         }
-        else
+        else if shouldPlayTypingSound
         {
             sound.playSound("ding")
         }
@@ -192,7 +194,6 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
     
     func setNotification()
     {
-        //notification already exists
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         
         if TOMORROW_QUOTE == nil
@@ -204,20 +205,15 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         }
         else if GLOBAL_SETTINGS!.hour != 0
         {
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 //new notification
                 let newNotification = UILocalNotification()
-                newNotification.timeZone = NSTimeZone.localTimeZone()
                 
-                newNotification.alertBody = "\(TOMORROW_QUOTE!.quote) - \n\(TOMORROW_QUOTE!.author) \n\nTap to schedule tomorrow's quote."
-                print(newNotification.alertBody)
+                newNotification.alertBody = "\(TOMORROW_QUOTE!.quote) - \n\(TOMORROW_QUOTE!.author)\nTap to schedule tomorrow's quote."
                 
                 newNotification.alertTitle = "Philosophone"
-                let uuid = NSUUID()
-                let userInfo = ["objectUUID" : uuid.UUIDString]
-                newNotification.userInfo = userInfo
-                
-                newNotification.fireDate = self.getFireDate() //<<<<<<
+            
+                newNotification.timeZone = NSTimeZone.localTimeZone()
+                newNotification.fireDate = notificationFireDate()
                 newNotification.repeatInterval = .Day
                 
                 if TEST_MODE
@@ -232,13 +228,13 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
                 if let count = UIApplication.sharedApplication().scheduledLocalNotifications?.count
                 {
                     print("\(count) notification(s) scheduled")
-                    self.showNotificationSetLabel()
+                    print(newNotification.alertBody)
+                    showNotificationSetLabel()
                 }
-            })
         }
     }
     
-    func getFireDate() -> NSDate?
+    func notificationFireDate() -> NSDate?
     {
         let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
         let components = NSDateComponents()
@@ -258,8 +254,13 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         TODAY_QUOTE = TOMORROW_QUOTE
         TOMORROW_QUOTE = nil
         
-        typeAgain = true
-        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "performSetup", userInfo: nil, repeats: false)
+        shouldTypeQuote = true
+        
+        if view.window != nil
+        {
+            //if notification pops and window is in focus, perform setup after 1s delay
+            NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "performSetup", userInfo: nil, repeats: false)
+        }
     }
     
     func showNotificationSetLabel()
@@ -275,17 +276,25 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
         }
     }
     
-    // MARK: - Settings
+    // // // // // MARK: - Settings
+    
+    // MARK: - Action Handlers
     
     @IBAction func settingsButtonTapped(sender: UIButton)
     {
         settingsButton.spin()
-        settingsButtonPosition = settingsButton.frame
         
         sound.playSound("harsh")
         
         performSegueWithIdentifier("showSettingsSegue", sender: self)
     }
+    
+    @IBAction func settingsButtonPressedDown(sender: UIButton)
+    {
+        settingsButton.spin()
+    }
+    
+    // MARK: - Settings Delegates
     
     func settingsDidChange()
     {
@@ -294,8 +303,10 @@ class MainViewController: UIViewController, APIControllerProtocol, TypedCharacte
     
     func typeQuoteAgain()
     {
-        typeAgain = true
+        shouldTypeQuote = true
     }
+    
+    // MARK: - Save, Load
     
     func saveSettings()
     {

@@ -17,6 +17,7 @@ class TypewriterClack
         {
             var soundURL = NSURL()
             let randomClack = String(Int(arc4random() % 25) + 1)
+            
             switch identifier
             {
             case "soft"    : soundURL = NSBundle.mainBundle().URLForResource(randomClack, withExtension: "wav")!
@@ -25,9 +26,9 @@ class TypewriterClack
             default        : soundURL = NSBundle.mainBundle().URLForResource(randomClack, withExtension: "wav")!
             }
             
-            var mySound: SystemSoundID = 0
-            AudioServicesCreateSystemSoundID(soundURL, &mySound)
-            AudioServicesPlaySystemSound(mySound);
+            var soundID: SystemSoundID = 0
+            AudioServicesCreateSystemSoundID(soundURL, &soundID)
+            AudioServicesPlaySystemSound(soundID);
         }
     }
 }

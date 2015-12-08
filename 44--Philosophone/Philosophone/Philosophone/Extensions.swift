@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import AVFoundation
 import UIKit
 
 extension UIView
@@ -65,7 +64,7 @@ extension UILabel
             
             for character in quote.characters
             {
-                if String(character) != " "
+                if String(character) != " " && shouldPlayTypingSound == true
                 {
                     let sound = TypewriterClack()
                     sound.playSound("soft")
