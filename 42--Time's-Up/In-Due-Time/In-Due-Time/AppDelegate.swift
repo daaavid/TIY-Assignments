@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(settings)
         print(launchOptions)
         
+<<<<<<< HEAD
         if let options = launchOptions
         {
             print(options)
@@ -31,6 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let todoTableVC = navController.viewControllers[0] as! TodoTableViewController
                 todoTableVC.notificationPopped(notification.userInfo!)
             }
+=======
+        let options = launchOptions ?? [NSObject : AnyObject]()
+        
+        if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification
+        {
+            getTodoTableVC().notificationPopped(notification.userInfo!)
+>>>>>>> master
         }
         
         return true
@@ -39,9 +47,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         
         print(notification)
+<<<<<<< HEAD
         let navController = window?.rootViewController as! UINavigationController
         let todoTableVC = navController.viewControllers[0] as! TodoTableViewController
         todoTableVC.notificationPopped(notification.userInfo!)
+=======
+        
+        getTodoTableVC().notificationPopped(notification.userInfo!)
+    }
+    
+    func getTodoTableVC() -> TodoTableViewController
+    {
+        let navController = window?.rootViewController as! UINavigationController
+        let todoTableVC = navController.viewControllers[0] as! TodoTableViewController
+        return todoTableVC
+>>>>>>> master
     }
 
     func applicationWillResignActive(application: UIApplication) {

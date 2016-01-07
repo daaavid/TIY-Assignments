@@ -101,7 +101,7 @@ class MapViewController: UIViewController, UIPopoverPresentationControllerDelega
 //            let lineOfSightDistance = firstDist.distanceFromLocation(secondDist)
             mapView.addAnnotations(annotations)
             mapView.showAnnotations(annotations, animated: true)
-            mapView.camera.altitude * 0.8
+            mapView.camera.altitude *= 0.8
             route()
         }
     }
