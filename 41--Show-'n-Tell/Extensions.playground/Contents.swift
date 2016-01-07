@@ -234,3 +234,59 @@ extension UIView
     }
 }
 
+
+let baseURL = "http://tiybeacon.herokuapp.com"
+let url = NSURL(string: baseURL + "/attendances")!
+let request = NSMutableURLRequest(
+    URL: url,
+    cachePolicy: .UseProtocolCachePolicy,
+    timeoutInterval: 60.0)
+
+request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+request.addValue("application/json", forHTTPHeaderField: "Accept")
+request.HTTPMethod = "POST"
+
+let attendanceData = [
+    "user_id" : 0
+]
+
+//curl -d @request.json --header "Content-Type: application/json" https://www.googleapis.com/qpxExpress/v1/trips/search?key=your_API_key_here
+
+
+
+
+
+
+
+print(request)
+
+do
+{
+    let postData = try NSJSONSerialization.dataWithJSONObject(attendanceData, options: .PrettyPrinted)
+    print(postData)
+    request.HTTPBody = postData
+}
+catch let error as NSError
+{
+    print("data could not be parsed \(error)")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

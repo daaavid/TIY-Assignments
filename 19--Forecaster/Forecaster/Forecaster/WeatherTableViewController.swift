@@ -181,13 +181,14 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
     {
         dispatch_async(dispatch_get_main_queue(),
         {
-            let weather = Weather.weatherWithJSON(results)
-            
-            for city in self.locationArr
+            if let weather = Weather.weatherWithJSON(results)
             {
-                if city.city == location.city
+                for city in self.locationArr
                 {
-                    city.weather = weather
+                    if city.city == location.city
+                    {
+                        city.weather = weather
+                    }
                 }
             }
             

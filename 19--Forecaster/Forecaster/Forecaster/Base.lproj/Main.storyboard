@@ -62,7 +62,7 @@
                                                 <constraint firstAttribute="width" secondItem="nfy-oG-hJc" secondAttribute="height" multiplier="70:70" id="pcp-NN-0w6"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pW8-qG-PFN">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pW8-qG-PFN">
                                             <rect key="frame" x="78" y="8" width="73.5" height="24"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
@@ -257,7 +257,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="32"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gp3-C8-Lso">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gp3-C8-Lso">
                                             <rect key="frame" x="8" y="3" width="88" height="26"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="24"/>
@@ -308,35 +308,35 @@
                                                 <constraint firstAttribute="width" secondItem="d1q-1p-ty1" secondAttribute="height" multiplier="70:70" id="ukc-3N-nih"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Mostly Cloudy" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4R-mu-250">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mostly Cloudy" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4R-mu-250">
                                             <rect key="frame" x="39" y="2" width="161.5" height="31.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="26"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="99°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrK-rp-XMb">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrK-rp-XMb">
                                             <rect key="frame" x="8" y="35" width="47" height="36"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="30"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text=", but feels like 9001°" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6C0-g8-mwl">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=", but feels like 9001°" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6C0-g8-mwl">
                                             <rect key="frame" x="49" y="41" width="206.5" height="29"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="24"/>
                                             <color key="textColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No rain today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKM-g7-6aM">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No rain today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKM-g7-6aM">
                                             <rect key="frame" x="8" y="97" width="114.5" height="24"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
                                             <color key="textColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="It's humid" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5c-ik-JAE">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It's humid" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5c-ik-JAE">
                                             <rect key="frame" x="8" y="121" width="83.5" height="24"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
@@ -359,7 +359,7 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Powered by Forecast.io" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCz-zu-FwK">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by Forecast.io" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCz-zu-FwK">
                                             <rect key="frame" x="318" y="111" width="74" height="34"/>
                                             <animations/>
                                             <constraints>
@@ -426,14 +426,6 @@
                                             <exclude reference="FQe-RA-YMm"/>
                                             <exclude reference="hO4-yB-RaK"/>
                                             <exclude reference="hvB-yR-mUY"/>
-                                            <exclude reference="Avl-JS-5V8"/>
-                                            <exclude reference="COU-KL-NYF"/>
-                                            <exclude reference="O5r-uN-B9S"/>
-                                            <exclude reference="WVm-LF-Ir6"/>
-                                            <exclude reference="Xni-gj-QaD"/>
-                                            <exclude reference="nzT-s0-raB"/>
-                                            <exclude reference="opV-Z7-NgX"/>
-                                            <exclude reference="t1p-Ed-cC7"/>
                                             <exclude reference="08u-Zc-7fV"/>
                                             <exclude reference="Lee-aJ-ri5"/>
                                             <exclude reference="hOa-Sa-EHK"/>
@@ -446,6 +438,14 @@
                                             <exclude reference="fVm-mK-ztk"/>
                                             <exclude reference="mxP-be-RzA"/>
                                             <exclude reference="pPL-Vo-e9D"/>
+                                            <exclude reference="Avl-JS-5V8"/>
+                                            <exclude reference="COU-KL-NYF"/>
+                                            <exclude reference="O5r-uN-B9S"/>
+                                            <exclude reference="WVm-LF-Ir6"/>
+                                            <exclude reference="Xni-gj-QaD"/>
+                                            <exclude reference="nzT-s0-raB"/>
+                                            <exclude reference="opV-Z7-NgX"/>
+                                            <exclude reference="t1p-Ed-cC7"/>
                                         </mask>
                                     </variation>
                                 </view>
@@ -550,21 +550,21 @@
                                                 <constraint firstAttribute="width" secondItem="39w-is-czv" secondAttribute="height" multiplier="70:70" constant="1" id="iQl-EN-QdL"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="98°-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9t-1L-lIS">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="98°-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9t-1L-lIS">
                                             <rect key="frame" x="512" y="6" width="43" height="29"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="24"/>
                                             <color key="textColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="99°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iic-CW-jFb">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iic-CW-jFb">
                                             <rect key="frame" x="557" y="6" width="37.5" height="29"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="24"/>
                                             <color key="textColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Today" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQJ-iJ-eww">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQJ-iJ-eww">
                                             <rect key="frame" x="39" y="6" width="56" height="26.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="22"/>
