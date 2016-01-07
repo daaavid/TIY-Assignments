@@ -93,12 +93,8 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate, CLLocationMan
                 print(cityName!)
                 let zipCode = placemark?[0].postalCode
                 
-//                self.zipTextField.text = zipCode!
-                
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 
-                
-//                self.zipCitySegmentedControl.selectedSegmentIndex = 0
                 for location in self.locationArr
                 {
                     if cityName == location.city
@@ -115,19 +111,9 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate, CLLocationMan
                 {
                     self.search(zipCode!)
                 }
-                
-//                let lat = location?.coordinate.latitude
-//                let lng = location?.coordinate.longitude
-//                let aCity = City(name: cityName!, zip: zipCode!, lat: lat!, lng: lng!)
-//                self.delegate?.cityWasFound(aCity)
             }
         })
     }
-    
-//    @IBAction func useLocationTapped(sender: UIButton)
-//    {
-////        locationManager.startUpdatingLocation()
-//    }
     
     func findLocationForZipCode(zipCode: String)
     {
@@ -206,14 +192,6 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate, CLLocationMan
         default: break
         }
     }
-    
-//    @IBAction func addCity(sender: UIButton)
-//    {
-//        if isZip(zipTextField.text!)
-//        {
-//            search(Int(zipTextField.text!)!)
-//        }
-//    }
    
     @IBAction func goButton(sender: UIButton)
     {
@@ -282,12 +260,12 @@ class ZipPopViewController: UIViewController, UITextFieldDelegate, CLLocationMan
             zipTextField.enabled = false
             goButton.enabled = false
             
-            var cc = 2
+            var cc = ""
             switch zipCitySegmentedControl.selectedSegmentIndex
             {
-            case 0: cc = 0
-            case 1: cc = 1
-            case 2: cc = 0
+            case 0: cc = "zip"
+            case 1: cc = "city"
+            case 2: cc = "zip"
             default: break
             }
             

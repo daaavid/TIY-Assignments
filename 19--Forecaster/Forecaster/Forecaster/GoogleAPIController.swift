@@ -18,7 +18,7 @@ class GoogleZipAPIController
         self.googleAPI = delegate
     }
     
-    func search(searchTerm: String, cc: Int)
+    func search(searchTerm: String, cc: String)
     {
         var urlString = ""
         
@@ -28,8 +28,8 @@ class GoogleZipAPIController
         
         switch cc
         {
-        case 0: urlString =  "https://maps.googleapis.com/maps/api/geocode/json?address=santa+cruz&components=postal_code:\(searchTerm)&sensor=false"
-        case 1:
+        case "zip": urlString =  "https://maps.googleapis.com/maps/api/geocode/json?address=santa+cruz&components=postal_code:\(searchTerm)&sensor=false"
+        case "city":
             let formattedSearchTerm = searchTerm.stringByReplacingOccurrencesOfString(" ", withString: "%20", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
 //            let escapedSearchTerm = formattedSearchTerm.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet())
             urlString = "https://maps.googleapis.com/maps/api/geocode/json?address=\(formattedSearchTerm)&components=postal_code:&sensor=false"

@@ -12,7 +12,7 @@ let kLocationKey = "location"
 
 protocol ZipPopViewControllerDelegate
 {
-    func zipWasChosen(zip: String, cc: Int)
+    func zipWasChosen(zip: String, cc: String)
 }
 
 protocol DarkSkyAPIControllerProtocol
@@ -41,13 +41,11 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
         editButtonItem().tintColor = UIColor(red:0.00, green:0.75, blue:1.00, alpha:1.0)
         editButtonItem()
 
-//        let colors = bgColor()
-//        view.backgroundColor = UIColor(red: 0.1, green: colors[0], blue: colors[0] + 0.2, alpha: 1.0)
         view.backgroundColor = UIColor(red: 0.0, green: 0.65, blue: 0.86, alpha: 1.0)
 
         if locationArr.count == 0
         {
-            zipWasChosen(String(32801), cc: 0)
+            zipWasChosen(String(32801), cc: "zip")
         }
     }
 
@@ -126,23 +124,6 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
         return .None
     }
     
-    func bgColor() -> [CGFloat]
-    {
-        let color = colorBasedOnTime()
-        let colorsArr = color.bgColorBasedOnTime(0.65)
-        var colors = [CGFloat]()
-        
-        print(colorsArr)
-        
-        for x in colorsArr
-        {
-            colors.append(CGFloat(x))
-        }
-        
-        print(colors)
-        return colors
-    }
-    
     //MARK: - Images and Animation
     
     func assignWeatherImg(cell: WeatherCell, icon: String, location: Location)
@@ -170,17 +151,11 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
 
     //MARK: - Private
     
-    func zipWasChosen(zip: String, cc: Int)
+    func zipWasChosen(zip: String, cc: String)
     {
         googleAPI = GoogleZipAPIController(delegate: self)
         print(zip, cc)
         googleAPI.search(zip, cc: cc)
-        
-//        let zipArr = [zip]
-//        for zip in zipArr
-//        {
-//            googleAPI.search(zip)
-//        }
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     }
@@ -206,13 +181,14 @@ class WeatherTableViewController: UITableViewController, ZipPopViewControllerDel
     {
         dispatch_async(dispatch_get_main_queue(),
         {
-            let weather = Weather.weatherWithJSON(results)
-            
-            for city in self.locationArr
+            if let weather = Weather.weatherWithJSON(results)
             {
-                if city.city == location.city
+                for city in self.locationArr
                 {
-                    city.weather = weather
+                    if city.city == location.city
+                    {
+                        city.weather = weather
+                    }
                 }
             }
             

@@ -12,8 +12,8 @@
 import Foundation
 import CoreData
 
-extension Todo {
-
+extension Todo
+{
     @NSManaged var isDone: Bool
     @NSManaged var title: String?
     @NSManaged var date: String?
